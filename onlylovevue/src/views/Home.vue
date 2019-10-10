@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HeadNav></HeadNav>
+    <FootNav></FootNav>
   </div>
 </template>
 
