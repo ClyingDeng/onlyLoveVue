@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-xs-12 aside-right" style="margin-bottom: 20px;">
+      <div class="col-md-offset-8 col-md-4 col-xs-12 aside-right" style="margin-bottom: 20px;">
         <div class="focusMe">
           <h4>
             <i class="fa fa-heart" style="color:orangered" aria-hidden="true"></i>关注我
