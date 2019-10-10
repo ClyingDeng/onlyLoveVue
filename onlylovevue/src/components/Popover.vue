@@ -1,6 +1,14 @@
 <template>
   <div>
-    <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+    <hr>
+    <el-button type="text" @click="dialogFormVisible = true">
+      <ul>
+        <li><img src="../assets/imgs/rose.jpg" alt=""></li>
+        <li>rose</li>
+        <hr style="border:0.5px dotted">
+        <li>￥9.9</li>
+      </ul>
+    </el-button>
 
     <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
       <el-form :model="form">
@@ -42,3 +50,20 @@
     }
   };
 </script>
+<style lang="css" scoped>
+li img{
+  width: 250px;
+  height: 350px;
+}
+li{
+  color: black;
+  margin-top: 10px
+}
+ul{
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0%;
+  margin: 10px;
+  margin-top: 100px;
+}
+</style>
