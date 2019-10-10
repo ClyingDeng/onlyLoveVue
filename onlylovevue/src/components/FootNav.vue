@@ -155,7 +155,7 @@
                                     <li class="col-xs-6"><span><i class="fa fa-diamond"
                                                 aria-hidden="true"></i>&nbsp;邂逅：</span>完美配对</li>
                                     <li class="col-xs-6"><span><i class="fa fa-question-circle-o"
-                                                aria-hidden="true"></i> </i>&nbsp;问问：</span>个性留言</li>
+                                                aria-hidden="true"></i> &nbsp;问问：</span>个性留言</li>
                                     <li class="col-xs-6"><span><i class="fa fa-search" aria-hidden="true"></i>
                                             &nbsp;找找：</span>声光画影</li>
                                     <li class="col-xs-6"><span><i class="fa fa-handshake-o"
@@ -178,5 +178,5 @@
         </div>
 
     <!-- </footer> -->
-  </div>
+  
 </template>

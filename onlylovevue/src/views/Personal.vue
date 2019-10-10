@@ -1,8 +1,11 @@
 <template>
   <div>
-    <Carousel :imgs="images"></Carousel>
-    <h1>personal</h1>
+    <!-- <Carousel :imgs="images"></Carousel> -->
+    <!-- <AsideNav></AsideNav> -->
+    <!-- <Popover></Popover> -->
+    <HeadNav></HeadNav>
     <AsideNav></AsideNav>
+    <FootNav class="F"></FootNav>
   </div>
 </template>
 
