@@ -63,7 +63,6 @@ ul{
   list-style: none;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 0%;
-  margin: 10px;
   margin-top: 100px;
 }
 </style>

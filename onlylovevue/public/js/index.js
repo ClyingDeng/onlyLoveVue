@@ -72,6 +72,32 @@ window.onload = function () {
             $(".pop").css("background-color", "rgba(255,255,255,0.4)")
         })
     })
+    $(function () {
+        $('.rankHot').click(function () {
+            $('.hotRank1').show()
+            $('.beautRank1').hide()
+            $('.loveRank1').hide()
+            $('.rankHot').css('background-color', '#e27c31')
+            $('.rankBeaut').css('background-color', 'rgba(255,255,255,0.4)')
+            $('.rankLove').css('background-color', 'rgba(255,255,255,0.4)')
+        })
+        $('.rankBeaut').click(function () {
+            $('.beautRank1').show()
+            $('.hotRank1').hide()
+            $('.loveRank1').hide()
+            $('.rankBeaut').css('background-color', '#e27c31')
+            $('.rankHot').css('background-color', 'rgba(255,255,255,0.4)')
+            $('.rankLove').css('background-color', 'rgba(255,255,255,0.4)')
+        })
+        $('.rankLove').click(function () {
+            $('.loveRank1').show()
+            $('.beautRank1').hide()
+            $('.hotRank1').hide()
+            $('.rankLove').css('background-color', '#e27c31')
+            $('.rankHot').css('background-color', 'rgba(255,255,255,0.4)')
+            $('.rankBeaut').css('background-color', 'rgba(255,255,255,0.4)')
+        })
+    })
 }
 $(document).ready(function () {
     $(".gotop").hide();
@@ -86,6 +112,7 @@ $(document).ready(function () {
         });
     });
 });
+
 // 尾栏
 $(function () {
     var x = 10;

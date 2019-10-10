@@ -269,7 +269,6 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
     <a href="#" class="gotop" style="z-index: 20"><i class="fa fa-chevron-up" style="color:#fff"
             aria-hidden="true"></i></a>
   </div>
