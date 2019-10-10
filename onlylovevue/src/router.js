@@ -27,8 +27,22 @@ export default new Router({
       path: '/personal',
       name: 'personal',
       component: () => import( './views/Personal.vue')
-    }
-
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: () => import( './views/Shop.vue')
+    },
+    {
+      path: '/hotSearch',
+      name: 'hotSearch',
+      component: () => import( './views/HotSearch.vue')
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: () => import( './views/List.vue')
+    },
 
   ]
 })
