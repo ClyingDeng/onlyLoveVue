@@ -43,6 +43,30 @@ export default new Router({
       name: 'list',
       component: () => import( './views/List.vue')
     },
-
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import( './views/Search.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import( './views/Contact.vue')
+    },
+    {
+      path: '/condition',
+      name: 'condition',
+      component: () => import( './views/Condition.vue')
+    },
+    {
+      path: '/message',
+      name: 'message',
+      component: () => import( './views/Message.vue')
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: () => import( './views/Users.vue')
+    }
   ]
 })

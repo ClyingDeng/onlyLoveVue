@@ -41,7 +41,8 @@
                     </li>
                         <!-- <router-link to="/" tag='li'>唯爱</router-link> -->
                     <li id="nav_2">
-                        <a href="/search">搜索</a>
+                        <!-- <a href="/search">搜索</a> -->
+                        <router-link to="/search">搜索</router-link>
                     </li>
                     <li id="nav_3">
                         <!-- <span id="headingOne"> -->
