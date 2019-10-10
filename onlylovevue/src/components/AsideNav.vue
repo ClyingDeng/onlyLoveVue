@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-8 col-md-4 col-xs-12 aside-right" style="margin-bottom: 20px;">
+  <!-- <div class="container">
+    <div class="row"> -->
+      <div class="aside-right container" style="margin-bottom: 20px;">
+        <div class="row">
         <div class="focusMe">
           <h4>
             <i class="fa fa-heart" style="color:orangered" aria-hidden="true"></i>关注我
@@ -268,7 +269,7 @@
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     <a href="#" class="gotop" style="z-index: 20"><i class="fa fa-chevron-up" style="color:#fff"
             aria-hidden="true"></i></a>
   </div>

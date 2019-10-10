@@ -1,12 +1,25 @@
 <template>
   <div>
-    <!-- <Carousel :imgs="images"></Carousel> -->
-    <!-- <AsideNav></AsideNav> -->
-    <!-- <Popover></Popover> -->
     <HeadNav></HeadNav>
-    <AsideNav></AsideNav>
-    <FootNav class="F"></FootNav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8"></div>
+        <AsideNav class="col-lg-4"></AsideNav>
+      </div>
+    </div>
+    <FootNav></FootNav>
   </div>
+  <!-- <div class="container">
+    <div class="row">
+     
+      <Popover style="width:290px;float:left"></Popover>
+      <Popover style="width:290px;float:left"></Popover>
+      <Popover style="width:290px;float:left"></Popover>
+      <Popover style="width:290px;float:left"></Popover>
+    </div>
+  </div>-->
+  <!-- <AsideNav style="float:right"></AsideNav>
+  <FootNav class="F" style="float:right"></FootNav>-->
 </template>
 
 <script>
