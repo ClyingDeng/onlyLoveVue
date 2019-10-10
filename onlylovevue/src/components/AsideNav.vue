@@ -11,8 +11,8 @@
             </small>
           </h4>
           <section class="sect">
-            <a href="#" class="iconbtn fa fa-comment" style="background-color: #3bb9d8;"></a>
-            <a href="#" class="iconbtn fa fa-handshake-o" style="background-color: #ec6d34;"></a>
+            <a href="#" class="iconbtn fa fa-commenting" style="background-color: #3bb9d8;"></a>
+            <a href="#" class="iconbtn fa fa-users" style="background-color: #ec6d34;"></a>
             <a href="#" class="iconbtn fa fa-share-alt" style="background-color: #a0ed36;"></a>
             <a href="#" class="iconbtn fa fa-envelope" style="background-color: #39d39f;"></a>
             <br />
