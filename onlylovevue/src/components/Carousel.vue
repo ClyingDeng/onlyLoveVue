@@ -1,6 +1,6 @@
 <template>
-  <el-carousel ref="carousel" :interval="5000" style="width:800px;margin:0 auto">
-    <el-carousel-item v-for="item in imgs" :key="item.url" style="width:800px;margin:0 auto">
+  <el-carousel ref="carousel" :interval="5000" style="width:800px">
+    <el-carousel-item v-for="item in imgs" :key="item.url" style="width:800px">
       <img :src="item.url" style="height: 300px" />
     </el-carousel-item>
   </el-carousel>
@@ -9,15 +9,9 @@
 <script>
 export default {
   name: "Carousel",
+  props:['imgs'],
   data: function() {
-    return {
-      imgs: [
-        { url: require("../assets/imgs/01.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/02.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/03.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/04.jpg"), link: '/content1' }
-      ]
-    };
+    return {};
   },
   methods: {
     linkTo() {
