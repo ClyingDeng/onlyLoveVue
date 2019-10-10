@@ -8,18 +8,8 @@
       </div>
     </div>
     <FootNav></FootNav>
+    <!-- <AsideNav></AsideNav> -->
   </div>
-  <!-- <div class="container">
-    <div class="row">
-     
-      <Popover style="width:290px;float:left"></Popover>
-      <Popover style="width:290px;float:left"></Popover>
-      <Popover style="width:290px;float:left"></Popover>
-      <Popover style="width:290px;float:left"></Popover>
-    </div>
-  </div>-->
-  <!-- <AsideNav style="float:right"></AsideNav>
-  <FootNav class="F" style="float:right"></FootNav>-->
 </template>
 
 <script>

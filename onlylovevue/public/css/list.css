@@ -1,0 +1,156 @@
+#rankContainer{
+    margin-top: 10px;
+    /* height: 800px; */
+    background: rgba(245, 251, 255, 0.5);
+}
+.rankHead{
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+    background: rgba(245, 251, 255, 0.5);
+    transition: background-color 1s linear
+}
+.rankHead:hover{
+    background-color: #e27c31!important;
+    color: #fff;
+}
+.beautRank1{
+    display: none;
+}
+.loveRank1{
+    display: none;
+}
+.headerPic{
+    margin-top: 75px;
+    width: 78px;
+    height: 78px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    border-radius: 15%;
+    border: 7px solid #eee;
+    overflow: hidden;
+}
+.headerPic img{
+    transform:rotate(315deg); 
+    width: 150px;
+    height: 150px;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+.first-one{
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 50px auto 20px;
+}
+.first-one img{
+    width: 180px;
+    height: 180px;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+.second-one{
+    position: relative;
+    margin: 75px auto 20px;
+}
+.third-one{
+    float: right;
+    position: relative;
+    margin: 75px auto 20px;
+}
+.rankThree ul{
+    padding: 0;
+    list-style: none;
+}
+.rankThree li{
+    padding: 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.rankThree li i{
+    margin: 0% 5px;
+}
+.rankThree li b{
+    color: #e71555;
+    font-weight: 400;
+}
+.rankNumber ul {
+    list-style: none;
+    padding: 50px 5% 0 5%;
+}
+
+.rankNumber li {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px dashed #ccc;
+}
+.rankNumber li img{
+    margin-left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.rankNumber li span {
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 20%;
+}
+
+.rankNumber li:nth-child(1) span {
+    background: #e71555;
+}
+
+.rankNumber li:nth-child(2) span {
+    background: #34d693;
+}
+
+.rankNumber li:nth-child(3) span {
+    background: #ff6700;
+}
+
+.rankNumber li:nth-child(4) span {
+    background: #ffd700;
+}
+
+.rankNumber li:nth-child(5) span {
+    background: #eeaeee;
+}
+
+.rankNumber li a {
+    text-decoration: none;
+    margin-left: 5%;
+    color: #515151;
+}
+.rankNumber i{
+    float: right;
+    margin-top: 15px;
+}
+.rankNumber li b {
+    float: right;
+}
+.rankNumber li b{
+    margin-top: 10px;
+    color: #e71555;
+    font-weight: 400;
+    margin-right: 10px;
+}
+.yourRink{
+    text-align: right;
+}
+.yourRink a {
+    text-decoration: none;
+    color: #515151;
+}
+.yourRink img{
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.block{
+    float: right;
+}
