@@ -2,8 +2,10 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8"></div>
-        <AsideNav class="col-lg-4"></AsideNav>
+        <div class="col-lg-8">
+ 
+        </div>
+        <!-- <AsideNav class="col-lg-4"></AsideNav> -->
       </div>
     </div>
     <!-- <AsideNav></AsideNav> -->
