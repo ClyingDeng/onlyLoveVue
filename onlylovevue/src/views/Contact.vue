@@ -1,8 +1,8 @@
 <template>
 <div>
-    <HeadNav></HeadNav>
+    <!-- <HeadNav></HeadNav> -->
     <div class="container">
-      <div class="row">
+      <div class="row" style="margin-top:100px">
         <div class="col-lg-8">
   <div class="contact">
                 <div class="col-md-8 col-xs-12" style="margin-top: 10px">
@@ -149,7 +149,7 @@
         <AsideNav class="col-md-4 col-xs-12"></AsideNav>
       </div>
     </div>
-    <FootNav></FootNav>
+    <!-- <FootNav></FootNav> -->
   </div>
 </template>
 
@@ -157,6 +157,7 @@
 .message{
     padding-bottom:25px; 
     width: 100%;
+  
 }
 .message img{
     width: 20px;
@@ -252,7 +253,7 @@
   rgba(255,255,255,0.1),
  rgba(255,255,255,0.9));
      text-align: center;
-     font-size: 13px;
+     font-size: 12px;
      text-decoration: none;
      background: -webkit-linear-gradient(
  rgba(255, 255, 255, 0.9), 
