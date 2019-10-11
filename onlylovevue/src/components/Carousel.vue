@@ -9,14 +9,9 @@
 <script>
 export default {
   name: "Carousel",
+  props: ["imgs"],
   data: function() {
     return {
-      imgs: [
-        { url: require("../assets/imgs/01.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/02.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/03.jpg"), link: '/content1' },
-        { url: require("../assets/imgs/04.jpg"), link: '/content1' }
-      ]
     };
   },
   methods: {

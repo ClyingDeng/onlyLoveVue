@@ -70,6 +70,7 @@
 .head-message i {
     width: 12px;
     position: absolute;
+    left: 0;
     top: 6px;
 }
 
@@ -981,9 +982,11 @@ i {
 /* 尾栏 */
 
 #myfooter {
+    margin-top: 10px;
     height: 430px;
-    margin-top: 20px;
     position: relative;
+    /* bottom: 0; */
+    margin-bottom: 0%;
     width: 100%;
 }
 
@@ -1001,7 +1004,7 @@ i {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 25px 0;
+    padding: 40px 0 0;
     color: #fff;
     overflow: hidden;
 }
@@ -1013,8 +1016,8 @@ i {
 
 #footer-top h4 {
     display: block;
-    margin-block-start: 1.33em;
-    margin-block-end: 1.33em;
+    margin-block-start: 1.33rem;
+    margin-block-end: 1.33rem;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
@@ -1040,10 +1043,13 @@ i {
     padding: 0;
     padding-left: -40px;
 }
-
+.footer-search button{
+    float: left;
+}
 .footer-search a {
     color: #fff;
     text-decoration: none;
+    float: left;
 }
 
 .footer-search b {
@@ -1059,7 +1065,9 @@ i {
 #footer-abouthotspot ul {
     padding: 0;
 }
-
+.footer-hotspot{
+    text-align: start;
+}
 .footer-hotspot li {
     height: 75px;
     list-style: none;

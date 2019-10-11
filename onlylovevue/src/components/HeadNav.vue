@@ -41,32 +41,32 @@
                     </li>
                         <!-- <router-link to="/" tag='li'>唯爱</router-link> -->
                     <li id="nav_2">
-                        <a href="#">搜索</a>
+                        <!-- <a href="/search">搜索</a> -->
+                        <router-link to="/search">搜索</router-link>
                     </li>
                     <li id="nav_3">
                         <!-- <span id="headingOne"> -->
-                        <a id="headingOne" href="#"><span style="margin-left: 8px"></span>排行</span><span id="inversion"
-                                class="fa fa-chevron-up" aria-hidden="true"></span></a>
+                        <a id="headingOne" href="/list"><span style="margin-left: 8px">排行</span><span id="inversion" class="fa fa-chevron-up" aria-hidden="true"></span></a>
                         <!-- </span> -->
                         <div id="collapseOne" class="">
                             <ul id="drop-nav">
-                                <li id="nav_77" class="drop_nav_active"><a href="/du/77.html">狂热榜</a></li>
-                                <li id="nav_78"><a href="/du/78.html">魅力榜</a></li>
-                                <li id="nav_79"><a href="/du/79.html">比翼榜</a></li>
+                                <li id="nav_77" class="drop_nav_active"><a href="#">狂热榜</a></li>
+                                <li id="nav_78"><a href="#">魅力榜</a></li>
+                                <li id="nav_79"><a href="#">比翼榜</a></li>
                             </ul>
                         </div>
                     </li>
                     <li id="nav_4">
-                        <a href="#">热搜</a>
+                        <a href="/hotSearch">热搜</a>
                     </li>
                     <li id="nav_5">
-                        <a href="/shou.html">个人中心</a>
+                        <a href="/personal">个人中心</a>
                     </li>
                     <li id="nav_6">
-                        <a href="./views/friend.html">唯爱商城</a>
+                        <a href="/shop">唯爱商城</a>
                     </li>
                     <li class="col-md-2" id="nav_7">
-                        <a href="/link.html">登录</a>
+                        <a href="login">登录</a>
                     </li>
 
                 </ul>

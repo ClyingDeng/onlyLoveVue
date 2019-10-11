@@ -10,6 +10,7 @@ import AsideNav from './components/AsideNav'
 import Carousel from './components/Carousel'
 import FootNav from './components/FootNav'
 import Tab from './components/Tab'
+import Popover from './components/Popover'
 
 
 Vue.use(ElementUI);
@@ -19,6 +20,7 @@ Vue.component('AsideNav',AsideNav)
 Vue.component('Carousel',Carousel)
 Vue.component('FootNav',FootNav)
 Vue.component('Tab',Tab)
+Vue.component('Popover',Popover)
 
 
 Vue.config.productionTip = false
