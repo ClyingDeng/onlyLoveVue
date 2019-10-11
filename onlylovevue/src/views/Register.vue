@@ -1,6 +1,9 @@
 <template>
   <div class="register">
-    <h1>注册</h1>
+    <div class="container col-ms-12 col-md-6 col-md-offset-3" >
+<el-col :span="24">
+    <!-- <h1>注册</h1> -->
+    <el-col :for="20">
     <el-form
       :model="registerUser"
       status-icon
@@ -9,22 +12,15 @@
       label-width="100px"
       class="registerForm"
     >
-      <!-- <el-radio-group v-model="radio">
-    <el-radio :label="3">手机号注册</el-radio>
-    <el-radio :label="6">邮箱注册</el-radio>
-      </el-radio-group>-->
-      <template1>
-        <el-radio v-model="radio" label="1">手机号注册</el-radio>
-        <el-radio v-model="radio" label="2">邮箱注册</el-radio>
-      </template1>
+      <el-radio v-model="radio" label="1">手机号注册</el-radio>
+      <el-radio v-model="radio" label="2">邮箱注册</el-radio>
       <el-form-item label="账号：" prop="tel" ref="tel">
         <el-input v-model="registerUser.tel"></el-input>
       </el-form-item>
       <el-form-item label="验证码：" prop="verification" ref="verification">
-        <el-input v-model="registerUser.verification"></el-input>
-        <el-span>
-          <a href="#">获取短信验证码</a>
-        </el-span>
+      <el-input v-model="registerUser.verification" class="IsCode"></el-input>
+        <!-- <el-span><a href="#">获取短信验证码</a></el-span> -->
+        <el-button type="info">获取短信验证码</el-button>
       </el-form-item>
       <el-form-item label="密码：" prop="password">
         <el-input type="password" v-model="registerUser.password"></el-input>
@@ -37,19 +33,20 @@
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
-    
+    </el-col>
+  </el-col>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "register",
-  data() {
-    return {
-      radio: "1"
-    };
-  },
+  // data() {
+   
+  // },
   data: function() {
+    
     //自定义验证表单元素的方法
     var validatePass2 = (rule, value, callback) => {
       if (value !== this.registerUser.password) {
@@ -58,12 +55,12 @@ export default {
         callback();
       }
     };
-
     return {
       registerUser: {
         tel: "",
         password: "",
-        password2: ""
+        password2: "",
+        radio: "1"
       },
       rules: {
         tel: [
@@ -105,24 +102,32 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-.register {
+/* .register {
   width: 100%;
   height: 100%;
   background: url(../assets/imgs/bg2.jpg) no-repeat center center;
   background-size: 100% 100%;
-}
+} */
 .registerForm {
-  width: 590px;
-  height: 500px;
-  position: absolute;
+  /* width: 590px; */
+  height: 400px;
+  /* position: absolute; */
   /* left: 50%;
   top: 50%; */
   /* margin-left: 200px;
   margin-top: -190px; */
-  margin-left: 100px;
-  margin-top: 100px;
+  /* margin-left: 31%; */
+  margin: 0 auto;
+  margin-top: 50px;
   border-radius: 5px;
   background-color: #fff;
-  padding: 50px 50px 10px 10px;
+  padding: 35px 50px 10px 10px;
 }
+.IsCode{
+  float: left;
+  width: 50%;
+}
+/* .container{
+
+} */
 </style>
