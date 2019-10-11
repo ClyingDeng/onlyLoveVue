@@ -37,7 +37,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right" id="mymenu">
                     <li id="nav_1">
-                        <a href="/">唯爱</a>
+                        <a href="/index">唯爱</a>
                     </li>
                         <!-- <router-link to="/" tag='li'>唯爱</router-link> -->
                     <li id="nav_2">

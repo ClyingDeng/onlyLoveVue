@@ -3,11 +3,9 @@
     <HeadNav></HeadNav>
     <div class="container">
       <div class="row">
+
         <router-view/>
-        <!-- <div class="col-lg-8">
-          
-        </div>
-        <AsideNav class="col-lg-4"></AsideNav>-->
+
       </div> 
     </div>
     <FootNav></FootNav>
