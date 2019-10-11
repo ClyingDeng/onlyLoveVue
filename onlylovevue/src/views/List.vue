@@ -1,9 +1,8 @@
 <template>
   <div class="list">
-    <HeadNav></HeadNav>
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-xs-12" id="rankContainer">
+        <div class="col-md-7 col-xs-12" id="rankContainer">
           <div class="col-xs-12">
             <div class="col-xs-4 rankHead rankHot">
               <i class="fa fa-heartbeat" aria-hidden="true"></i>狂热榜
@@ -376,10 +375,9 @@
             </div>
           </div>
         </div>
-        <AsideNav class="col-lg-4"></AsideNav>
+        <AsideNav class="col-md-offset-1 col-md-4 col-xs-12"></AsideNav>
       </div>
     </div>
-    <FootNav></FootNav>
   </div>
 </template>
 
@@ -403,3 +401,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.list{
+  margin-top: 100px;
+}
+</style>
