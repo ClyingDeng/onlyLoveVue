@@ -55,14 +55,20 @@ li img{
   width: 250px;
   height: 350px;
 }
-li{
+li:nth-child(2){
+  font-size: 20px;
   color: black;
+  margin-top: 10px
+}
+li:nth-child(4){
+  font-size: 15px;
+  color: red;
   margin-top: 10px
 }
 ul{
   list-style: none;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 0%;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 </style>
