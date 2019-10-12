@@ -11,7 +11,9 @@ import Carousel from './components/Carousel'
 import FootNav from './components/FootNav'
 import Tab from './components/Tab'
 import Popover from './components/Popover'
+import axios from './http.js'
 
+Vue.prototype.$axios = axios
 
 Vue.use(ElementUI);
 
