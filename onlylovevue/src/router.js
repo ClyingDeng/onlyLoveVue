@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -61,6 +61,11 @@ export default new Router({
           component: () => import( './views/Message.vue')
         },
         {
+          path: 'friend',
+          name: 'friend',
+          component: () => import( './views/Friend.vue')
+        },
+        {
           path: 'users',
           name: 'users',
           component: () => import( './views/Users.vue')
@@ -76,7 +81,30 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: () => import( './views/Register.vue')
+    },
+    {
+      path: '/*',   //路由匹配不成功时
+      name: 'notfound',
+      component: () => import( './views/404.vue')
     }
     
   ]
 })
+
+//路由守卫
+router.beforeEach((to,from,next) => {
+  //除了login和register，其他的路由访问必须先登录
+  let tokenIsExists = localStorage.getItem('mytoken') ? true : false //检查本地存储中是否有token
+  if(to.path == '/login' || to.path == '/register' || to.path == '/' || to.path == '/index'){  //能不登录就可以访问的路由
+    next()
+  }else{
+    if(tokenIsExists){
+      next()//已经登录过并取得token，允许访问路由
+    }else{
+      next('/login')  //路由跳转到登录组件
+    }
+  }
+
+
+})
+export default router
