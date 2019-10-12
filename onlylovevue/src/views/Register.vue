@@ -1,9 +1,9 @@
 <template>
   <div class="register">
     <div class="container col-ms-12 col-md-6 col-md-offset-3" >
-<el-col :span="24">
+<!-- <el-col :span="24"> -->
     <!-- <h1>注册</h1> -->
-    <el-col :for="20">
+    <!-- <el-col :for="14"> -->
     <el-form
       :model="registerUser"
       status-icon
@@ -12,15 +12,17 @@
       label-width="100px"
       class="registerForm"
     >
+    <span class="regHead">
       <el-radio v-model="radio" label="1">手机号注册</el-radio>
       <el-radio v-model="radio" label="2">邮箱注册</el-radio>
+    </span>
       <el-form-item label="账号：" prop="tel" ref="tel">
         <el-input v-model="registerUser.tel"></el-input>
       </el-form-item>
       <el-form-item label="验证码：" prop="verification" ref="verification">
       <el-input v-model="registerUser.verification" class="IsCode"></el-input>
         <!-- <el-span><a href="#">获取短信验证码</a></el-span> -->
-        <el-button type="info">获取短信验证码</el-button>
+        <el-button type="info" class="getCode">获取短信验证码</el-button>
       </el-form-item>
       <el-form-item label="密码：" prop="password">
         <el-input type="password" v-model="registerUser.password"></el-input>
@@ -28,13 +30,13 @@
       <el-form-item label="确认密码：" prop="password2">
         <el-input type="password" v-model="registerUser.password2"></el-input>
       </el-form-item>
-      <el-form-item>
+      <span class="regBtn">
         <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
+      </span>
     </el-form>
-    </el-col>
-  </el-col>
+    <!-- </el-col> -->
+  <!-- </el-col> -->
     </div>
   </div>
 </template>
@@ -102,6 +104,10 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.regHead{
+  display: block;
+  text-align: center;
+}
 /* .register {
   width: 100%;
   height: 100%;
@@ -117,7 +123,7 @@ export default {
   /* margin-left: 200px;
   margin-top: -190px; */
   /* margin-left: 31%; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 50px;
   border-radius: 5px;
   background-color: #fff;
@@ -126,8 +132,32 @@ export default {
 .IsCode{
   float: left;
   width: 50%;
+  margin-right: 5%;
 }
 /* .container{
 
 } */
+.regBtn{
+  display: block;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .IsCode{
+  float: left;
+  width: 40%;
+  margin-right: 5%;
+}
+  .getCode{
+    width: 40%;
+    text-align: center;
+  }
+  .el-button{
+    padding: 12px 10px;
+  }
+
+  .regBtn .el-button{
+    padding: 12px 20px;
+  }
+  
+}
 </style>

@@ -19,9 +19,9 @@ window.onload = function () {
             $(this).addClass('nav-active')
         })
 
-        oNav_message = document.getElementById('nav_message').getElementsByTagName('ul')[0]
+        oNav_message = document.getElementById('nav_message')
         aNav_message = oNav_message.getElementsByTagName('li')
-        // console.log(aNav_message.length)
+        console.log(aNav_message.length)
         var timer = null
         var index = 0
         if (timer == null) {
