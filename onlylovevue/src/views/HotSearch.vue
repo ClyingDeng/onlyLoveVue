@@ -1,100 +1,112 @@
 <template>
-<div>
-    <HeadNav></HeadNav>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="hotsearch ">
-    <div id="hotsearch-head" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div>
-     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4"> <img src="../assets/imgs/resou.png" alt=""><span>唯爱搜索</span>
-     </div>
-     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
-       <input type="text" value="">
-     </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button>搜索</button></div>
-
-      
-    </div>
-<div><template>
-    <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="number"
-        label="序号"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="keyword"
-        label="关键词"
-        width="180">
-      </el-table-column>
-      
-    </el-table>
-  </template>
-</div>
-    
-    </div>
-  </div>
+  <div class="container" style="margin-bottom:100px;margin-top:100px;">
+    <div class="row">
+      <!-- 搜索条 -->
+      <div class="col-xs-12">
+        <div class="col-xs-offset-1 col-xs-8">
+          <input type="text">
         </div>
-        
+        <div class="col-xs-3 search">
+          <span class="s">搜索</span>
+        </div>
+      </div>
+      <!-- 内容 -->
+      <div class="col-xs-12">
+        <ul>
+          <li class="firstline">
+            <span class="col-xs-offset-1 col-xs-2">序号</span>
+            <span class="keyword col-xs-7">关键词</span>
+          </li>
+          <li>
+            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="hot col-xs-1"><strong>热</strong></div>
+          </li>
+          <li>
+            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="hot col-xs-1"><strong>热</strong></div>
+          </li>
+          <li>
+            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="hot col-xs-1"><strong>热</strong></div>
+          </li>
+          <li>
+            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="hot col-xs-1"><strong>热</strong></div>
+          </li>
+          <li>
+            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="hot col-xs-1"><strong>热</strong></div>
+          </li>
+        </ul>
       </div>
     </div>
-   
   </div>
-  
 </template>
 <script>
 
-    export default {
-      data() {
-        return {
-          tableData: [{
-            number: '2016-05-02',
-            keyword: '王小虎',
-            
-          }, {
-            number: '2016-05-04',
-            keyword: '王小虎',
-            
-          }, {
-            number: '2016-05-01',
-            keyword: '王小虎',
-           
-          }, {
-            number: '2016-05-03',
-            keyword: '王小虎',
-          
-          }]
-        }
-      }
-    }
 </script>
 <style scoped>
-#hotsearch-head{
-  top: 100px;
-}
-img{
-  width: 40px;
-  height: 40px;
-}
-span{
-  font-size: 18px;
-}
-input{
-  margin-left:20px; 
-  height: 40px;
+input[type=text]{
   width: 100%;
-}
-button{
-  width: 70px;
   height: 40px;
-  margin-left:20px; 
-  font-size: 20px;
-  background-color: rgb(255, 60, 0);
-  border: solid 1px  rgb(255, 60, 0);
+}
+.search{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 35px;
+  font-size: 23px;
+  color: #dfe6e9;
+  margin: 0;
+  background-color: #ec6d34;
+  cursor: pointer;
+  width: 100px;
+  font-weight: 550;
+}
+.search:hover{
   color: #fff;
 }
-
+ul{
+  list-style: none;
+  margin-top: 40px;
+}
+ul li{
+  height: 30px;
+  margin-bottom: 12px;
+}
+ul .firstline{
+  font-size: 18px;
+  color: #84817a;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.order{
+  padding-left: 25px;
+}
+.article{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  color: #34ace0;
+}
+.article strong{
+  margin-left: 10px;
+  font-weight: 400;
+  color: #aaa69d;
+}
+.hot strong{
+  padding: 2px;
+  background: #ec6d34;
+  font-weight: 400;
+  color: aliceblue;
+}
+li div{
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #b2bec3;
+}
 </style>
