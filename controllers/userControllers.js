@@ -36,8 +36,17 @@ HttpClient.setRequestInterceptor(function(requestOptions) {
     return requestOptions;
 });
 var userController = {
-    changeName: function(req, res) {
-
+    getcondition: function(req, res) {
+        async function condition (){
+            try{
+                let getcon = await userDAO.getcondition()
+                console.log(getcon)
+                res.json({code:200,data:getcon,msg:'首页动态获取成功！'})
+            }catch(e){
+                res.json({ code: 500, data:err, msg: '首页动态获取失败！' })
+            }
+        }
+        condition()
     },
     // 登录
     login: function(req, res) {

@@ -39,6 +39,7 @@ app.all('*', function(req, res, next) {
 })
 
 
+// app.set("views", path.join(__dirname, 'views'));
 app.set("views", path.join(__dirname, 'views'));
 app.engine(".ejs", require("ejs").__express);
 app.set("view engine", "ejs");
