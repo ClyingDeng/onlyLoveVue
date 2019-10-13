@@ -55,8 +55,8 @@
                     <div class="media moveLeft "   v-for="key in conditions">
                         <div class="media-left media-middle ">
                             <a href="#">
-                                <!-- <img class="media-object Imges" src="../assets/imgs/wenzhang1.jpg" alt="..." style="padding-left: 17px"> -->
-                                <img class="media-object Imges" src="http://localhost/public/hspicture/{{key.con_pic_1}}" alt="..." style="padding-left: 17px">
+                                <img class="media-object Imges" src="../assets/imgs/wenzhang1.jpg" alt="..." style="padding-left: 17px">
+                                <!-- <img class="media-object Imges" src="http://localhost/public/hspicture/{{key.con_pic_1}}" alt="..." style="padding-left: 17px"> -->
                             </a>
                         </div>
                         <div class="media-body ">
