@@ -69,7 +69,7 @@ router.get('/vCode/:telephone', function(req, res, next) {
     //         console.log('请求异常');
     //     }
     // })
-    res.json({ code: 200, msg: '验证码发送成功' })
+    res.json({ code: 200, msg: '验证码发送成功' ,data:code})
 });
 //身份证识别
 // 正面
