@@ -4,7 +4,7 @@
       <div class="col-md-12 shop">
         <i class="fa fa-gift" aria-hidden="true" style="color:#eb3b5a"></i>商城
       </div>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="work-box">
           <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
             <div class="work-img">
@@ -37,8 +37,179 @@
             </div>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
+<section class="bg-light">
+<div class="container">
+
+	<div class="row mb-4">
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	
+		
+	</div>
+	<div class="row mb-4">
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4">
+		    <div class="product border">
+		        <div class="product-img">
+		            <img src="http://www.ansonika.com/panagea/img/tour_1.jpg">
+		        </div>
+		        <div class="product-block">
+		            <h5>Discover our Featured </h5>
+		            <h5 class="text-danger">Rs. 7.95 Lakh</h5>
+		            <ul class="list-inline ">
+                    <li class="list-inline-item"><i class="fa fa-clock-o"></i> 2010</li>
+                    <li class="list-inline-item"><i class="fa fa-car"></i> Private</li>
+                    <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li>
+                </ul>
+		        </div>
+		        <div class="product-footer">
+		            <div class="row">
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		                <div class="col-md-6">
+		                    <button type="button" class="btn btn-outline-secondary btn-sm">Contact Seller</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	
+		
+	</div>
+</div>
+</section>
+
+
   </div>
 </template>
 <style scoped>
@@ -68,6 +239,17 @@
 .work-box:hover .w-ctegory {
   color: #ff9f1a !important;
 }
+
+
+img{width:100%;}
+.product{background:#fff;}
+.product:hover {background:#f2f2f2;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+.product-img {border-radius: 0px 0px 0 0;max-height:180px;overflow: hidden;}
+.product-block{padding:15px;}
+.product-footer {background:#f4f4f4;border-top:1px solid #ccc;padding:10px 15px 15px 10px}
+.divider {border: 1px solid #ccc;}
+.title-links ul {margin-bottom:10px; margin-top:10px;}
+
 </style>
 <script>
   export default {
