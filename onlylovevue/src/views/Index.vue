@@ -15,18 +15,18 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="../assets/imgs/lunbo1.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo1.jpg" alt="...">
                             <div class="carousel-caption">
                                 
                             </div>
                         </div>
                         <div class="item">
-                            <img src="../assets/imgs/lunbo2.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo3.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="../assets/imgs/lunbo3.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo2.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
@@ -55,8 +55,7 @@
                     <div class="media moveLeft "   v-for="key in conditions">
                         <div class="media-left media-middle ">
                             <a href="#">
-                                <img class="media-object Imges" src="../assets/imgs/wenzhang1.jpg" alt="..." style="padding-left: 17px">
-                                <!-- <img class="media-object Imges" src="http://localhost/public/hspicture/{{key.con_pic_1}}" alt="..." style="padding-left: 17px"> -->
+                                <img class="media-object Imges" :src="'http://localhost:3000/upload/'+ key.con_pic_1">
                             </a>
                         </div>
                         <div class="media-body ">
@@ -92,7 +91,7 @@
                                         <em>{{key.see}}</em>
                                     </a>
                                 </li>
-                                <li style="float: right;">
+                                <li style="float: right;" class="conDir">
                                     <a href="#">
                                         <i class="fa fa-th-list"></i>
                                         谈天说地
@@ -142,7 +141,7 @@
                                         <em>99</em>
                                     </a>
                                 </li>
-                                <li style="float: right;">
+                                <li style="float: right;"  class="conDir">
                                     <a href="#">
                                         <i class="fa fa-th-list"></i>
                                         彼爱无岸
@@ -229,17 +228,26 @@ i {
             margin-left: -15px;
             background: rgba(245, 251, 255, 0.8);
         }
-
+    .Imges{
+        width: 200px;
+        height: 120px;
+        padding-left: 15px;
+    }
         @media screen and (max-width: 700px) {
             .Imges {
-                width: 170px;
-                height: 100px;
+                width: 180px;
+                height: 120px;
+                line-height: 120px;
+                text-align: center;
             }
         }
 
         @media screen and (max-width: 585px) {
             .q2 li {
-                margin-right: 2px
+                margin-right: 10px;
+            }
+            .conDir{
+                display: none;
             }
         }
 
