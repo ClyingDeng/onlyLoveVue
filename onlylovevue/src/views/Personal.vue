@@ -26,31 +26,27 @@
             </div>
             <nav class="side-menu">
               <ul class="nav">
-                <li class="active">
-                  <a href="#" @click="currentTabCompent='baseInfo'">
+                <li :class="className1">
+                  <a href="#" @click="compentChild('baseInfo')">
                     <span class="fa fa-user" ></span>个人信息
                   </a>
                 </li>
-                <li>
-                  <a href="#" @click="currentTabCompent='setting'">
+                <li :class="className2">
+                  <a href="#" @click="compentChild('setting')">
                     <span class="fa fa-cog" ></span>设置
                   </a>
                 </li>
-                <li>
-                  <a href="#" @click="currentTabCompent='identification'">
+                <li :class="className3">
+                  <a href="#" @click="compentChild('identification')">
                     <span class="fa fa-credit-card" ></span> 实名认证
                   </a>
                 </li>
-                <!-- <li><a href="#"><span class="fa fa-envelope"></span></a></li> -->
 
-                <!-- <li><a href="#"><span class="fa fa-th"></span> Drive</a></li>
-                <li><a href="#"><span class="fa fa-clock-o"></span> Reminders</a></li>-->
               </ul>
             </nav>
           </div>
           <div class="content-panel">
             <component v-bind:is="currentTabCompent"></component>
-            <!-- <router-view></router-view> -->
           </div>
         </div>
       </section>
@@ -62,44 +58,16 @@
 import baseInfo from "../components/userInfo.vue";
 import setting from "../components/Setting.vue";
 import identification from "../components/Identification.vue";
-/* export default {
-  data: function() {
-    return {
-      images: [
-        { url: require("../assets/imgs/01.jpg"), link: "/content1" },
-        { url: require("../assets/imgs/02.jpg"), link: "/content1" },
-        { url: require("../assets/imgs/03.jpg"), link: "/content1" },
-        { url: require("../assets/imgs/04.jpg"), link: "/content1" }
-      ]
-    };
-  }
-}; */
-const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 
 import jwt_decode from "jwt-decode";
 export default {
-  name: "login",
+  // name: "login",
   data: function() {
     return {
-      currentTabCompent:'identification',
-      radio: "1",
-      Badhobby: "3",
-      YM: "",
-      nowcontent: "",
-      salary: [
-        "2k以下",
-        "2k-4k",
-        "4-6k",
-        "6-8k",
-        "8-10k",
-        "10-15k",
-        "15-20k",
-        "20k以上"
-      ],
-      checkAll: false,
-      checkedCities: ["上海", "北京"],
-      cities: cityOptions,
-      isIndeterminate: true,
+      currentTabCompent:'baseInfo',
+      className1:'active',
+      className2:'',
+      className3:'',
       loginUser: {
         telephone: "15776504645",
         password: "111111"
@@ -122,16 +90,23 @@ export default {
     setting: setting
   },
   methods: {
-    handleCheckAllChange(val) {
-      this.checkedCities = val ? cityOptions : [];
-      this.isIndeterminate = false;
-    },
-    handleCheckedCitiesChange(value) {
-      let checkedCount = value.length;
-      this.checkAll = checkedCount === this.cities.length;
-      this.isIndeterminate =
-        checkedCount > 0 && checkedCount < this.cities.length;
-    },
+   compentChild(currentCompent){
+     this.currentTabCompent = currentCompent
+    //  console.log(currentCompent)
+       if(currentCompent == 'baseInfo'){
+         this.className1='active'
+         this.className2=''
+         this.className3=''
+       }else if(currentCompent == 'setting'){
+         this.className1=''
+         this.className2='active'
+         this.className3=''
+       }else if(currentCompent == 'identification'){
+         this.className1=''
+         this.className2=''
+         this.className3='active'
+       }
+   },
     submitForm(formName) {
       //通过ref定位到form表单
       this.$refs[formName].validate(valid => {

@@ -100,11 +100,7 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">兴趣爱好</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-checkbox
-              :indeterminate="isIndeterminate"
-              v-model="checkAll"
-              @change="handleCheckAllChange"
-            >全选</el-checkbox>
+            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
             <div style="margin: 15px 0;"></div>
             <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
               <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
@@ -171,3 +167,41 @@
   margin-bottom: 0;
 }
 </style>
+<script>
+const cityOptions  = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
+export default {
+  data: function() {
+    return{
+      salary: [
+        "2k以下",
+        "2k-4k",
+        "4-6k",
+        "6-8k",
+        "8-10k",
+        "10-15k",
+        "15-20k",
+        "20k以上"
+      ],
+      radio: "1",
+      Badhobby: "3",
+      YM: "",
+      
+      checkAll: false,
+        checkedCities: ['健身'],
+        cities: cityOptions,
+        isIndeterminate: true
+    }
+  },
+  methods:{
+    handleCheckAllChange(val) {
+        this.checkedCities = val ? cityOptions : [];
+        this.isIndeterminate = false;
+      },
+      handleCheckedCitiesChange(value) {
+        let checkedCount = value.length;
+        this.checkAll = checkedCount === this.cities.length;
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+      }
+  }
+}
+</script>
