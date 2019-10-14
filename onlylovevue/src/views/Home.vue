@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 // import Search from './Search.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    // HelloWorld
   }
 }
 </script>
