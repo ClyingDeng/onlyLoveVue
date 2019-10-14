@@ -10,10 +10,26 @@
           </small>
         </h4>
         <section class="sect">
-          <a @click.prevent="goMessage" class="iconbtn fa fa-commenting" style="background-color: #3bb9d8;"></a>
-          <a @click.prevent="goFriend" class="iconbtn fa fa-users" style="background-color: #ec6d34;"></a>
-          <a @click.prevent="goCondition" class="iconbtn fa fa-share-alt" style="background-color: #a0ed36;"></a>
-          <a @click.prevent="goContact" class="iconbtn fa fa-envelope" style="background-color: #39d39f;"></a>
+          <a
+            @click.prevent="goMessage"
+            class="iconbtn fa fa-commenting"
+            style="background-color: #3bb9d8;"
+          ></a>
+          <a
+            @click.prevent="goFriend"
+            class="iconbtn fa fa-users"
+            style="background-color: #ec6d34;"
+          ></a>
+          <a
+            @click.prevent="goCondition"
+            class="iconbtn fa fa-share-alt"
+            style="background-color: #a0ed36;"
+          ></a>
+          <a
+            @click.prevent="goContact"
+            class="iconbtn fa fa-envelope"
+            style="background-color: #39d39f;"
+          ></a>
           <br />
         </section>
         <section class="sect">
@@ -151,41 +167,17 @@
           </h4>
           <ul>
             <li>
-              <div class="hs-container">
+              <div class="hs-container" v-for="(key,index) in conditions.slice(0, 3)"  :key="index" >
                 <div @click.prevent="goHotSearch" class="circle"></div>
-                <h5>醉卧沙场君莫笑</h5>
-                <p @click.prevent="goHotSearch">诗的最末两句“醉卧沙场君莫笑，古来征战几人回。”顺着前两句的诗意来看应当是写筵席上的畅饮和劝酒，这样理解的话，全诗无论是在诗意还是诗境上也就自然而然地融会贯通了，过去曾有人认为这两句“作旷达语，倍觉悲痛”。还有人说：“故作豪饮之词，然悲感已极”。话虽不同，但都离不开一个“悲”字。后来更有用低沉、悲凉、感伤、反战等等词语来概括这首诗的思想感情的，依据也是三四两句，特别是末句。“古来征战几人回”，显然是一种夸张的说法。清代施补华说这两句诗：“作悲伤语读便浅，作谐谑语读便妙，在学人领悟。”</p>
+                <h5>{{key.con_words.substr(0, [6])}}...</h5>
+                <p
+                  @click.prevent="goHotSearch"
+                >"{{key.con_words}}"</p>
                 <a href>
-                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i>08-12
+                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i> {{key.con_time.substr(0, [10])}}
                 </a>
                 <a href>
-                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>520
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="hs-container">
-                <div @click.prevent="goHotSearch" class="circle"></div>
-                <h5>醉卧沙场君莫笑</h5>
-                <p @click.prevent="goHotSearch">诗的最末两句“醉卧沙场君莫笑，古来征战几人回。”顺着前两句的诗意来看应当是写筵席上的畅饮和劝酒，这样理解的话，全诗无论是在诗意还是诗境上也就自然而然地融会贯通了，过去曾有人认为这两句“作旷达语，倍觉悲痛”。还有人说：“故作豪饮之词，然悲感已极”。话虽不同，但都离不开一个“悲”字。后来更有用低沉、悲凉、感伤、反战等等词语来概括这首诗的思想感情的，依据也是三四两句，特别是末句。“古来征战几人回”，显然是一种夸张的说法。清代施补华说这两句诗：“作悲伤语读便浅，作谐谑语读便妙，在学人领悟。”</p>
-                <a href>
-                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i>08-12
-                </a>
-                <a href>
-                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>520
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="hs-container">
-                <div @click.prevent="goHotSearch" class="circle"></div>
-                <h5>醉卧沙场君莫笑</h5>
-                <p @click.prevent="goHotSearch">诗的最末两句“醉卧沙场君莫笑，古来征战几人回。”顺着前两句的诗意来看应当是写筵席上的畅饮和劝酒，这样理解的话，全诗无论是在诗意还是诗境上也就自然而然地融会贯通了，过去曾有人认为这两句“作旷达语，倍觉悲痛”。还有人说：“故作豪饮之词，然悲感已极”。话虽不同，但都离不开一个“悲”字。后来更有用低沉、悲凉、感伤、反战等等词语来概括这首诗的思想感情的，依据也是三四两句，特别是末句。“古来征战几人回”，显然是一种夸张的说法。清代施补华说这两句诗：“作悲伤语读便浅，作谐谑语读便妙，在学人领悟。”</p>
-                <a href>
-                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i>08-12
-                </a>
-                <a href>
-                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>520
+                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>{{key.see}}
                 </a>
               </div>
             </li>
@@ -208,59 +200,19 @@
           </div>
           <div class="love-rank loveRank">
             <ul>
-              <li>
-                <span>1</span>
-                <a @click.prevent="goList">涂山红红</a>
-                <b>(520)</b>
-              </li>
-              <li>
-                <span>2</span>
-                <a @click.prevent="goList">涂山雅雅</a>
-                <b>(510)</b>
-              </li>
-              <li>
-                <span>3</span>
-                <a @click.prevent="goList">涂山容容</a>
-                <b>(500)</b>
-              </li>
-              <li>
-                <span>4</span>
-                <a @click.prevent="goList">涂山苏苏</a>
-                <b>(490)</b>
-              </li>
-              <li>
-                <span>5</span>
-                <a @click.prevent="goList">东方淮竹</a>
-                <b>(480)</b>
+              <li v-for="(key,index) in carzyList.slice(0, 5)"  :key="index">
+                <span>{{key.rowno}}</span>
+                <a @click.prevent="goList">{{key.昵称}}</a>
+                <b>({{key.sweet_score}})</b>
               </li>
             </ul>
           </div>
           <div class="love-rank popRank">
             <ul>
-              <li>
-                <span>1</span>
-                <a @click.prevent="goList">东方秦兰</a>
-                <b>(520)</b>
-              </li>
-              <li>
-                <span>2</span>
-                <a @click.prevent="goList">东方月初</a>
-                <b>(510)</b>
-              </li>
-              <li>
-                <span>3</span>
-                <a @click.prevent="goList">王权霸业</a>
-                <b>(500)</b>
-              </li>
-              <li>
-                <span>4</span>
-                <a @click.prevent="goList">王权醉</a>
-                <b>(490)</b>
-              </li>
-              <li>
-                <span>5</span>
-                <a @click.prevent="goList">王权富贵</a>
-                <b>(480)</b>
+              <li v-for="(key,index) in charmList.slice(0, 5)"  :key="index" >
+                <span>{{key.rowno}}</span>
+                <a @click.prevent="goList">{{key.昵称}}</a>
+                <b>({{key.sweet_score}})</b>
               </li>
             </ul>
           </div>
@@ -274,6 +226,54 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      perconditions:[],
+      conditions: [],
+      carzyList: [],
+      charmList: []
+    };
+  },
+  //组件创建完成后执行的操作
+  created() {
+    this.$axios
+      .get("http://localhost:3000/allCondition")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.conditions = res.data.data;
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/list/asidecrazy")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.carzyList = res.data.data;
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/list/asidecharm")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.charmList = res.data.data;
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    /* this.$axios
+      .get("http://localhost:3000/hotSearch/hotSearch")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.perconditions = res.data.data;
+        console.log('个人的动态'+perconditions)
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      }); */
+  },
   methods: {
     goMessage() {
       this.$router.push("/Message");

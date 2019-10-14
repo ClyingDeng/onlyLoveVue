@@ -37,7 +37,7 @@ let router = new Router({
         {
           path: 'hotSearch',
           name: 'hotSearch',
-          component: () => import( './views/HotSearch.vue')
+          component: () => import( './views/Hotsearch.vue')
         },
         {
           path: 'list',

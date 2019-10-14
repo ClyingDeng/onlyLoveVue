@@ -918,7 +918,7 @@ i {
     }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width:400px) {
     .hotSearch .hs-container p {
         line-height: 32px;
         display: -webkit-box;
