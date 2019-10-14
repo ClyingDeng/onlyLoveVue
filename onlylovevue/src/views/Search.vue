@@ -4,46 +4,45 @@
       <div class="row">
           <div class="" style="margin-top: 20px">
                 <div class="col-md-12 col-xs-12" id="searchcon" style="background-color: rgba(255,255,255,0.7);padding-top: 10px;position: relative;">
-                    <form name="searchForm" method="post" action="" autocomplete="off">
-           
-                <div class="dw_search">
-                        <div class="dw_search_in">
-                            <!-- 全文及相关关键字 -->
-                            <div class="el on el_q col-xs-12 col-md-3 ">
-                                <ul id="kwdTypeSelUl">
-                                    <li>ID搜索<em class="dicon Dm"></em></li>
-                                    <li><a onclick="">搜昵称</a></li>
-                                </ul>
-                                <p class="ipt">
-                                        <input autocomplete="off" id="work_position_input" readonly="readonly" type="text" class="ef" placeholder="请输入">
-                                </p>               
-                    </div>
-                            <!--地点 -->
-                            <div class="txt  col-xs-12 col-md-2">
-                                <p class="hdl">地点</p>
-                                <input autocomplete="off" id="work_position_input" readonly="readonly" type="text" class="ef" placeholder="选择地点">
-                                <input name="jobarea" id="jobarea" type="hidden" value="070300" />
+            <form name="searchForm" method="post" action="" autocomplete="on">
+                  <div class="dw_search">
+                                <div class="dw_search_in">
+                                    <!-- 全文及相关关键字 -->
+                                    <div class="el on el_q col-xs-12 col-md-3 ">
+                                        <ul id="kwdTypeSelUl">
+                                            <li>ID搜索<em class="dicon Dm"></em></li>
+                                            <li><a onclick="">搜昵称</a></li>
+                                        </ul>
+                                        <p class="ipt">
+                                        <input autocomplete="on" type="text" class="ef" placeholder="请输入ID">
+                                        </p>               
                             </div>
-            
-                            <!-- 行业类别 -->
-                            <div class="txt  col-xs-12 col-md-2" id="indtype_click">
-                                <p class="hdl">行业</p>
-                                <input autocomplete="off" id="indtype_input" readonly="readonly" type="text" class="ef" placeholder="选择行业" value="">
-                                <input name="industrytype" type="hidden" id="indtype_code" value=""/>
-                            </div>
-                            <!-- 职能类别 -->
-                            <div class="txt col-xs-12 col-md-2" id="funtype_click">
-                                <p class="hdl">年龄</p>
-                                <input autocomplete="off" id="funtype_input" readonly="readonly" type="text" class="ef" placeholder="选择职能" value="" />
-                                <input name="funtype" type="hidden" id="funtype_code" value=""/>
-                            </div>
-                            <!-- 搜索按钮 -->
-                            <div class="txt col-xs-12 col-md-3">
-                                <button class="p_but" type="button" onclick="">搜&nbsp;索</button>
-                            </div>
-                        </div>
+                                    <!--地点 -->
+                                    <div class="txt  col-xs-12 col-md-2">
+                                        <p class="hdl">性别</p>
+                                        <input autocomplete="on"  readonly="readonly" type="text" class="ef" placeholder="输入性别">
+                                        <!-- <input name="jobarea" id="jobarea" type="hidden" value="070300" /> -->
+                                    </div>
+                    
+                                    <!-- 行业类别 -->
+                                    <div class="txt  col-xs-12 col-md-2" id="indtype_click">
+                                        <p class="hdl">年龄</p>
+                                        <input autocomplete="on" id="indtype_input" readonly="readonly" type="text" class="ef" placeholder="输入年龄" value="">
+                                        <!-- <input name="industrytype" type="hidden" id="indtype_code" value=""/> -->
+                                    </div>
+                                    <!-- 职能类别 -->
+                                    <div class="txt col-xs-12 col-md-2" id="funtype_click">
+                                        <p class="hdl">职业</p>
+                                        <input autocomplete="on" id="funtype_input" readonly="readonly" type="text" class="ef" placeholder="输入职业" value="" />
+                                        <!-- <input name="funtype" type="hidden" id="funtype_code" value=""/> -->
+                                    </div>
+                                    <!-- 搜索按钮 -->
+                                    <div class="txt col-xs-12 col-md-3">
+                                        <button class="p_but" type="button" onclick="">搜&nbsp;索</button>
+                                    </div>
+                                </div>
 
-           </div>
+                  </div>
            <div class="options">
              <ul>
                <li>
@@ -53,6 +52,17 @@
                    <li><a href="">男</a></li>
                    <li><a href="">女</a></li>
                  </ul>
+               </li>
+               <li class="doubleHeight">
+                 <span>年龄：</span>
+                 <div class="heightcon">
+                   <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li v-for="key in ages"><a href="">{{key}}</a></li>
+                 </ul>
+                 </div>
+                  <!-- <span class="optionbtn" :click="more"><a>更多+</a></span>
+                  <span class="optionbtn"><a>多选</a></span> -->
                </li>
                <li class="doubleHeight">
                  <span>身高：</span>
@@ -79,25 +89,143 @@
                    <li v-for="key in education"><a href="">{{key}}</a></li>
                  </ul>
                </li>
-               <li></li>
-               <li></li>
+               <li>
+                 <span>是否酗酒：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li><a href="">是</a></li>
+                   <li><a href="">否</a></li>
+                 </ul>
+               </li>
+               <li>
+                 <span>是否抽烟：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li><a href="">是</a></li>
+                   <li><a href="">否</a></li>
+                 </ul>
+               </li>
+               <li>
+                 <span>有无孩子：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li><a href="">有</a></li>
+                   <li><a href="">无</a></li>
+                 </ul>
+               </li>
+               <li>
+                 <span>薪资：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li v-for="key in salary"><a href="">{{key}}</a></li>
+                 </ul>
+               </li>
+               <li>
+                 <span>车房状况：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li><a href="">有车</a></li>
+                   <li><a href="">有房</a></li>
+                   <li><a href="">有车有房</a></li>
+                 </ul>
+               </li>
+               <li>
+                 <span>是否想要孩子：</span>
+                 <ul class="sectionOption">
+                   <li class="allOption"><a href="">所有</a></li>
+                   <li><a href="">是</a></li>
+                   <li><a href="">否</a></li>
+                 </ul>
+               </li>
              </ul>
            </div>
         </form>
+        <div id="page-top">
+          <h3>搜索结果 ></h3>
+          <section id="work" class="portfolio-mf sect-pt4 route">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="work-box">
+                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                      <div class="work-img">
+                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
+                      </div>
+                      <div class="work-content">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h2 class="w-title">clying</h2>
+                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
+                            <div class="w-more">
+                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。一起老去的日子里，因为朋友的存在而泛着七彩的光。</span> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
                 </div>
+                <div class="col-md-4">
+                  <div class="work-box">
+                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                      <div class="work-img">
+                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
+                      </div>
+                      <div class="work-content">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h2 class="w-title">clying</h2>
+                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
+                            <div class="w-more">
+                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。</span> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="work-box">
+                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                      <div class="work-img">
+                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
+                      </div>
+                      <div class="work-content">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h2 class="w-title">clying</h2>
+                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
+                            <div class="w-more">
+                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。一起老去的日子里，因为朋友的存在而泛着七彩的光。</span> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                
+              </div>
             </div>
+          </section>
+    </div>
       </div>
     </div>
-
+      </div>
+    </div>
+    
   </div>
 </template>
 <script>
 export default {
     data(){
         return{
-            height:['150cm以下','151-155cm','156-160cm','161-165cm','166-170cm','171-175cm','176-180cm','181-185cm','186-190cm','190cm以上'],
+            ages:['22岁以下','22-25岁','26-28岁','29-31岁','32-35岁','36-40岁','41-45岁','46-50岁','51-60岁','60岁以上'],
+            height:['150cm以下','151-155cm','156-160cm','161-165cm','166-170cm','171-175cm','176-180cm','181-185cm','186cm以上'],
             weight:['40kg以下','41-45kg','46-50kg','51-55kg','56-60kg','61-65kg','66-70kg','71-75kg','76-80kg','80-90kg','90kg以上'],
-            education:['高中以下','高中','大专','本科','硕士','博士','博士后']
+            education:['高中以下','高中','大专','本科','硕士','博士','博士后'],
+            salary:['2k以下','2k-4k','4-6k','6-8k','8-10k','10-15k','15-20k','20k以上']
         }
     },
     methods:{
@@ -320,6 +448,28 @@ a{
   float: left;
   cursor: pointer;
   border: 1px solid #e1e1e1;
+}
+.work-img > img{
+  height: 230px;
+}
+.w-title{
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  color: #FF6000;
+}
+.work-content p {
+  font-size: 12px;
+  color: #aaa;
+}
+.w-more{
+  font-size: 12px;
+}
+.work-content .w-more .w-ctegory {
+    color: #999;
+}
+.work-content .w-more .w-ctegory:hover {
+    color: #FF6000;
 }
 
 @media screen and (max-width: 992px) {
