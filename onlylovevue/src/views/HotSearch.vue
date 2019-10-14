@@ -2,7 +2,7 @@
   <div class="container" style="margin-bottom:100px;margin-top:100px;">
     <div class="row">
       <!-- 搜索条 -->
-      <div class="col-xs-12">
+      <div class="col-xs-12 searchnav">
         <div class="col-xs-offset-1 col-xs-8">
           <input type="text">
         </div>
@@ -11,7 +11,7 @@
         </div>
       </div>
       <!-- 内容 -->
-      <div class="col-xs-12">
+      <div class="col-xs-12 content">
         <ul>
           <li class="firstline">
             <span class="col-xs-offset-1 col-xs-2">序号</span>
@@ -54,22 +54,30 @@ export default {
 }
 </script>
 <style scoped>
+.searchnav{
+  padding-top: 30px;
+}
+.searchnav,.content{
+  background-color: rgba(255, 255, 255, 0.4);
+}
 input[type=text]{
   width: 100%;
   height: 40px;
 }
 .search{
+  font-family: "Microsoft YaHei";
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 35px;
+  height: 40px;
+  line-height: 40px;
   font-size: 23px;
   color: #dfe6e9;
   margin: 0;
   background-color: #ec6d34;
   cursor: pointer;
   width: 100px;
-  font-weight: 550;
+  font-weight: bold;
 }
 .search:hover{
   color: #fff;
