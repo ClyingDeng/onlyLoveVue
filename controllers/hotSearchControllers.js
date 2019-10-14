@@ -19,6 +19,19 @@ var hotSearchController = {
             }
         })
     },
+    allhotSearch: function (req, res) {
+        hotSearchDAO.allhotSearch(function (err, results) {
+            if (err) {
+                res.json({ code: 500, msg: '动态查询失败！' })
+            } else {
+                if (results == 0 || results == null) {
+                    res.json({ code: 200, msg: '没有发布的动态！' })
+                } else {
+                    res.json({ code: 200, data: results, msg: '动态查询成功！' })
+                }
+            }
+        })
+    },
     //删除动态
     deleteHotSearch: function (req, res) {
         var userId = req.user[0].base_info_Id
