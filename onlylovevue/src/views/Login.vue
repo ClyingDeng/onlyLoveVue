@@ -22,7 +22,7 @@
               <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
-            <el-radio v-model="radio" label="1">记住我</el-radio>
+            <el-radio label="1">记住我</el-radio>
           </el-form>
         <!-- </el-col>
       </el-col> -->
@@ -39,7 +39,7 @@ export default {
       loginUser: {
         telephone: "15660181105",
         password: "123456",
-        radio: "1"
+        // radio: "1"
       },
       rules: {
         telephone: [
