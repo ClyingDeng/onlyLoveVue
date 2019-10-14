@@ -247,6 +247,9 @@ body {
   font-size: 13px;
   height: 88%;
 }
+/* .list-friends{
+  background-color:rgb(70, 116, 132);
+} */
 .ui .list-friends img {
   margin: 5px;
 }
