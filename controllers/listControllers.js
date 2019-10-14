@@ -81,6 +81,24 @@ var listController = {
                 }
             }
         })
+    },
+    asidecrazy: function(req,res) {
+        listDAO.crazy(function(err,results) {
+            if(err){
+                res.json({ code: 500, msg: '狂热榜查询失败！' })
+            }else{
+                res.json({ code: 200, data: results, msg: '狂热榜查询成功' })
+            }
+        })
+    },
+    asidecharm: function(req,res) {
+        listDAO.charm(function(err,results) {
+            if(err){
+                res.json({ code: 500, msg: '魅力榜查询失败！' })
+            }else{
+                res.json({ code: 200, data: results, msg: '魅力榜查询成功' })
+            }
+        })
     }
 }
 module.exports = listController

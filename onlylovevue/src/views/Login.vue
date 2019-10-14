@@ -12,8 +12,8 @@
             label-width="100px"
             class="loginForm"
           >
-            <el-form-item label="账号：" prop="tel" ref="tel">
-              <el-input v-model="loginUser.tel"></el-input>
+            <el-form-item label="账号：" prop="telephone" ref="telephone">
+              <el-input v-model="loginUser.telephone"></el-input>
             </el-form-item>
             <el-form-item label="密码：" prop="password">
               <el-input type="password" v-model="loginUser.password"></el-input>
@@ -22,7 +22,7 @@
               <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
-            <el-radio v-model="radio" label="1">记住我</el-radio>
+            <el-radio label="1">记住我</el-radio>
           </el-form>
         <!-- </el-col>
       </el-col> -->
@@ -37,12 +37,12 @@ export default {
   data: function() {
     return {
       loginUser: {
-        tel: "",
-        password: "",
-        radio: "1"
+        telephone: "15660181105",
+        password: "123456",
+        // radio: "1"
       },
       rules: {
-        tel: [
+        telephone: [
           { required: true, message: "手机号码不能为空", trigger: "blur" },
           { min: 11, max: 11, message: "手机号码必须是11位", trigger: "blur" }
         ],
@@ -64,9 +64,9 @@ export default {
             .then(res => {
               console.log("登录成功！", res);
               console.log(res.data.token)
-              console.log('token对象：',jwt_decode(res.data.token))
+              // console.log('token对象：',jwt_decode(res.data.token))
               localStorage.setItem('mytoken',res.data.token)  //1.把token保存到本地存储
-              this.$router.push("/index/home"); //路由转向登录组件
+              this.$router.push("/index"); //路由转向登录组件
             })
             .catch(err => {
               console.log(err);

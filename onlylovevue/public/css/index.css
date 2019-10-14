@@ -910,15 +910,15 @@ i {
 }
 
 @media screen and (min-width: 400px) {
-    .hotSearch .hs-container h5 {
+   /*  .hotSearch .hs-container h5 {
         text-indent: -1em;
-    }
+    } */
     .focusMe .sect span {
         font-size: 15px;
     }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width:400px) {
     .hotSearch .hs-container p {
         line-height: 32px;
         display: -webkit-box;
@@ -927,13 +927,13 @@ i {
         overflow: hidden;
         text-indent: 1em;
     }
-    .focusMe .iconbtn {
+   /*  .focusMe .iconbtn {
         height: 50px;
     }
     .focusMe .sect span {
         font-size: 12px;
         margin: 4%;
-    }
+    } */
     .hotSearch .hs-container a:nth-of-type(1) {
         margin-left: 8%;
     }

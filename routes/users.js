@@ -6,9 +6,7 @@ var request = require('request');
 var querystring = require('querystring');
 
 /* GET users listing. */
-router.get('/', passport.authenticate('jwt', { session: false }), function(req, res, next) {
-    res.send('respond with a resource');
-});
+
 /*登录*/
 router.post('/login', function(req, res, next) {
         userController.login(req, res)
@@ -71,7 +69,7 @@ router.get('/vCode/:telephone', function(req, res, next) {
     //         console.log('请求异常');
     //     }
     // })
-    res.json({ code: 200, msg: '验证码发送成功' })
+    res.json({ code: 200, msg: '验证码发送成功' ,data:code})
 });
 //身份证识别
 // 正面

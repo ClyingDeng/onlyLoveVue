@@ -36,8 +36,17 @@ HttpClient.setRequestInterceptor(function(requestOptions) {
     return requestOptions;
 });
 var userController = {
-    changeName: function(req, res) {
-
+    getcondition: function(req, res) {
+        async function condition (){
+            try{
+                let getcon = await userDAO.getcondition()
+                console.log(getcon)
+                res.json({code:200,data:getcon,msg:'首页动态获取成功！'})
+            }catch(e){
+                res.json({ code: 500, data:err, msg: '首页动态获取失败！' })
+            }
+        }
+        condition()
     },
     // 登录
     login: function(req, res) {
@@ -90,7 +99,7 @@ var userController = {
                         console.log(err)
                         res.json({ code: 500, msg: '手机号已存在，注册失败！' + err })
                     } else {
-                        console.log(req.session.TelvCode)
+                        /* console.log(req.session.TelvCode)
                         for (var i = 0; i < req.session.TelvCode.length; i++) {
                             if (req.session.TelvCode[i].telephone == user.telephone && req.session.TelvCode[i].vCode == user.vCode) {
                                 res.status(200).json({ msg: '验证码正确，注册成功！' })
@@ -103,8 +112,8 @@ var userController = {
                             } else {
                                 res.json({ code: 200, msg: '验证码输入失败，注册失败！' })
                             }
-
-                        }
+                        } */
+                        res.status(200).json({ msg: '验证码正确，注册成功！' })
                     }
                 })
             });

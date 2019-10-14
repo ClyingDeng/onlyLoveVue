@@ -15,18 +15,18 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="../assets/imgs/lunbo1.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo1.jpg" alt="...">
                             <div class="carousel-caption">
                                 
                             </div>
                         </div>
                         <div class="item">
-                            <img src="../assets/imgs/lunbo2.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo3.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="../assets/imgs/lunbo3.jpg" alt="...">
+                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo2.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
@@ -52,19 +52,17 @@
                             <small>New Article</small>
                         </a>
                     </h4>
-                    <div class="media moveLeft " >
+                    <div class="media moveLeft "   v-for="key in conditions">
                         <div class="media-left media-middle ">
                             <a href="#">
-                                <img class="media-object Imges" src="../assets/imgs/wenzhang1.jpg" alt="..." style="padding-left: 17px">
+                                <img class="media-object Imges" :src="'http://localhost:3000/upload/'+ key.con_pic_1">
                             </a>
                         </div>
                         <div class="media-body ">
-                            <h4 class="media-heading" style="font-weight: 700;background-color: transparent">夏末初春秋</h4>
+                            <h4 class="media-heading" style="font-weight: 700;background-color: transparent">{{key.con_words.substr(0, [6])}}...</h4>
                             <p>
                                 <a href="#" style="text-decoration: none;color: black">
-                                    <p id="q1">"不知道为什么，有的时候我常常觉得很累。就像海上的碎浪，没有头绪的荡漾在海面。为什么人总是要长大？
-                                        为什么我又总是长不大？快乐是长着翅膀的天使，追不到也赶不去。
-                                        我希望自己成为快乐的天使，无奈的是，我永远也长不出天使的羽翼。我育成地坐在阳光里，生活"</p>
+                                    <p id="q1">"{{key.con_words}}"</p>
                                 </a>
                             </p>
 
@@ -72,13 +70,13 @@
                                 <li style="float: left;">
                                     <a title>
                                         <i class="fa fa-calendar" aria-hidden="true" style="margin-left:-40px"></i>
-                                        " 2019-09-03"
+                                        {{key.con_time.substr(0, [10])}}
                                     </a>
                                 </li>
                                 <li style="float: left;">
                                     <a href="#">
                                         <i class="fa fa-user-o" aria-hidden="true"></i>
-                                        彼爱
+                                        {{key.nickName}}
                                     </a>
                                 </li>
                                 <li style="float: left;">
@@ -90,10 +88,10 @@
                                 <li style="float: left;">
                                     <a title>
                                         <i class="fa fa-eye" aria-hidden="true"></i>
-                                        <em>85</em>
+                                        <em>{{key.see}}</em>
                                     </a>
                                 </li>
-                                <li style="float: right;">
+                                <li style="float: right;" class="conDir">
                                     <a href="#">
                                         <i class="fa fa-th-list"></i>
                                         谈天说地
@@ -143,7 +141,7 @@
                                         <em>99</em>
                                     </a>
                                 </li>
-                                <li style="float: right;">
+                                <li style="float: right;"  class="conDir">
                                     <a href="#">
                                         <i class="fa fa-th-list"></i>
                                         彼爱无岸
@@ -164,7 +162,24 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return{
+            conditions:[]
+        }
+    },
+    //组件创建完成后执行的操作
+      created(){
+        this.$axios.get('http://localhost:3000/allCondition')
+        .then(res => {
+          console.log('查询结果：' )
+          console.log(res.data.data)
+          //拿到后台数据赋值给前端
+          this.conditions = res.data.data
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+      }
 }
 </script>
 
@@ -213,17 +228,26 @@ i {
             margin-left: -15px;
             background: rgba(245, 251, 255, 0.8);
         }
-
+    .Imges{
+        width: 200px;
+        height: 120px;
+        padding-left: 15px;
+    }
         @media screen and (max-width: 700px) {
             .Imges {
-                width: 170px;
-                height: 100px;
+                width: 180px;
+                height: 120px;
+                line-height: 120px;
+                text-align: center;
             }
         }
 
         @media screen and (max-width: 585px) {
             .q2 li {
-                margin-right: 2px
+                margin-right: 10px;
+            }
+            .conDir{
+                display: none;
             }
         }
 

@@ -1,8 +1,17 @@
 var DAO = require('./DAO')
     //针对用户数据表操作的模块对象
 var userDAO = {
-    changeName: function(userId, userName, callback) {
-
+    getcondition: function() {
+        return new Promise((resolve, reject) => {
+            DAO('select con_user_Id,nickName,con_Id,con_words,con_pic_1,con_pic_2,con_pic_3,con_pic_4,see,con_time from conditions join base_info on con_user_Id = base_info_Id', function(err, results) {
+                // console.log(results)
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(results)
+                }
+            })
+        })
     },
     // 登录
     login: function(user, callback) {
