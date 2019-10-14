@@ -9,7 +9,7 @@ import HeadNav from './components/HeadNav'
 import AsideNav from './components/AsideNav'
 import Carousel from './components/Carousel'
 import FootNav from './components/FootNav'
-import Tab from './components/Tab'
+// import Tab from './components/Tab'
 import Popover from './components/Popover'
 import axios from './http.js'
 
@@ -21,7 +21,7 @@ Vue.component('HeadNav',HeadNav)
 Vue.component('AsideNav',AsideNav)
 Vue.component('Carousel',Carousel)
 Vue.component('FootNav',FootNav)
-Vue.component('Tab',Tab)
+// Vue.component('Tab',Tab)
 Vue.component('Popover',Popover)
 
 
