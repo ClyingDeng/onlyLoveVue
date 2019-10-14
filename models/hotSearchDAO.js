@@ -10,6 +10,15 @@ var hotSearchDAO = {
             }
         })
     },
+    allhotSearch: function ( callback) {
+        DAO('SELECT (@rowNO := @rowNo+1) AS rowno,a.* FROM condhot a,(SELECT @rowNO :=0) b', null, function (err, results) {
+            if (err) {
+                callback(err, null)
+            } else {
+                callback(null, results)
+            }
+        })
+    },
     //发布动态
     publish: function (conuser, callback) {
         // console.log(conuser)

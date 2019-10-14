@@ -17,29 +17,14 @@
             <span class="col-xs-offset-1 col-xs-2">序号</span>
             <span class="keyword col-xs-7">关键词</span>
           </li>
-          <li>
+          <li v-for="(key,index) in allhotsearch.slice(0,1)"  :key="index">
             <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+            <div class="article col-xs-5">{{key.con_words}}<strong>{{key.hot}}</strong></div>
             <div class="hot col-xs-1"><strong>热</strong></div>
           </li>
-          <li>
-            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
-            <div class="hot col-xs-1"><strong>热</strong></div>
-          </li>
-          <li>
-            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
-            <div class="hot col-xs-1"><strong>热</strong></div>
-          </li>
-          <li>
-            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
-            <div class="hot col-xs-1"><strong>热</strong></div>
-          </li>
-          <li>
-            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">空军超霸气海上中英文喊话<strong>123456</strong></div>
+          <li v-for="(key,index) in allhotsearch.slice(1, 3000000)"  :key="index">
+            <div class="order col-xs-offset-1 col-xs-2"><i style="color: #ec6d34">{{key.rowno-1}}</i></div>
+            <div class="article col-xs-5">{{key.con_words}}<strong>{{key.hot}}</strong></div>
             <div class="hot col-xs-1"><strong>热</strong></div>
           </li>
         </ul>
@@ -48,7 +33,25 @@
   </div>
 </template>
 <script>
-
+export default {
+  data() {
+    return {
+      allhotsearch:[]
+    };
+  },
+  //组件创建完成后执行的操作
+  created() {
+    this.$axios
+      .get("http://localhost:3000/hotSearch/allhotSearch")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.allhotsearch = res.data.data;
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+  }
+}
 </script>
 <style scoped>
 input[type=text]{
