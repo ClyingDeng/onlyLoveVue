@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-7 col-xs-12" id="rankContainer">
           <div class="col-xs-12">
-            <div class="col-xs-4 rankHead rankHot">
+            <div class="col-xs-4 rankHead rankHot" style="background-color: #e27c31">
               <i class="fa fa-heartbeat" aria-hidden="true"></i>狂热榜
             </div>
             <div class="col-xs-4 rankHead rankBeaut">
