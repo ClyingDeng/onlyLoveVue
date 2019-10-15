@@ -1,12 +1,12 @@
    <template>
   <div class="condition">
-    <div class="container">
+    <div class="container" style="margin-top: 110px">
       <div class="row">
         <div class="youyisi">
           <div class="touxiang">
             <img src="../assets/imgs/xd.jpg" class="img-thumbnail" />
           </div>
-          <div class="youyisi2" style="float: left;margin-top: 0px">
+          <div class="youyisi2" style="float: left;">
             <div>
               <h3 style="color:blueviolet">退路</h3>
             </div>
@@ -283,7 +283,6 @@
       </div>
       <div class="kan">
         <!-- 谁看过我 -->
-
         <div
           class="kanwo"
           style="background-color: rgb(243, 237, 237);height:450px;width:300px;margin-top:2px"
