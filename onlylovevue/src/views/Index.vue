@@ -53,6 +53,7 @@
                         </a>
                     </h4>
                     <div class="media moveLeft "   v-for="key in conditions">
+                        <!-- <div class="media moveLeft "   v-for="(key,i) in conditions" :key="i"> -->
                         <div class="media-left media-middle ">
                             <a href="#">
                                 <img class="media-object Imges" :src="'http://localhost:3000/upload/'+ key.con_pic_1">
@@ -91,7 +92,7 @@
                                         <em>{{key.see}}</em>
                                     </a>
                                 </li>
-                                <li style="float: right;" class="conDir">
+                                 <li style="float: right;" class="conDir">
                                     <a href="#">
                                         <i class="fa fa-th-list"></i>
                                         谈天说地
@@ -228,7 +229,7 @@ i {
             margin-left: -15px;
             background: rgba(245, 251, 255, 0.8);
         }
-    .Imges{
+.Imges{
         width: 200px;
         height: 120px;
         padding-left: 15px;
