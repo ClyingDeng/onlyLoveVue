@@ -83,6 +83,16 @@ let router = new Router({
       component: () => import( './views/Register.vue')
     },
     {
+      path: '/shopcart',
+      name: 'shopcart',
+      component: () => import( './views/Shopcart.vue')
+    },
+    {
+      path: '/buy',
+      name: 'buy',
+      component: () => import( './views/Buy.vue')
+    },
+    {
       path: '/*',   //路由匹配不成功时
       name: 'notfound',
       component: () => import( './views/404.vue')
