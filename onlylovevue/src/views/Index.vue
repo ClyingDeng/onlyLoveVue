@@ -56,7 +56,7 @@
                         <!-- <div class="media moveLeft "   v-for="(key,i) in conditions" :key="i"> -->
                         <div class="media-left media-middle ">
                             <a href="#">
-                                <img class="media-object Imges" :src="'http://localhost:3000/upload/'+ key.con_pic_1">
+                                <img class="media-object Imges" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1">
                             </a>
                         </div>
                         <div class="media-body ">
@@ -221,7 +221,11 @@ i {
             text-decoration: none;
         } */
         .moveLeft {
-            background-color: #e7e7e7;height: 150px;padding-top: 13px;height:150px;
+            /* background-color: #e7e7e7; */
+            background-color: rgb(254, 252, 250);
+            height: 150px;
+            padding-top: 13px;
+            padding-right: 5px;
             transition: all .6s linear;
         }
 
