@@ -682,7 +682,6 @@ i {
 .circle {
     width: 100px;
     height: 100px;
-    background: url(../imgs/bg2.jpg) center center;
     border-radius: 50%;
     float: left;
     shape-outside: circle();

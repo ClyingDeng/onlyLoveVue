@@ -27,17 +27,17 @@
             <nav class="side-menu">
               <ul class="nav">
                 <li :class="className1">
-                  <a href="#" @click="compentChild('baseInfo')">
+                  <a href="javascript:;" @click="compentChild('baseInfo')">
                     <span class="fa fa-user" ></span>个人信息
                   </a>
                 </li>
                 <li :class="className2">
-                  <a href="#" @click="compentChild('setting')">
+                  <a href="javascript:;" @click="compentChild('setting')">
                     <span class="fa fa-cog" ></span>设置
                   </a>
                 </li>
                 <li :class="className3">
-                  <a href="#" @click="compentChild('identification')">
+                  <a href="javascript:;" @click="compentChild('identification')">
                     <span class="fa fa-credit-card" ></span> 实名认证
                   </a>
                 </li>
@@ -528,7 +528,7 @@ export default {
   width: 130px;
   margin-right: 15px;
   display: inline-block;
-  float: left;
+  /* float: left; */
 }
 
 .drive-wrapper .drive-item:hover {
