@@ -8,6 +8,17 @@
         <br />新密码：
         <input type="password" />
       </div>
+      <!-- <div class="col-xs-offset-3 col-xs-9">
+        忘记密码
+        <br />手机号：
+        <input type="text" class="oldpwd" />
+        <br />验证码发送：
+        <input type="text" />
+        <br />输入新密码：
+        <input type="password" class="oldpwd"/>
+        <br />确认密码：
+        <input type="password" />
+      </div> -->
       <div class="col-xs-offset-3 col-xs-5 col-md-3 ablity">
         <span class="choices">允许陌生人赞我</span>
       </div>

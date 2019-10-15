@@ -25,7 +25,7 @@
                                       :on-success="handleAvatarSuccess"
                                       :before-upload="beforeAvatarUpload"
                                       >
-                                      <!-- <el-button size="small" type="primary">点击上传</el-button>
+                                      <el-button size="small" type="primary">点击上传</el-button>
                                       <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
             </el-upload>-->
           </div>
@@ -86,7 +86,12 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">薪资</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="radio" :label="key" v-for="key in salary">{{key}}</el-radio>
+            <el-radio
+              v-model="radio"
+              :label="key"
+              v-for="(key,index) in salary"
+              :key="index"
+            >{{key}}</el-radio>
           </div>
         </div>
         <div class="form-group">
@@ -100,7 +105,11 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">兴趣爱好</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+            <el-checkbox
+              :indeterminate="isIndeterminate"
+              v-model="checkAll"
+              @change="handleCheckAllChange"
+            >全选</el-checkbox>
             <div style="margin: 15px 0;"></div>
             <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
               <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
@@ -156,10 +165,10 @@
   width: 64px;
 }
 .avatar .figure img {
-    float: none;
-    margin-bottom: 15px;
-  }
-  .form-inline {
+  float: none;
+  margin-bottom: 15px;
+}
+.form-inline {
   margin-top: 20px;
 }
 .control-sex {
@@ -168,10 +177,10 @@
 }
 </style>
 <script>
-const cityOptions  = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
+const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 export default {
   data: function() {
-    return{
+    return {
       salary: [
         "2k以下",
         "2k-4k",
@@ -185,23 +194,24 @@ export default {
       radio: "1",
       Badhobby: "3",
       YM: "",
-      
+
       checkAll: false,
-        checkedCities: ['健身'],
-        cities: cityOptions,
-        isIndeterminate: true
-    }
+      checkedCities: ["健身"],
+      cities: cityOptions,
+      isIndeterminate: true
+    };
   },
-  methods:{
+  methods: {
     handleCheckAllChange(val) {
-        this.checkedCities = val ? cityOptions : [];
-        this.isIndeterminate = false;
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-      }
+      this.checkedCities = val ? cityOptions : [];
+      this.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+      let checkedCount = value.length;
+      this.checkAll = checkedCount === this.cities.length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.cities.length;
+    }
   }
-}
+};
 </script>

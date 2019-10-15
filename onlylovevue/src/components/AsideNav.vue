@@ -168,7 +168,7 @@
           <ul>
             <li>
               <div class="hs-container" v-for="(key,index) in conditions.slice(0, 3)"  :key="index" >
-                <div @click.prevent="goHotSearch" class="circle"></div>
+                <div @click.prevent="goHotSearch" class="circle" style="background: url(../imgs/bg2.jpg) center center;"></div>
                 <h5>{{key.con_words.substr(0, [6])}}...</h5>
                 <p
                   @click.prevent="goHotSearch"
