@@ -1,5 +1,7 @@
 var userDAO = require('../models/userDAO')
 var shopDAO = require('../models/shopDAO')
+var DAO = require('../models/DAO')
+
 var formidable = require('formidable')
 var path = require('path')
 var bcrypt = require('bcrypt')
@@ -64,15 +66,30 @@ var userController = {
                         // res == true
                         console.log(user.password)
                         console.log(results[0].pwd) //加密
-                        console.log(resPwd)
+                        console.log('下面还有') 
                         if (resPwd) {
+                            let infos
+                            
+                            async function imformation(){
+                                try{
+                                    infos = await userDAO.imformationDAO(user.telephone)
+                                    console.log('还有吗？')
+                                    console.log(infos)
+                                    
+                            console.log(infos[0].base_info_Id)
                             //记录登录成功后的token
-                            jwt.sign({ telephone: user.telephone }, 'privateKey', { expiresIn: 60 * 60 }, function(err, token) {
+                            jwt.sign({ telephone: user.telephone,userId:infos[0].base_info_Id}, 'privateKey', { expiresIn: 60 * 60 }, function(err, token) {
                                 console.log(token);
-                                console.log(req.user)
+                                // console.log(jwt_payload);
                                     //注意token的固定格式“Bearer ”前缀
                                 res.status(200).json({ msg: '登录成功！！', token: 'Bearer ' + token })
                             });
+
+                                }catch{
+                                    res.json({ code: 200, msg: '您还未注册！' })
+                                }
+                            }
+                            imformation()
                         } else {
                             console.log(user.password)
                             console.log(results[0])
@@ -470,16 +487,16 @@ var userController = {
             }
             console.log('...................')
                 //fields是上传的表单字段数组，files是上传的文件列表
-                // console.log(files)
+                console.log(files.img_0.path)
                 //保存图片路径到数据库
                 //1.获取当前用户编号
             var userId = req.user[0].base_info_Id
                 //2.获取当前用户的图片名称
-            var headPic = path.parse(files.file.path).base
+            var headPic = path.parse(files.img_0.path).base
                 // console.log('jpg格式：' + headPic)
                 // console.log(files.file.path)
                 //读取服务器文件，以base64显示
-            var filePath = files.file.path
+            var filePath = files.img_0.path
             let bitmap = fs.readFileSync(filePath);
             let image = Buffer.from(bitmap, 'binary').toString('base64');
             var idCardSide = "front";
