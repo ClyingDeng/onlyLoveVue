@@ -1,15 +1,14 @@
-   <template>
-  <div class="condition" style="margin-top: 110px">
-    <div class="container col-md-12">
-      <div class="row">
+<template>
+  <div class="container condition" style="margin-top: 110px">
+    <div class="row">
+      <div class="col-md-12">
         <div class="youyisi">
           <div class="touxiang">
             <img src="../assets/imgs/xd.jpg" class="img-thumbnail" />
-            
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
-              <h3 style="color:blueviolet" >&nbsp;退路</h3>
+              <h3 style="color:blueviolet">&nbsp;退路</h3>
             </div>
             <!-- 会员图标 -->
             <div style="float: left">
@@ -89,271 +88,284 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- <div class="container2">
-    <div class="row2">-->
-    <!-- 左边竖着 -->
-    <div class="zuobian" style="width: 180px; margin-left: 47px;font-size: 14px;float: left">
-      <div>
-        <a href="./Index.vue" class="list-group-item">
-          <span class="glyphicon glyphicon-user" style="text-shadow: rgb(216, 206, 206) 3px -1px;"></span>
-          <span style="padding-left:10px">好友动态</span>
-          <span class="badge">50</span>
-        </a>
-        <a href="#" class="list-group-item">
-          <span class="glyphicon glyphicon-heart-empty"></span>
-          <span style="padding-left:10px">特别关心</span>
-          <span class="badge">1</span>
-        </a>
-        <a href="#" class="list-group-item">
-          <span>
-            <i class="fa fa-at" aria-hidden="true" style="margin-left:2px"></i>
-          </span>
-          <span>与我相关</span>
-          <span class="badge">2</span>
-        </a>
-        <a href="#" class="list-group-item">
-          <span class="glyphicon glyphicon-play-circle"></span>
-          <span style="padding-left:10px">分享动态</span>
-        </a>
-        <a href="#" class="list-group-item">
-          <span class="glyphicon glyphicon-list-alt"></span>
-          <span style="padding-left:10px">那年今日</span>
-        </a>
+      <!-- <div class="container2">
+      <div class="row2">-->
+      <!-- 左边竖着 -->
+      <div class="zuobian" style="width: 180px; margin-left: 47px;font-size: 14px;float: left">
+        <div>
+          <a href="./Index.vue" class="list-group-item">
+            <span
+              class="glyphicon glyphicon-user"
+              style="text-shadow: rgb(216, 206, 206) 3px -1px;"
+            ></span>
+            <span style="padding-left:10px">好友动态</span>
+            <span class="badge">50</span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-heart-empty"></span>
+            <span style="padding-left:10px">特别关心</span>
+            <span class="badge">1</span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span>
+              <i class="fa fa-at" aria-hidden="true" style="margin-left:2px"></i>
+            </span>
+            <span>与我相关</span>
+            <span class="badge">2</span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-play-circle"></span>
+            <span style="padding-left:10px">分享动态</span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <span style="padding-left:10px">那年今日</span>
+          </a>
 
-        <a href="#" class="list-group-item">
-          <span class="glyphicon glyphicon-th-large"></span>
-          <span style="padding-left:10px">我的应用</span>
-        </a>
-      </div>
+          <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-th-large"></span>
+            <span style="padding-left:10px">我的应用</span>
+          </a>
+        </div>
 
-      <div style="margin-top: 20px">
-        <a href="#" class="list-group-item">
-          QQ农场
-          <span class="badge">2</span>
-        </a>
-        <a href="#" class="list-group-item">情侣空间</a>
-        <a href="#" class="list-group-item">
-          花藤
-          <span class="badge">2</span>
-        </a>
-        <a href="#" class="list-group-item">亲密度</a>
-        <a href="#" class="list-group-item">送礼物</a>
+        <div style="margin-top: 20px">
+          <a href="#" class="list-group-item">
+            QQ农场
+            <span class="badge">2</span>
+          </a>
+          <a href="#" class="list-group-item">情侣空间</a>
+          <a href="#" class="list-group-item">
+            花藤
+            <span class="badge">2</span>
+          </a>
+          <a href="#" class="list-group-item">亲密度</a>
+          <a href="#" class="list-group-item">送礼物</a>
 
-        <a href="#" class="list-group-item">设置</a>
-      </div>
-    </div>
-    <!-- 中间动态 -->
-    <!-- 说点什么！！！ -->
-    
-    <div class="centerblock " style="float: left;margin-left: 45px;">
-      <div class="shuoshenme" style="padding: 0px;float: left;width: 550px;">
-        <form role="form">
-          <div class="form-group has-feedback">
-            <textarea class="form-control" rows="3" placeholder="说点什么吧"></textarea>
-            <button
-              class="btn btn-default glyphicon glyphicon-camera form-control-feedback"
-              style="height: 74px;width: 50px;"
-            ></button>
-          </div>
-          <!-- <div style="float: left">
-          <button
-            class="btn btn-default glyphicon glyphicon-paperclip"
-            style="height: 74px;width: 50px"
-          ></button>
-          </div>-->
-        </form>
-      </div>
-
-      <!-- 全部动态 -->
-      <div
-        class="dongtai"
-        style="float left;margin-top:100px; background-color: rgb(243, 237, 237);"
-      >
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                style="color: black;padding-left:0px "
-              >
-                全部动态
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">续费黄钻</a>
-                </li>
-                <li>
-                  <a href="#">赠送好友</a>
-                </li>
-                <li>
-                  <a href="#">黄钻官网</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#" style="color: black">
-                <span class="glyphicon glyphicon-repeat"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#" style="color: black">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </li>
-          </ul>
+          <a href="#" class="list-group-item">设置</a>
         </div>
       </div>
-      <!-- 第一个说说 -->
+      <!-- 中间动态 -->
+      <!-- 说点什么！！！ -->
 
-      <div style="margin-top: 20px;height:500px;background-color: rgb(243, 237, 237)">
-        <div style="float: left;padding: 20px">
-          <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
+      <div class="centerblock col-xs-12 col-xs-md col-lg-6" style="padding:0">
+        <div class="shuoshenme col-xs-12" style="padding: 0px;float: left">
+          <form role="form">
+            <div class="form-group has-feedback">
+              <textarea class="form-control" v-model="conuser.conwords" rows="10" placeholder="说点什么吧"></textarea>
+              <div id="upload">
+                <el-upload
+                  class="upload-demo"
+                  ref="upload"
+                  list-type="picture-card"
+                  action="http://localhost:3000/users/uploadHeadPic"
+                  :limit="4"
+                  :before-upload="beforeupload"
+                  :auto-upload="false"
+                  :multiple="true"
+                  style="margin-top:10px"
+                >
+                  <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-form ref="form" :model="form" label-width="80px" style="margin-top:10px">
+                  <el-form-item>
+                    <el-button type="primary" @click="onSubmit">发布动态</el-button>
+                    <el-button>取消</el-button>
+                  </el-form-item>
+                </el-form>
+              </div>
+            </div>
+          </form>
         </div>
-        <div style="float: left;padding-top: 18px">
-          <a href="#" style="font-size: 18px;color: black">退路</a>
-          <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
-        </div>
-        <div style="clear: both;margin-left: 80px">
-          <p>
-            我手机从来不离身,一个人走在路上,
-            <br />一个人出去,为了避免尴尬,
-            <br />总是拿出手机,时不时的摆弄下,
-            <br />其实只有自己知道,只是把手机解锁,
-            <br />看下时间,滑冻几下桌面,
-            <br />然后锁屏,几分钟后又重复一遍,
-            <br />这就是孤独,一个人的孤独。
-            <br />——网易云音乐热评墙《一万次悲伤》
-            <br />
-          </p>
-        </div>
-        <div style="margin:30px ">
-          <img class="shuotu" src="../assets/imgs/xd.jpg" />
-          <img class="shuotu" src="../assets/imgs/xd.jpg" />
-        </div>
-      </div>
-      <!-- 第二个说说 -->
-      <div style="margin-top: 20px;height: 500px;background-color: rgb(243, 237, 237)">
-        <div style="float: left;padding: 20px">
-          <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
-        </div>
-        <div style="float: left;padding-top: 18px">
-          <a href="#" style="font-size: 18px;color: black">退路</a>
-          <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
-        </div>
-        <div style="clear: both;margin-left: 80px">
-          <p>
-            我手机从来不离身,一个人走在路上,
-            <br />一个人出去,为了避免尴尬,
-            <br />总是拿出手机,时不时的摆弄下,
-            <br />其实只有自己知道,只是把手机解锁,
-            <br />看下时间,滑冻几下桌面,
-            <br />然后锁屏,几分钟后又重复一遍,
-            <br />这就是孤独,一个人的孤独。
-            <br />——网易云音乐热评墙《一万次悲伤》
-            <br />
-          </p>
-        </div>
-
-        <div style="margin:30px ">
-          <img class="shuotu" src="../assets/imgs/xd.jpg" />
-          <img class="shuotu" src="../assets/imgs/xd.jpg" />
-        </div>
-      </div>
-    </div>
-    <!-- 右边 -->
-    <!-- 签到 -->
-    <div class="youbian" style="float: right">
-      <div class="qiandao">
-        <div class="qianzuo">
-          <a href style="text-decoration:none">
-            <ul>
-              <li>10.14</li>
-              <li>签到</li>
+        <!-- 全部动态 -->
+        <div
+          class="dongtai"
+          style="float left;margin-top:100px; background-color: rgb(243, 237, 237);"
+        >
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  style="color: black;padding-left:0px "
+                >
+                  全部动态
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">续费黄钻</a>
+                  </li>
+                  <li>
+                    <a href="#">赠送好友</a>
+                  </li>
+                  <li>
+                    <a href="#">黄钻官网</a>
+                  </li>
+                </ul>
+              </li>
             </ul>
-          </a>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#" style="color: black">
+                  <span class="glyphicon glyphicon-repeat"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#" style="color: black">
+                  <span class="glyphicon glyphicon-cog"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="qianyou">
-          <ul>
-            <li>本月签到次数</li>
-            <li>3次</li>
-          </ul>
+        <!-- 第一个说说 -->
+        <div style="margin-top: 20px;height:500px;background-color: rgb(243, 237, 237)">
+          <div style="float: left;padding: 20px">
+            <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
+          </div>
+          <div style="float: left;padding-top: 18px">
+            <a href="#" style="font-size: 18px;color: black">退路</a>
+            <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
+          </div>
+          <div style="clear: both;margin-left: 80px">
+            <p>
+              我手机从来不离身,一个人走在路上,
+              <br />一个人出去,为了避免尴尬,
+              <br />总是拿出手机,时不时的摆弄下,
+              <br />其实只有自己知道,只是把手机解锁,
+              <br />看下时间,滑冻几下桌面,
+              <br />然后锁屏,几分钟后又重复一遍,
+              <br />这就是孤独,一个人的孤独。
+              <br />——网易云音乐热评墙《一万次悲伤》
+              <br />
+            </p>
+          </div>
+          <div style="margin:30px ">
+            <img class="shuotu" src="../assets/imgs/xd.jpg" />
+            <img class="shuotu" src="../assets/imgs/xd.jpg" />
+          </div>
+        </div>
+        <!-- 第二个说说 -->
+        <div style="margin-top: 20px;height: 500px;background-color: rgb(243, 237, 237)">
+          <div style="float: left;padding: 20px">
+            <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
+          </div>
+          <div style="float: left;padding-top: 18px">
+            <a href="#" style="font-size: 18px;color: black">退路</a>
+            <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
+          </div>
+          <div style="clear: both;margin-left: 80px">
+            <p>
+              我手机从来不离身,一个人走在路上,
+              <br />一个人出去,为了避免尴尬,
+              <br />总是拿出手机,时不时的摆弄下,
+              <br />其实只有自己知道,只是把手机解锁,
+              <br />看下时间,滑冻几下桌面,
+              <br />然后锁屏,几分钟后又重复一遍,
+              <br />这就是孤独,一个人的孤独。
+              <br />——网易云音乐热评墙《一万次悲伤》
+              <br />
+            </p>
+          </div>
+
+          <div style="margin:30px ">
+            <img class="shuotu" src="../assets/imgs/xd.jpg" />
+            <img class="shuotu" src="../assets/imgs/xd.jpg" />
+          </div>
         </div>
       </div>
-      <div class="kan">
-        <!-- 谁看过我 -->
-        <div
-          class="kanwo"
-          style="background-color: rgb(243, 237, 237);height:450px;width:300px;margin-top:2px"
-        >
-          <h4 style="text-align:center;color:blueviolet">谁看过我</h4>
-          <a href>
-            <p>
-              <span>邓颖</span>
-            </p>
-            <p>
-              <span>宋佳镱</span>
-            </p>
-            <p>
-              <span>李佳欣</span>
-            </p>
-            <p>
-              <span>石吉红</span>
-            </p>
-            <p>
-              <span>邓颖</span>
-            </p>
-            <p>
-              <span>宋佳镱</span>
-            </p>
-            <p>
-              <span>李佳欣</span>
-            </p>
-            <p>
-              <span>石吉红</span>
-            </p>
-          </a>
+      <!-- 右边 -->
+      <!-- 签到 -->
+      <div class="youbian" style="float: right">
+        <div class="qiandao">
+          <div class="qianzuo">
+            <a href style="text-decoration:none">
+              <ul>
+                <li>10.14</li>
+                <li>签到</li>
+              </ul>
+            </a>
+          </div>
+          <div class="qianyou">
+            <ul>
+              <li>本月签到次数</li>
+              <li>3次</li>
+            </ul>
+          </div>
         </div>
-        <div
-          class="wokan"
-          style="background-color: rgb(243, 237, 237);height:400px;width:300px;margin-top: 20px"
-        >
-          <h4 style="text-align:center;color:blueviolet">我看过谁</h4>
-          <a href>
-            <p>
-              <span>邓颖</span>
-            </p>
-            <p>
-              <span>宋佳镱</span>
-            </p>
-            <p>
-              <span>李佳欣</span>
-            </p>
-            <p>
-              <span>石吉红</span>
-            </p>
-            <p>
-              <span>邓颖</span>
-            </p>
-            <p>
-              <span>宋佳镱</span>
-            </p>
-          </a>
+        <div class="kan">
+          <!-- 谁看过我 -->
+          <div
+            class="kanwo"
+            style="background-color: rgb(243, 237, 237);height:450px;width:300px;margin-top:2px"
+          >
+            <h4 style="text-align:center;color:blueviolet">谁看过我</h4>
+            <a href>
+              <p>
+                <span>邓颖</span>
+              </p>
+              <p>
+                <span>宋佳镱</span>
+              </p>
+              <p>
+                <span>李佳欣</span>
+              </p>
+              <p>
+                <span>石吉红</span>
+              </p>
+              <p>
+                <span>邓颖</span>
+              </p>
+              <p>
+                <span>宋佳镱</span>
+              </p>
+              <p>
+                <span>李佳欣</span>
+              </p>
+              <p>
+                <span>石吉红</span>
+              </p>
+            </a>
+          </div>
+          <div
+            class="wokan"
+            style="background-color: rgb(243, 237, 237);height:400px;width:300px;margin-top: 20px"
+          >
+            <h4 style="text-align:center;color:blueviolet">我看过谁</h4>
+            <a href>
+              <p>
+                <span>邓颖</span>
+              </p>
+              <p>
+                <span>宋佳镱</span>
+              </p>
+              <p>
+                <span>李佳欣</span>
+              </p>
+              <p>
+                <span>石吉红</span>
+              </p>
+              <p>
+                <span>邓颖</span>
+              </p>
+              <p>
+                <span>宋佳镱</span>
+              </p>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- </div>
-  </div>-->
 </template>
 <style>
+.el-upload__input {
+  display: none !important;
+}
 .condition {
   width: 100%;
   /* height: 1000px; */
@@ -523,11 +535,11 @@
   .centerblock {
     display: block;
     position: relative;
-    left:50px
+    /* left: 50px; */
   }
-  .centerblock .shuoshenme {
+  /* .centerblock .shuoshenme {
     width: 500px;
-  }
+  } */
 }
 @media screen and (max-width: 716px) {
   .youyisi2 {
@@ -543,7 +555,7 @@
 @media screen and (max-width: 1200px) and (min-width: 992px) {
   .centerblock {
     display: block;
-    padding-left: 170px;
+    /* padding-left: 170px; */
   }
 }
 @media screen and (max-width: 992px) and (min-width: 768px) {
@@ -554,13 +566,86 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .centerblock{
+  .centerblock {
     width: 465px;
     margin-left: 0;
-    margin: auto
+    margin: auto;
   }
-   .shuoshenme form{
-        width: 465px;
+  .shuoshenme form {
+    width: 465px;
   }
 }
 </style>
+
+<script>
+export default {
+  name: "test",
+  data() {
+    return {
+      company_id: "10001",
+      fileList: [],
+      form: {
+        name: "" //绑定表单元素的属性
+      },
+      param: "", // 表单最后提交的参数对象
+      conuser: {
+        conuserId: "20015",
+        conwords: "",
+        conTime: "2019-09-28 11:22:24",
+        conpic0: {},
+        conpic1: {},
+        conpic2: {},
+        conpic3: {}
+      }
+    };
+  },
+  methods: {
+    onSubmit() {
+      let _this = this;
+      // var names = _this.form.name;
+      this.$refs.upload.submit();
+      //将非表单元素的数据也添加到参数对象中；
+      // this.param.append("company_id", _this.company_id);
+      //将表单元素的数据也添加到参数对象中；
+      // this.param.append("caption", names);
+      //设置提交请求头，适用于上传文件
+      let config = {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      };
+      // //调用接口，执行上传所有数据的操作
+      this.$axios
+        .post("http://localhost:3000/hotSearch/publish", this.conuser, config)
+        .then(function(result) {
+          console.log(this.conuser)
+          console.log(result);
+        });
+    },
+   /*  resetForm(formName) {
+      this.$refs[formName].resetFields();
+    }, */
+    //当上传文件组件submit之前触发执行
+    beforeupload(file) {
+      console.log("准备上传。。。。");
+      // 准备表单上传需要的参数对象
+      // this.param = new FormData();
+      this.fileList.push(file); // 把需要上传的文件保存到数组中
+      console.log(file)
+      // console.log(this.fileList)
+      // 遍历数组，把所有文件都保存到参数对象中
+      for (let i = 0; i < this.fileList.length; i++) {
+        this.$set(this.conuser,`conpic${i}`,this.fileList[i].name)
+      }
+      console.log(this.conuser)
+     /*  console.log(this.fileList)
+      this.conuser.conpic1 = this.fileList[1].name
+      this.conuser.conpic2 = this.fileList[2].name
+      this.conuser.conpic3 = this.fileList[3].name
+      this.conuser.conpic4 = this.fileList[4].name
+      console.log(this.conuser) */
+      return false;
+    }
+  }
+};
+</script>

@@ -84,7 +84,8 @@ var hotSearchController = {
                 let conpic2 = conpics[1]
                 let conpic3 = conpics[2]
                 let conpic4 = conpics[3]
-                var conuser = { conuserId: userId, conwords: fields.conwords, conTime: fields.conTime,conpic1:conpic1,conpic2:conpic2,conpic3:conpic3,conpic4:conpic4 }
+                // var conuser 
+                var conuser = { conuserId: userId, conwords: fields.conwords, conTime: fields.conTime,conpic0:conpic1,conpic1:conpic2,conpic2:conpic3,conpic3:conpic4 }
                 console.log(conuser)
                 hotSearchDAO.publish(conuser, function (err, results) {
                     if (err) {
