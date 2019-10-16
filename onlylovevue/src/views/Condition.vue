@@ -632,7 +632,7 @@ export default {
       // this.param = new FormData();
       this.fileList.push(file); // 把需要上传的文件保存到数组中
       console.log(file)
-      console.log(this.fileList)
+      // console.log(this.fileList)
       // 遍历数组，把所有文件都保存到参数对象中
       for (let i = 0; i < this.fileList.length; i++) {
         this.$set(this.conuser,`conpic${i}`,this.fileList[i].name)
