@@ -92,7 +92,6 @@ let router = new Router({
       name: 'shopcart',
       component: () => import( './views/Shopcart.vue')
     },
-   
     {
       path: '/buy',
       name: 'buy',
