@@ -70,8 +70,18 @@ export default {
     
     
   },
-  beforeCreate(){
-    },
+ created(){
+        this.$axios.get('http://localhost:3000/users/userStatus')
+        .then(res => {
+          console.log('查询结果：' )
+          console.log(res.data.data)
+          //拿到后台数据赋值给前端
+          this.conditions = res.data.data
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+      },
     onSubmit() {
     let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
     console.log('token对象：',userInfo)

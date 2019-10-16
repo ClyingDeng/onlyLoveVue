@@ -247,6 +247,17 @@ var userDAO = {
                 }
             })
         })
+    },
+    userStatusDAO:function (userId){
+        return new Promise((resolve, reject) => {
+            DAO('select use_status from base_info where base_info_Id =  ?',[userId],function(err, results) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results) ;
+                }
+            })
+        })
     }
 
 }
