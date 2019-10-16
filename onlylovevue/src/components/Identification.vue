@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{msg}}</h1>
-    <div class="row" v-if="feedback1">
+    <div class="row" v-if="scon == false">
       <div class="col-xs-12">
         <h3>身份证正面:</h3>
         <span class="eleBtn">
@@ -38,7 +38,7 @@
       </span>
 
     </div>
-    <div class="row" v-if="feedback2">
+    <div class="row" v-if="scon">
       <i class="el-icon-success" type="primary"></i>
       <button type="button" class="btn btn-success">已实名认证</button>
     </div>
@@ -59,29 +59,13 @@ export default {
         name: ""    //绑定表单元素的属性
       },
       param: "", // 表单最后提交的参数对象
-      feedback1:false,
-      feedback2:true
+      // feedback1:false
+      // feedback2:true
     }
   },
+  props:['scon'],
   methods:{
-    mounted(){
-    this.user = this.$route.query
-    console.log(this.user)
-    
-    
-  },
- created(){
-        this.$axios.get('http://localhost:3000/users/userStatus')
-        .then(res => {
-          console.log('查询结果：' )
-          console.log(res.data.data)
-          //拿到后台数据赋值给前端
-          this.conditions = res.data.data
-        })
-        .catch(err => {
-          console.log('错误信息：' + err)
-        })
-      },
+ 
     onSubmit() {
     let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
     console.log('token对象：',userInfo)
@@ -113,8 +97,7 @@ export default {
 
           }else{
             alert('身份证认证成功')
-            this.feedback1 = false
-            this.feedback2 = true
+            this.scon = true
           }
         });
       }else{

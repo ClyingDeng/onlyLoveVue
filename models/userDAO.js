@@ -82,7 +82,7 @@ var userDAO = {
         DAO('SELECT member_grade from memberinfos,base_info WHERE member_user_Id = base_info_Id and base_info_Id =?', [userId], function(err, results) {
             console.log(results)
             if (err) {
-                console.log('无法获取用户会员等级')
+                // console.log('无法获取用户会员等级')
                 callback(err, null)
             } else {
                 callback(null, results)

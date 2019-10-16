@@ -5,11 +5,16 @@
         <div class="module-inner">
           <div class="side-bar">
             <div class="user-info">
-              <img
-                class="img-profile img-circle img-responsive center-block"
-                src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                alt
-              />
+              <img v-if="userInfos.headPic == 'defaultHead.jpg'"
+              class="img-rounded img-responsive"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img v-else
+              class="img-rounded img-responsive"
+              :src="'http://localhost:3000/upload/' + userInfos.headPic"
+              alt
+            />
               <ul class="meta list list-unstyled">
                 <li class="name">
                   Rebecca Sanders
@@ -46,7 +51,7 @@
             </nav>
           </div>
           <div class="content-panel">
-            <component v-bind:is="currentTabCompent"></component>
+            <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos"></component>
           </div>
         </div>
       </section>
@@ -72,6 +77,8 @@ export default {
         telephone: "15776504645",
         password: "111111"
       },
+      conditions:'',
+      userInfos:'',
       rules: {
         telephone: [
           { required: true, message: "手机号码不能为空", trigger: "blur" },
@@ -84,6 +91,35 @@ export default {
       }
     };
   },
+  created(){
+        this.$axios.get('http://localhost:3000/users/userStatus')
+        .then(res => {
+          console.log('查询结果：' )
+          console.log(res.data.data[0].use_status)
+          //拿到后台数据赋值给前端
+          if(res.data.data[0].use_status == 1){
+            this.conditions = true
+          }else{
+            this.conditions = false
+          }
+          
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+        this.$axios.get('http://localhost:3000/users/userInfo')
+        .then(res => {
+          // console.log('查询结果：' )
+          console.log(res.data.data[0])
+          //拿到后台数据赋值给前端
+            this.userInfos = res.data.data[0]
+            
+          
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+      },
   components: {
     baseInfo: baseInfo,
     identification: identification,
@@ -139,6 +175,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.user-info img{
+  /* width: 140px;
+  height: 140px; */
+  width: 100%;
+  height: 100%;
+}
 .personalInfo {
   margin-top: 100px;
 }

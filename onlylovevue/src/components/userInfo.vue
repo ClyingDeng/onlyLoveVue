@@ -4,68 +4,74 @@
       个人信息
       <span class="pro-label label label-warning">PRO</span>
     </h2>
+    <!-- <h1>{{suserInfos}}</h1> -->
     <form class="form-horizontal">
       <fieldset class="fieldset">
         <h3 class="fieldset-title">基本信息</h3>
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
-            <img
+            <img v-if="suserInfos.headPic == 'defaultHead.jpg'"
               class="img-rounded img-responsive"
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img v-else
+              class="img-rounded img-responsive"
+              :src="'http://localhost:3000/upload/' + suserInfos.headPic"
               alt
             />
           </div>
           <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-            <input type="file" class="file-uploader pull-left" />
-            <button type="submit" class="btn btn-sm btn-default-alt pull-left">上传图片</button>
-            <!-- <el-upload
-                                      class="upload-demo form-inline col-md-10 col-sm-9 col-xs-12"
-                                      action="https://jsonplaceholder.typicode.com/posts/"
-                                      :show-file-list="false"
-                                      :on-success="handleAvatarSuccess"
-                                      :before-upload="beforeAvatarUpload"
-                                      >
-                                      <el-button size="small" type="primary">点击上传</el-button>
-                                      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
-            </el-upload>-->
+            <!-- <input type="file" class="file-uploader pull-left" /> -->
+            <!-- <button type="submit" class="btn btn-sm btn-default-alt pull-left">上传图片</button> -->
+            <el-upload
+              class="upload-demo form-inline col-md-10 col-sm-9 col-xs-12"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :limit="1"  
+              :before-upload="beforeupload"
+              :auto-upload="false"
+              :multiple="true">
+              <el-button size="small" type="primary">点击上传</el-button>
+              <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
+            </el-upload>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">账号</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" readonly="readonly" value="20015" />
+            <input type="text" class="form-control" readonly="readonly" :value="suserInfos.base_info_Id" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">用户名</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" value="clying" />
+            <input type="text" class="form-control" :value="suserInfos.nickName" />
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">性别</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="radio" label="1">男</el-radio>
-            <el-radio v-model="radio" label="2">女</el-radio>
+            <el-radio v-model="this.suserInfos.sex" label="男">男</el-radio>
+            <el-radio v-model="this.suserInfos.sex" label="女">女</el-radio>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">年龄</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" value="23" />
+            <input type="text" class="form-control" :value="suserInfos.age" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">出生年月</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <el-date-picker v-model="YM" type="month" placeholder="选择年月"></el-date-picker>
+            <el-date-picker v-model="suserInfos.birthday" type="month" placeholder="选择年月"></el-date-picker>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">爱情宣言</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" value="23" />
+            <input type="text" class="form-control" :value="suserInfos.love_description" />
           </div>
         </div>
       </fieldset>
@@ -74,32 +80,29 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">身高</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" value="163cm" />
+            <input type="text" class="form-control" :value="suserInfos.height + 'cm'" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">体重</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" value="50kg" />
+            <input type="text" class="form-control" :value="suserInfos.weight + 'kg'" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">薪资</label>
-          <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio
-              v-model="radio"
-              :label="key"
-              v-for="(key,index) in salary"
-              :key="index"
-            >{{key}}</el-radio>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span class="sexStyle" v-for="(key,index) in salary">
+            <el-radio v-model="suserInfos.salary" :label="index">{{key}}</el-radio>
+            </span>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">婚姻状况</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="radio" label="1">未婚</el-radio>
-            <el-radio v-model="radio" label="2">丧偶</el-radio>
-            <el-radio v-model="radio" label="3">离异</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" :label="0">未婚</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" :label="1">离异</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" :label="2">丧偶</el-radio>
           </div>
         </div>
         <div class="form-group">
@@ -119,28 +122,49 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">不良嗜好</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="Badhobby" label="1">酗酒</el-radio>
-            <el-radio v-model="Badhobby" label="2">抽烟</el-radio>
-            <el-radio v-model="Badhobby" label="3">无</el-radio>
+            <el-radio v-model="this.suserInfos.blight" :label="1">酗酒</el-radio>
+            <el-radio v-model="this.suserInfos.blight" :label="2">抽烟</el-radio>
+            <el-radio v-model="this.suserInfos.blight" :label="0">无</el-radio>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">邮箱</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="email" class="form-control" value="onlylove@qq.com" />
+            <input type="email" class="form-control" value="onlylove@qq.com" readonly="readonly" />
           </div>
         </div>
       </fieldset>
       <hr />
       <div class="form-group">
-        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-          <input class="btn btn-primary" type="submit" value="确认" />
+        <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
+          <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/>
         </div>
       </div>
     </form>
   </div>
 </template>
 <style scoped>
+.sexStyle{
+  margin-right: 15px;
+}
+input[type="file"] {
+  display: none ;
+}
+.form-inline[data-v-0a4b02ae] {
+    margin-top: 0px;
+}
+.avatar .figure img[data-v-0a4b02ae] {
+    width: 100%;
+}
+.figure{
+      padding:0;
+      padding-right: 15px;
+    }
+.figure img{
+  height: 100%;
+  /* width: 80%; */
+  margin: 0;
+}
 .pro-label {
   font-size: 13px;
   padding: 4px 5px;
@@ -175,6 +199,12 @@
   padding-top: 7px;
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .figure{
+      padding-left: 45px;
+    }
+}
 </style>
 <script>
 const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
@@ -183,7 +213,7 @@ export default {
     return {
       salary: [
         "2k以下",
-        "2k-4k",
+        "2k-4k", 
         "4-6k",
         "6-8k",
         "8-10k",
@@ -191,17 +221,58 @@ export default {
         "15-20k",
         "20k以上"
       ],
-      radio: "1",
-      Badhobby: "3",
-      YM: "",
-
+      fileList: [],
       checkAll: false,
       checkedCities: ["健身"],
       cities: cityOptions,
       isIndeterminate: true
     };
   },
+  props:['suserInfos'],
+  mounted:function(){
+      this.sex = this.suserInfos.sex
+  },
   methods: {
+      onSubmit() {
+    let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
+    console.log('token对象：',userInfo)
+      let _this = this;
+      var names = _this.form.name;
+      this.$refs.upload.submit();
+      console.log(this.param)
+      if(this.param){
+        //将非表单元素的数据也添加到参数对象中；
+      // this.param.append("company_id", _this.company_id);
+      //将表单元素的数据也添加到参数对象中；
+      // this.param.append("caption", names);
+      //设置提交请求头，适用于上传文件
+      let config = {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      };
+      // //调用接口，执行上传所有数据的操作
+      this.$axios
+        .post("http://localhost:3000/users/idCardFront", this.param, config)
+        .then(function(result) {
+          console.log(result);
+          console.log(result.data.msg)
+          if(result.data.msg == '身份证上传成功！审核不通过！'){
+            alert('请上传正确证件！')
+           
+            //删除后台图片
+
+          }else{
+            alert('身份证认证成功')
+            this.scon = true
+          }
+        });
+      }else{
+        alert('未上传身份证！')
+      }
+      
+      
+    },
     handleCheckAllChange(val) {
       this.checkedCities = val ? cityOptions : [];
       this.isIndeterminate = false;
@@ -211,6 +282,18 @@ export default {
       this.checkAll = checkedCount === this.cities.length;
       this.isIndeterminate =
         checkedCount > 0 && checkedCount < this.cities.length;
+    },
+     //当上传文件组件submit之前触发执行
+    beforeupload(file) {
+      console.log('准备上传。。。。')
+      // 准备表单上传需要的参数对象
+      this.param = new FormData();
+      this.fileList.push(file); // 把需要上传的文件保存到数组中
+      // 遍历数组，把所有文件都保存到参数对象中
+      for (let i = 0; i < this.fileList.length; i++) {
+        this.param.append(`img_${i}`, this.fileList[i]);
+      }
+      return false;
     }
   }
 };
