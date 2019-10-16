@@ -69,6 +69,11 @@ let router = new Router({
           path: 'users',
           name: 'users',
           component: () => import( './views/Users.vue')
+        },
+        {
+          path: '/acticle',
+          name: 'actilce',
+          component: () => import( './views/Acticle.vue')
         }
       ]
     },
@@ -87,6 +92,7 @@ let router = new Router({
       name: 'shopcart',
       component: () => import( './views/Shopcart.vue')
     },
+   
     {
       path: '/buy',
       name: 'buy',
