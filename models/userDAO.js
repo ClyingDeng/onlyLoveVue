@@ -235,6 +235,18 @@ var userDAO = {
                 }
             })
         })
+    },
+    imformationDAO:function (telephone){
+        return new Promise((resolve, reject) => {
+            DAO('select base_info_Id from base_info where telephone = ?',[telephone],function(err, results) {
+                // console.log(results)
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results) ;
+                }
+            })
+        })
     }
 
 }

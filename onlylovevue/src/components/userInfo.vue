@@ -74,13 +74,13 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">身高</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="email" class="form-control" value="163cm" />
+            <input type="text" class="form-control" value="163cm" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">体重</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="email" class="form-control" value="50kg" />
+            <input type="text" class="form-control" value="50kg" />
           </div>
         </div>
         <div class="form-group">
