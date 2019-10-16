@@ -74,7 +74,7 @@ var userController = {
                                 try{
                                     infos = await userDAO.imformationDAO(user.telephone)
                                     console.log('还有吗？')
-                                    console.log(infos)
+                                    console.log(infos[0])
                                     
                             console.log(infos[0].base_info_Id)
                             //记录登录成功后的token
@@ -472,9 +472,24 @@ var userController = {
             if (err) {
                 res.json({ code: 500, msg: '查询个人订单失败！' + err })
             } else {
-                res.json({ code: 500, data: results1, msg: '查询个人订单成功！' })
+                res.json({ code: 200, data: results1, msg: '查询个人订单成功！' })
             }
         })
+    },
+    //身份认证状态
+    userStatus:function(req,res){
+        var userId = req.user[0].base_info_Id
+        console.log(userId)
+        async function status(userId){
+            try{
+                let nowStatus = await userDAO.userStatusDAO(userId)
+                console.log(nowStatus[0].use_status)
+                res.json({ code: 200, data: nowStatus, msg: '查询认证状态成功' })
+            }catch{
+                res.json({ code: 500, msg: '查询认证状态失败！' + err })
+            }
+        }
+        status(userId)
     },
     //上传身份证正面
     idCardFront: function(req, res) {

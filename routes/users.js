@@ -71,6 +71,10 @@ router.get('/vCode/:telephone', function(req, res, next) {
     // })
     res.json({ code: 200, msg: '验证码发送成功' ,data:code})
 });
+// 获取当前用户认证状态
+router.get('/userStatus', passport.authenticate('jwt', { session: false }), function(req, res, next) {
+    userController.userStatus(req, res)
+});
 //身份证识别
 // 正面
 router.post('/idCardFront', passport.authenticate('jwt', { session: false }), function(req, res, next) {
