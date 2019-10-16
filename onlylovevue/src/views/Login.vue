@@ -31,7 +31,7 @@
 </template>
 
 <script>
-// import jwt_decode from 'jwt-decode'
+import jwt_decode from 'jwt-decode'
 export default {
   name: "login",
   data: function() {
@@ -63,8 +63,10 @@ export default {
             .post("http://localhost:3000/users/login", this.loginUser)
             .then(res => {
               console.log("登录成功！", res);
-              console.log(res.data.token)
-              // console.log('token对象：',jwt_decode(res.data.token))
+              // console.log(res.data.token)
+              // console.log('token对象：',jwt_decode(localStorage.getItem ('mytoken')))
+              console.log('token对象：',jwt_decode(res.data.token))
+              console.log(res.data)
               localStorage.setItem('mytoken',res.data.token)  //1.把token保存到本地存储
               this.$router.push("/index"); //路由转向登录组件
             })
