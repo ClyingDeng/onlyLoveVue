@@ -105,19 +105,19 @@
               <div class="col-md-5 col-xs-5">
                 <i class="fa fa-user" aria-hidden="true" style="color:orangered"></i>往昔
               </div>
-              <div class="col-md-offset-0 col-md-7 col-xs-offset-1 col-xs-6 time">2019-06-12</div>
+              <div class="col-md-offset-0 col-md-7 col-xs-offset-1 col-xs-6 time">201</div>
               <a @click.prevent="goCondition" class="msg">
                 彼爱2019-04-21说：
                 在爱情中你要搞清楚，是你喜欢人家，不是人家喜欢你。既然主动了，就算受了天大的委屈，也不能怪任何人，只怪你有本事喜欢人家，没本事让人家喜欢你。
               </a>
             </div>
           </div>
-          <div class="media">
+          <div class="media" v-for="(key,index) in perconditions.slice(0, 3)" :key="index">
             <div class="media-left">
               <a @click.prevent="goCondition">
                 <img
                   class="media-object"
-                  src="../assets/imgs/bg1.jpg"
+                  :src="'http://localhost:3000/hspicture/'+ key.con_pic_1"
                   alt="..."
                   style="width: 60px;height:60px"
                 />
@@ -125,35 +125,11 @@
             </div>
             <div class="media-body">
               <div class="col-md-5 col-xs-5">
-                <i class="fa fa-user" aria-hidden="true" style="color:orangered"></i>往昔
+                <i class="fa fa-user" aria-hidden="true" style="color:orangered"></i>
+                {{key.nickName}}
               </div>
-              <div class="col-md-offset-0 col-md-7 col-xs-offset-1 col-xs-6 time">2019-06-12</div>
-              <a @click.prevent="goCondition" class="msg">
-                彼爱2019-04-21说：
-                在爱情中你要搞清楚，是你喜欢人家，不是人家喜欢你。既然主动了，就算受了天大的委屈，也不能怪任何人，只怪你有本事喜欢人家，没本事让人家喜欢你。
-              </a>
-            </div>
-          </div>
-          <div class="media">
-            <div class="media-left">
-              <a @click.prevent="goCondition">
-                <img
-                  class="media-object"
-                  src="../assets/imgs/bg1.jpg"
-                  alt="..."
-                  style="width: 60px;height:60px"
-                />
-              </a>
-            </div>
-            <div class="media-body">
-              <div class="col-md-5 col-xs-5">
-                <i class="fa fa-user" aria-hidden="true" style="color:orangered"></i>往昔
-              </div>
-              <div class="col-md-offset-0 col-md-7 col-xs-offset-1 col-xs-6 time">2019-06-12</div>
-              <a @click.prevent="goCondition" class="msg">
-                彼爱2019-04-21说：
-                在爱情中你要搞清楚，是你喜欢人家，不是人家喜欢你。既然主动了，就算受了天大的委屈，也不能怪任何人，只怪你有本事喜欢人家，没本事让人家喜欢你。
-              </a>
+              <div class="col-md-offset-0 col-md-7 col-xs-offset-1 col-xs-6 time">{{key.hot}}</div>
+              <a @click.prevent="goCondition" class="msg">{{key.con_words}}</a>
             </div>
           </div>
         </div>
@@ -167,17 +143,19 @@
           </h4>
           <ul>
             <li>
-              <div class="hs-container" v-for="(key,index) in conditions.slice(0, 3)"  :key="index" >
-                <div @click.prevent="goHotSearch" class="circle" style="background: url(../imgs/bg2.jpg) center center;"></div>
+              <div class="hs-container" v-for="(key,index) in conditions.slice(0, 3)" :key="index">
+                <div @click.prevent="goHotSearch">
+                  <img class="circle" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
+                </div>
                 <h5>{{key.con_words.substr(0, [6])}}...</h5>
-                <p
-                  @click.prevent="goHotSearch"
-                >"{{key.con_words}}"</p>
+                <p @click.prevent="goHotSearch">"{{key.con_words}}"</p>
                 <a href>
-                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i> {{key.con_time.substr(0, [10])}}
+                  <i class="fa fa-calculator" aria-hidden="true" style="color:orangered"></i>
+                  {{key.con_time.substr(0, [10])}}
                 </a>
                 <a href>
-                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>{{key.see}}
+                  <i class="fa fa-thumbs-up" aria-hidden="true" style="color:orangered"></i>
+                  {{key.see}}
                 </a>
               </div>
             </li>
@@ -200,7 +178,7 @@
           </div>
           <div class="love-rank loveRank">
             <ul>
-              <li v-for="(key,index) in carzyList.slice(0, 5)"  :key="index">
+              <li v-for="(key,index) in carzyList.slice(0, 5)" :key="index">
                 <span>{{key.rowno}}</span>
                 <a @click.prevent="goList">{{key.昵称}}</a>
                 <b>({{key.sweet_score}})</b>
@@ -209,7 +187,7 @@
           </div>
           <div class="love-rank popRank">
             <ul>
-              <li v-for="(key,index) in charmList.slice(0, 5)"  :key="index" >
+              <li v-for="(key,index) in charmList.slice(0, 5)" :key="index">
                 <span>{{key.rowno}}</span>
                 <a @click.prevent="goList">{{key.昵称}}</a>
                 <b>({{key.sweet_score}})</b>
@@ -224,18 +202,33 @@
     </a>
   </div>
 </template>
+<style scoped>
+/* div{
+  background-color: #f00;
+} */
+</style>
 <script>
 export default {
   data() {
     return {
-      perconditions:[],
+      userId: "20015",
+      perconditions: [],
       conditions: [],
       carzyList: [],
       charmList: []
     };
   },
+  /* beforeCreate() {
+    $(document).ready(function() {
+      if (location.href.indexOf("#reloaded") == -1) {
+        location.href = location.href + "#reloaded";
+        location.reload();
+      }
+    });
+  }, */
   //组件创建完成后执行的操作
   created() {
+    const userId = this.userId;
     this.$axios
       .get("http://localhost:3000/allCondition")
       .then(res => {
@@ -263,16 +256,16 @@ export default {
       .catch(err => {
         console.log("错误信息：" + err);
       });
-    /* this.$axios
+    this.$axios
       .get("http://localhost:3000/hotSearch/hotSearch")
       .then(res => {
         //拿到后台数据赋值给前端
         this.perconditions = res.data.data;
-        console.log('个人的动态'+perconditions)
+        console.log(this.perconditions);
       })
       .catch(err => {
         console.log("错误信息：" + err);
-      }); */
+      });
   },
   methods: {
     goMessage() {

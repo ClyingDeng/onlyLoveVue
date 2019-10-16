@@ -3,7 +3,7 @@
     <div class="row">
       <!-- 搜索条 -->
       <div class="col-xs-12 searchnav">
-        <div class="col-xs-offset-1 col-xs-8">
+        <div class="col-xs-offset-2 col-xs-7">
           <input type="text">
         </div>
         <div class="col-xs-3 search">
@@ -14,17 +14,19 @@
       <div class="col-xs-12 content">
         <ul>
           <li class="firstline">
-            <span class="col-xs-offset-1 col-xs-2">序号</span>
+            <span class="col-xs-offset-1 col-md-offset-2 col-xs-2 col-md-1">序号</span>
             <span class="keyword col-xs-7">关键词</span>
           </li>
           <li v-for="(key,index) in allhotsearch.slice(0,1)"  :key="index">
-            <div class="order col-xs-offset-1 col-xs-2"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
-            <div class="article col-xs-5">{{key.con_words}}<strong>{{key.hot}}</strong></div>
+            <div class="order col-xs-offset-1 col-md-offset-2 col-xs-2 col-md-1"><i class="glyphicon glyphicon-open" style="color: #ec6d34"></i></div>
+            <div class="article col-xs-5">{{key.con_words}}</div>
+            <div class="hotdegree col-xs-2 col-md-1"><b>({{key.hot}})</b></div>
             <div class="hot col-xs-1"><strong>热</strong></div>
           </li>
           <li v-for="(key,index) in allhotsearch.slice(1, 3000000)"  :key="index">
-            <div class="order col-xs-offset-1 col-xs-2"><i style="color: #ec6d34">{{key.rowno-1}}</i></div>
-            <div class="article col-xs-5">{{key.con_words}}<strong>{{key.hot}}</strong></div>
+            <div class="order col-xs-offset-1 col-md-offset-2 col-xs-2 col-md-1"><i style="color: #ec6d34">{{key.rowno-1}}</i></div>
+            <div class="article col-xs-5">{{key.con_words}}</div>
+            <div class="hotdegree col-xs-2 col-md-1"><b>({{key.hot}})</b></div>
             <div class="hot col-xs-1"><strong>热</strong></div>
           </li>
         </ul>
@@ -105,7 +107,9 @@ ul .firstline{
   white-space: nowrap; 
   color: #34ace0;
 }
-.article strong{
+.hotdegree b{
+  display: block;
+  text-align: center;
   margin-left: 10px;
   font-weight: 400;
   color: #aaa69d;
