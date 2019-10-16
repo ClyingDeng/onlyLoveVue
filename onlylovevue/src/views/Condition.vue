@@ -1,18 +1,20 @@
    <template>
-  <div class="condition">
-    <div class="container" style="margin-top: 110px">
+  <div class="condition" style="margin-top: 110px">
+    <div class="container col-md-12">
       <div class="row">
         <div class="youyisi">
           <div class="touxiang">
             <img src="../assets/imgs/xd.jpg" class="img-thumbnail" />
+            
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
-              <h3 style="color:blueviolet">退路</h3>
+              <h3 style="color:blueviolet" >&nbsp;退路</h3>
             </div>
             <!-- 会员图标 -->
             <div style="float: left">
-              <img src="../assets/imgs/8.png" width="50px" height="40px" />
+              <!-- <img src="../assets/imgs/8.png" width="50px" height="40px" /> -->
+              <i class="fa fa-google-wallet fa-3x" aria-hidden="true " style="color:#EDB566;"></i>
             </div>
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
@@ -48,10 +50,11 @@
         <!-- 访客 -->
         <div class="fangke" style="float:right;margin-top:60px;margin-right: 30px;">
           <span style="color:blueviolet">
-            今日访客:1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;被挡访客:2
-            <br />总访客人数:&nbsp;903904;
+            今日访客:1 被挡访客:2
+            <br />总访客人数:903904;
           </span>
         </div>
+
         <div style="float: right;margin-top: 55px;margin-right: 10px">
           <img src="../assets/imgs/eye.png" width="50px" height="50px" />
         </div>
@@ -78,9 +81,7 @@
               <li>
                 <a href="#">个人档</a>
               </li>
-              <!-- <li>
-                <a href="#">音乐</a>
-              </li>-->
+
               <li>
                 <a href="#">更多</a>
               </li>
@@ -114,7 +115,7 @@
         </a>
         <a href="#" class="list-group-item">
           <span class="glyphicon glyphicon-play-circle"></span>
-          <span style="padding-left:10px">空间达人</span>
+          <span style="padding-left:10px">分享动态</span>
         </a>
         <a href="#" class="list-group-item">
           <span class="glyphicon glyphicon-list-alt"></span>
@@ -123,7 +124,7 @@
 
         <a href="#" class="list-group-item">
           <span class="glyphicon glyphicon-th-large"></span>
-          <span style="padding-left:10px">游戏应用</span>
+          <span style="padding-left:10px">我的应用</span>
         </a>
       </div>
 
@@ -132,40 +133,44 @@
           QQ农场
           <span class="badge">2</span>
         </a>
-        <a href="#" class="list-group-item">QQ牧场</a>
+        <a href="#" class="list-group-item">情侣空间</a>
         <a href="#" class="list-group-item">
           花藤
           <span class="badge">2</span>
         </a>
-        <a href="#" class="list-group-item">礼物</a>
-        <a href="#" class="list-group-item">游戏应用中心</a>
+        <a href="#" class="list-group-item">亲密度</a>
+        <a href="#" class="list-group-item">送礼物</a>
 
-        <a href="#" class="list-group-item">LOL</a>
+        <a href="#" class="list-group-item">设置</a>
       </div>
     </div>
     <!-- 中间动态 -->
     <!-- 说点什么！！！ -->
-    <div class="centerblock" style="float: left;margin-left: 20px;">
-        <div class="shuoshenme" style="padding: 0px;float: left;width: 550px;">
-          <form role="form">
-            <div class="form-group has-feedback">
-              <textarea class="form-control" rows="3" placeholder="说点什么吧"></textarea>
-              <button
-                class="btn btn-default glyphicon glyphicon-camera form-control-feedback"
-                style="height: 74px;width: 50px;"
-              ></button>
-            </div>
-          </form>
-        </div>
-        <div style="float: left">
+    
+    <div class="centerblock " style="float: left;margin-left: 45px;">
+      <div class="shuoshenme" style="padding: 0px;float: left;width: 550px;">
+        <form role="form">
+          <div class="form-group has-feedback">
+            <textarea class="form-control" rows="3" placeholder="说点什么吧"></textarea>
+            <button
+              class="btn btn-default glyphicon glyphicon-camera form-control-feedback"
+              style="height: 74px;width: 50px;"
+            ></button>
+          </div>
+          <!-- <div style="float: left">
           <button
             class="btn btn-default glyphicon glyphicon-paperclip"
             style="height: 74px;width: 50px"
           ></button>
-        </div>
+          </div>-->
+        </form>
+      </div>
 
       <!-- 全部动态 -->
-      <div style="float left;clear: both;background-color: rgb(243, 237, 237);">
+      <div
+        class="dongtai"
+        style="float left;margin-top:100px; background-color: rgb(243, 237, 237);"
+      >
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -207,6 +212,7 @@
         </div>
       </div>
       <!-- 第一个说说 -->
+
       <div style="margin-top: 20px;height:500px;background-color: rgb(243, 237, 237)">
         <div style="float: left;padding: 20px">
           <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
@@ -229,8 +235,8 @@
           </p>
         </div>
         <div style="margin:30px ">
-          <img src="../assets/imgs/xd.jpg" height="200px" width="230px" />
-          <img src="../assets/imgs/xd.jpg" height="200px" width="230px" />
+          <img class="shuotu" src="../assets/imgs/xd.jpg" />
+          <img class="shuotu" src="../assets/imgs/xd.jpg" />
         </div>
       </div>
       <!-- 第二个说说 -->
@@ -257,8 +263,8 @@
         </div>
 
         <div style="margin:30px ">
-          <img src="../assets/imgs/xd.jpg" height="200px" width="230px" />
-          <img src="../assets/imgs/xd.jpg" height="200px" width="230px" />
+          <img class="shuotu" src="../assets/imgs/xd.jpg" />
+          <img class="shuotu" src="../assets/imgs/xd.jpg" />
         </div>
       </div>
     </div>
@@ -350,7 +356,7 @@
 <style>
 .condition {
   width: 100%;
-  height: 1000px;
+  /* height: 1000px; */
   margin-top: 75px;
 }
 /* * a {
@@ -364,6 +370,14 @@
 .youyisi button {
   margin-top: -78px;
   margin-left: 60px;
+}
+.shuotu {
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin: auto;
+  margin-left: 10px;
+  float: left;
 }
 #shuodao a {
   color: blueviolet;
@@ -503,6 +517,17 @@
   .youyisi2 {
     width: 320px;
   }
+  .dongtai {
+    display: block;
+  }
+  .centerblock {
+    display: block;
+    position: relative;
+    left:50px
+  }
+  .centerblock .shuoshenme {
+    width: 500px;
+  }
 }
 @media screen and (max-width: 716px) {
   .youyisi2 {
@@ -515,10 +540,27 @@
     display: none;
   }
 }
-/* @media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px) and (min-width: 992px) {
   .centerblock {
-    display: flex;
-    justify-content: center;
+    display: block;
+    padding-left: 170px;
   }
-} */
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .centerblock {
+    width: 550px;
+    display: block;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .centerblock{
+    width: 465px;
+    margin-left: 0;
+    margin: auto
+  }
+   .shuoshenme form{
+        width: 465px;
+  }
+}
 </style>
