@@ -43,13 +43,13 @@
       <div class="container" >
         <!-- <div class="row mb-4"> -->
           <div class="col-md-4"  v-for="(key,index) in conditions"  :key="index" >
-            <div class="product border" >
+            <div class="product bordser"  >
               <div class="product-img">
                 <img src="../assets/imgs/rose.jpg" />
               </div>
               <div class="product-block" >
                 <h5>{{key.prop_Name}}</h5>
-                <h5 class="text-danger">{{key.prop_price}}</h5>
+                <h5 class="text-danger">￥{{key.prop_price}}</h5>
                 <ul class="list-inline">
                   <li class="list-inline-item">
                     <i class="fa fa-clock-o"></i> 已售：10
@@ -66,7 +66,8 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
                   </div>
                   <div  class="col-md-6">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" @click.prevent="Buy">直接购买</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"  @click.prevent="Buy" >直接购买</button>
+                 <!-- <router-link to="{path:'/buy',query:{id:this.conditions[index].prop_Id}}"></router-link> -->
                   </div>
                 </div>
               </div>
@@ -313,9 +314,17 @@ export default {
     return {
       num: 1,
       conditions: [],
-    
+    // name:[],
       // className1:'active',
       // className1:'',
+      // arrDate:[
+      //   {id:'1',title:'第一条'},
+      //   {id:'2',title:'第二条'},
+      //   {id:'3',title:'第三条'},
+      //   {id:'4',title:'第四条'},
+      //   {id:'5',title:'第五条'}
+
+      // ]
 
     };
   
@@ -324,12 +333,16 @@ export default {
   // 组件创建后完成执行的操作
   created() {
     this.$axios
-      .get("http://localhost:3000/shop/product")
+      .get("http://localhost:3000/shop/product"
+        
+      )
       .then(res => {
         console.log("查询结果：");
         console.log(res.data.data);
+        // let i = 0
         // 拿到后台数据·赋值给前端
         this.conditions = res.data.data;
+     
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -343,9 +356,10 @@ export default {
       this.$router.push("/shopcart");
     },
     Buy() {
+   
       this.$router.push("/buy");
     },
-   
+ 
     
   }
 };
