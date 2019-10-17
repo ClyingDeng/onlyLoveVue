@@ -98,6 +98,11 @@ let router = new Router({
       component: () => import( './views/Buy.vue')
     },
     {
+      path: '/member',
+      name: 'member',
+      component: () => import( './views/Member.vue')
+    },
+    {
       path: '/*',   //路由匹配不成功时
       name: 'notfound',
       component: () => import( './views/404.vue')

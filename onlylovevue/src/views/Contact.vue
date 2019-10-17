@@ -5,7 +5,7 @@
       <div class="row" style="margin-top:100px">
         <div class="col-lg-8">
   <div class="contact">
-                <div class="col-md-8 col-xs-12" style="margin-top: 10px">
+                <div class="col-md-12 col-xs-12" style="margin-top: 10px">
 
                 <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h4><img src="../assets/imgs/huihua.png" alt="">最近的留言会显示在这里，显示十条</h4>
