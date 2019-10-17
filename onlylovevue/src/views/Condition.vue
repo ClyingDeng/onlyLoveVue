@@ -55,7 +55,7 @@
         </div>
 
         <div style="float: right;margin-top: 55px;margin-right: 10px">
-          <img src="../assets/imgs/eye.png" width="50px" height="50px" />
+          <img src="../assets/imgs/resou.png" width="50px" height="50px" />
         </div>
 
         <!-- 说说导航 -->
@@ -92,7 +92,10 @@
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
-      <div class="zuobian" style="width: 180px; margin-left: 47px;font-size: 14px;float: left">
+      <div
+        class="zuobian"
+        style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left"
+      >
         <div>
           <a href="./Index.vue" class="list-group-item">
             <span
@@ -148,17 +151,20 @@
       <!-- 中间动态 -->
       <!-- 说点什么！！！ -->
 
-      <div class="centerblock col-xs-12 col-xs-md col-lg-6" style="padding:0">
-        <div class="shuoshenme col-xs-12" style="padding: 0px;float: left">
+      <div class="centerblock col-xs-12 col-xs-md-6 col-lg-6">
+        <div
+          class="shuoshenme col-xs-12"
+          style="padding: 0px;margin-bottom:20px;background-color: rgb(243, 237, 237)"
+        >
           <form role="form">
             <div class="form-group has-feedback">
-              <textarea class="form-control" v-model="conuser.conwords" rows="10" placeholder="说点什么吧"></textarea>
+              <textarea class="form-control" v-model="form.name" rows="10" placeholder="说点什么吧"></textarea>
               <div id="upload">
                 <el-upload
                   class="upload-demo"
                   ref="upload"
                   list-type="picture-card"
-                  action="http://localhost:3000/users/uploadHeadPic"
+                  action="http://localhost:3000/hotSearch/publish"
                   :limit="4"
                   :before-upload="beforeupload"
                   :auto-upload="false"
@@ -178,52 +184,8 @@
           </form>
         </div>
         <!-- 全部动态 -->
-        <div
-          class="dongtai"
-          style="float left;margin-top:100px; background-color: rgb(243, 237, 237);"
-        >
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  style="color: black;padding-left:0px "
-                >
-                  全部动态
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">续费黄钻</a>
-                  </li>
-                  <li>
-                    <a href="#">赠送好友</a>
-                  </li>
-                  <li>
-                    <a href="#">黄钻官网</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="#" style="color: black">
-                  <span class="glyphicon glyphicon-repeat"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#" style="color: black">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
         <!-- 第一个说说 -->
-        <div style="margin-top: 20px;height:500px;background-color: rgb(243, 237, 237)">
+        <div style="margin-top: 20px;clear:both;height:500px;background-color: rgb(243, 237, 237)">
           <div style="float: left;padding: 20px">
             <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
           </div>
@@ -250,7 +212,7 @@
           </div>
         </div>
         <!-- 第二个说说 -->
-        <div style="margin-top: 20px;height: 500px;background-color: rgb(243, 237, 237)">
+        <div style="margin-top: 20px;clear:both;height: 500px;background-color: rgb(243, 237, 237)">
           <div style="float: left;padding: 20px">
             <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
           </div>
@@ -304,58 +266,108 @@
             style="background-color: rgb(243, 237, 237);height:450px;width:300px;margin-top:2px"
           >
             <h4 style="text-align:center;color:blueviolet">谁看过我</h4>
-            <a href>
-              <p>
-                <span>邓颖</span>
-              </p>
-              <p>
-                <span>宋佳镱</span>
-              </p>
-              <p>
-                <span>李佳欣</span>
-              </p>
-              <p>
-                <span>石吉红</span>
-              </p>
-              <p>
-                <span>邓颖</span>
-              </p>
-              <p>
-                <span>宋佳镱</span>
-              </p>
-              <p>
-                <span>李佳欣</span>
-              </p>
-              <p>
-                <span>石吉红</span>
-              </p>
-            </a>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
           <div
             class="wokan"
             style="background-color: rgb(243, 237, 237);height:400px;width:300px;margin-top: 20px"
           >
             <h4 style="text-align:center;color:blueviolet">我看过谁</h4>
-            <a href>
-              <p>
-                <span>邓颖</span>
-              </p>
-              <p>
-                <span>宋佳镱</span>
-              </p>
-              <p>
-                <span>李佳欣</span>
-              </p>
-              <p>
-                <span>石吉红</span>
-              </p>
-              <p>
-                <span>邓颖</span>
-              </p>
-              <p>
-                <span>宋佳镱</span>
-              </p>
-            </a>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="work-box">
+                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-img">
+                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                  </div>
+                  <div class="work-content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h2 class="w-title">clying</h2>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -371,10 +383,31 @@
   /* height: 1000px; */
   margin-top: 75px;
 }
-/* * a {
-  text-decoration: none;
-} */
-
+.work-content {
+  padding: 0;
+}
+.w-title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  color: blueviolet;
+  transition: all 1s;
+}
+.w-title:hover {
+  color: #3498db;
+}
+.work-img {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+.work-img img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+}
 .touxiang {
   width: 130px;
   float: left;
@@ -390,9 +423,6 @@
   margin: auto;
   margin-left: 10px;
   float: left;
-}
-#shuodao a {
-  color: blueviolet;
 }
 .qiandao {
   background-color: rgb(243, 237, 237);
@@ -456,106 +486,24 @@
   /* margin-top: 7px; */
   margin-left: 60px;
 }
-.kan p {
-  width: 97px;
-  height: 97px;
-  margin-bottom: 25px;
-  margin-left: 2px;
-  float: left;
-}
-.kan span {
-  display: block;
-  margin-top: 100px;
-  margin-left: 30px;
-  color: blueviolet;
-}
-.kanwo p:nth-child(1) {
-  background-image: url(../assets/imgs/fang1.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(2) {
-  background-image: url(../assets/imgs/fang2.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(3) {
-  background-image: url(../assets/imgs/fang3.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(4) {
-  background-image: url(../assets/imgs/fang4.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(5) {
-  background-image: url(../assets/imgs/fang5.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(6) {
-  background-image: url(../assets/imgs/fang6.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(7) {
-  background-image: url(../assets/imgs/fang7.jpg);
-  background-size: 150%;
-}
-.kanwo p:nth-child(8) {
-  background-image: url(../assets/imgs/fang8.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(1) {
-  background-image: url(../assets/imgs/fang4.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(2) {
-  background-image: url(../assets/imgs/fang5.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(3) {
-  background-image: url(../assets/imgs/fang6.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(4) {
-  background-image: url(../assets/imgs/fang1.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(5) {
-  background-image: url(../assets/imgs/fang2.jpg);
-  background-size: 150%;
-}
-.wokan p:nth-child(6) {
-  background-image: url(../assets/imgs/fang3.jpg);
-  background-size: 150%;
-}
-@media screen and (max-width: 992px) {
+
+/* @media screen and (max-width: 992px) {
   .youyisi2 {
     width: 320px;
   }
   .dongtai {
     display: block;
   }
-  .centerblock {
-    display: block;
-    position: relative;
-    /* left: 50px; */
-  }
-  /* .centerblock .shuoshenme {
-    width: 500px;
-  } */
 }
 @media screen and (max-width: 716px) {
   .youyisi2 {
     width: 100px;
   }
 }
-@media screen and (max-width: 1200px) {
-  .zuobian,
-  .youbian {
-    display: none;
-  }
-}
+
 @media screen and (max-width: 1200px) and (min-width: 992px) {
   .centerblock {
     display: block;
-    /* padding-left: 170px; */
   }
 }
 @media screen and (max-width: 992px) and (min-width: 768px) {
@@ -574,6 +522,12 @@
   .shuoshenme form {
     width: 465px;
   }
+} */
+@media screen and (max-width: 1200px) {
+  .zuobian,
+  .youbian {
+    display: none;
+  }
 }
 </style>
 
@@ -582,32 +536,48 @@ export default {
   name: "test",
   data() {
     return {
-      company_id: "10001",
+      time: "",
+      msg: "上传动态",
+      user_Id: "",
+      user: {},
       fileList: [],
       form: {
         name: "" //绑定表单元素的属性
       },
-      param: "", // 表单最后提交的参数对象
-      conuser: {
-        conuserId: "20015",
-        conwords: "",
-        conTime: "2019-09-28 11:22:24",
-        conpic0: {},
-        conpic1: {},
-        conpic2: {},
-        conpic3: {}
-      }
+      param: "" // 表单最后提交的参数对象
     };
   },
   methods: {
     onSubmit() {
+      let nowDate = new Date();
+      let date = {
+        year: nowDate.getFullYear(),
+        month: nowDate.getMonth() + 1,
+        date: nowDate.getDate(),
+        hours: nowDate.getHours(),
+        minutes: nowDate.getMinutes(),
+        seconds: nowDate.getSeconds()
+      };
+      console.log(date);
       let _this = this;
-      // var names = _this.form.name;
+      var names = _this.form.name;
+      _this.time =
+        date.year +
+        "-" +
+        date.month +
+        "-" +
+        date.date +
+        " " +
+        date.hours +
+        ":" +
+        date.minutes +
+        ":" +
+        date.seconds;
       this.$refs.upload.submit();
       //将非表单元素的数据也添加到参数对象中；
-      // this.param.append("company_id", _this.company_id);
+      this.param.append("conwords", _this.form.name);
       //将表单元素的数据也添加到参数对象中；
-      // this.param.append("caption", names);
+      this.param.append("conTime", _this.time);
       //设置提交请求头，适用于上传文件
       let config = {
         headers: {
@@ -616,34 +586,24 @@ export default {
       };
       // //调用接口，执行上传所有数据的操作
       this.$axios
-        .post("http://localhost:3000/hotSearch/publish", this.conuser, config)
+        .post("http://localhost:3000/hotSearch/publish", this.param, config)
         .then(function(result) {
-          console.log(this.conuser)
           console.log(result);
+          console.log(_this.$refs.upload)
+          _this.$refs.upload.clearFiles()
         });
+      
     },
-   /*  resetForm(formName) {
-      this.$refs[formName].resetFields();
-    }, */
     //当上传文件组件submit之前触发执行
     beforeupload(file) {
       console.log("准备上传。。。。");
       // 准备表单上传需要的参数对象
-      // this.param = new FormData();
+      this.param = new FormData();
       this.fileList.push(file); // 把需要上传的文件保存到数组中
-      console.log(file)
-      // console.log(this.fileList)
       // 遍历数组，把所有文件都保存到参数对象中
       for (let i = 0; i < this.fileList.length; i++) {
-        this.$set(this.conuser,`conpic${i}`,this.fileList[i].name)
+        this.param.append(`img_${i}`, this.fileList[i]);
       }
-      console.log(this.conuser)
-     /*  console.log(this.fileList)
-      this.conuser.conpic1 = this.fileList[1].name
-      this.conuser.conpic2 = this.fileList[2].name
-      this.conuser.conpic3 = this.fileList[3].name
-      this.conuser.conpic4 = this.fileList[4].name
-      console.log(this.conuser) */
       return false;
     }
   }
