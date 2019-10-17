@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2 class="title">
+    <!-- <div style="display:none"> -->
+    <div>
+        <h2 class="title">
       个人信息
       <span class="pro-label label label-warning">PRO</span>
     </h2>
@@ -24,9 +26,8 @@
             />
           </div>
           <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-            <!-- <input type="file" class="file-uploader pull-left" /> -->
-            <!-- <button type="submit" class="btn btn-sm btn-default-alt pull-left" >上传图片</button> -->
-            <el-upload
+            
+            <!-- <el-upload
               class="upload-demo form-inline col-md-10 col-sm-9 col-xs-12"
               ref="upload"
               action="http://localhost:3000/users/updateHeadPic"
@@ -36,33 +37,34 @@
               :multiple="true">
               <el-button size="small" type="primary">点击上传</el-button>
               <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
-            </el-upload>
+            </el-upload> -->
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">账号</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
             <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.base_info_Id" />
+            <!-- {{this.suserInfos.base_info_Id}} -->
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">用户名</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.nickName" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.nickName" />
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">性别</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="suserInfos.sex" label="男">男</el-radio>
-            <el-radio v-model="suserInfos.sex" label="女">女</el-radio>
+            <el-radio v-model="suserInfos.sex" disabled label="男">男</el-radio>
+            <el-radio v-model="suserInfos.sex" disabled label="女">女</el-radio>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">年龄</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.age" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.age" />
           </div>
         </div>
         <div class="form-group">
@@ -74,7 +76,7 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">爱情宣言</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.love_description" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.love_description" />
           </div>
         </div>
       </fieldset>
@@ -83,29 +85,29 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">身高</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.height + 'cm'" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.height + 'cm'" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">体重</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.weight + 'kg'" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.weight + 'kg'" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">薪资</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
             <span class="sexStyle" v-for="(key,index) in salary">
-            <el-radio v-model="suserInfos.salary" :label="index">{{key}}</el-radio>
+            <el-radio v-model="suserInfos.salary" disabled :label="index">{{key}}</el-radio>
             </span>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">婚姻状况</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="this.suserInfos.marriage" :label="0">未婚</el-radio>
-            <el-radio v-model="this.suserInfos.marriage" :label="1">离异</el-radio>
-            <el-radio v-model="this.suserInfos.marriage" :label="2">丧偶</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" disabled :label="0">未婚</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" disabled :label="1">离异</el-radio>
+            <el-radio v-model="this.suserInfos.marriage" disabled :label="2">丧偶</el-radio>
           </div>
         </div>
         <div class="form-group">
@@ -115,19 +117,19 @@
               :indeterminate="isIndeterminate"
               v-model="checkAll"
               @change="handleCheckAllChange"
-            >全选</el-checkbox>
+            disabled>全选</el-checkbox>
             <div style="margin: 15px 0;"></div>
             <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-              <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+              <el-checkbox v-for="city in cities" :label="city" :key="city" disabled>{{city}}</el-checkbox>
             </el-checkbox-group>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">不良嗜好</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="this.suserInfos.blight" :label="1">酗酒</el-radio>
-            <el-radio v-model="this.suserInfos.blight" :label="2">抽烟</el-radio>
-            <el-radio v-model="this.suserInfos.blight" :label="0">无</el-radio>
+            <el-radio v-model="this.suserInfos.blight" disabled :label="1">酗酒</el-radio>
+            <el-radio v-model="this.suserInfos.blight" disabled :label="2">抽烟</el-radio>
+            <el-radio v-model="this.suserInfos.blight" disabled :label="0">无</el-radio>
           </div>
         </div>
         <div class="form-group">
@@ -141,13 +143,19 @@
       <div class="form-group">
         <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
           <!-- <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/> -->
-          <button class="btn btn-primary" type="button" @click="onSubmit">确认修改</button>
+          <button class="btn btn-danger" type="button" @click="onSubmit">编辑</button>
         </div>
       </div>
     </form>
+    </div>
   </div>
 </template>
 <style scoped>
+.avatar .figure img[data-v-6708ad21] {
+    width: 120%;
+    height: 120%;
+    margin-bottom: 0px;
+}
 .sexStyle{
   margin-right: 15px;
 }
@@ -158,9 +166,7 @@ input[type="file"] {
     margin-top: 0px;
 }
 .avatar .figure img[data-v-0a4b02ae] {
-    /* width: 100%; */
-    width: 120%;
-    height: 120%;
+    width: 100%;
 }
 .figure{
       padding:0;
@@ -214,6 +220,8 @@ input[type="file"] {
 </style>
 <script>
 import jwt_decode from 'jwt-decode'
+// import baseInfo from "../components/userInfo.vue";
+
 const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 export default {
   data: function() {
@@ -245,6 +253,9 @@ export default {
     };
   },
   props:['suserInfos'],
+//   component: {
+//     baseInfo: baseInfo,
+//   },
   mounted:function(){
       this.sex = this.suserInfos.sex
       // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
@@ -268,61 +279,7 @@ export default {
       return false;
     },
       onSubmit() {
-      let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
-      console.log('token对象：',userInfo)
-      let _this = this;
-      var names = _this.form.name;
-      this.$refs.upload.submit();
-      console.log(this.param)
-      let config = {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      };
-      //修改头像
-      if(this.param){
-      // //调用接口，执行上传所有数据的操作
-      this.$axios
-        .post("http://localhost:3000/users/updateHeadPic", this.param, config)
-        .then(function(result) {
-          console.log(result);
-          console.log(result.data.msg)
-          
-        })
-      }
-      // else{
-      //   alert('您暂未修改头像图片！')
-      // }
-      //修改信息
-      console.log('信息：')
-      // this.updateInfos = this.suserInfos
-      console.log(this.suserInfos)
-      //转日期格式
-    function dateFormat(time) {
-    var date=new Date(time);
-    var year=date.getFullYear();
-    /* 在日期格式中，月份是从0开始的，因此要加0
-     * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
-     * */
-    var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
-    var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
-    var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
-    var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
-    var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
-    // 拼接
-    return year+"-"+month+"-"+day;
-}
-      this.suserInfos.birthday = dateFormat(this.suserInfos.birthday)
-      console.log(this.suserInfos.birthday)
-
-      // //调用接口，执行上传所有数据的操作
-      this.$axios
-        .post("http://localhost:3000/users/updateInfo", this.suserInfos)
-        .then(function(result) {
-          console.log(result);
-          console.log(result.data.msg)
-
-        })
+    
       
       
     //子组件信息与父组件绑定

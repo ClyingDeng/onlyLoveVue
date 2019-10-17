@@ -1,9 +1,10 @@
 <template>
-  <div class="register">
-    <div class="container col-ms-12 col-md-6 col-md-offset-3">
+  <div>
+    <div class="container col-ms-12 col-md-6 col-md-offset-3 register">
       <!-- <el-col :span="24"> -->
       <!-- <h1>注册</h1> -->
       <!-- <el-col :for="14"> -->
+        <HeadNav></HeadNav>
       <el-form
         :model="user"
         status-icon
@@ -132,6 +133,9 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.register{
+  margin-top: 100px;
+}
 .regHead {
   display: block;
   text-align: center;

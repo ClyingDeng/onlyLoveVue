@@ -103,47 +103,47 @@ export default {
           callback();
         }
       };
-    var tel = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('手机号不能为空！'));
-        }  
-        // else if(value !== this.userInfo.telephone){
-        //   console.log(this.userInfo.telephone)
-        //   callback(new Error('请输入注册时的手机号！'));
-        // }
-        else {
-          callback();
-        }
-      };
-      var validatePass3 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('验证码不能为空'));
-        } else {
-          if (this.forgetPwd.surePassword !== '') {
-            this.$refs.forgetPwd.validateField('surePassword');
-          }
-          callback();
-        }
-      };
-      var validatePass4 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('密码不能为空'));
-        } else {
-          if (this.forgetPwd.surePassword !== '') {
-            this.$refs.forgetPwd.validateField('surePassword');
-          }
-          callback();
-        }
-      };
-      var validatePass5 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.forgetPwd.newPassword) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      };
+    // var tel = (rule, value, callback) => {
+    //     if (value === '') {
+    //       callback(new Error('手机号不能为空！'));
+    //     }  
+    //     // else if(value !== this.userInfo.telephone){
+    //     //   console.log(this.userInfo.telephone)
+    //     //   callback(new Error('请输入注册时的手机号！'));
+    //     // }
+    //     else {
+    //       callback();
+    //     }
+    //   };
+    //   var validatePass3 = (rule, value, callback) => {
+    //     if (value === '') {
+    //       callback(new Error('验证码不能为空'));
+    //     } else {
+    //       if (this.forgetPwd.surePassword !== '') {
+    //         this.$refs.forgetPwd.validateField('surePassword');
+    //       }
+    //       callback();
+    //     }
+    //   };
+    //   var validatePass4 = (rule, value, callback) => {
+    //     if (value === '') {
+    //       callback(new Error('密码不能为空'));
+    //     } else {
+    //       if (this.forgetPwd.surePassword !== '') {
+    //         this.$refs.forgetPwd.validateField('surePassword');
+    //       }
+    //       callback();
+    //     }
+    //   };
+    //   var validatePass5 = (rule, value, callback) => {
+    //     if (value === '') {
+    //       callback(new Error('请再次输入密码'));
+    //     } else if (value !== this.forgetPwd.newPassword) {
+    //       callback(new Error('两次输入密码不一致!'));
+    //     } else {
+    //       callback();
+    //     }
+    //   };
 
     return {
       ruleForm: {

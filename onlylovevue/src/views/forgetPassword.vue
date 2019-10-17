@@ -1,11 +1,12 @@
 <template>
-  <div class="forgetPassword">
+  <div>
     <!-- <h1>This is an login page</h1> -->
-    <div class="container col-ms-12 col-md-6 col-md-offset-3">
+    <HeadNav></HeadNav>
+    <div class="container col-ms-12 col-md-6 col-md-offset-3 forgetPassword">
       <!-- <el-col :span="24">
         <el-col :for="7"> -->
-         <label class="input-label">忘记密码</label>
-      <el-form :model="forgetPwd" status-icon :rules="rules1" ref="forgetPwd" label-width="100px" class="demo-ruleForm">
+      <el-form :model="forgetPwd" status-icon :rules="rules1" ref="forgetPwd" label-width="100px" class="forgetForm">
+         <label class="input-label secret">忘记密码</label>
       <el-form-item label="手机号码" prop="telephone">
       <el-input type="text" v-model="forgetPwd.telephone" autocomplete="off"></el-input>
       </el-form-item>
@@ -30,7 +31,7 @@
       <el-button @click="resetForm('forgetPwd')">重置</el-button>
       </el-form-item>
       </el-form> 
-          <router-link to="/forgetPassword">忘记密码</router-link>
+          <!-- <router-link to="/forgetPassword">忘记密码</router-link> -->
         <!-- </el-col>
       </el-col> -->
     </div>
@@ -41,6 +42,55 @@
 export default {
   name: "login",
   data: function() {
+    var tel = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('手机号不能为空！'));
+        }  
+        // else if(value !== this.userInfo.telephone){
+        //   console.log(this.userInfo.telephone)
+        //   callback(new Error('请输入注册时的手机号！'));
+        // }
+        else {
+          callback();
+        }
+      };
+      var validatePass3 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('验证码不能为空'));
+        } else {
+          if (this.forgetPwd.surePassword !== '') {
+            this.$refs.forgetPwd.validateField('surePassword');
+          }
+          callback();
+        }
+      };
+      var validatePass4 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('密码不能为空'));
+        } else {
+          if (this.forgetPwd.surePassword !== '') {
+            this.$refs.forgetPwd.validateField('surePassword');
+          }
+          callback();
+        }
+      };
+      var validatePass5 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.forgetPwd.newPassword) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
+      var validatePass6 = (rule, value, callback) => {
+        if (localStorage.getItem('vcode') !== value) {
+          callback(new Error('验证码错误'));
+        } else {
+          callback();
+        }
+      };
+
     return {
       forgetPwd:{
           telephone:'',
@@ -56,7 +106,8 @@ export default {
           code:[
             // {required:true,message:'密码不能为空', trigger: 'blur' },
             { min: 6, max: 6, message: "验证码必须是6位", trigger: "blur" },
-            { validator: validatePass3, trigger: 'blur' }
+            { validator: validatePass3, trigger: 'blur' },
+            { validator: validatePass6, trigger: 'blur' }
           ],
           newPassword: [
             // {required:true,message:'密码不能为空', trigger: 'blur' },
@@ -71,6 +122,20 @@ export default {
         }
     };
   },
+  //组件创建完成后执行的操作
+      // created(){
+      //   //查询数据库手机号
+      //   this.$axios.get('http://localhost:3000/telephone')
+      //   .then(res => {
+      //     console.log('查询结果：' )
+      //     console.log(res.data.data)
+      //     //拿到后台数据赋值给前端
+      //     this.conditions = res.data.data
+      //   })
+      //   .catch(err => {
+      //     console.log('错误信息：' + err)
+      //   })
+      // },
   methods: {
     submitForm1(formName) {
         if(this.forgetPwd.code && this.forgetPwd.telephone && this.forgetPwd.newPassword && this.forgetPwd.surePassword){
@@ -81,7 +146,7 @@ export default {
       .then(function(result) {
         console.log(result);
         console.log(result.data.msg)
-        
+        alert(result.data.msg)
       })
     }else{
       alert('请输入完整！')
@@ -91,7 +156,7 @@ export default {
      //获取短信验证码
       getvcode(){
         let flag = (this.forgetPwd.telephone.length)
-        console.log(flag)
+        // console.log(flag)
         // console.log(this.userInfo.telephone)
         // console.log(this.forgetPwd.telephone)
           let location = 'http://localhost:3000/users/vCode/:' + this.forgetPwd.telephone
@@ -108,13 +173,13 @@ export default {
           this.conditions = res.data.data
           if(res.data.data){
             alert('验证码已发送！')
+            localStorage.setItem('vcode',res.data.data)
           }
+          
         })
         .catch(err => {
           console.log('错误信息：' + err)
         })
-        }else{
-          alert('手机号与注册手机号不匹配！')
         }
 
         
@@ -127,6 +192,12 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.forgetPassword{
+  margin-top: 100px;
+}
+.secret{
+  font-size: 18px;
+}
 .forgetForm {
   height: 400px;
   margin: 0 auto;

@@ -150,17 +150,23 @@ var userController = {
                     if (err) {
                         res.json({ code: 500, msg: '查询手机号失败！' + err })
                     } else {
-                        console.log('数据库里面的手机号：' + results[0].telephone)
+                        // console.log('数据库里面的手机号：' + results[0].telephone)
+                        // if(!req.session.TelvCode){
+                        //     req.session.TelvCode[0] = 1
+                        // }
+                        console.log(req.session)
                         console.log(req.session.TelvCode)
+                        
                         console.log('laiba')
-
-                        console.log(req.session.TelvCode[0].vCode)
-                        console.log(user.vCode)
-                            //判断当前输入的手机号是否与注册手机号一致
-                        for (var i = 0; i < req.session.TelvCode.length; i++) {
-                            if (results[0].telephone == user.telephone) {
+                        console.log(results)
+                        if(results[0]){
+                            console.log(req.session.cookie.TelvCode)
+                            console.log(user.vCode)
+                               //判断当前输入的手机号是否与注册手机号一致
+                        // for (var i = 0; i < req.session.TelvCode.length; i++) {
+                            // if (results[0].telephone == user.telephone) {
                                 //判断验证码
-                                if (req.session.TelvCode[i].vCode == user.vCode) {
+                                // if (req.session.cookie.TelvCode == user.vCode) {
 
                                     //判断密码
                                     bcrypt.compare(user.password1, user.password, (err, res1) => {
@@ -186,21 +192,25 @@ var userController = {
                                             }
                                         })
                                         //用完删除验证码
-                                    delete req.session.TelvCode[i];
-                                    if (req.session.TelvCode[i] == " " || req.session.TelvCode[i] == null || typeof(req.session.TelvCode[i]) == "undefined") {
-                                        req.session.TelvCode.splice(i, 1);
-                                        i = i - 1;
-                                    }
-                                    console.log(req.session.TelvCode)
-                                } else {
-                                    res.json({ code: 200, msg: '验证码输入失败，修改密码失败！' })
-                                }
+                                    // delete req.session.TelvCode[i];
+                                    // if (req.session.TelvCode[i] == " " || req.session.TelvCode[i] == null || typeof(req.session.TelvCode[i]) == "undefined") {
+                                    //     req.session.TelvCode.splice(i, 1);
+                                    //     i = i - 1;
+                                    // }
+                                    // console.log(req.session.TelvCode)
+                                // } else {
+                                //     res.json({ code: 200, msg: '验证码输入错误，修改密码失败！' })
+                                // }
 
-                            } else {
-                                res.json({ code: 200, msg: '手机号不一致，无法修改密码！' + err })
-                            }
+                            // } else {
+                            //     res.json({ code: 200, msg: '手机号不一致，无法修改密码！' + err })
+                            // }
 
+                        // }
+                        }else{
+                            res.json({ code: 200, msg: '您输入的手机号未注册！' })
                         }
+                         
 
                     }
                 })
