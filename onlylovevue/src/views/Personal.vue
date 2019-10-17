@@ -51,7 +51,7 @@
             </nav>
           </div>
           <div class="content-panel">
-            <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos"></component>
+            <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos" v-on:userInfo_commit='getNewInfo' ></component>
           </div>
         </div>
       </section>
@@ -79,6 +79,7 @@ export default {
       },
       conditions:'',
       userInfos:'',
+      // hackReset:true,
       rules: {
         telephone: [
           { required: true, message: "手机号码不能为空", trigger: "blur" },
@@ -92,6 +93,14 @@ export default {
     };
   },
   created(){
+    // rebuileComponents() {
+      // 销毁子标签
+      // this.hackReset = false;
+      // // 重新创建子标签
+      // this.$nextTick(() => {
+      //   this.hackReset = true;
+      // });
+    
         this.$axios.get('http://localhost:3000/users/userStatus')
         .then(res => {
           console.log('查询结果：' )
@@ -126,6 +135,10 @@ export default {
     setting: setting
   },
   methods: {
+    getNewInfo(e){
+      console.log(e)
+      this.userInfos = e
+    },
    compentChild(currentCompent){
      this.currentTabCompent = currentCompent
     //  console.log(currentCompent)

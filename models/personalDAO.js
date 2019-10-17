@@ -3,7 +3,7 @@ var personalDAO = {
     //显示头像/昵称/性别/爱情宣言
     getPersonalManyInfo: function(userId, callback) {
         console.log(userId)
-        DAO('select base_info_Id,nickName,headPic,sex,love_description,age,birthday,height,weight,salary,marriage,hobby,blight from base_info where base_info_Id = ?', [userId], function(err, results) {
+        DAO('select base_info_Id,nickName,age,sex,constellation,love_description,birthday,hobby,choose_object,province,city,location_detail,marriage,love_affair,body_status,height,weight,education,occupation,salary,blight,house,car,integral,headPic from base_info where base_info_Id = ?', [userId], function(err, results) {
             if (err) {
                 callback(err, null)
             } else {
