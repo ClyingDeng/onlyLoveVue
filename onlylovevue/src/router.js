@@ -27,7 +27,29 @@ let router = new Router({
         {
           path: 'personal',
           name: 'personal',
-          component: () => import( './views/Personal.vue')
+          component: () => import( './views/Personal.vue'),
+          children:[
+            {
+              path: 'setting',
+              name: 'setting',
+              component: () => import( './components/Setting.vue')
+            },
+            {
+              path: 'seeInfo',
+              name: 'seeInfo',
+              component: () => import( './components/SeeInfo.vue')
+            },
+            {
+              path: 'userInfo',
+              name: 'userInfo',
+              component: () => import( './components/userInfo.vue')
+            },
+            {
+              path: 'identification',
+              name: 'identification',
+              component: () => import( './components/Identification.vue')
+            }
+          ]
         },
         {
           path: 'shop',
@@ -93,6 +115,11 @@ let router = new Router({
       component: () => import( './views/Register.vue')
     },
     {
+      path: '/forget',
+      name: 'forget',
+      component: () => import( './views/ForgetPassword.vue')
+    },
+    {
       path: '/shopcart',
       name: 'shopcart',
       component: () => import( './views/Shopcart.vue')
@@ -116,12 +143,16 @@ let router = new Router({
 router.beforeEach((to,from,next) => {
   //除了login和register，其他的路由访问必须先登录
   let tokenIsExists = localStorage.getItem('mytoken') ? true : false //检查本地存储中是否有token
-  if(to.path == '/login' || to.path == '/register' || to.path == '/' || to.path == '/index'){  //能不登录就可以访问的路由
+  // console.log('topath')
+  // console.log(to.path)
+  if(to.path === '/login' || to.path == '/register' || to.path == '/' || to.path == '/index' || to.path == '/forget'){  //能不登录就可以访问的路由
     next()
-  }else{
+  }
+  else{
     if(tokenIsExists){
       next()//已经登录过并取得token，允许访问路由
-    }else{
+    }
+    else{
       next('/login')  //路由跳转到登录组件
     }
   }

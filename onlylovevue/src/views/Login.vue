@@ -1,7 +1,8 @@
 <template>
-  <div class="login">
+  <div>
     <!-- <h1>This is an login page</h1> -->
-    <div class="container col-ms-12 col-md-6 col-md-offset-3">
+    <HeadNav></HeadNav>
+    <div class="container col-ms-12 col-md-6 col-md-offset-3 login">
       <!-- <el-col :span="24">
         <el-col :for="7"> -->
           <el-form
@@ -23,7 +24,7 @@
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
             <el-radio label="1">记住我</el-radio>
-          <router-link to="/forgetPassword" class="forget">忘记密码</router-link>
+          <router-link to="/forget" class="forget">忘记密码</router-link>
           </el-form>
         <!-- </el-col>
       </el-col> -->
@@ -88,6 +89,9 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.login{
+  margin-top: 100px;
+}
 .loginForm {
   height: 400px;
   margin: 0 auto;

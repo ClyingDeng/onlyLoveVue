@@ -32,7 +32,7 @@
             <nav class="side-menu">
               <ul class="nav">
                 <li :class="className1">
-                  <a href="javascript:;" @click="compentChild('baseInfo')">
+                  <a href="javascript:;" @click="compentChild('seeInfo')">
                     <span class="fa fa-user" ></span>个人信息
                   </a>
                 </li>
@@ -60,16 +60,17 @@
 </template>
 
 <script>
-import baseInfo from "../components/userInfo.vue";
+
 import setting from "../components/Setting.vue";
 import identification from "../components/Identification.vue";
+import seeInfo from "../components/SeeInfo.vue";
 
 import jwt_decode from "jwt-decode";
 export default {
   // name: "login",
   data: function() {
     return {
-      currentTabCompent:'baseInfo',
+      currentTabCompent:'seeInfo',
       className1:'active',
       className2:'',
       className3:'',
@@ -116,9 +117,10 @@ export default {
         })
       },
   components: {
-    baseInfo: baseInfo,
+    // baseInfo: baseInfo,
     identification: identification,
-    setting: setting
+    setting: setting,
+    seeInfo:seeInfo
   },
   methods: {
     getNewInfo(e){

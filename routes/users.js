@@ -42,11 +42,16 @@ router.get('/vCode/:telephone', function(req, res, next) {
     }
     //手机号和验证码存到session
     console.log(tel)
-    req.session.TelvCode = []
-    req.session.TelvCode.push({ telephone: tel, vCode: code })
-    console.log(req.session.TelvCode)
-    console.log('保存到session里面的手机号' + req.session.TelvCode[0].telephone)
-    console.log('保存到session里面的手机号验证码' + req.session.TelvCode[0].vCode)
+    // req.session.cookie.TelvCode = []
+    console.log('保存到session的cookie里面')
+    console.log(req.session)
+    console.log(code)
+    // req.session.cookie.TelvCode.push(code)
+    // req.session.cookie.TelvCode.push({ telephone: tel, vCode: code })
+    // console.log(req.session.cookie.TelvCode)
+    // console.log(req.session)
+    // console.log('保存到session里面的手机号' + req.session.cookie.TelvCode[0].telephone)
+    // console.log('保存到session里面的手机号验证码' + req.session.cookie.TelvCode)
 
     console.log('后台发出去的验证码：' + code)
     var queryData = querystring.stringify({
