@@ -1,29 +1,35 @@
 <template>
-  <div class="login">
+  <div class="forgetPassword">
     <!-- <h1>This is an login page</h1> -->
     <div class="container col-ms-12 col-md-6 col-md-offset-3">
       <!-- <el-col :span="24">
         <el-col :for="7"> -->
-          <el-form
-            :model="loginUser"
-            status-icon
-            :rules="rules"
-            ref="ruleForm"
-            label-width="100px"
-            class="loginForm"
-          >
-            <el-form-item label="账号：" prop="telephone" ref="telephone">
-              <el-input v-model="loginUser.telephone"></el-input>
-            </el-form-item>
-            <el-form-item label="密码：" prop="password">
-              <el-input type="password" v-model="loginUser.password"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
-              <el-button @click="resetForm('ruleForm')">重置</el-button>
-            </el-form-item>
-            <el-radio label="1">记住我</el-radio>
-          </el-form>
+         <label class="input-label">忘记密码</label>
+      <el-form :model="forgetPwd" status-icon :rules="rules1" ref="forgetPwd" label-width="100px" class="demo-ruleForm">
+      <el-form-item label="手机号码" prop="telephone">
+      <el-input type="text" v-model="forgetPwd.telephone" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="验证码" prop="code">
+        <div class="col-xs-12 col-md-7" style="padding-left:0px;">
+          <el-input type="text" v-model="forgetPwd.code" autocomplete="off"></el-input>
+        </div>
+        <div class="col-xs-12 col-md-5 code">
+      <el-button type="info" class="getCode" @click="getvcode">获取短信验证码</el-button>
+        </div>
+      </el-form-item>
+      <el-form-item label="新密码" prop="newPassword">
+      <el-input type="password" v-model="forgetPwd.newPassword" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="surePassword">
+      <el-input type="password" v-model="forgetPwd.surePassword" autocomplete="off"></el-input>
+      </el-form-item>
+
+
+      <el-form-item>
+      <el-button type="primary" @click="submitForm1('forgetpassword')">提交</el-button>
+      <el-button @click="resetForm('forgetPwd')">重置</el-button>
+      </el-form-item>
+      </el-form> 
           <router-link to="/forgetPassword">忘记密码</router-link>
         <!-- </el-col>
       </el-col> -->
@@ -32,54 +38,87 @@
 </template>
 
 <script>
-import jwt_decode from 'jwt-decode'
 export default {
   name: "login",
   data: function() {
     return {
-      loginUser: {
-        telephone: "15660181105",
-        password: "123456",
-        // radio: "1"
-      },
-      rules: {
-        telephone: [
-          { required: true, message: "手机号码不能为空", trigger: "blur" },
-          { min: 11, max: 11, message: "手机号码必须是11位", trigger: "blur" }
-        ],
-        password: [
-          { required: true, message: "密码不能为空", trigger: "blur" },
-          { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" }
-        ]
-      }
+      forgetPwd:{
+          telephone:'',
+          code:'',
+          newPassword:'',
+          surePassword:''
+        },
+     rules1: {
+          telephone: [
+            { min: 11, max: 11, message: "手机号必须是11位！", trigger: "blur" },
+            { validator: tel, trigger: 'blur' }
+          ],
+          code:[
+            // {required:true,message:'密码不能为空', trigger: 'blur' },
+            { min: 6, max: 6, message: "验证码必须是6位", trigger: "blur" },
+            { validator: validatePass3, trigger: 'blur' }
+          ],
+          newPassword: [
+            // {required:true,message:'密码不能为空', trigger: 'blur' },
+            { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
+            { validator: validatePass4, trigger: 'blur' }
+          ],
+          surePassword:[
+            // {required:true,message:'密码不能为空', trigger: 'blur' },
+            { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
+            { validator: validatePass5, trigger: 'blur' }
+          ]
+        }
     };
   },
   methods: {
-    submitForm(formName) {
-      //通过ref定位到form表单
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          alert("submit!");
-        this.$axios
-            .post("http://localhost:3000/users/login", this.loginUser)
-            .then(res => {
-              console.log("登录成功！", res);
-              // console.log(res.data.token)
-              // console.log('token对象：',jwt_decode(localStorage.getItem ('mytoken')))
-              console.log('token对象：',jwt_decode(res.data.token))
-              console.log(res.data)
-              localStorage.setItem('mytoken',res.data.token)  //1.把token保存到本地存储
-              this.$router.push("/index"); //路由转向登录组件
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+    submitForm1(formName) {
+        if(this.forgetPwd.code && this.forgetPwd.telephone && this.forgetPwd.newPassword && this.forgetPwd.surePassword){
+          //提交后台
+    console.log(this.forgetPwd)
+      this.$axios
+      .post("http://localhost:3000/users/forgetPassword", this.forgetPwd)
+      .then(function(result) {
+        console.log(result);
+        console.log(result.data.msg)
+        
+      })
+    }else{
+      alert('请输入完整！')
+    }
+          
     },
+     //获取短信验证码
+      getvcode(){
+        let flag = (this.forgetPwd.telephone.length)
+        console.log(flag)
+        // console.log(this.userInfo.telephone)
+        // console.log(this.forgetPwd.telephone)
+          let location = 'http://localhost:3000/users/vCode/:' + this.forgetPwd.telephone
+            console.log(location)
+        if(!this.forgetPwd.telephone){
+          alert('请输入手机号！')
+        }else if(flag){
+          // console.log('进来了吗')
+          this.$axios.get(location)
+        .then(res => {
+          console.log('查询结果：' )
+          console.log(res.data.data)
+          //拿到后台数据赋值给前端
+          this.conditions = res.data.data
+          if(res.data.data){
+            alert('验证码已发送！')
+          }
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+        }else{
+          alert('手机号与注册手机号不匹配！')
+        }
+
+        
+      },
     resetForm(formName) {
       //实现重置表单元素数据
       this.$refs[formName].resetFields();
@@ -88,7 +127,7 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-.loginForm {
+.forgetForm {
   height: 400px;
   margin: 0 auto;
   margin-top: 50px;
