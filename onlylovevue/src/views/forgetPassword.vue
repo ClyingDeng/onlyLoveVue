@@ -23,8 +23,8 @@
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
             <el-radio label="1">记住我</el-radio>
-          <router-link to="/forgetPassword" class="forget">忘记密码</router-link>
           </el-form>
+          <router-link to="/forgetPassword">忘记密码</router-link>
         <!-- </el-col>
       </el-col> -->
     </div>
@@ -95,12 +95,5 @@ export default {
   border-radius: 5px;
   background-color: #fff;
   padding: 35px 50px 10px 10px;
-}
-.forget{
-  float:right;
-  color:#409EFF;
-}
-.forget:hover{
-  color: #aaa;
 }
 </style>

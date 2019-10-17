@@ -73,23 +73,9 @@ export default {
       className1:'active',
       className2:'',
       className3:'',
-      loginUser: {
-        telephone: "15776504645",
-        password: "111111"
-      },
       conditions:'',
       userInfos:'',
       // hackReset:true,
-      rules: {
-        telephone: [
-          { required: true, message: "手机号码不能为空", trigger: "blur" },
-          { min: 11, max: 11, message: "手机号码必须是11位", trigger: "blur" }
-        ],
-        password: [
-          { required: true, message: "密码不能为空", trigger: "blur" },
-          { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" }
-        ]
-      }
     };
   },
   created(){
