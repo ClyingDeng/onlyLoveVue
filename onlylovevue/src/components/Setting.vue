@@ -17,8 +17,8 @@
       </el-form-item>
       </el-form> 
     </div>
-    <div class="col-xs-offset-1 col-xs-9">
-      <label class="input-label">忘记密码</label>
+    <!-- <div class="col-xs-offset-1 col-xs-9"> -->
+      <!-- <label class="input-label">忘记密码</label>
       <el-form :model="forgetPwd" status-icon :rules="rules1" ref="forgetPwd" label-width="100px" class="demo-ruleForm">
       <el-form-item label="手机号码" prop="telephone">
       <el-input type="text" v-model="forgetPwd.telephone" autocomplete="off"></el-input>
@@ -43,9 +43,9 @@
       <el-button type="primary" @click="submitForm1('forgetpassword')">提交</el-button>
       <el-button @click="resetForm('forgetPwd')">重置</el-button>
       </el-form-item>
-      </el-form> 
+      </el-form>  -->
       
-    </div>
+    <!-- </div> -->
 
     <div class="col-xs-offset-3 col-xs-5 col-md-4 col-lg-3 ablity">
       <span class="choices">允许陌生人赞我</span>
@@ -150,12 +150,12 @@ export default {
           orguserpwd: '',
           userpwd: '',
         },
-        forgetPwd:{
-          telephone:'',
-          code:'',
-          newPassword:'',
-          surePassword:''
-        },
+        // forgetPwd:{
+        //   telephone:'',
+        //   code:'',
+        //   newPassword:'',
+        //   surePassword:''
+        // },
       telephone:'',
       value1: true,
       value2: true,
@@ -174,34 +174,27 @@ export default {
             { min: 6, max: 6, message: "验证码必须是6位", trigger: "blur" }
           ]
           
-        },
-        rules1: {
-          telephone: [
-            { min: 11, max: 11, message: "手机号必须是11位！", trigger: "blur" },
-            { validator: tel, trigger: 'blur' }
-          ],
-          code:[
-            // {required:true,message:'密码不能为空', trigger: 'blur' },
-            { min: 6, max: 6, message: "验证码必须是6位", trigger: "blur" },
-            { validator: validatePass3, trigger: 'blur' }
-          ],
-          newPassword: [
-            // {required:true,message:'密码不能为空', trigger: 'blur' },
-            { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
-            { validator: validatePass4, trigger: 'blur' }
-          ],
-          surePassword:[
-            // {required:true,message:'密码不能为空', trigger: 'blur' },
-            { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
-            { validator: validatePass5, trigger: 'blur' }
-          ]
         }
-        // rules1:{
-        //   telphone:[
+        // rules1: {
+        //   telephone: [
+        //     { min: 11, max: 11, message: "手机号必须是11位！", trigger: "blur" },
         //     { validator: tel, trigger: 'blur' }
-        //     // { min: 11, max: 11, message: "手机号码必须是11位", trigger: "blur" }
         //   ],
-          
+        //   code:[
+        //     // {required:true,message:'密码不能为空', trigger: 'blur' },
+        //     { min: 6, max: 6, message: "验证码必须是6位", trigger: "blur" },
+        //     { validator: validatePass3, trigger: 'blur' }
+        //   ],
+        //   newPassword: [
+        //     // {required:true,message:'密码不能为空', trigger: 'blur' },
+        //     { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
+        //     { validator: validatePass4, trigger: 'blur' }
+        //   ],
+        //   surePassword:[
+        //     // {required:true,message:'密码不能为空', trigger: 'blur' },
+        //     { min: 6, max: 6, message: "密码必须是6位", trigger: "blur" },
+        //     { validator: validatePass5, trigger: 'blur' }
+        //   ]
         // }
 
     };  //return
@@ -231,78 +224,62 @@ export default {
           }
         });
       },
-      submitForm1(formName) {
-        if(this.forgetPwd.code && this.forgetPwd.telephone && this.forgetPwd.newPassword && this.forgetPwd.surePassword){
-          //提交后台
-    console.log(this.forgetPwd)
-      this.$axios
-      .post("http://localhost:3000/users/forgetPassword", this.forgetPwd)
-      .then(function(result) {
-        console.log(result);
-        console.log(result.data.msg)
+    //   submitForm1(formName) {
+    //     if(this.forgetPwd.code && this.forgetPwd.telephone && this.forgetPwd.newPassword && this.forgetPwd.surePassword){
+    //       //提交后台
+    // console.log(this.forgetPwd)
+    //   this.$axios
+    //   .post("http://localhost:3000/users/forgetPassword", this.forgetPwd)
+    //   .then(function(result) {
+    //     console.log(result);
+    //     console.log(result.data.msg)
         
-      })
-    }else{
-      alert('请输入完整！')
-    }
+    //   })
+    // }else{
+    //   alert('请输入完整！')
+    // }
           
-    },
-      //忘记密码
-      // forgetpassword(){
-      //   console.log('提交忘记密码')
-      //   //  this.$refs[formName].validate((valid) => {
-      //       alert('submit!');
-      //       //提交后台
-      // console.log(this.forgetPwd)
-      //   this.$axios
-      //   .post("http://localhost:3000/users/forgetPassword", this.forgetPwd)
-      //   .then(function(result) {
-      //     console.log(result);
-      //     console.log(result.data.msg)
-          
-      //   })
-      //   // });
-      // },
+    // },
      resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-      //获取短信验证码
-      getvcode(){
-        this.userInfo = jwt_decode(localStorage.getItem ('mytoken'))
-        // console.log(this.userInfo.telephone == this.forgetPwd.telephone)
-        let flag = (this.userInfo.telephone == this.forgetPwd.telephone)
-        // console.log(flag)
-        // console.log(this.userInfo.telephone)
-        // console.log(this.forgetPwd.telephone)
-          let location = 'http://localhost:3000/users/vCode/:' + this.userInfo.telephone
-            console.log(location)
-        if(!this.forgetPwd.telephone){
-          alert('请输入手机号！')
-        }else if(flag){
-          // console.log('进来了吗')
-          this.$axios.get(location)
-        .then(res => {
-          console.log('查询结果：' )
-          console.log(res.data.data)
-          //拿到后台数据赋值给前端
-          this.conditions = res.data.data
-          if(res.data.data){
-            alert('验证码已发送！')
-          }
-        })
-        .catch(err => {
-          console.log('错误信息：' + err)
-        })
-        }else{
-          alert('手机号与注册手机号不匹配！')
-        }
+      // //获取短信验证码
+      // getvcode(){
+      //   this.userInfo = jwt_decode(localStorage.getItem ('mytoken'))
+      //   // console.log(this.userInfo.telephone == this.forgetPwd.telephone)
+      //   let flag = (this.userInfo.telephone == this.forgetPwd.telephone)
+      //   // console.log(flag)
+      //   // console.log(this.userInfo.telephone)
+      //   // console.log(this.forgetPwd.telephone)
+      //     let location = 'http://localhost:3000/users/vCode/:' + this.userInfo.telephone
+      //       console.log(location)
+      //   if(!this.forgetPwd.telephone){
+      //     alert('请输入手机号！')
+      //   }else if(flag){
+      //     // console.log('进来了吗')
+      //     this.$axios.get(location)
+      //   .then(res => {
+      //     console.log('查询结果：' )
+      //     console.log(res.data.data)
+      //     //拿到后台数据赋值给前端
+      //     this.conditions = res.data.data
+      //     if(res.data.data){
+      //       alert('验证码已发送！')
+      //     }
+      //   })
+      //   .catch(err => {
+      //     console.log('错误信息：' + err)
+      //   })
+      //   }else{
+      //     alert('手机号与注册手机号不匹配！')
+      //   }
 
         
-      },
+      // },
       //忘记密码
-      forgetpassword(formName){
+      // forgetpassword(formName){
 
-      }
+      // }
 
   }
 };
