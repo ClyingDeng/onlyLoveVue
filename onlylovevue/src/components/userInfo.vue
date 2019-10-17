@@ -5,6 +5,8 @@
       <span class="pro-label label label-warning">PRO</span>
     </h2>
     <!-- <h1>{{suserInfos}}</h1> -->
+    <!-- <h1>{{updateInfos}}</h1> -->
+    <!-- <span @click="test">test</span> -->
     <form class="form-horizontal">
       <fieldset class="fieldset">
         <h3 class="fieldset-title">基本信息</h3>
@@ -23,10 +25,11 @@
           </div>
           <div class="form-inline col-md-10 col-sm-9 col-xs-12">
             <!-- <input type="file" class="file-uploader pull-left" /> -->
-            <!-- <button type="submit" class="btn btn-sm btn-default-alt pull-left">上传图片</button> -->
+            <!-- <button type="submit" class="btn btn-sm btn-default-alt pull-left" >上传图片</button> -->
             <el-upload
               class="upload-demo form-inline col-md-10 col-sm-9 col-xs-12"
-              action="https://jsonplaceholder.typicode.com/posts/"
+              ref="upload"
+              action="http://localhost:3000/users/updateHeadPic"
               :limit="1"  
               :before-upload="beforeupload"
               :auto-upload="false"
@@ -39,27 +42,27 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">账号</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" readonly="readonly" :value="suserInfos.base_info_Id" />
+            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.base_info_Id" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">用户名</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" :value="suserInfos.nickName" />
+            <input type="text" class="form-control" v-model="suserInfos.nickName" />
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">性别</label>
           <div class="col-md-10 col-sm-9 col-xs-12 control-sex">
-            <el-radio v-model="this.suserInfos.sex" label="男">男</el-radio>
-            <el-radio v-model="this.suserInfos.sex" label="女">女</el-radio>
+            <el-radio v-model="suserInfos.sex" label="男">男</el-radio>
+            <el-radio v-model="suserInfos.sex" label="女">女</el-radio>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">年龄</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" :value="suserInfos.age" />
+            <input type="text" class="form-control" v-model="suserInfos.age" />
           </div>
         </div>
         <div class="form-group">
@@ -71,7 +74,7 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">爱情宣言</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" :value="suserInfos.love_description" />
+            <input type="text" class="form-control" v-model="suserInfos.love_description" />
           </div>
         </div>
       </fieldset>
@@ -80,13 +83,13 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">身高</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" :value="suserInfos.height + 'cm'" />
+            <input type="text" class="form-control" v-model="suserInfos.height + 'cm'" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">体重</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" :value="suserInfos.weight + 'kg'" />
+            <input type="text" class="form-control" v-model="suserInfos.weight + 'kg'" />
           </div>
         </div>
         <div class="form-group">
@@ -137,7 +140,8 @@
       <hr />
       <div class="form-group">
         <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
-          <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/>
+          <!-- <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/> -->
+          <button class="btn btn-primary" type="button" @click="onSubmit">确认修改</button>
         </div>
       </div>
     </form>
@@ -207,6 +211,7 @@ input[type="file"] {
 }
 </style>
 <script>
+import jwt_decode from 'jwt-decode'
 const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 export default {
   data: function() {
@@ -221,58 +226,108 @@ export default {
         "15-20k",
         "20k以上"
       ],
-      fileList: [],
+      fileList: '',
+      form: {
+        name: ""    //绑定表单元素的属性
+      },
+      param: "", // 表单最后提交的参数对象
       checkAll: false,
       checkedCities: ["健身"],
       cities: cityOptions,
-      isIndeterminate: true
+      isIndeterminate: true,
+      updateInfos:{
+        sex:'0',
+        marriage:'0',
+        blight:'0'
+      }
     };
   },
   props:['suserInfos'],
   mounted:function(){
       this.sex = this.suserInfos.sex
+      // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
+      // console.log('子组件：')
+      // console.log(this.updateInfos)
   },
   methods: {
+    test(){
+      console.log('test')
+      console.log(this.suserInfos)
+    },
+     //当上传文件组件submit之前触发执行
+    beforeupload(file) {
+      console.log('准备上传。。。。')
+      // 准备表单上传需要的参数对象
+      this.param = new FormData();
+      this.fileList = file; // 把需要上传的文件保存到数组中
+      // 遍历数组，把所有文件都保存到参数对象中
+        this.param.append(`file`, this.fileList);
+        console.log(this.param)
+      return false;
+    },
       onSubmit() {
-    let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
-    console.log('token对象：',userInfo)
+      let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
+      console.log('token对象：',userInfo)
       let _this = this;
       var names = _this.form.name;
       this.$refs.upload.submit();
       console.log(this.param)
-      if(this.param){
-        //将非表单元素的数据也添加到参数对象中；
-      // this.param.append("company_id", _this.company_id);
-      //将表单元素的数据也添加到参数对象中；
-      // this.param.append("caption", names);
-      //设置提交请求头，适用于上传文件
       let config = {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       };
+      //修改头像
+      if(this.param){
       // //调用接口，执行上传所有数据的操作
       this.$axios
-        .post("http://localhost:3000/users/idCardFront", this.param, config)
+        .post("http://localhost:3000/users/updateHeadPic", this.param, config)
         .then(function(result) {
           console.log(result);
           console.log(result.data.msg)
-          if(result.data.msg == '身份证上传成功！审核不通过！'){
-            alert('请上传正确证件！')
-           
-            //删除后台图片
-
-          }else{
-            alert('身份证认证成功')
-            this.scon = true
-          }
-        });
-      }else{
-        alert('未上传身份证！')
+          
+        })
       }
+      // else{
+      //   alert('您暂未修改头像图片！')
+      // }
+      //修改信息
+      console.log('信息：')
+      // this.updateInfos = this.suserInfos
+      console.log(this.suserInfos)
+      //转日期格式
+    function dateFormat(time) {
+    var date=new Date(time);
+    var year=date.getFullYear();
+    /* 在日期格式中，月份是从0开始的，因此要加0
+     * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
+     * */
+    var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
+    var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
+    var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
+    var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
+    var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
+    // 拼接
+    return year+"-"+month+"-"+day;
+}
+      this.suserInfos.birthday = dateFormat(this.suserInfos.birthday)
+      console.log(this.suserInfos.birthday)
+
+      // //调用接口，执行上传所有数据的操作
+      this.$axios
+        .post("http://localhost:3000/users/updateInfo", this.suserInfos)
+        .then(function(result) {
+          console.log(result);
+          console.log(result.data.msg)
+
+        })
       
       
+    //子组件信息与父组件绑定
+      // this.$emit('userInfo_commit', this.suserInfos)
+      // this.$router.push('/personal')
     },
+
     handleCheckAllChange(val) {
       this.checkedCities = val ? cityOptions : [];
       this.isIndeterminate = false;
@@ -282,18 +337,6 @@ export default {
       this.checkAll = checkedCount === this.cities.length;
       this.isIndeterminate =
         checkedCount > 0 && checkedCount < this.cities.length;
-    },
-     //当上传文件组件submit之前触发执行
-    beforeupload(file) {
-      console.log('准备上传。。。。')
-      // 准备表单上传需要的参数对象
-      this.param = new FormData();
-      this.fileList.push(file); // 把需要上传的文件保存到数组中
-      // 遍历数组，把所有文件都保存到参数对象中
-      for (let i = 0; i < this.fileList.length; i++) {
-        this.param.append(`img_${i}`, this.fileList[i]);
-      }
-      return false;
     }
   }
 };

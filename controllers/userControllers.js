@@ -209,6 +209,7 @@ var userController = {
     },
     // 修改密码
     updatePassword: function(req, res) {
+        console.log(req.body)
         var userId = req.user[0].base_info_Id
         var orguserpwd = req.body.orguserpwd
         var userpwd = req.body.userpwd
@@ -219,6 +220,7 @@ var userController = {
                 } else {
                     bcrypt.compare(orguserpwd, results1[0].pwd, (err, res1) => {
                         console.log('数据库密码：' + results1[0].pwd)
+                        console.log('数据库密码：' + orguserpwd)
                         console.log(res1)
                         if (res1) {
                             bcrypt.hash(userpwd, salt, function(err, hash) {
@@ -239,7 +241,7 @@ var userController = {
                                 });
                             });
                         } else {
-                            res.json({ code: 500, msg: '原密码输入错误！' })
+                            res.json({ code: 500,data:err, msg: '原密码输入错误！' })
                         }
                     })
                 }
@@ -306,6 +308,7 @@ var userController = {
                 if (!results) {
                     console.log('该用户不是会员')
                 } else {
+                    console.log(results)
                     res.json({ code: 200, data: results, msg: '搜索查询成功！' })
                 }
             }
@@ -502,7 +505,7 @@ var userController = {
             }
             console.log('...................')
                 //fields是上传的表单字段数组，files是上传的文件列表
-                console.log(files.img_0.path)
+                console.log(files.file.path)
                 //保存图片路径到数据库
                 //1.获取当前用户编号
             var userId = req.user[0].base_info_Id
