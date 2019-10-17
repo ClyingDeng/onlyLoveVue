@@ -33,7 +33,7 @@
           <br />
         </section>
         <section class="sect">
-          <span @click.prevent="goMessage">系统消息</span>
+          <span @click.prevent="goMemder">会员中心</span>
           <span @click.prevent="goFriend">好友列表</span>
           <span @click.prevent="goCondition">我的动态</span>
           <span @click.prevent="goContact">联系唯爱</span>
@@ -211,7 +211,8 @@
 export default {
   data() {
     return {
-      userId: "20015",
+      // userId: "20015",
+      user_Id: "",
       perconditions: [],
       conditions: [],
       carzyList: [],
@@ -228,7 +229,7 @@ export default {
   }, */
   //组件创建完成后执行的操作
   created() {
-    const userId = this.userId;
+    // const userId = this.userId;
     this.$axios
       .get("http://localhost:3000/allCondition")
       .then(res => {
@@ -268,6 +269,9 @@ export default {
       });
   },
   methods: {
+    goMemder(){
+      this.$router.push("/Memder");
+    },
     goMessage() {
       this.$router.push("/Message");
     },
