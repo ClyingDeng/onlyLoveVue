@@ -4,11 +4,11 @@
       <div class="col-md-12">
         <div class="youyisi">
           <div class="touxiang">
-            <img src="../assets/imgs/xd.jpg" class="img-thumbnail" />
+            <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic" class="img-thumbnail" />
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
-              <h3 style="color:blueviolet">&nbsp;退路</h3>
+              <h3 style="color:blueviolet">&nbsp;{{conditions[0].nickName}}</h3>
             </div>
             <!-- 会员图标 -->
             <div style="float: left">
@@ -18,7 +18,8 @@
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
                 <span style="color:blueviolet">
-                  <p>成长值26940</p>
+                  <p>会员等级 {{member[0].member_grade}} </p>
+                  <p>会员剩余 {{member[0].member_date}} 天</p>
                 </span>
                 <!-- 进度条展示 -->
                 <div class="progress progress-striped" style="width: 250px;height: 8px;">
@@ -92,10 +93,7 @@
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
-      <div
-        class="zuobian"
-        style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left"
-      >
+      <div class="zuobian" style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left">
         <div>
           <a href="./Index.vue" class="list-group-item">
             <span
@@ -158,7 +156,13 @@
         >
           <form role="form">
             <div class="form-group has-feedback">
-              <textarea class="form-control" v-model="form.name" rows="10" placeholder="说点什么吧"></textarea>
+              <textarea
+                ref="area"
+                class="form-control"
+                v-model="form.name"
+                rows="10"
+                placeholder="说点什么吧"
+              ></textarea>
               <div id="upload">
                 <el-upload
                   class="upload-demo"
@@ -185,64 +189,50 @@
         </div>
         <!-- 全部动态 -->
         <!-- 第一个说说 -->
-        <div style="margin-top: 20px;clear:both;height:500px;background-color: rgb(243, 237, 237)">
+        <div class="col-xs-12" style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)" v-for="(key,index) in conditions" :key="'info-1'+index">
           <div style="float: left;padding: 20px">
-            <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
+            <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headpic" class="img-circle" width="50px" height="50px" />
           </div>
           <div style="float: left;padding-top: 18px">
-            <a href="#" style="font-size: 18px;color: black">退路</a>
+            <a href="#" style="font-size: 18px;color: black">{{key.nickName}}</a>
             <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
           </div>
           <div style="clear: both;margin-left: 80px">
             <p>
-              我手机从来不离身,一个人走在路上,
-              <br />一个人出去,为了避免尴尬,
-              <br />总是拿出手机,时不时的摆弄下,
-              <br />其实只有自己知道,只是把手机解锁,
-              <br />看下时间,滑冻几下桌面,
-              <br />然后锁屏,几分钟后又重复一遍,
-              <br />这就是孤独,一个人的孤独。
-              <br />——网易云音乐热评墙《一万次悲伤》
-              <br />
+              {{key.con_words}}
             </p>
           </div>
-          <div style="margin:30px ">
-            <img class="shuotu" src="../assets/imgs/xd.jpg" />
-            <img class="shuotu" src="../assets/imgs/xd.jpg" />
+          <div style="margin:30px;clear:both; ">
+            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1"  />
+            <!-- <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
+            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
+            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" /> -->
           </div>
-        </div>
-        <!-- 第二个说说 -->
-        <div style="margin-top: 20px;clear:both;height: 500px;background-color: rgb(243, 237, 237)">
-          <div style="float: left;padding: 20px">
-            <img src="../assets/imgs/xd.jpg" class="img-circle" width="50px" height="50px" />
-          </div>
-          <div style="float: left;padding-top: 18px">
-            <a href="#" style="font-size: 18px;color: black">退路</a>
-            <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
-          </div>
-          <div style="clear: both;margin-left: 80px">
-            <p>
-              我手机从来不离身,一个人走在路上,
-              <br />一个人出去,为了避免尴尬,
-              <br />总是拿出手机,时不时的摆弄下,
-              <br />其实只有自己知道,只是把手机解锁,
-              <br />看下时间,滑冻几下桌面,
-              <br />然后锁屏,几分钟后又重复一遍,
-              <br />这就是孤独,一个人的孤独。
-              <br />——网易云音乐热评墙《一万次悲伤》
-              <br />
-            </p>
-          </div>
-
-          <div style="margin:30px ">
-            <img class="shuotu" src="../assets/imgs/xd.jpg" />
-            <img class="shuotu" src="../assets/imgs/xd.jpg" />
-          </div>
+          <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
+            <li style="float: left;width:50px;">
+              <a href="#">
+                <i class="fa fa-thumbs-o-up fa-1x" style="color:#ff6700" aria-hidden="true"></i>
+                <em>{{key.approvenum}}</em>
+              </a>
+            </li>
+            <li style="float: left;width:50px;margin-left:10px">
+              <a href="#">
+                <i class="fa fa-eye fa-1x" style="color:#ff6700" aria-hidden="true"></i>
+                <em>{{key.see}}</em>
+              </a>
+            </li>
+            <li style="float: left;width:50px;margin-left:10px">
+              <a href="#">
+                <i class="fa fa-commenting-o fa-1x" style="color:#ff6700" aria-hidden="true"></i>
+                <em>0</em>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <!-- 右边 -->
       <!-- 签到 -->
-      <div class="youbian" style="float: right">
+      <div class="youbian" style="float: right;background-color: rgb(243, 237, 237);">
         <div class="qiandao">
           <div class="qianzuo">
             <a href style="text-decoration:none">
@@ -259,55 +249,20 @@
             </ul>
           </div>
         </div>
-        <div class="kan">
+        <div class="kan" >
           <!-- 谁看过我 -->
-          <div
-            class="kanwo"
-            style="background-color: rgb(243, 237, 237);height:450px;width:300px;margin-top:2px"
-          >
-            <h4 style="text-align:center;color:blueviolet">谁看过我</h4>
-            <div class="col-md-6">
+          <div class="kanwo" style="clear:both;width:300px;margin-top:2px">
+            <h4 style="text-align:center;color:blueviolet">关注我的</h4>
+            <div class="col-md-6" v-for="(key,index) in attentionme" :key="'info-2'+index" style="float:left">
               <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                <a :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" data-lightbox="gallery-mf">
                   <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                    <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" alt class="img-fluid" />
                   </div>
                   <div class="work-content">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                  <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
-                  </div>
-                  <div class="work-content">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                  <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
-                  </div>
-                  <div class="work-content">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
+                        <h2 class="w-title">{{key.nickname}}</h2>
                       </div>
                     </div>
                   </div>
@@ -315,53 +270,18 @@
               </div>
             </div>
           </div>
-          <div
-            class="wokan"
-            style="background-color: rgb(243, 237, 237);height:400px;width:300px;margin-top: 20px"
-          >
-            <h4 style="text-align:center;color:blueviolet">我看过谁</h4>
-            <div class="col-md-6">
+          <div class="wokan" style="background-color: rgb(243, 237, 237);clear:both;width:300px;margin-top: 20px">
+            <h4 style="text-align:center;color:blueviolet">我关注的</h4>
+            <div class="col-md-6" v-for="(key,index) in meattention" :key="'info-3'+index">
               <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                <a :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" data-lightbox="gallery-mf">
                   <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
+                    <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" alt class="img-fluid" />
                   </div>
                   <div class="work-content">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                  <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
-                  </div>
-                  <div class="work-content">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="work-box">
-                <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                  <div class="work-img">
-                    <img src="../assets/imgs/fang2.jpg" alt class="img-fluid" />
-                  </div>
-                  <div class="work-content">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h2 class="w-title">clying</h2>
+                        <h2 class="w-title">{{key.nickname}}</h2>
                       </div>
                     </div>
                   </div>
@@ -374,7 +294,10 @@
     </div>
   </div>
 </template>
-<style>
+<style scroped>
+ul {
+  list-style: none;
+}
 .el-upload__input {
   display: none !important;
 }
@@ -487,42 +410,6 @@
   margin-left: 60px;
 }
 
-/* @media screen and (max-width: 992px) {
-  .youyisi2 {
-    width: 320px;
-  }
-  .dongtai {
-    display: block;
-  }
-}
-@media screen and (max-width: 716px) {
-  .youyisi2 {
-    width: 100px;
-  }
-}
-
-@media screen and (max-width: 1200px) and (min-width: 992px) {
-  .centerblock {
-    display: block;
-  }
-}
-@media screen and (max-width: 992px) and (min-width: 768px) {
-  .centerblock {
-    width: 550px;
-    display: block;
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 768px) {
-  .centerblock {
-    width: 465px;
-    margin-left: 0;
-    margin: auto;
-  }
-  .shuoshenme form {
-    width: 465px;
-  }
-} */
 @media screen and (max-width: 1200px) {
   .zuobian,
   .youbian {
@@ -541,12 +428,64 @@ export default {
       user_Id: "",
       user: {},
       fileList: [],
+      conditions: {
+        nickName: '',
+      },
+      attentionme: [],
+      meattention: [],
+      member: {
+        member_grade: '',
+        member_date: ''
+      },
       form: {
         name: "" //绑定表单元素的属性
       },
       param: "" // 表单最后提交的参数对象
     };
   },
+  created() {
+      this.$axios
+        .get("http://localhost:3000/hotSearch/hotSearch")
+        .then(res => {
+          //拿到后台数据赋值给前端
+          this.conditions = res.data.data;
+          // console.log(this.conditions);
+        })
+        .catch(err => {
+          console.log("错误信息：" + err);
+        });
+      this.$axios
+        .get("http://localhost:3000/users/attentionMe")
+        .then(res => {
+          //拿到后台数据赋值给前端
+          this.attentionme = res.data.data;
+          // console.log(this.attentionme);
+        })
+        .catch(err => {
+          console.log("错误信息：" + err);
+        });
+      this.$axios
+        .get("http://localhost:3000/users/iAttention")
+        .then(res => {
+          //拿到后台数据赋值给前端
+          this.meattention = res.data.data;
+          // console.log(this.meattention);
+        })
+        .catch(err => {
+          console.log("错误信息：" + err);
+        });
+      this.$axios
+        .get("http://localhost:3000/shop/memeber")
+        .then(res => {
+          //拿到后台数据赋值给前端
+          console.log(res);
+          this.member = res.data.data;
+          console.log(this.member);
+        })
+        .catch(err => {
+          console.log("错误信息：" + err);
+        });
+    },
   methods: {
     onSubmit() {
       let nowDate = new Date();
@@ -589,14 +528,15 @@ export default {
         .post("http://localhost:3000/hotSearch/publish", this.param, config)
         .then(function(result) {
           console.log(result);
-          console.log(_this.$refs.upload)
-          _this.$refs.upload.clearFiles()
+          // _this.$refs.area.clearFiles()
+          // console.log(_this.param)
+          _this.fileList = [];
         });
-      
     },
     //当上传文件组件submit之前触发执行
     beforeupload(file) {
       console.log("准备上传。。。。");
+      console.log(file);
       // 准备表单上传需要的参数对象
       this.param = new FormData();
       this.fileList.push(file); // 把需要上传的文件保存到数组中

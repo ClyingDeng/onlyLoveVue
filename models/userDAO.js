@@ -145,7 +145,7 @@ var userDAO = {
         })
     },
     attentionMe: function(userId, callback) {
-        DAO('select user_Id,headPic,sex,love_description from attention join base_info on base_info_Id = user_Id and att_Id =?', [userId], function(err, results) {
+        DAO('select user_Id,nickname,headPic,sex,love_description from attention join base_info on base_info_Id = user_Id and att_Id =?', [userId], function(err, results) {
             // console.log(results)
             if (err) {
                 callback(err, null)
@@ -155,7 +155,7 @@ var userDAO = {
         })
     },
     iAttention: function(userId, callback) {
-        DAO('select att_Id,headPic,sex,love_description from attention join base_info on base_info_Id = att_Id and user_Id = ?', [userId], function(err, results) {
+        DAO('select att_Id,nickname,headPic,sex,love_description from attention join base_info on base_info_Id = att_Id and user_Id = ?', [userId], function(err, results) {
             // console.log(results)
             if (err) {
                 callback(err, null)
