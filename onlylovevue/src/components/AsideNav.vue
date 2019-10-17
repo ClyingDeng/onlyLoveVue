@@ -33,7 +33,7 @@
           <br />
         </section>
         <section class="sect">
-          <span @click.prevent="goMemder">会员中心</span>
+          <span @click.prevent="goMember">会员中心</span>
           <span @click.prevent="goFriend">好友列表</span>
           <span @click.prevent="goCondition">我的动态</span>
           <span @click.prevent="goContact">联系唯爱</span>
@@ -269,12 +269,9 @@ export default {
       });
   },
   methods: {
-    goMemder(){
-      this.$router.push("/Memder");
-    },
-    goMessage() {
+    /* goMessage() {
       this.$router.push("/Message");
-    },
+    }, */
     goFriend() {
       this.$router.push("/Friend");
     },
@@ -295,6 +292,9 @@ export default {
     },
     goList() {
       this.$router.push("/List");
+    },
+    goMember(){
+      this.$router.push("/Member");
     }
   }
 };

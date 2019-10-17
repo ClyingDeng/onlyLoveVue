@@ -74,7 +74,12 @@ let router = new Router({
           path: '/acticle',
           name: 'actilce',
           component: () => import( './views/Acticle.vue')
-        }
+        },
+        {
+          path: '/member',
+          name: 'member',
+          component: () => import( './views/Member.vue')
+        },
       ]
     },
     {
@@ -97,11 +102,7 @@ let router = new Router({
       name: 'buy',
       component: () => import( './views/Buy.vue')
     },
-    {
-      path: '/member',
-      name: 'member',
-      component: () => import( './views/Member.vue')
-    },
+    
     {
       path: '/*',   //路由匹配不成功时
       name: 'notfound',
