@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{msg}}</h1>
-    <div class="row" v-if="this.$store.state.conditions == false">
+    <div class="row" v-if="!computedCondition">
       <div class="col-xs-12">
         <h3>身份证正面:</h3>
         <span class="eleBtn">
@@ -38,7 +38,7 @@
       </span>
 
     </div>
-    <div class="row" v-if="this.$store.state.conditions">
+    <div class="row" v-else>
       <div class="isId">
         <i class="fa fa-check-circle" style="color:#67C23A;font-size:64px;" aria-hidden="true"></i>
       <span  style="color:#67C23A;font-size:64px;">已实名认证</span>
@@ -60,16 +60,22 @@ export default {
       form: {
         name: ""    //绑定表单元素的属性
       },
-      scon:'',
+      scon:'false',
       param: "", // 表单最后提交的参数对象
       // feedback1:false
       // feedback2:true
     }
   },
+  created(){
+    console.log('conditions')
+    console.log(this.$store.state.conditions) 
+  },
   // props:['scon'],
-  // mounted:{
-  //   this.scon = this.$store.state.conditions 
-  // },
+ computed:{
+    computedCondition:function () {
+      return this.$store.state.conditions
+    }
+ },
   methods:{
  
     onSubmit() {
@@ -91,19 +97,29 @@ export default {
         }
       };
       // //调用接口，执行上传所有数据的操作
+      let _this = this
       this.$axios
         .post("http://localhost:3000/users/idCardFront", this.param, config)
         .then(function(result) {
           console.log(result);
           console.log(result.data.msg)
-          if(result.data.msg == '身份证上传成功！审核不通过！'){
-            alert('请上传正确证件！')
-           
-            //删除后台图片
+          let nopass = '身份证上传成功！审核不通过！'
+          let pass = '身份证上传成功！审核通过！'
+          if(result.data.msg == nopass){
+            console.log('dongxi')
+            // console.log(this.param)
+            // _this.param =''
+            console.log('e')
+            // console.log(_this.param)
 
-          }else{
+            alert('请上传正确证件！')
+            //不通过删除图片文件
+            _this.$refs.upload.clearFiles();
+            //删除后台图片
+          }else if(result.data.msg == pass){
             alert('身份证认证成功')
-            this.scon = true
+            console.log(_this.$store.state.conditions)
+            _this.$store.state.conditions = true
           }
         });
       }else{
@@ -119,11 +135,9 @@ export default {
       console.log('准备上传。。。。')
       // 准备表单上传需要的参数对象
       this.param = new FormData();
-      this.fileList.push(file); // 把需要上传的文件保存到数组中
-      // 遍历数组，把所有文件都保存到参数对象中
-      for (let i = 0; i < this.fileList.length; i++) {
-        this.param.append(`img_${i}`, this.fileList[i]);
-      }
+        this.param.append('img_0', file);
+        console.log('tupian')
+        console.log(file)
       return false;
     }
   
