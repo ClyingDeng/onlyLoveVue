@@ -66,7 +66,7 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
                   </div>
                   <div  class="col-md-6">
-                    <button type="button" class="btn btn-outline-secondary btn-sm"  @click.prevent="Buy" >直接购买</button>
+                    <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm"  @click.prevent="Buy" >直接购买</button>
                  <!-- <router-link to="{path:'/buy',query:{id:this.conditions[index].prop_Id}}"></router-link> -->
                   </div>
                 </div>
@@ -314,6 +314,7 @@ export default {
     return {
       num: 1,
       conditions: [],
+      // productid:'',
     // name:[],
       // className1:'active',
       // className1:'',
@@ -355,9 +356,13 @@ export default {
     Shopcart() {
       this.$router.push("/shopcart");
     },
-    Buy() {
-   
-      this.$router.push("/buy");
+    Buy(e) {
+   console.log(e.target.name);
+  let productid = e.target.name
+      this.$router.push({path:"/buy",
+      name:'',
+      query:{productid}
+      });
     },
  
     
