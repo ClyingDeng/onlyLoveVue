@@ -39,9 +39,10 @@
 
     </div>
     <div class="row" v-if="this.$store.state.conditions">
-      <!-- <i class="el-icon-success" type="success"></i> -->
-      <i class="fa fa-check-circle" style="color:#67C23A;font-size:133px;" aria-hidden="true"></i>
-      <button type="button" class="btn btn-success">已实名认证</button>
+      <div class="isId">
+        <i class="fa fa-check-circle" style="color:#67C23A;font-size:64px;" aria-hidden="true"></i>
+      <span  style="color:#67C23A;font-size:64px;">已实名认证</span>
+      </div>
     </div>
   </div>
 </template>
@@ -132,6 +133,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.isId{
+  text-align: center;
+  margin-top: 150px;
+}
 .el-icon-success{
   font-size: 30px;
 }

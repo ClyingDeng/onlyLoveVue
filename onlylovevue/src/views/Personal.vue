@@ -5,14 +5,14 @@
         <div class="module-inner">
           <div class="side-bar">
             <div class="user-info">
-              <img v-if="userInfos.headPic == 'fang1.jpg'"
+              <img v-if="userInfos.headPic == ''"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
             />
             <img v-else
               class="img-rounded img-responsive"
-              :src="'http://localhost:3000/upload/' + userInfos.headPic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + userInfos.headPic"
               alt
             />
               <ul class="meta list list-unstyled">
@@ -95,7 +95,15 @@ export default {
     }
   },
   created(){
-    
+    // console.log('刷新了没')
+    //   console.log(document.referrer)
+    //   let router1 = 'http://localhost:8080/personal/seeinfo'
+    //   // let router2 = 'http://localhost:8080/index'
+    //   let router3 = 'http://localhost:8080/personal/seeinfo'
+
+    //   if(document.referrer == router1 || document.referrer == router3){
+    //     this.$router.push({path:'/'})
+    //   }
         this.$axios.get('http://localhost:3000/users/userStatus')
         .then(res => {
           console.log('查询结果：' )

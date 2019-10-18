@@ -14,14 +14,14 @@
         <h3 class="fieldset-title">基本信息</h3>
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
-            <img v-if="suserInfos.headPic == 'fang1.jpg'"
+            <img v-if="suserInfos.headPic == ''"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
             />
             <img v-else
               class="img-rounded img-responsive"
-              :src="'http://localhost:3000/upload/' + suserInfos.headPic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + suserInfos.headPic"
               alt
             />
           </div>
