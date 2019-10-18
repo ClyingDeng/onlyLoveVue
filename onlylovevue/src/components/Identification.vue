@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{msg}}</h1>
-    <div class="row" v-if="scon == false">
+    <div class="row" v-if="this.$store.state.conditions == false">
       <div class="col-xs-12">
         <h3>身份证正面:</h3>
         <span class="eleBtn">
@@ -38,8 +38,9 @@
       </span>
 
     </div>
-    <div class="row" v-if="scon">
-      <i class="el-icon-success" type="primary"></i>
+    <div class="row" v-if="this.$store.state.conditions">
+      <!-- <i class="el-icon-success" type="success"></i> -->
+      <i class="fa fa-check-circle" style="color:#67C23A;font-size:133px;" aria-hidden="true"></i>
       <button type="button" class="btn btn-success">已实名认证</button>
     </div>
   </div>
@@ -58,12 +59,16 @@ export default {
       form: {
         name: ""    //绑定表单元素的属性
       },
+      scon:'',
       param: "", // 表单最后提交的参数对象
       // feedback1:false
       // feedback2:true
     }
   },
-  props:['scon'],
+  // props:['scon'],
+  // mounted:{
+  //   this.scon = this.$store.state.conditions 
+  // },
   methods:{
  
     onSubmit() {

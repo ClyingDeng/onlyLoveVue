@@ -14,7 +14,7 @@
         <h3 class="fieldset-title">基本信息</h3>
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
-            <img v-if="suserInfos.headPic == 'defaultHead.jpg'"
+            <img v-if="suserInfos.headPic == 'fang1.jpg'"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
@@ -70,7 +70,7 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">出生年月</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <el-date-picker v-model="suserInfos.birthday" type="month" placeholder="选择年月"></el-date-picker>
+            <el-date-picker v-model="suserInfos.birthday" type="month" placeholder="选择年月" :picker-options="pickerOptions"></el-date-picker>
           </div>
         </div>
         <div class="form-group">
@@ -143,7 +143,9 @@
       <div class="form-group">
         <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
           <!-- <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/> -->
-          <button class="btn btn-danger" type="button" @click="onSubmit">编辑</button>
+          <button class="btn btn-danger" type="button" @click="onSubmit">
+            <router-link to='edit'>编辑</router-link>
+          </button>
         </div>
       </div>
     </form>
@@ -151,6 +153,12 @@
   </div>
 </template>
 <style scoped>
+a{
+  color: #f1f1f1;
+}
+a:hover{
+  color: #ccc;
+}
 .avatar .figure img[data-v-6708ad21] {
     width: 120%;
     height: 120%;
@@ -249,18 +257,29 @@ export default {
         sex:'0',
         marriage:'0',
         blight:'0'
-      }
+      },
+      suserInfos:{},
+      pickerOptions: {} 
     };
   },
-  props:['suserInfos'],
+  // props:['suserInfos'],
 //   component: {
 //     baseInfo: baseInfo,
 //   },
-  mounted:function(){
-      this.sex = this.suserInfos.sex
-      // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
-      // console.log('子组件：')
-      // console.log(this.updateInfos)
+  created:function(){
+    let obj = JSON.parse(localStorage.getItem('myInfo'))
+      this.sex = obj.sex
+      this.suserInfos = obj
+      // this.suserInfos = localStorage.getItem('myInfo')
+      console.log(obj)
+      console.log('子组件：')
+      console.log(this.suserInfos)
+
+      this.pickerOptions = {
+           disabledDate(time) {
+              return time.getTime();
+           }
+     }
   },
   methods: {
     test(){

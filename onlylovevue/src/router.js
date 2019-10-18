@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import SeeInfo from './components/SeeInfo.vue'
 
 Vue.use(Router)
 
@@ -28,21 +29,23 @@ let router = new Router({
           path: 'personal',
           name: 'personal',
           component: () => import( './views/Personal.vue'),
+          redirect:'personal/seeinfo',
           children:[
+            {
+              path: 'seeinfo',
+              name: 'seeinfo',
+              component: SeeInfo
+            },
             {
               path: 'setting',
               name: 'setting',
               component: () => import( './components/Setting.vue')
             },
+            
             {
-              path: 'seeInfo',
-              name: 'seeInfo',
-              component: () => import( './components/SeeInfo.vue')
-            },
-            {
-              path: 'userInfo',
-              name: 'userInfo',
-              component: () => import( './components/userInfo.vue')
+              path: 'edit',
+              name: 'userinfo',
+              component: () => import( './components/Userinfo.vue')
             },
             {
               path: 'identification',
@@ -129,6 +132,7 @@ let router = new Router({
       name: 'buy',
       component: () => import( './views/Buy.vue')
     },
+    
     
     {
       path: '/*',   //路由匹配不成功时
