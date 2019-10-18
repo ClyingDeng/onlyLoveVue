@@ -1,11 +1,10 @@
 <template>
-  <div class="friend">
-    <div class="container">
-      <div class="row">
-        <div class="zongbiao col-md-8">
+  <div class="container">
+    <div class="row">
+      <div class="zongbiao col-md-offset-2 col-md-8">
         <!-- 好友列表 -->
-        <div class="liebiao col-md-4" style="float:left;background-color:#434753;height:633px">
-          <div >
+        <div class="liebiao col-md-4" style="float:left;background-color:#434753;height:573px">
+          <div>
             <div class="input-group" style="margin-top:15px;margin-bottom:20px">
               <!-- <span class="input-group-addon" id="basic-addon1">@</span> -->
               <input
@@ -16,102 +15,126 @@
                 aria-describedby="basic-addon1"
               />
             </div>
-             <!-- 搜索图标 -->
-             <!-- <div style="float:right;margin-top:-45px;">
+            <!-- 搜索图标 -->
+            <!-- <div style="float:right;margin-top:-45px;">
                <i class="fa fa-search" aria-hidden="true" style="color:#FFFFFF;"></i>
-             </div> -->
-              
+            </div>-->
+
             <!-- 列表 -->
             <div class="haoyouliebiao">
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/dengying.jpg" alt />
-                  </a>
+              <div id="gundong" style="height:265px;">
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/dengying.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">邓小颖</h6>
+                    <p>
+                      <img src="../assets/imgs/lvdian.jpg" alt /> 你除了修不完的 bug 还有什么？
+                    </p>
+                  </div>
                 </div>
-                <div class="media-body">
-                  <h6 class="media-heading">邓小颖</h6>
-                  <p><img src="../assets/imgs/lvdian.jpg" alt=""> 你除了修不完的 bug 还有什么？</p>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/jiaxin.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">李小欣</h6>
+                    <p>
+                      <img src="../assets/imgs/lvdian.jpg" alt /> Hello World
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/jiaxin.jpg" alt />
-                  </a>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/honghong.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">石小红</h6>
+                    <p>
+                      <img src="../assets/imgs/lvdian.jpg" alt /> PuTTY 本无树，MinGW 亦非台。
+                    </p>
+                  </div>
                 </div>
-                <div class="media-body">
-                  <h6 class="media-heading">李小欣</h6>
-                  <p><img src="../assets/imgs/lvdian.jpg" alt=""> Hello World</p>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/jiajia.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">宋小镱</h6>
+                    <p>
+                      <img src="../assets/imgs/heidian.jpg" alt /> 成功chroot过很多bug却从未成功chroot过妹子的心。
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/honghong.jpg" alt />
-                  </a>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/mayun.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">马小云</h6>
+                    <p>
+                      <img src="../assets/imgs/heidian.jpg" alt />333
+                    </p>
+                  </div>
                 </div>
-                <div class="media-body">
-                  <h6 class="media-heading">石小红</h6>
-                  <p><img src="../assets/imgs/lvdian.jpg" alt=""> PuTTY 本无树，MinGW 亦非台。</p>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/huateng.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">麻花腾</h6>
+                    <p>
+                      <img src="../assets/imgs/lvdian.jpg" alt />333
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/jiajia.jpg" alt />
-                  </a>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/xiaoxian.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">王小贤</h6>
+                    <p>
+                      <img src="../assets/imgs/lvdian.jpg" alt />333
+                    </p>
+                  </div>
                 </div>
-                <div class="media-body">
-                  <h6 class="media-heading">宋小镱</h6>
-                  <p><img src="../assets/imgs/heidian.jpg" alt=""> 成功chroot过很多bug却从未成功chroot过妹子的心。</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/mayun.jpg" alt />
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h6 class="media-heading">马小云</h6>
-                  <p><img src="../assets/imgs/heidian.jpg" alt="">333</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/huateng.jpg" alt />
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h6 class="media-heading">麻花腾</h6>
-                  <p><img src="../assets/imgs/lvdian.jpg" alt="">333</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/xiaoxian.jpg" alt />
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h6 class="media-heading">王小贤</h6>
-                  <p><img src="../assets/imgs/lvdian.jpg" alt="">333</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="#">
-                    <img class="media-object" src="../assets/imgs/xiaozheng.jpg" alt />
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h6 class="media-heading">徐小峥</h6>
-                  <p><img src="../assets/imgs/heidian.jpg" alt="">333</p>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#">
+                      <img class="media-object" src="../assets/imgs/xiaozheng.jpg" alt />
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h6 class="media-heading">徐小峥</h6>
+                    <p>
+                      <img src="../assets/imgs/heidian.jpg" alt />333
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div style="margin-top:5px">
+            <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+              <el-tab-pane label="用户管理" name="first">亲密度</el-tab-pane>
+              <el-tab-pane label="配置管理" name="second">黑名单</el-tab-pane>
+            </el-tabs>
           </div>
         </div>
         <div class="liaotian col-md-8" style="padding:0;float:left;">
@@ -149,77 +172,107 @@
           </div>
 
           <!-- 消息 -->
-          <div
-            class="jilu"
-            style="margin-top:-30px;padding-right:10px;padding-left:10px;background-color:#F1F5F8;"
-          >
+          <div class="jilu" style="margin-top:-30px;background-color:#F1F5F8;">
             <div style="background-color:white">
               <hr style="margin:0;height:3px" />
             </div>
-
-            <!-- row pre-scrollable 滚动条 -->
-            <div class="media" style="padding-top:20px">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
-                </a>
-              </div>
-              <div class="media-body">
-                <div style="float:left">
-                  <h6
-                    class="media-heading"
-                    style="margin-top:20px"
-                  >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
-                  <h4 class="media-heading">让天下没有难写的代码！</h4>
+            <!-- row pre-scrollable -->
+            <div class="gundong">
+              <div class="media" style="padding-top:20px">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div style="float:left">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
+                    <h4 class="media-heading">让天下没有难写的代码！</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="media">
-              <div class="media-body">
-                <div style="float:right">
-                  <h6
-                    class="media-heading"
-                    style="margin-top:20px"
-                  >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
-                  <h4 class="media-heading">代码在囧途，也要写到底！</h4>
+              <div class="media">
+                <div class="media-body">
+                  <div style="float:right">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
+                    <h4 class="media-heading">代码在囧途，也要写到底！</h4>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/huateng.jpg" alt="..." />
+                  </a>
                 </div>
               </div>
-              <div class="media-right">
-                <a href="#">
-                  <img class="media-object" src="../assets/imgs/huateng.jpg" alt="..." />
-                </a>
-              </div>
-            </div>
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
-                </a>
-              </div>
-              <div class="media-body">
-                <div style="float:left">
-                  <h6
-                    class="media-heading"
-                    style="margin-top:20px"
-                  >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
-                  <h4 class="media-heading">别急，您慢慢说。。。。。</h4>
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div style="float:left">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
+                    <h4 class="media-heading">别急，您慢慢说。。。。。</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="media">
-              <div class="media-body">
-                <div style="float:right">
-                  <h6
-                    class="media-heading"
-                    style="margin-top:20px"
-                  >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
-                  <h4 class="media-heading">您好，我现在有事不在，一会再和您联系！</h4>
+              <div class="media">
+                <div class="media-body">
+                  <div style="float:right">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
+                    <h4 class="media-heading">您好，我现在有事不在，一会再和您联系！</h4>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/huateng.jpg" alt="..." />
+                  </a>
                 </div>
               </div>
-              <div class="media-right">
-                <a href="#">
-                  <img class="media-object" src="../assets/imgs/huateng.jpg" alt="..." />
-                </a>
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div style="float:left">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
+                    <h4 class="media-heading">你他大哥的。。。。。</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="media">
+                <div class="media-body">
+                  <div style="float:right">
+                    <h6
+                      class="media-heading"
+                      style="margin-top:20px"
+                    >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
+                    <h4 class="media-heading">套你猴子！！！！</h4>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <a href="#">
+                    <img class="media-object" src="../assets/imgs/huateng.jpg" alt="..." />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -290,14 +343,27 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
-<style>
-.friend {
-  height: 650px;
+<script>
+export default {
+  data() {
+    return {
+      activeName: "first"
+    };
+  },
+  methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+    }
+  }
+};
+</script>
+<style scoped>
+.container {
+  /* height: 650px; */
   margin-top: 100px;
 }
 .list-group img {
@@ -305,27 +371,58 @@
   height: 80px;
   border-radius: 50%;
 }
-.jilu img{
+.jilu .media {
+  padding: 0 7px 0 10px;
+}
+.jilu img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
 }
-.haoyouliebiao img{
+.gundong {
+  height: 350px;
+  overflow-y: scroll;
+}
+#gundong {
+  margin-right: -10px;
+  overflow-y: hidden;
+}
+
+#gundong:hover {
+  overflow-y: auto;
+}
+#gundong::-webkit-scrollbar {
+  width: 4px;
+  height: 50px;
+  background: #cdd2d6;
+}
+.gundong::-webkit-scrollbar {
+  width: 4px;
+  height: 50px;
+  background: #cdd2d6;
+}
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+.haoyouliebiao img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-.haoyouliebiao .media h6{
-  margin-top:10px;
-  color:white;
+.haoyouliebiao .media h6 {
+  margin-top: 10px;
+  color: white;
 }
-.haoyouliebiao .media p{
-  color: #A8ADB3;
-  font-size: 10px
+.haoyouliebiao .media p {
+  color: #a8adb3;
+  font-size: 10px;
 }
-.haoyouliebiao .media p img{
-  width:8px;
-  height:8px;
+.haoyouliebiao .media p img {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 </style>
