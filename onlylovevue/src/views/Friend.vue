@@ -64,7 +64,7 @@
                 </div>
                 <div class="media-body">
                   <h6 class="media-heading">宋小镱</h6>
-                  <p><img src="../assets/imgs/heidian.jpg" alt=""> 成功chroot过很多系统却从未成功chroot过妹子的心。</p>
+                  <p><img src="../assets/imgs/heidian.jpg" alt=""> 成功chroot过很多bug却从未成功chroot过妹子的心。</p>
                 </div>
               </div>
               <div class="media">
@@ -297,7 +297,7 @@
 </template>
 <style>
 .friend {
-  height: 2000px;
+  height: 650px;
   margin-top: 100px;
 }
 .list-group img {
