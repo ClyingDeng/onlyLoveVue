@@ -12,6 +12,17 @@ var shopDAO = {
             }
         })
     },
+    // 根据Id查看商品
+    productlist:function(propId,callback){
+        DAO('select * from props where prop_Id = ?', [propId], function(err, results) {
+            console.log(results)
+            if (err) {
+                callback(err, null)
+            } else {
+                callback(null, results)
+            }
+        })
+    },
     //获取商品原件
     getShopProduct: function(callback) {
         DAO('select prop_Id,prop_Name,prop_pic,prop_price from props', null, function(err, results) {
