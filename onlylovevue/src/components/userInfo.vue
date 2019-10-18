@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="title">
-      个人信息
+      修改个人信息
       <span class="pro-label label label-warning">PRO</span>
     </h2>
     <!-- <h1>{{suserInfos}}</h1> -->
@@ -12,7 +12,7 @@
         <h3 class="fieldset-title">基本信息</h3>
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
-            <img v-if="suserInfos.headPic == 'defaultHead.jpg'"
+            <img v-if="suserInfos.headPic == 'fang1.jpg'"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
@@ -141,13 +141,21 @@
       <div class="form-group">
         <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
           <!-- <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/> -->
-          <button class="btn btn-primary" type="button" @click="onSubmit">确认修改</button>
+          <button class="btn btn-primary" type="button" @click="onSubmit">
+            <router-link to='seeinfo'>确认修改</router-link>
+          </button>
         </div>
       </div>
     </form>
   </div>
 </template>
 <style scoped>
+a{
+  color: #f1f1f1;
+}
+a:hover{
+  color: #ccc;
+}
 .sexStyle{
   margin-right: 15px;
 }
@@ -157,11 +165,13 @@ input[type="file"] {
 .form-inline[data-v-0a4b02ae] {
     margin-top: 0px;
 }
-.avatar .figure img[data-v-0a4b02ae] {
-    /* width: 100%; */
+.avatar .figure img[data-v-00cb6ea9] {
+    width: 100%;
+}
+/* .figure img {
     width: 120%;
     height: 120%;
-}
+} */
 .figure{
       padding:0;
       padding-right: 15px;
@@ -241,12 +251,14 @@ export default {
         sex:'0',
         marriage:'0',
         blight:'0'
-      }
+      },
+      suserInfos:{}
     };
   },
-  props:['suserInfos'],
+  // props:['suserInfos'],
   mounted:function(){
-      this.sex = this.suserInfos.sex
+      this.sex = this.$store.state.user.sex
+      this.suserInfos = this.$store.state.user
       // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
       // console.log('子组件：')
       // console.log(this.updateInfos)
@@ -321,7 +333,7 @@ export default {
         .then(function(result) {
           console.log(result);
           console.log(result.data.msg)
-
+          alert('修改数据成功！')
         })
       
       

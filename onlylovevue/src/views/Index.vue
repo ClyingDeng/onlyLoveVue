@@ -180,6 +180,24 @@ export default {
         .catch(err => {
           console.log('错误信息：' + err)
         })
+
+        this.$axios.get('http://localhost:3000/users/userInfo')
+        .then(res => {
+          // console.log('查询结果：' )
+          console.log(res.data.data[0])
+          //拿到后台数据赋值给前端
+            this.userInfos = res.data.data[0]
+            this.$store.state.user = res.data.data[0]
+            console.log('写到store里面')
+            console.log(this.$store.state.user)
+            // 写到本地存储
+            localStorage.setItem('myInfo',JSON.stringify(res.data.data[0]))
+          
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+
       }
 }
 </script>
