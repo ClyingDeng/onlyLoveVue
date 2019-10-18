@@ -28,4 +28,8 @@ router.get('/backpack', passport.authenticate('jwt', { session: false }), functi
 router.post('/buymember', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     shopController.buymember(req, res)
 });
+//根据Id查看商品
+router.post('/productid', passport.authenticate('jwt', { session: false }), function(req, res, next) {
+    shopController.productid(req, res)
+});
 module.exports = router;

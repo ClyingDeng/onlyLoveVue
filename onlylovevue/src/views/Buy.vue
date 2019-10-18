@@ -168,15 +168,21 @@
 export default {
   data(){
     return{
-      conditions:[]
+      conditions:[],
+      // propId:''
     };
   },
-  created(){
-    // this.getData()
+  //  mounted: function
+ created(){
+    // console.log(this.$route.query.productid)
+    this.propid = this.$route.query.productid
+    // var propId
+    // propId.append("propId",this.$route.query.productid) 
+    console.log({"propId":this.propid})
     this.$axios
-    .get("http://localhost:3000/shop/product/ "  )
+    .post("http://localhost:3000/shop/productid" ,{"propId":this.propid})
       .then(res => {
-        console.log("查询结果：");
+        console.log("查询结果："); 
         console.log(res.data.data);
         
         // 拿到后台数据·赋值给前端
@@ -189,8 +195,8 @@ export default {
   },
   methods: {
     handleChange() {
-      console.log(this.$route.query.productid );
-    
+      
+      
     },
 //     getData(){
 //       let id = this.$route.params.id;
