@@ -16,7 +16,7 @@
           </h2>
           <p>玫瑰花语是指用玫瑰来表达爱情的通用语言，而且不同的颜色和数量代表的意义不同。其中红玫瑰代表着热烈的爱情；黄玫瑰表达纯真的友谊和美好的祝福；紫玫瑰传递着浪漫的情怀和高贵、忧郁的情感；白玫瑰预示着纯洁，出淤泥而不染。</p>
           <h3>￥{{key.prop_price}}</h3>
-          <button>立即购买</button>
+          <button @click="handleChange()">立即购买</button>
         </div>
       </div>
     </div>
@@ -174,20 +174,22 @@ export default {
   created(){
     // this.getData()
     this.$axios
-    .get("http://localhost:3000/shop/product")
+    .get("http://localhost:3000/shop/product/ "  )
       .then(res => {
         console.log("查询结果：");
         console.log(res.data.data);
+        
         // 拿到后台数据·赋值给前端
         this.conditions = res.data.data;
+        // console.log(this.conditions[0].prop_Id)
       })
       .catch(err => {
         console.log("错误信息：" + err);
       });
   },
   methods: {
-    handleChange(value) {
-      console.log(value);
+    handleChange() {
+      console.log(this.$route.query.productid );
     
     },
 //     getData(){

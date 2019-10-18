@@ -1,10 +1,10 @@
 
 <template>
- <div>
-   <HeadNav></HeadNav>
-    <div class='row'>
-  
-      <div class="middle col-lg-12 col-md-12 col-sm-12 col-xs-12">
+ <div   >
+   <!-- <HeadNav></HeadNav> -->
+    <div class='row' >
+  <div  >
+      <div class="middle col-lg-12 col-md-12 col-sm-12 col-xs-12"    >
       <ul>
         <li class="col-lg-2 col-md-2 col-sm-2 col-xs-6 ">
           <em>520</em>
@@ -58,7 +58,8 @@
        
          </div>
     </div>
-    <div><FootNav></FootNav></div>
+    </div>
+    <!-- <div><FootNav></FootNav></div> -->
     </div>
  
 </template>
@@ -126,12 +127,7 @@ em {
   line-height: 20px;
   height: 20px;
 }
-/* .member-type{
-  width: 100%;
-  height: 600px;
-  background-color: #ccc;
 
-} */
 
 .open-member{
   width: 90%;
@@ -196,3 +192,4 @@ em {
 }
 
 </style>
+
