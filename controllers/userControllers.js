@@ -515,7 +515,7 @@ var userController = {
             }
             console.log('...................')
                 //fields是上传的表单字段数组，files是上传的文件列表
-                console.log(files.file.path)
+                console.log(files.img_0.path)
                 //保存图片路径到数据库
                 //1.获取当前用户编号
             var userId = req.user[0].base_info_Id
@@ -533,27 +533,36 @@ var userController = {
             // 调用身份证识别
             client.idcard(image, idCardSide).then(function(result) {
                 // results = JSON.stringify(result)
-                // console.log(results)
-                var id = {}
-                id.idcarNo = result.words_result.公民身份号码.words
-                id.name = result.words_result.姓名.words
-                id.sex = result.words_result.性别.words
-                id.birth = result.words_result.出生.words
-                console.log(id)
-                async function identifcat() {
-                    try {
-                        let status = await userDAO.userStatus(userId)
-                        console.log(status)
-                        let idCardData = await userDAO.idCardFront(userId, headPic, id)
-                        res.json({ code: 200, affectedRows: idCardData.affectedRows, msg: '身份证上传成功！审核通过！' })
-                    } catch (err) {
-                        console.log(err)
-                    }
+                console.log('后来')
+                console.log(result.words_result)
+                console.log(result.words_result.公民身份号码.words)
+                if(result.words_result.公民身份号码.words){
+                    var id = {}
+                    id.idcarNo = result.words_result.公民身份号码.words
+                    id.name = result.words_result.姓名.words
+                    id.sex = result.words_result.性别.words
+                    id.birth = result.words_result.出生.words
+                    console.log(id)
+                    res.json({ code: 200, msg: '身份证上传成功！审核通过！' })
+                    // async function identifcat() {
+                    //     try {
+                    //         let status = await userDAO.userStatus(userId)
+                    //         console.log(status)
+                    //         let idCardData = await userDAO.idCardFront(userId, headPic, id)
+                    //         res.json({ code: 200, affectedRows: idCardData.affectedRows, msg: '身份证上传成功！审核通过！' })
+                    //     } catch (err) {
+                    //         console.log(err)
+                    //     }
+                    // }
+                    // identifcat()
+                }else{
+                    
+                    res.json({ code: 200, msg: '身份证上传错误！' })
                 }
-                identifcat()
             }).catch(function(err) {
                 // 如果发生网络错误
                 console.log(err);
+                // fs.rmdirSync(files.img_0.path);
                 res.json({ code: 200, msg: '身份证上传成功！审核不通过！' })
             });
 
