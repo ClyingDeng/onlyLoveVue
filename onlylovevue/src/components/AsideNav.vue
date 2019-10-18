@@ -33,7 +33,7 @@
           <br />
         </section>
         <section class="sect">
-          <span @click.prevent="goMember">会员中心</span>
+          <span @click.prevent="goMessage">会员中心</span>
           <span @click.prevent="goFriend">好友列表</span>
           <span @click.prevent="goCondition">我的动态</span>
           <span @click.prevent="goContact">联系唯爱</span>
@@ -293,7 +293,7 @@ export default {
     goList() {
       this.$router.push("/List");
     },
-    goMember(){
+    goMessage(){
       this.$router.push("/Member");
     }
   }

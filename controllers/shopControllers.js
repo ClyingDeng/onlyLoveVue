@@ -4,6 +4,19 @@ var path = require('path')
 var bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken')
 var shopController = {
+    //根据Id查看商品
+    productid: function(req, res) {
+        var propId = req.body.propId
+//         var userId = req.user[0].base_info_Id
+// console.log(userId)
+        shopDAO.productlist(propId,function(err, results) {
+            if (err) {
+                res.json({ code: 500, msg: '查询商品失败！' })
+            } else {
+                res.json({ code: 200, data: results, msg: '查询商品成功！' })
+            }
+        })
+    },
     //查询商品
     product: function (req, res) {
         var userId = req.user[0].base_info_Id

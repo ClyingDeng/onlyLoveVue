@@ -314,18 +314,6 @@ export default {
     return {
       num: 1,
       conditions: [],
-      // productid:'',
-    // name:[],
-      // className1:'active',
-      // className1:'',
-      // arrDate:[
-      //   {id:'1',title:'第一条'},
-      //   {id:'2',title:'第二条'},
-      //   {id:'3',title:'第三条'},
-      //   {id:'4',title:'第四条'},
-      //   {id:'5',title:'第五条'}
-
-      // ]
 
     };
   

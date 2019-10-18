@@ -5,23 +5,25 @@
         <div class="module-inner">
           <div class="side-bar">
             <div class="user-info">
-              <img v-if="userInfos.headPic == 'defaultHead.jpg'"
+              <img v-if="userInfos.headPic == ''"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
             />
             <img v-else
               class="img-rounded img-responsive"
-              :src="'http://localhost:3000/upload/' + userInfos.headPic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + userInfos.headPic"
               alt
             />
               <ul class="meta list list-unstyled">
                 <li class="name">
-                  Rebecca Sanders
-                  <label class="label label-info">普通用户</label>
+                  {{userInfos.nickName}}
+                  <br />
+                  <label class="label label-info" style="margin-top:10px;">普通用户</label>
                 </li>
                 <li class="email">
-                  <a href="#">1174915260@qq.com</a>
+                  账号：
+                  <a href="#">{{userInfos.base_info_Id}}</a>
                 </li>
                 <li class="activity">
                   上次登录时间:
@@ -31,27 +33,31 @@
             </div>
             <nav class="side-menu">
               <ul class="nav">
-                <li :class="className1">
-                  <a href="javascript:;" @click="compentChild('seeInfo')">
+                <li :class="className1" @click="changcss('1')">
+                  <router-link to="seeinfo"><span class="fa fa-user" ></span>个人信息</router-link>
+                  <!-- <a href="/personal/seeInfo" >
                     <span class="fa fa-user" ></span>个人信息
-                  </a>
+                  </a> -->
                 </li>
-                <li :class="className2">
-                  <a href="javascript:;" @click="compentChild('setting')">
-                    <span class="fa fa-cog" ></span>设置
-                  </a>
+                <li :class="className2" @click="changcss('2')">
+                  <!-- <a href="/personal/setting"> -->
+                  <router-link to = "setting"><span class="fa fa-cog" ></span>设置</router-link>
+                    
+                  <!-- </a> -->
                 </li>
-                <li :class="className3">
-                  <a href="javascript:;" @click="compentChild('identification')">
+                <li :class="className3" @click="changcss('3')">
+                  <router-link to="identification"><span class="fa fa-credit-card" ></span> 实名认证</router-link>
+                  <!-- <a href="/personal/identification">
                     <span class="fa fa-credit-card" ></span> 实名认证
-                  </a>
+                  </a> -->
                 </li>
 
               </ul>
             </nav>
           </div>
           <div class="content-panel">
-            <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos" v-on:userInfo_commit='getNewInfo' ></component>
+            <router-view/>
+            <!-- <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos" v-on:userInfo_commit='getNewInfo' ></component> -->
           </div>
         </div>
       </section>
@@ -61,9 +67,9 @@
 
 <script>
 
-import setting from "../components/Setting.vue";
-import identification from "../components/Identification.vue";
-import seeInfo from "../components/SeeInfo.vue";
+// import setting from "../components/Setting.vue";
+// import identification from "../components/Identification.vue";
+// import seeInfo from "../components/SeeInfo.vue";
 
 import jwt_decode from "jwt-decode";
 export default {
@@ -74,29 +80,39 @@ export default {
       className1:'active',
       className2:'',
       className3:'',
-      conditions:'',
+      // conditions:'',
       userInfos:'',
       // hackReset:true,
     };
   },
+  watch:{
+    $route(){
+      console.log('路由')
+      console.log(this.$route.path)
+      // if(this.$route.path){
+
+      // }
+    }
+  },
   created(){
-    // rebuileComponents() {
-      // 销毁子标签
-      // this.hackReset = false;
-      // // 重新创建子标签
-      // this.$nextTick(() => {
-      //   this.hackReset = true;
-      // });
-    
+    // console.log('刷新了没')
+    //   console.log(document.referrer)
+    //   let router1 = 'http://localhost:8080/personal/seeinfo'
+    //   // let router2 = 'http://localhost:8080/index'
+    //   let router3 = 'http://localhost:8080/personal/seeinfo'
+
+    //   if(document.referrer == router1 || document.referrer == router3){
+    //     this.$router.push({path:'/'})
+    //   }
         this.$axios.get('http://localhost:3000/users/userStatus')
         .then(res => {
           console.log('查询结果：' )
           console.log(res.data.data[0].use_status)
           //拿到后台数据赋值给前端
           if(res.data.data[0].use_status == 1){
-            this.conditions = true
+            this.$store.state.conditions = true
           }else{
-            this.conditions = false
+            this.$store.state.conditions = false
           }
           
         })
@@ -109,41 +125,60 @@ export default {
           console.log(res.data.data[0])
           //拿到后台数据赋值给前端
             this.userInfos = res.data.data[0]
-            
+            this.$store.state.user = res.data.data[0]
+            console.log('写到store里面')
+            console.log(this.$store.state.user)
+            //写到本地存储
+            // localStorage.setItem('myInfo',res.data.data[0])
           
         })
         .catch(err => {
           console.log('错误信息：' + err)
         })
       },
-  components: {
-    // baseInfo: baseInfo,
-    identification: identification,
-    setting: setting,
-    seeInfo:seeInfo
-  },
+  // components: {
+  //   // baseInfo: baseInfo,
+  //   identification: identification,
+  //   setting: setting,
+  //   seeInfo:seeInfo
+  // },
   methods: {
     getNewInfo(e){
       console.log(e)
       this.userInfos = e
     },
-   compentChild(currentCompent){
-     this.currentTabCompent = currentCompent
-    //  console.log(currentCompent)
-       if(currentCompent == 'baseInfo'){
-         this.className1='active'
-         this.className2=''
-         this.className3=''
-       }else if(currentCompent == 'setting'){
-         this.className1=''
-         this.className2='active'
-         this.className3=''
-       }else if(currentCompent == 'identification'){
-         this.className1=''
-         this.className2=''
-         this.className3='active'
-       }
-   },
+    changcss(change){
+      if(change == '1'){
+        this.className1='active'
+        this.className2=''
+        this.className3=''
+      }else if (change == '2'){
+        this.className1=''
+        this.className2='active'
+        this.className3=''
+      }else{
+        this.className1=''
+        this.className2=''
+        this.className3='active'
+      }
+    },
+  //  compentChild(currentCompent){
+  //    this.currentTabCompent = currentCompent
+  //   //  console.log(currentCompent)
+  //      if(currentCompent == 'baseInfo'){
+        //  this.className1='active'
+        //  this.className2=''
+        //  this.className3=''
+  //      }else if(currentCompent == 'setting'){
+  //        this.className1=''
+  //        this.className2='active'
+  //        this.className3=''
+  //      }else if(currentCompent == 'identification'){
+  //        this.className1=''
+  //        this.className2=''
+  //        this.className3='active'
+  //      }
+  //  },
     submitForm(formName) {
       //通过ref定位到form表单
       this.$refs[formName].validate(valid => {

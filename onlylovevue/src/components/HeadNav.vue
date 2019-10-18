@@ -66,7 +66,8 @@
                         <a href="/shop">唯爱商城</a>
                     </li>
                     <li class="col-md-2" id="nav_7">
-                        <a href="login">登录</a>
+                        <a v-if="this.isLogin">欢迎</a>
+                        <a v-else href="login">登录</a>
                     </li>
 
                 </ul>
@@ -77,9 +78,23 @@
 </template>
 
 <script>
-
+import jwt_decode from "jwt-decode";
 export default {
-  
+  data() {
+      return{
+          isLogin:false
+      }
+  },
+  created(){
+    //   let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
+    //   console.log('token对象：',userInfo)
+      if(jwt_decode(localStorage.getItem ('mytoken'))){
+          this.isLogin = true
+          console.log('登录啊')
+      }else{
+          console.log('未登录')
+      }
+  }
 }
 </script>
 

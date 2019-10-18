@@ -7,14 +7,14 @@
             <form name="searchForm" method="post" action="" autocomplete="on">
                   <div class="dw_search">
                                 <div class="dw_search_in">
-                                    <!-- 全文及相关关键字 -->
+                                    <!-- ID搜索 -->
                                     <div class="el on el_q col-xs-12 col-md-3 ">
                                         <ul id="kwdTypeSelUl">
                                             <li>ID搜索<em class="dicon Dm"></em></li>
                                             <li><a onclick="">搜昵称</a></li>
                                         </ul>
                                         <p class="ipt">
-                                        <input autocomplete="on" type="text" class="ef" placeholder="请输入ID">
+                                        <input autocomplete="on" type="text" class="ef" v-model="IdName"  placeholder="请输入ID">
                                         </p>               
                             </div>
                                     <!--地点 -->
@@ -145,17 +145,18 @@
           <section id="work" class="portfolio-mf sect-pt4 route">
             <div class="container">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4"  v-for="key in otherUserInfos">
                   <div class="work-box">
                     <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
                       <div class="work-img">
-                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
+                        <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt="" class="img-fluid">
                       </div>
                       <div class="work-content">
                         <div class="row">
                           <div class="col-sm-12">
-                            <h2 class="w-title">clying</h2>
-                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
+                            <h2 class="w-title">{{key.nickName}}</h2>
+                            <p>ID:  <span>{{key.base_info_Id}}</span></p>
+                            <p><span class="w-date">{{key.sex}}</span> / <span class="w-date">{{key.age}}</span> </p>
                             <div class="w-more">
                               <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。一起老去的日子里，因为朋友的存在而泛着七彩的光。</span> 
                             </div>
@@ -165,7 +166,7 @@
                     </a>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <div class="work-box">
                     <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
                       <div class="work-img">
@@ -204,7 +205,7 @@
                       </div>
                     </a>
                   </div>
-                </div>
+                </div> -->
                 
               </div>
             </div>
@@ -218,6 +219,7 @@
   </div>
 </template>
 <script>
+
 export default {
     data(){
         return{
@@ -225,27 +227,52 @@ export default {
             height:['150cm以下','151-155cm','156-160cm','161-165cm','166-170cm','171-175cm','176-180cm','181-185cm','186cm以上'],
             weight:['40kg以下','41-45kg','46-50kg','51-55kg','56-60kg','61-65kg','66-70kg','71-75kg','76-80kg','80-90kg','90kg以上'],
             education:['高中以下','高中','大专','本科','硕士','博士','博士后'],
-            salary:['2k以下','2k-4k','4-6k','6-8k','8-10k','10-15k','15-20k','20k以上']
+            salary:['2k以下','2k-4k','4-6k','6-8k','8-10k','10-15k','15-20k','20k以上'],
+            userInfo:{},     //当前用户信息
+            otherUserInfos:[],     //能够搜索用户信息
+            IdName:'',
         }
+    },
+    watch:{
+      IdName:{
+        handler:function(IdName) {
+          console.log('昵称搜索：' + IdName)
+          // for(let i = 0; i < this.otherUserInfos.length; i++){
+          //   if(IdName == this.otherUserInfos[i].base_info_Id){
+          //     console.log(this.otherUserInfos[i])
+          //   }
+          // }
+        }
+      }
     },
     methods:{
       more(){
         
       }
-    }
+    },
     //组件创建完成后执行的操作
-      // created(){
-      //   this.$axios.get('http://localhost:3000/allCondition')
-      //   .then(res => {
-      //     console.log('查询结果：' )
-      //     console.log(res.data.data)
-      //     //拿到后台数据赋值给前端
-      //     this.conditions = res.data.data
-      //   })
-      //   .catch(err => {
-      //     console.log('错误信息：' + err)
-      //   })
-      // }
+      created(){
+        console.log(JSON.parse(localStorage.getItem('myInfo')))
+        this.userInfo = JSON.parse(localStorage.getItem('myInfo'))
+        //用当前用户的会员等级查询用户的结果
+        this.$axios.get('http://localhost:3000/search/member')
+        .then(res => {
+          console.log('看看结果：' )
+          console.log(res.data.data[0])   //不是会员为undefined
+          //拿到后台数据赋值给前端
+          if(!res.data.data[0]){
+            alert('抱歉，您还不是会员！')
+          }else{
+            console.log('是会员')
+            console.log(res.data.data)
+            this.otherUserInfos = res.data.data
+          }
+          
+        })
+        .catch(err => {
+          console.log('错误信息：' + err)
+        })
+      }
 }
 </script>
 
