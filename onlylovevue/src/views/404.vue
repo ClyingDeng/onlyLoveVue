@@ -105,6 +105,18 @@ export default {
     return {
       visible: false
     };
-  }
+  },
+   created() {
+    // const userId = this.userId;
+    this.$axios
+      .post("http://localhost:3000/pay/createInvoice")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        // this.conditions = res.data.data;
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+   }
 };
 </script>
