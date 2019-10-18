@@ -4,11 +4,14 @@
       <div class="col-md-12">
         <div class="youyisi">
           <div class="touxiang">
-            <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic" class="img-thumbnail" />
+            <img
+              :src="conditions.length&&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic"
+              class="img-thumbnail"
+            />
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
-              <h3 style="color:blueviolet">&nbsp;{{conditions[0].nickName}}</h3>
+              <h3 style="color:blueviolet">&nbsp;{{conditions.length&&conditions[0].nickName}}</h3>
             </div>
             <!-- 会员图标 -->
             <div style="float: left">
@@ -18,8 +21,8 @@
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
                 <span style="color:blueviolet">
-                  <p>会员等级 {{member[0].member_grade}} </p>
-                  <p>会员剩余 {{member[0].member_date}} 天</p>
+                  <p>会员等级 {{member.length&& member[0].member_grade}}</p>
+                  <p>会员剩余 {{member.length&& member[0].member_date}} 天</p>
                 </span>
                 <!-- 进度条展示 -->
                 <div class="progress progress-striped" style="width: 250px;height: 8px;">
@@ -93,7 +96,10 @@
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
-      <div class="zuobian" style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left">
+      <div
+        class="zuobian"
+        style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left"
+      >
         <div>
           <a href="./Index.vue" class="list-group-item">
             <span
@@ -189,24 +195,32 @@
         </div>
         <!-- 全部动态 -->
         <!-- 第一个说说 -->
-        <div class="col-xs-12" style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)" v-for="(key,index) in conditions" :key="'info-1'+index">
+        <div
+          class="col-xs-12"
+          style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)"
+          v-for="(key,index) in conditions"
+          :key="'info-1'+index"
+        >
           <div style="float: left;padding: 20px">
-            <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headpic" class="img-circle" width="50px" height="50px" />
+            <img
+              :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headpic"
+              class="img-circle"
+              width="50px"
+              height="50px"
+            />
           </div>
           <div style="float: left;padding-top: 18px">
             <a href="#" style="font-size: 18px;color: black">{{key.nickName}}</a>
             <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
           </div>
           <div style="clear: both;margin-left: 80px">
-            <p>
-              {{key.con_words}}
-            </p>
+            <p>{{key.con_words}}</p>
           </div>
           <div style="margin:30px;clear:both; ">
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1"  />
+            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
             <!-- <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
             <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" /> -->
+            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />-->
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
             <li style="float: left;width:50px;">
@@ -237,7 +251,7 @@
           <div class="qianzuo">
             <a href style="text-decoration:none">
               <ul>
-                <li>10.14</li>
+                <li>{{time}}</li>
                 <li>签到</li>
               </ul>
             </a>
@@ -249,15 +263,27 @@
             </ul>
           </div>
         </div>
-        <div class="kan" >
+        <div class="kan">
           <!-- 谁看过我 -->
           <div class="kanwo" style="clear:both;width:300px;margin-top:2px">
             <h4 style="text-align:center;color:blueviolet">关注我的</h4>
-            <div class="col-md-6" v-for="(key,index) in attentionme" :key="'info-2'+index" style="float:left">
+            <div
+              class="col-md-6"
+              v-for="(key,index) in attentionme"
+              :key="'info-2'+index"
+              style="float:left"
+            >
               <div class="work-box">
-                <a :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" data-lightbox="gallery-mf">
+                <a
+                  :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                  data-lightbox="gallery-mf"
+                >
                   <div class="work-img">
-                    <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" alt class="img-fluid" />
+                    <img
+                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      alt
+                      class="img-fluid"
+                    />
                   </div>
                   <div class="work-content">
                     <div class="row">
@@ -270,13 +296,23 @@
               </div>
             </div>
           </div>
-          <div class="wokan" style="background-color: rgb(243, 237, 237);clear:both;width:300px;margin-top: 20px">
+          <div
+            class="wokan"
+            style="background-color: rgb(243, 237, 237);clear:both;width:300px;margin-top: 20px"
+          >
             <h4 style="text-align:center;color:blueviolet">我关注的</h4>
             <div class="col-md-6" v-for="(key,index) in meattention" :key="'info-3'+index">
               <div class="work-box">
-                <a :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" data-lightbox="gallery-mf">
+                <a
+                  :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                  data-lightbox="gallery-mf"
+                >
                   <div class="work-img">
-                    <img :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic" alt class="img-fluid" />
+                    <img
+                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      alt
+                      class="img-fluid"
+                    />
                   </div>
                   <div class="work-content">
                     <div class="row">
@@ -340,6 +376,7 @@ ul {
   margin-left: 60px;
 }
 .shuotu {
+  padding-bottom: 20px;
   height: 150px;
   width: 150px;
   display: block;
@@ -428,15 +465,10 @@ export default {
       user_Id: "",
       user: {},
       fileList: [],
-      conditions: {
-        nickName: '',
-      },
+      conditions: [],
       attentionme: [],
       meattention: [],
-      member: {
-        member_grade: '',
-        member_date: ''
-      },
+      member: [],
       form: {
         name: "" //绑定表单元素的属性
       },
@@ -444,48 +476,48 @@ export default {
     };
   },
   created() {
-      this.$axios
-        .get("http://localhost:3000/hotSearch/hotSearch")
-        .then(res => {
-          //拿到后台数据赋值给前端
-          this.conditions = res.data.data;
-          // console.log(this.conditions);
-        })
-        .catch(err => {
-          console.log("错误信息：" + err);
-        });
-      this.$axios
-        .get("http://localhost:3000/users/attentionMe")
-        .then(res => {
-          //拿到后台数据赋值给前端
-          this.attentionme = res.data.data;
-          // console.log(this.attentionme);
-        })
-        .catch(err => {
-          console.log("错误信息：" + err);
-        });
-      this.$axios
-        .get("http://localhost:3000/users/iAttention")
-        .then(res => {
-          //拿到后台数据赋值给前端
-          this.meattention = res.data.data;
-          // console.log(this.meattention);
-        })
-        .catch(err => {
-          console.log("错误信息：" + err);
-        });
-      this.$axios
-        .get("http://localhost:3000/shop/memeber")
-        .then(res => {
-          //拿到后台数据赋值给前端
-          console.log(res);
-          this.member = res.data.data;
-          console.log(this.member);
-        })
-        .catch(err => {
-          console.log("错误信息：" + err);
-        });
-    },
+    this.$axios
+      .get("http://localhost:3000/hotSearch/hotSearch")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.conditions = res.data.data;
+        // console.log(this.conditions);
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/users/attentionMe")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.attentionme = res.data.data;
+        // console.log(this.attentionme);
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/users/iAttention")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        this.meattention = res.data.data;
+        // console.log(this.meattention);
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/shop/memeber")
+      .then(res => {
+        //拿到后台数据赋值给前端
+        console.log(res);
+        this.member = res.data.data;
+        console.log(this.member);
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+  },
   methods: {
     onSubmit() {
       let nowDate = new Date();

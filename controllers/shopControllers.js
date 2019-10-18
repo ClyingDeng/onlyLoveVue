@@ -81,7 +81,7 @@ var shopController = {
                 res.json({ code: 500, msg: '请完善你的个人信息！' })
             } else {
                 if (results1 == "") {
-                    res.json({ code: 500, msg: '您还没有成为会员！' })
+                    res.json({ code: 200, msg: '您还没有成为会员！' })
                 } else {
                     shopDAO.getShopMember(userId, function (err, results) {
                         if (err) {
@@ -91,7 +91,7 @@ var shopController = {
                                 res.json({ code: 200, msg: '您还没有成为会员' })
                             } else {
                                 if (results[0].member_status == 1) {
-                                    res.json({ code: 200, msg: '您的会员已过期' })
+                                    res.json({ code: 200, data: results,msg: '您的会员已过期' })
                                 } else {
                                     var day = results[0].member_act_date
                                     var grade = Math.ceil(day / 10)
