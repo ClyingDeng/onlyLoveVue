@@ -117,7 +117,7 @@ let router = new Router({
     {
       path: '/forget',
       name: 'forget',
-      component: () => import( './views/ForgetPassword.vue')
+      component: () => import( './views/Forgetpassword.vue')
     },
     {
       path: '/shopcart',
