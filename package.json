@@ -28,7 +28,8 @@
         "passport-jwt": "^4.0.0",
         "qr-image": "^3.2.0",
         "request": "^2.88.0",
-        "step": "^1.0.0"
+        "step": "^1.0.0",
+        "vue": "^2.6.10"
     },
     "description": "",
     "main": "app.js",

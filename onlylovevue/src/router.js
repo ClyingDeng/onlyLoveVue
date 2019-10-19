@@ -132,6 +132,11 @@ let router = new Router({
       name: 'buy',
       component: () => import( './views/Buy.vue')
     },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: () => import( './views/Pay.vue')
+    },
     
     
     {

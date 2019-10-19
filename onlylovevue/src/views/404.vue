@@ -1,6 +1,6 @@
 <template>
   <div id="four">
-    <el-popover placement="top" width="160" v-model="visible">
+    <el-popover placement="top" width="400" v-model="visible">
       <div class="top-message">
         <div>
           <img
