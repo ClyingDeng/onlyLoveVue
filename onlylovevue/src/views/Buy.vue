@@ -15,8 +15,11 @@
             <span>爱情、爱与美</span>
           </h2>
           <p>玫瑰花语是指用玫瑰来表达爱情的通用语言，而且不同的颜色和数量代表的意义不同。其中红玫瑰代表着热烈的爱情；黄玫瑰表达纯真的友谊和美好的祝福；紫玫瑰传递着浪漫的情怀和高贵、忧郁的情感；白玫瑰预示着纯洁，出淤泥而不染。</p>
-          <h3>￥{{key.prop_price}}</h3>
-          <button @click="handleChange()">立即购买</button>
+        <h3 style="margin-right:30px">￥{{key.prop_price}}</h3>
+         <el-input-number v-model="num" @change="Change()" :min="1" :max="10" label="描述文字" ></el-input-number>
+          <span>(限购⑩)</span>
+
+          <button :name="key.prop_price"  >立即购买</button>
         </div>
       </div>
     </div>
@@ -169,6 +172,9 @@ export default {
   data(){
     return{
       conditions:[],
+      num:1,
+      // money:''
+
       // propId:''
     };
   },
@@ -187,6 +193,7 @@ export default {
         
         // 拿到后台数据·赋值给前端
         this.conditions = res.data.data;
+      //  console.log( res.data.data[prop_price])
         // console.log(this.conditions[0].prop_Id)
       })
       .catch(err => {
@@ -194,18 +201,19 @@ export default {
       });
   },
   methods: {
-    handleChange() {
-      
-      
-    },
-//     getData(){
-//       let id = this.$route.params.id;
-//       this.axios.get('http://localhost:3000/shop/product',{
-// params:{
-//   id
-// }
-//       })
-//     }
+      handleChange(value) {
+        console.log(value);
+// this.money=value * this.conditions[prop_price]
+// console.log(this.money)
+      },
+  //     Change(e){
+  //       console.log(e.target.name)
+  // let money = e.target.name
+
+
+
+  //     }
+
   }
 }
 </script>
