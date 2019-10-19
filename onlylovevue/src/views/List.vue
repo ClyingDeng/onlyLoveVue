@@ -14,9 +14,13 @@
               <img src="../assets/imgs/一箭穿心.png" alt srcset style="width: 25px;height: 25px;" />比翼榜
             </div>
           </div>
-          <div class="col-xs-12 hotRank1" >
-            <div class="col-xs-12" >
-              <div class="col-xs-3 rankThree" v-for="(key,index) in carzyList.slice(1, 2)" :key="'info-1'+ index">
+          <div class="col-xs-12 hotRank1">
+            <div class="col-xs-12">
+              <div
+                class="col-xs-3 rankThree"
+                v-for="(key,index) in carzyList.slice(1, 2)"
+                :key="'info-1'+ index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -35,11 +39,19 @@
                   <li class="col-xs-12" style="color:#7b7b7b">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
-              <div class="col-xs-6 rankThree" v-for="(key,index) in carzyList.slice(0, 1)" :key="'info-2'+ index">
+              <div
+                class="col-xs-6 rankThree"
+                v-for="(key,index) in carzyList.slice(0, 1)"
+                :key="'info-2'+ index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -58,11 +70,19 @@
                   <li class="col-xs-12" style="color:goldenrod">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
-              <div class="col-xs-3 rankThree" v-for="(key,index) in carzyList.slice(2, 3)" :key="'info-3'+ index">
+              <div
+                class="col-xs-3 rankThree"
+                v-for="(key,index) in carzyList.slice(2, 3)"
+                :key="'info-3'+ index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -72,17 +92,30 @@
                     </div>
                   </li>
                   <li class="col-xs-12">
-                    <i class="fa fa-trophy" aria-hidden="true" style="color:peru;font-size: 20px">{{key.rowno}}</i>
+                    <i
+                      class="fa fa-trophy"
+                      aria-hidden="true"
+                      style="color:peru;font-size: 20px"
+                    >{{key.rowno}}</i>
                   </li>
                   <li class="col-xs-12" style="color:peru">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-xs-12 rankNumber" style="margin-top: -10px" v-for="(key,index) in carzyList.slice(3, 4)" :key="'info-4'+ index">
+            <div
+              class="col-xs-12 rankNumber"
+              style="margin-top: -10px"
+              v-for="(key,index) in carzyList.slice(3, 4)"
+              :key="'info-4'+ index"
+            >
               <ul>
                 <li>
                   <span>{{key.rowno}}</span>
@@ -136,7 +169,11 @@
           </div>
           <div class="col-xs-12 beautRank1">
             <div class="col-xs-12">
-              <div class="col-xs-3 rankThree" v-for="(key,index) in charmList.slice(1, 2)" :key="'info-5'+index">
+              <div
+                class="col-xs-3 rankThree"
+                v-for="(key,index) in charmList.slice(1, 2)"
+                :key="'info-5'+index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -155,11 +192,19 @@
                   <li class="col-xs-12" style="color:#7b7b7b">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
-              <div class="col-xs-6 rankThree" v-for="(key,index) in charmList.slice(0, 1)" :key="'info-6'+index">
+              <div
+                class="col-xs-6 rankThree"
+                v-for="(key,index) in charmList.slice(0, 1)"
+                :key="'info-6'+index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -178,11 +223,19 @@
                   <li class="col-xs-12" style="color:goldenrod">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
-              <div class="col-xs-3 rankThree" v-for="(key,index) in charmList.slice(2, 3)" :key="'info-7'+index">
+              <div
+                class="col-xs-3 rankThree"
+                v-for="(key,index) in charmList.slice(2, 3)"
+                :key="'info-7'+index"
+              >
                 <ul>
                   <li class="col-xs-12">
                     <div class="col-xs-12">
@@ -192,17 +245,30 @@
                     </div>
                   </li>
                   <li class="col-xs-12">
-                    <i class="fa fa-trophy" aria-hidden="true" style="color:peru;font-size: 20px">{{key.rowno}}</i>
+                    <i
+                      class="fa fa-trophy"
+                      aria-hidden="true"
+                      style="color:peru;font-size: 20px"
+                    >{{key.rowno}}</i>
                   </li>
                   <li class="col-xs-12" style="color:peru">{{key.昵称}}</li>
                   <li class="col-xs-12">
                     <b>魅力值</b>
-                    <i class="fa fa-arrow-up" aria-hidden="true" style="color:red">{{key.sweet_score}}</i>
+                    <i
+                      class="fa fa-arrow-up"
+                      aria-hidden="true"
+                      style="color:red"
+                    >{{key.sweet_score}}</i>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-xs-12 rankNumber" style="margin-top: -10px" v-for="(key,index) in charmList.slice(3, 4)" :key="'info-8'+index">
+            <div
+              class="col-xs-12 rankNumber"
+              style="margin-top: -10px"
+              v-for="(key,index) in charmList.slice(3, 4)"
+              :key="'info-8'+index"
+            >
               <ul>
                 <li>
                   <span>{{key.rowno}}</span>
@@ -255,7 +321,11 @@
             </div>
           </div>
           <div class="col-xs-12 loveRank1">
-            <div class="col-xs-12" v-for="(key,index) in sweetList.slice(0, 1)" :key="'info-9'+index">
+            <div
+              class="col-xs-12"
+              v-for="(key,index) in sweetList.slice(0, 1)"
+              :key="'info-9'+index"
+            >
               <div class="col-xs-6 rankThree">
                 <ul>
                   <li class="col-xs-12">
@@ -376,30 +446,44 @@
 export default {
   data() {
     return {
-      currentPage1: 5,
-      currentPage2: 5,
-      currentPage3: 5,
-      currentPage4: 4,
+      currentPage1: 1,
+      currentPage2: 1,
+      currentPage3: 1,
       carzyList: [],
       charmList: [],
       sweetList: [],
+      page: {
+        // 当前页数
+        currentPage: 1,
+        // 每页默认显示条数
+        pageSize: 5,
+        // 总条数
+        pageTotal: 0
+      }
     };
   },
   methods: {
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+    handleSizeChange(pageSize) {
+      console.log(`每页 ${pageSize} 条`);
+      this.page.pageSize = pageSize;
+      this.attribute.handleChange({ currentPage: 1, pageSize: this.page.pageSize });
     },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-    },
+    handleCurrentChange(pageSize) {
+      console.log(`当前页: ${pageSize}`);
+      this.page.currentPage = currentPage;
+      this.attribute.handleChange({
+        currentPage: this.page.currentPage,
+        pageSize: this.page.pageSize
+      });
+    }
   },
-   created() {
+  created() {
     this.$axios
       .get("http://localhost:3000/list/crazy")
       .then(res => {
         //拿到后台数据赋值给前端
         this.carzyList = res.data.data;
-        console.log(this.carzyList)
+        console.log(this.carzyList);
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -409,7 +493,7 @@ export default {
       .then(res => {
         //拿到后台数据赋值给前端
         this.charmList = res.data.data;
-        console.log(this.charmList)
+        console.log(this.charmList);
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -428,7 +512,7 @@ export default {
 };
 </script>
 <style scoped>
-.list{
+.list {
   margin-top: 100px;
 }
 </style>

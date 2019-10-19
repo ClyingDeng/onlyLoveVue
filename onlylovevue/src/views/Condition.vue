@@ -4,8 +4,9 @@
       <div class="col-md-12">
         <div class="youyisi">
           <div class="touxiang">
+            <!-- &&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic -->
             <img
-              :src="conditions.length&&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic"
+              :src="conditions.length&&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headPic"
               class="img-thumbnail"
             />
           </div>
@@ -21,8 +22,8 @@
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
                 <span style="color:blueviolet">
-                  <p>会员等级 {{member.length&& member[0].member_grade}}</p>
-                  <p>会员剩余 {{member.length&& member[0].member_date}} 天</p>
+                  <p>会员等级 {{0&& member[0].member_grade}}</p>
+                  <p>会员剩余 {{0&& member[0].member_date}} 天</p>
                 </span>
                 <!-- 进度条展示 -->
                 <div class="progress progress-striped" style="width: 250px;height: 8px;">
@@ -96,10 +97,7 @@
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
-      <div
-        class="zuobian"
-        style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left"
-      >
+      <div class="zuobian" style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left">
         <div>
           <a href="./Index.vue" class="list-group-item">
             <span
@@ -156,10 +154,7 @@
       <!-- 说点什么！！！ -->
 
       <div class="centerblock col-xs-12 col-xs-md-6 col-lg-6">
-        <div
-          class="shuoshenme col-xs-12"
-          style="padding: 0px;margin-bottom:20px;background-color: rgb(243, 237, 237)"
-        >
+        <div class="shuoshenme col-xs-12" style="padding: 0px;margin-bottom:20px;background-color: rgb(243, 237, 237)">
           <form role="form">
             <div class="form-group has-feedback">
               <textarea
@@ -195,12 +190,7 @@
         </div>
         <!-- 全部动态 -->
         <!-- 第一个说说 -->
-        <div
-          class="col-xs-12"
-          style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)"
-          v-for="(key,index) in conditions"
-          :key="'info-1'+index"
-        >
+        <div class="col-xs-12" style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)" v-for="(key,index) in conditions" :key="'info-1'+index">
           <div style="float: left;padding: 20px">
             <img
               :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
@@ -213,14 +203,16 @@
             <a href="#" style="font-size: 18px;color: black">{{key.nickName}}</a>
             <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
           </div>
+          <!-- <div style="float: right;padding-top: 18px" :name="key.con_Id" @click.prevent="delect">{{key.con_Id}}X</div> -->
+          <button style="float: right;margin-top: 10px;border: 1px solid transparent;outline: none;background-color: rgb(243, 237, 237);font-size:20px" :name="key.con_Id" @click.prevent="delect">X</button>
           <div style="clear: both;margin-left: 80px">
             <p>{{key.con_words}}</p>
           </div>
           <div style="margin:30px;clear:both; ">
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
-            <!-- <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />-->
+            <img class="shuotu" v-if="key.con_pic_1 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
+            <img class="shuotu" v-if="key.con_pic_2 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
+            <img class="shuotu" v-if="key.con_pic_3 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
+            <img class="shuotu" v-if="key.con_pic_4 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
             <li style="float: left;width:50px;">
@@ -364,6 +356,8 @@ ul {
 .work-img img {
   max-width: 100%;
   max-height: 100%;
+  width: 120px;
+  height: 80px;
   display: block;
   margin: auto;
 }
@@ -512,13 +506,23 @@ export default {
         //拿到后台数据赋值给前端
         console.log(res);
         this.member = res.data.data;
-        console.log(this.member);
+        // console.log(this.member);
       })
       .catch(err => {
         console.log("错误信息：" + err);
       });
   },
   methods: {
+    delect(e){
+      // console.log(e.target.name)
+      let conId = e.target.name
+      console.log(conId)
+       this.$axios
+        .post("http://localhost:3000/hotSearch/deleteHotSearch", {"conId":conId})
+        .then(function(result) {
+          console.log(result);
+        });
+    },
     onSubmit() {
       let nowDate = new Date();
       let date = {
