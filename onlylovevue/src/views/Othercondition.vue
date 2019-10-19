@@ -6,6 +6,8 @@
           <div class="touxiang">
             <img :src="'http://pzc93h51i.bkt.clouddn.com/' + otherInfo[0].headPic"
               class="img-thumbnail"/>
+              <button><i class="glyphicon glyphicon-gift"></i>送礼物</button>
+              <button><i class="glyphicon glyphicon-plus"></i>加好友</button>
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
@@ -139,12 +141,11 @@
         <div
           class="col-xs-12"
           style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)"
-          v-for="(key,index) in conditions"
-          :key="'info-1'+index"
-        >
+          v-if="otherInfo[0].condition"
+          v-for="key in otherInfo[0].condition">
           <div style="float: left;padding: 20px">
             <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headpic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + otherInfo[0].headPic"
               class="img-circle"
               width="50px"
               height="50px"
@@ -158,10 +159,10 @@
             <p>{{key.con_words}}</p>
           </div>
           <div style="margin:30px;clear:both; ">
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
-            <!-- <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
-            <img class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />-->
+            <img v-show="key.con_pic_1" class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
+            <img v-show="key.con_pic_2" class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
+            <img v-show="key.con_pic_3" class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
+            <img v-show="key.con_pic_4" class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
             <li style="float: left;width:50px;">
@@ -184,6 +185,9 @@
             </li>
           </ul>
         </div>
+        <div class="sweetScore" v-if="!otherInfo[0].condition">
+          <h1>亲密度不足，请增加！</h1>
+        </div>
       </div>
       <!-- 右边 -->
       <!-- 签到 -->
@@ -204,8 +208,8 @@
             </ul>
           </div>
         </div>
-        <div class="kan">
           <!-- 谁看过我 -->
+        <!-- <div class="kan">
           <div class="kanwo" style="clear:both;width:300px;margin-top:2px">
             <h4 style="text-align:center;color:blueviolet">关注他的</h4>
             <div
@@ -266,14 +270,26 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 <style scroped>
+.sweetScore{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* background-color: red; */
+  margin-top: 180px;
+}
+.sweetScore h1{
+  color: #666;
+}
 .youyisi2{
   height: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 ul {
   list-style: none;
@@ -402,41 +418,34 @@ ul {
 </style>
 
 <script>
+import jwt_decode from "jwt-decode";
 export default {
   name: "test",
   data() {
     return {
       otherId:'',
       time: "",
-      // user_Id: "",
-      otherInfo: {},
-      fileList: [],
-      conditions: [],
-      attentionme: [],
-      meattention: [],
-      member: []
+      otherInfo: {}
     };
   },
   created() {
+    // console.log('session')
+    // console.log(JSON.parse(sessionStorage.getItem('otherInfos')))
     this.otherId = sessionStorage.getItem('otherId')
-    console.log('前面传的值：' + this.otherId)
-    //查看他人信息otherInfo
-    let lookHe = 'http://localhost:3000/personal/othersAttention/' + this.otherId
-    console.log(lookHe)
-    this.$axios
-      .get(lookHe)
-      .then(res => {
-        //拿到后台数据赋值给前端
-        this.otherInfo = res.data.data;
-        console.log('能看到他的信息了吗')
-        console.log(this.otherInfo[0].headPic);
+    // console.log('前面传的值：' + this.otherId)
+    let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
+      // console.log('token对象：',userInfo.userId)
 
-      })
-      .catch(err => {
-        console.log("错误信息：" + err);
-        // alert('您查看的是自己的空间，即将为您跳转！')
-        // this.$router.push({name:'/condition',name: 'condition'})
-      });
+    //查看他人信息otherInfo
+    if(this.otherId != userInfo.userId){
+    console.log('他人')
+    this.otherInfo = JSON.parse(sessionStorage.getItem('otherInfos'))
+    console.log(this.otherInfo)
+    }else{
+      alert('您查看的是自己主页，即将为您跳转！')
+      this.$router.push({name:'/condition',name: 'condition'})
+    }
+    
 
     // this.$axios
     //   .get("http://localhost:3000/users/attentionMe")

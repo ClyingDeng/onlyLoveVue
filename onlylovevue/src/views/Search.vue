@@ -323,18 +323,35 @@ export default {
       detail(key){
         console.log(key.base_info_Id)
         sessionStorage.setItem('otherId',key.base_info_Id)
-        // let other = "http://localhost:3000/personal/othersAttention/"
-        // this.$axios
-        // .post(other, key.base_info_Id)
-        // .then(function(result) {
-        //   console.log(result);
-        //   console.log(result.data.msg)
-          
+        let otherId = sessionStorage.getItem('otherId')
+        let lookHe = 'http://localhost:3000/personal/othersAttention/' + otherId
+        console.log(lookHe)
+        this.$axios
+        .get(lookHe)
+        .then(res => {
+        //拿到后台数据赋值给前端
+        let otherInfo = {};
+        otherInfo = res.data.data
+        console.log(otherInfo)
+        console.log('能看到他的信息了吗')
+        console.log(res.data.data)
 
-          
-        // })
+        sessionStorage.setItem('otherInfos',JSON.stringify(res.data.data))
+        console.log('session')
+        console.log(JSON.parse(sessionStorage.getItem('otherInfos')))
+
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+        // alert('您查看的是自己的空间，即将为您跳转！')
+        // this.$router.push({name:'/condition',name: 'condition'})
+      });
+
         //路由跳转
         this.$router.push({name:'/otherCondition',name: 'otherCondition',params:{Id:key.base_info_Id}})
+        
+
+        
       },
       openList(){
         if(this.msg == '1'){
@@ -405,6 +422,7 @@ export default {
               this.otherUserInfos[i].isSex = true
               this.otherUserInfos[i].isAge = true
         }
+        
 
 
 
