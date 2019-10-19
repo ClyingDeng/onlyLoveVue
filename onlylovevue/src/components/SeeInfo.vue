@@ -153,6 +153,9 @@
   </div>
 </template>
 <style scoped>
+fieldset {
+    border: 1px solid transparent !important;
+}
 a{
   color: #f1f1f1;
 }
