@@ -203,7 +203,7 @@
         >
           <div style="float: left;padding: 20px">
             <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headpic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
               class="img-circle"
               width="50px"
               height="50px"
@@ -481,7 +481,7 @@ export default {
       .then(res => {
         //拿到后台数据赋值给前端
         this.conditions = res.data.data;
-        // console.log(this.conditions);
+        console.log(this.conditions);
       })
       .catch(err => {
         console.log("错误信息：" + err);
