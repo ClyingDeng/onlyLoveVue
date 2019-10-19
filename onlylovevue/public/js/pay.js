@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function(){
     function returnResult() {
         $.post('/validInvoice', {}, function (result) {
             console.log('ok!')
@@ -79,5 +79,5 @@ window.onload = function () {
             $('div.top-message').removeClass("top-message-display");
         }, 1800);
     }
-}
+})
 
