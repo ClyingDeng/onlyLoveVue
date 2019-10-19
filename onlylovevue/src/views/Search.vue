@@ -11,29 +11,29 @@
                                     <div class="el on el_q col-xs-12 col-md-3 ">
                                         <ul id="kwdTypeSelUl">
                                             <li>ID搜索<em class="dicon Dm"></em></li>
-                                            <li><a onclick="">搜昵称</a></li>
+                                            <li><a onclick="">搜账号</a></li>
                                         </ul>
                                         <p class="ipt">
-                                        <input autocomplete="on" type="text" class="ef" v-model="IdName"  placeholder="请输入ID">
+                                        <input autocomplete="on" type="text" class="ef" v-model="Id"  placeholder="请输入ID">
                                         </p>               
                             </div>
-                                    <!--地点 -->
+                                    <!--性别 -->
                                     <div class="txt  col-xs-12 col-md-2">
-                                        <p class="hdl">性别</p>
-                                        <input autocomplete="on"  readonly="readonly" type="text" class="ef" placeholder="输入性别">
+                                        <p class="hdl">昵称</p>
+                                        <input autocomplete="on" type="text" class="ef" v-model="nickName" placeholder="输入昵称">
                                         <!-- <input name="jobarea" id="jobarea" type="hidden" value="070300" /> -->
                                     </div>
                     
-                                    <!-- 行业类别 -->
+                                    <!-- 年龄 -->
                                     <div class="txt  col-xs-12 col-md-2" id="indtype_click">
-                                        <p class="hdl">年龄</p>
-                                        <input autocomplete="on" id="indtype_input" readonly="readonly" type="text" class="ef" placeholder="输入年龄" value="">
+                                        <p class="hdl">性别年龄</p>
+                                        <input autocomplete="on" id="indtype_input" v-model="age" type="text" class="ef" placeholder="输入年龄" value="">
                                         <!-- <input name="industrytype" type="hidden" id="indtype_code" value=""/> -->
                                     </div>
                                     <!-- 职能类别 -->
                                     <div class="txt col-xs-12 col-md-2" id="funtype_click">
-                                        <p class="hdl">职业</p>
-                                        <input autocomplete="on" id="funtype_input" readonly="readonly" type="text" class="ef" placeholder="输入职业" value="" />
+                                        <p class="hdl">年龄</p>
+                                        <input autocomplete="on" id="funtype_input" v-model="sex" type="text" class="ef" placeholder="输入职业" value="" />
                                         <!-- <input name="funtype" type="hidden" id="funtype_code" value=""/> -->
                                     </div>
                                     <!-- 搜索按钮 -->
@@ -97,7 +97,8 @@
                    <li><a href="">否</a></li>
                  </ul>
                </li>
-               <li>
+               
+               <li :class="className1">
                  <span>是否抽烟：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
@@ -105,7 +106,7 @@
                    <li><a href="">否</a></li>
                  </ul>
                </li>
-               <li>
+               <li :class="className1">
                  <span>有无孩子：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
@@ -113,14 +114,14 @@
                    <li><a href="">无</a></li>
                  </ul>
                </li>
-               <li>
+               <li :class="className1">
                  <span>薪资：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
                    <li v-for="key in salary"><a href="">{{key}}</a></li>
                  </ul>
                </li>
-               <li>
+               <li :class="className1">
                  <span>车房状况：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
@@ -129,13 +130,18 @@
                    <li><a href="">有车有房</a></li>
                  </ul>
                </li>
-               <li>
+               <li :class="className1">
                  <span>是否想要孩子：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
                    <li><a href="">是</a></li>
                    <li><a href="">否</a></li>
                  </ul>
+               </li>
+               <li @click="openList" :class="className">
+                 <div class="out">
+                 <span class="openFont"> <i :class="className2"></i></span>
+                 </div>
                </li>
              </ul>
            </div>
@@ -146,66 +152,35 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-4"  v-for="key in otherUserInfos">
-                  <div class="work-box">
-                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+                  <div class="work-box" v-if="key.isShow || key.isName || key.isSex || key.age">
+                    <a :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf">
                       <div class="work-img">
                         <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt="" class="img-fluid">
                       </div>
                       <div class="work-content">
                         <div class="row">
-                          <div class="col-sm-12">
+                          <div class="col-sm-8">
                             <h2 class="w-title">{{key.nickName}}</h2>
                             <p>ID:  <span>{{key.base_info_Id}}</span></p>
-                            <p><span class="w-date">{{key.sex}}</span> / <span class="w-date">{{key.age}}</span> </p>
-                            <div class="w-more">
-                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。一起老去的日子里，因为朋友的存在而泛着七彩的光。</span> 
+                            <p v-show="key.sex" class="changp"><span class="w-date">{{key.sex}}</span> / <span class="w-date">{{key.age}}</span> </p>
+                            <p v-show="key.province" class="changp"><span class="w-date">{{'地址：' + key.province}}</span> / <span class="w-date">{{key.city}}</span> / <span class="w-date">{{key.location_detail}}</span> </p>
+                            <p v-show="key.height" class="changp"><span class="w-date">{{'身高：' + key.height}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="w-date">{{'体重：' + key.weight + 'kg'}}</span></p>
+                            <div class="w-more" v-show="key.love_description">
+                              <span class="w-ctegory">{{'爱情宣言：' + key.love_description}}</span> 
                             </div>
+                          </div>
+                          <div class="col-sm-4">
+                          <div class="w-like fontSize">
+                            <router-link to='/Condition' class="ion-ios-plus-outline">详情</router-link>
+                            <!-- <span class="ion-ios-plus-outline">详情</span> -->
+                          </div>
                           </div>
                         </div>
                       </div>
                     </a>
                   </div>
                 </div>
-                <!-- <div class="col-md-4">
-                  <div class="work-box">
-                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                      <div class="work-img">
-                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
-                      </div>
-                      <div class="work-content">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <h2 class="w-title">clying</h2>
-                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
-                            <div class="w-more">
-                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。</span> 
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="work-box">
-                    <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
-                      <div class="work-img">
-                        <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt="" class="img-fluid">
-                      </div>
-                      <div class="work-content">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <h2 class="w-title">clying</h2>
-                            <p><span class="w-date">女</span> / <span class="w-date">22</span> </p>
-                            <div class="w-more">
-                              <span class="w-ctegory">情之最可珍贵者，莫过真诚；爱之最可称扬者，莫过无私。一起老去的日子里，因为朋友的存在而泛着七彩的光。</span> 
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div> -->
+               
                 
               </div>
             </div>
@@ -230,24 +205,74 @@ export default {
             salary:['2k以下','2k-4k','4-6k','6-8k','8-10k','10-15k','15-20k','20k以上'],
             userInfo:{},     //当前用户信息
             otherUserInfos:[],     //能够搜索用户信息
-            IdName:'',
+            className:'liShow',
+            className1:'liHidden',
+            className2:'glyphicon glyphicon-menu-down fontStyle',
+            msg:'1',
+            // searchInfo:{Id:'',nickName:'',age:'',sex:''}
+            Id:'',
+            nickName:'',
+            age:'',
+            sex:''
         }
     },
     watch:{
-      IdName:{
+      Id:{
         handler:function(IdName) {
           console.log('昵称搜索：' + IdName)
-          // for(let i = 0; i < this.otherUserInfos.length; i++){
-          //   if(IdName == this.otherUserInfos[i].base_info_Id){
-          //     console.log(this.otherUserInfos[i])
-          //   }
-          // }
+          console.log(this.otherUserInfos[0].base_info_Id)
+          for(let i = 0; i < this.otherUserInfos.length; i++){
+            if(this.otherUserInfos[i].base_info_Id.toString().indexOf(IdName) != -1){
+              // console.log('有')
+              this.otherUserInfos[i].isShow = true
+              // console.log(this.otherUserInfos[i])
+              
+            }else{
+              this.otherUserInfos[i].isShow = false
+              // console.log((this.otherUserInfos[i].isShow))
+              // console.log('没有')
+            }
+          }
+        }
+      },
+      nickName:{
+        handler:function(name) {
+          console.log('昵称搜索：' + name)
+          console.log(this.otherUserInfos[0].nickName)
+          for(let i = 0; i < this.otherUserInfos.length; i++){
+            if(this.otherUserInfos[i].nickName.toString().indexOf(name) != -1){
+              // console.log('有')
+              this.otherUserInfos[i].isName = true
+              console.log(this.otherUserInfos[i].nickName)
+              
+            }else{
+              this.otherUserInfos[i].isName = false
+              // console.log((this.otherUserInfos[i].isShow))
+              // console.log('没有')
+            }
+          }
         }
       }
+      // msg:{
+      //   handler:function(message) {
+      //     console.log(message)
+
+      //   }
+      // }
     },
     methods:{
-      more(){
-        
+      openList(){
+        if(this.msg == '1'){
+          this.msg = '2'
+          console.log(this.msg)
+          this.className1 = 'liShow'
+          this.className2 = 'glyphicon glyphicon-menu-up fontStyle'
+        }else{
+          this.msg = '1'
+          this.className1 = 'liHidden'
+          this.className2 = 'glyphicon glyphicon-menu-down fontStyle'
+        }
+
       }
     },
     //组件创建完成后执行的操作
@@ -272,11 +297,65 @@ export default {
         .catch(err => {
           console.log('错误信息：' + err)
         })
+
+
+
+
       }
 }
 </script>
 
 <style lang="css" scoped>
+.liShow{
+  display: block;
+}
+.liHidden{
+  display: none;
+}
+.out{
+  width: 20%;
+  margin: 0 auto;
+}
+.options ul li .openFont{
+  /* display: block;*/
+  margin: 0 auto; 
+  color: #FF6000;
+  text-align: center;
+  /* border: 1px soild #FF6000; */
+  border-left: 1px solid #FF6000;
+  border-bottom: 2px solid #FF6000;
+  border-right: 1px solid #FF6000;
+  cursor: pointer;
+}
+.options ul li :hover{
+  color: #999 !important;
+
+}
+.fontStyle{
+  background-color: transparent;
+  color: #FF6000;
+}
+
+.fontSize{
+  font-size: 18px;
+  margin-top: 8px;
+}
+.fontSize:hover{
+  color: #aaa;
+}
+.changp:hover{
+  color: #FF6000;
+}
+.w-more {
+  height:20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.img-fluid{
+  width: 100%;
+}
 .search{
   margin-top: 100px;
 }
@@ -312,6 +391,7 @@ export default {
 .hdl{
     padding-left: 20px;
     margin-top: 8px;
+    margin-bottom: 20px;
 }
 p {
     margin: 0px;

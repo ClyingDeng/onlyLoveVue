@@ -211,6 +211,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 .user-info img{
   /* width: 140px;
   height: 140px; */
