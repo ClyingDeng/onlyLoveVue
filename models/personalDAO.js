@@ -69,6 +69,15 @@ var personalDAO = {
             }
         })
     },
+    getCommInfo:function(userId, callback){
+        DAO('select base_info_Id,nickName,headPic from base_info where base_info_Id = ?', [userId], function(err, results) {
+            if (err) {
+                callback(err, null)
+            } else {
+                callback(null, results)
+            }
+        })
+    },
     //亲密度一级解锁
     getFirstSweet: function(userId, callback) {
         console.log(userId)

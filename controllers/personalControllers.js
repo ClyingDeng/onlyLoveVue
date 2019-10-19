@@ -92,34 +92,48 @@ var personalController = {
         var userId = req.user[0].base_info_Id
         console.log('他人主页编号：' + oId)
         console.log(userId)
-        personalDAO.getSweet(oId, userId, function(err, results) {
+        let sweet = 0
+        personalDAO.getSweet(userId,oId, function(err, results) {
             if (err) {
                 res.json({ code: 500, msg: '搜索查询失败！' })
             } else {
+                console.log('后台亲密度')
+                console.log(results)
                 if (!results[0]) {
                     sweet = 0
+                    results.push({sweet_score:'0'})
+                    // console.log('sweet' + sweet)
+                    // console.log('sweet[0]' + results[0].sweet_score)
                 } else {
                     console.log(results[0].sweet_score)
-                    var sweet = results[0].sweet_score
+                    sweet = results[0].sweet_score
                 }
-                if (sweet < 10) {
+                console.log('亲密度' + sweet)
+                if (sweet >= 0 && sweet < 10) {
                     //亲密度为0
-                    personalDAO.getPersonalManyInfo(oId, function(err, results1) {
-                        if (err) {
+                    personalDAO.getCommInfo(oId,function(err,results1){
+                        if(err){
                             res.json({ code: 500, msg: '搜索查询失败！' })
-                        } else {
-                            if (results1.length > 0) {
-                                results1[0].sweet = results[0].sweet_score
-                                    // console.log(results1[0].sweet)
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
-
-                            } else {
-                                res.json({ code: 200, data: results, msg: '查无此人！' })
-
-                            }
+                        }else{
+                            res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
                         }
                     })
-                } else if (sweet < 20) {
+                    // personalDAO.getPersonalManyInfo(oId, function(err, results1) {
+                    //     if (err) {
+                    //         res.json({ code: 500, msg: '搜索查询失败！' })
+                    //     } else {
+                    //         if (results1.length > 0) {
+                    //             console.log(results1[0])
+                    //             results1[0].sweet = results[0].sweet_score
+                    //             res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+
+                    //         } else {
+                    //             res.json({ code: 200, data: results, msg: '查无此人！' })
+
+                    //         }
+                    //     }
+                    // })
+                } else if (sweet >= 10 && sweet < 20) {
                     personalDAO.getFirstSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
@@ -149,7 +163,7 @@ var personalController = {
                             }
                         }
                     })
-                } else if (sweet < 99) {
+                } else if (sweet >= 20 && sweet < 99) {
                     personalDAO.getThirdSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
@@ -164,7 +178,7 @@ var personalController = {
                             }
                         }
                     })
-                } else if (sweet < 199) {
+                } else if (sweet >= 99 && sweet < 199) {
                     personalDAO.getFourthSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
@@ -178,7 +192,7 @@ var personalController = {
                             }
                         }
                     })
-                } else if (sweet <= 299) {
+                } else if (sweet >= 199 && sweet <= 299) {
                     personalDAO.getFifthSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })

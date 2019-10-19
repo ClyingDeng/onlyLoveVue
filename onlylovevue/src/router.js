@@ -75,10 +75,17 @@ let router = new Router({
           name: 'contact',
           component: () => import( './views/Contact.vue')
         },
+        // 自己看自己主页
         {
           path: 'condition',
           name: 'condition',
           component: () => import( './views/Condition.vue')
+        },
+        //我看他人主页
+        {
+          path: 'otherCondition',
+          name: 'otherCondition',
+          component: () => import( './views/Othercondition.vue')
         },
         {
           path: 'message',
