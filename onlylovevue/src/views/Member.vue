@@ -143,9 +143,8 @@ em {
   font-size: 20px;
   text-align: center;
   color: #fff;
-
+}
 .middle p {
-
   line-height: 20px;
   height: 20px;
 }
