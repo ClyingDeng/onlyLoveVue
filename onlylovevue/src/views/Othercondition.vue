@@ -6,29 +6,17 @@
           <div class="touxiang">
             <img :src="'http://pzc93h51i.bkt.clouddn.com/' + otherInfo[0].headPic"
               class="img-thumbnail"/>
-              <button><i class="glyphicon glyphicon-gift"></i>送礼物</button>
-              <button><i class="glyphicon glyphicon-plus"></i>加好友</button>
+              <p class="fontstyle">{{otherInfo[0].love_description}}</p>
           </div>
+              
           <div class="youyisi2" style="float: left;">
             <div>
               <h3 style="color:blueviolet">&nbsp;{{otherInfo[0].nickName}}</h3>
+              <p class="fontstyle">{{'性别：' + otherInfo[0].sex}}</p>
+              <p class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
             </div>
-            <!-- 会员图标 -->
-            <!-- <div style="float: left">
-              <img src="../assets/imgs/8.png" width="50px" height="40px" />
-              <i class="fa fa-google-wallet fa-3x" aria-hidden="true " style="color:#EDB566;"></i>
-            </div> -->
-            <!-- <div class="hidden-xs">
-              <div style="float: left;margin-left: 20px;">
-                <span style="color:blueviolet">
-                  <p>会员等级 {{member.length&& member[0].member_grade}}</p>
-                </span>
-                
-                
-              </div>
-              
-            </div> -->
           </div>
+          
         </div>
         <!-- 访客 -->
         <div class="fangke" style="float:right;margin-top:60px;margin-right: 30px;">
@@ -39,7 +27,7 @@
         </div>
 
         <div style="float: right;margin-top: 55px;margin-right: 10px">
-          <img src="../assets/imgs/resou.png" width="50px" height="50px" />
+          <img src="http://pzc93h51i.bkt.clouddn.com/resou.png" width="50px" height="50px" />
         </div>
 
         <!-- 说说导航 -->
@@ -72,7 +60,49 @@
           </div>
         </div>
       </div>
-
+        <div class="btnTwo col-lg-12">
+            <el-button type="warning" @click="drawer = true"><i class="fa fa-gift" aria-hidden="true"></i>送礼物</el-button>
+            <el-button type="success" @click="pulsFriend"><i class="fa fa-plus" aria-hidden="true"></i>加好友</el-button>
+        </div>
+        <el-drawer
+  title="送礼物"
+  :visible.sync="drawer"
+  size="50%">
+  <div>
+    <!-- <h1>nihao </h1> -->
+    <!-- <div class="container"> -->
+    <div class="row" v-if="conditions">
+      <div class="col-md-4"  v-for="p in conditions" >
+            <div class="product bordser"  >
+              <div class="product-img">
+                <img :src="'http://pzc93h51i.bkt.clouddn.com/' + p.prop_pic" class="pro" />
+              </div>
+              <div class="product-block" >
+                <h5>{{p.prop_Name}}</h5>
+                <!-- <h5 class="text-danger">￥{{p.prop_price}}</h5> -->
+                <ul class="list-inline text-danger">
+                  <li class="list-inline-item">
+                    拥有数量：{{p.num}}
+                  </li>
+                </ul>
+              </div>
+              <div class="product-footer">
+                <div class="row">
+                  <div class="col-md-12">
+                    <el-input v-model="proNum" placeholder="请输入赠送数量"></el-input>
+                  </div>
+                  <div class="col-md-6 col-md-push-3" style="margin-top:5px;">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" @click="addProduct(p)">赠送</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div v-else>您的背包为空，请至商城购买！</div>
+  <!-- </div> -->
+  </div>
+  </el-drawer>
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
@@ -276,12 +306,27 @@
   </div>
 </template>
 <style scroped>
+.pro{
+  width:100%;
+  height:120px;
+}
+.touxiang .fontstyle{
+  margin-top: 20px;
+}
+.fontstyle{
+  color: #666;
+
+}
+.btnTwo{
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
 .sweetScore{
   width: 100%;
   height: 100%;
   text-align: center;
   /* background-color: red; */
-  margin-top: 180px;
+  margin-top: 40%;
 }
 .sweetScore h1{
   color: #666;
@@ -415,6 +460,12 @@ ul {
     display: none;
   }
 }
+@media screen and (max-width: 992px){
+  .pro{
+  width:80%;
+  height:120px;
+}
+}
 </style>
 
 <script>
@@ -425,10 +476,36 @@ export default {
     return {
       otherId:'',
       time: "",
-      otherInfo: {}
+      otherInfo: {},
+      // 抽屉
+      drawer: false,
+      innerDrawer: false,
+      // 商品
+      conditions: [],
+      //赠送数量
+      proNum:'',
+      addObj:{}
     };
   },
   created() {
+    this.$axios
+      .get("http://localhost:3000/shop/backpack"
+        
+      )
+      .then(res => {
+        console.log("查询结果：");
+        console.log(res.data.data);
+        // let i = 0
+        // 拿到后台数据·赋值给前端
+        this.conditions = res.data.data;
+        console.log('道具')
+        console.log(this.conditions)
+        // localStorage.setItem('product',JSON.stringify(res.data.data))
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    
     // console.log('session')
     // console.log(JSON.parse(sessionStorage.getItem('otherInfos')))
     this.otherId = sessionStorage.getItem('otherId')
@@ -439,7 +516,28 @@ export default {
     //查看他人信息otherInfo
     if(this.otherId != userInfo.userId){
     console.log('他人')
-    this.otherInfo = JSON.parse(sessionStorage.getItem('otherInfos'))
+  
+
+    let lookHe = 'http://localhost:3000/personal/othersAttention/' + this.otherId
+    console.log(lookHe)
+    this.$axios
+        .get(lookHe)
+        .then(res => {
+        //拿到后台数据赋值给前端
+        let otherInfo = {};
+        otherInfo = res.data.data
+        console.log(otherInfo)
+        console.log('能看到他的信息了吗')
+        console.log(res.data.data)
+        this.otherInfo = res.data.data
+        console.log('en')
+        console.log(this.otherInfo)
+
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    // this.otherInfo = JSON.parse(sessionStorage.getItem('otherInfos'))
     console.log(this.otherInfo)
     }else{
       alert('您查看的是自己主页，即将为您跳转！')
@@ -542,6 +640,64 @@ export default {
         this.param.append(`img_${i}`, this.fileList[i]);
       }
       return false;
+    },
+    //送礼物
+     handleClose(done) {
+
+      //  if(!this.conditions){
+      //    alert('您还没有道具，请至商城购买道具！')
+      //    return done();
+      //  }
+        this.$confirm('还有未保存的工作哦确定关闭吗？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
+      addProduct(p){
+        console.log(p)
+        //获取当前时间
+        function getNowFormatDate () {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+          month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+      };
+      console.log(getNowFormatDate())
+      //
+      this.addObj.addId = this.otherInfo[0].base_info_Id
+      this.addObj.propsId = p.props_Id
+      this.addObj.num = this.proNum
+      this.addObj.haveTime = getNowFormatDate()
+      console.log('对象：' + this.addObj.addId)
+      console.log('道具编号：' + this.addObj.propsId )
+      console.log('数量：' + this.addObj.num)
+      console.log('时间：' + getNowFormatDate())
+      //调用送礼物接口
+      this.$axios
+            .post("http://localhost:3000/personal/addGift", this.addObj)
+            .then(res => {
+              console.log(res.data);
+              console.log('可以了吗')
+              if(res.data.affectedRows){
+                alert('赠送成功')
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            });
+      },
+    pulsFriend(){
+
     }
   }
 };
