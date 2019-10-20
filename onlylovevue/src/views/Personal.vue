@@ -5,16 +5,18 @@
         <div class="module-inner">
           <div class="side-bar">
             <div class="user-info">
-              <img v-if="userInfos.headPic == ''"
-              class="img-rounded img-responsive"
-              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
-              alt
-            />
-            <img v-else
-              class="img-rounded img-responsive"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + userInfos.headPic"
-              alt
-            />
+              <img
+                v-if="userInfos.headPic == ''"
+                class="img-rounded img-responsive"
+                src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                alt
+              />
+              <img
+                v-else
+                class="img-rounded img-responsive"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + userInfos.headPic"
+                alt
+              />
               <ul class="meta list list-unstyled">
                 <li class="name">
                   {{userInfos.nickName}}
@@ -34,29 +36,39 @@
             <nav class="side-menu">
               <ul class="nav">
                 <li :class="className1" @click="changcss('1')">
-                  <router-link to="seeinfo"><span class="fa fa-user" ></span>个人信息</router-link>
+                  <router-link to="seeinfo">
+                    <span class="fa fa-user"></span>个人信息
+                  </router-link>
                   <!-- <a href="/personal/seeInfo" >
                     <span class="fa fa-user" ></span>个人信息
-                  </a> -->
+                  </a>-->
                 </li>
                 <li :class="className2" @click="changcss('2')">
                   <!-- <a href="/personal/setting"> -->
-                  <router-link to = "setting"><span class="fa fa-cog" ></span>设置</router-link>
-                    
+                  <router-link to="setting">
+                    <span class="fa fa-cog"></span>设置
+                  </router-link>
+
                   <!-- </a> -->
                 </li>
                 <li :class="className3" @click="changcss('3')">
-                  <router-link to="identification"><span class="fa fa-credit-card" ></span> 实名认证</router-link>
+                  <router-link to="identification">
+                    <span class="fa fa-credit-card"></span> 实名认证
+                  </router-link>
                   <!-- <a href="/personal/identification">
                     <span class="fa fa-credit-card" ></span> 实名认证
-                  </a> -->
+                  </a>-->
                 </li>
-
+                <li :class="className4" @click="changcss('4')">
+                  <router-link to="charge">
+                    <span class="fa fa-credit-card"></span>  充值积分
+                  </router-link>
+                </li>
               </ul>
             </nav>
           </div>
           <div class="content-panel">
-            <router-view/>
+            <router-view />
             <!-- <component v-bind:is="currentTabCompent" :scon="conditions" :suserInfos="userInfos" v-on:userInfo_commit='getNewInfo' ></component> -->
           </div>
         </div>
@@ -66,7 +78,6 @@
 </template>
 
 <script>
-
 // import setting from "../components/Setting.vue";
 // import identification from "../components/Identification.vue";
 // import seeInfo from "../components/SeeInfo.vue";
@@ -76,25 +87,25 @@ export default {
   // name: "login",
   data: function() {
     return {
-      currentTabCompent:'seeInfo',
-      className1:'active',
-      className2:'',
-      className3:'',
+      currentTabCompent: "seeInfo",
+      className1: "active",
+      className2: "",
+      className3: "",
       // conditions:'',
-      userInfos:'',
+      userInfos: ""
       // hackReset:true,
     };
   },
-  watch:{
-    $route(){
-      console.log('路由')
-      console.log(this.$route.path)
+  watch: {
+    $route() {
+      console.log("路由");
+      console.log(this.$route.path);
       // if(this.$route.path){
 
       // }
     }
   },
-  created(){
+  created() {
     // console.log('刷新了没')
     //   console.log(document.referrer)
     //   let router1 = 'http://localhost:8080/personal/seeinfo'
@@ -104,38 +115,38 @@ export default {
     //   if(document.referrer == router1 || document.referrer == router3){
     //     this.$router.push({path:'/'})
     //   }
-        this.$axios.get('http://localhost:3000/users/userStatus')
-        .then(res => {
-          console.log('查询结果：' )
-          console.log(res.data.data[0].use_status)
-          //拿到后台数据赋值给前端
-          if(res.data.data[0].use_status == 1){
-            this.$store.state.conditions = true
-          }else{
-            this.$store.state.conditions = false
-          }
-          
-        })
-        .catch(err => {
-          console.log('错误信息：' + err)
-        })
-        this.$axios.get('http://localhost:3000/users/userInfo')
-        .then(res => {
-          // console.log('查询结果：' )
-          console.log(res.data.data[0])
-          //拿到后台数据赋值给前端
-            this.userInfos = res.data.data[0]
-            this.$store.state.user = res.data.data[0]
-            console.log('写到store里面')
-            console.log(this.$store.state.user)
-            //写到本地存储
-            // localStorage.setItem('myInfo',res.data.data[0])
-          
-        })
-        .catch(err => {
-          console.log('错误信息：' + err)
-        })
-      },
+    this.$axios
+      .get("http://localhost:3000/users/userStatus")
+      .then(res => {
+        console.log("查询结果：");
+        console.log(res.data.data[0].use_status);
+        //拿到后台数据赋值给前端
+        if (res.data.data[0].use_status == 1) {
+          this.$store.state.conditions = true;
+        } else {
+          this.$store.state.conditions = false;
+        }
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    this.$axios
+      .get("http://localhost:3000/users/userInfo")
+      .then(res => {
+        // console.log('查询结果：' )
+        console.log(res.data.data[0]);
+        //拿到后台数据赋值给前端
+        this.userInfos = res.data.data[0];
+        this.$store.state.user = res.data.data[0];
+        console.log("写到store里面");
+        console.log(this.$store.state.user);
+        //写到本地存储
+        // localStorage.setItem('myInfo',res.data.data[0])
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+  },
   // components: {
   //   // baseInfo: baseInfo,
   //   identification: identification,
@@ -143,42 +154,50 @@ export default {
   //   seeInfo:seeInfo
   // },
   methods: {
-    getNewInfo(e){
-      console.log(e)
-      this.userInfos = e
+    getNewInfo(e) {
+      console.log(e);
+      this.userInfos = e;
     },
-    changcss(change){
-      if(change == '1'){
-        this.className1='active'
-        this.className2=''
-        this.className3=''
-      }else if (change == '2'){
-        this.className1=''
-        this.className2='active'
-        this.className3=''
+    changcss(change) {
+      if (change == "1") {
+        this.className1 = "active";
+        this.className2 = "";
+        this.className3 = "";
+        this.className4 = "";
+      } else if (change == "2") {
+        this.className1 = "";
+        this.className2 = "active";
+        this.className3 = "";
+        this.className4 = "";
+      } else if (change == "3"){
+        this.className1 = "";
+        this.className2 = "";
+        this.className3 = "active";
+        this.className4 = "";
       }else{
-        this.className1=''
-        this.className2=''
-        this.className3='active'
+        this.className1 = "";
+        this.className2 = "";
+        this.className3 = "";
+        this.className4 = "active";
       }
     },
-  //  compentChild(currentCompent){
-  //    this.currentTabCompent = currentCompent
-  //   //  console.log(currentCompent)
-  //      if(currentCompent == 'baseInfo'){
-        //  this.className1='active'
-        //  this.className2=''
-        //  this.className3=''
-  //      }else if(currentCompent == 'setting'){
-  //        this.className1=''
-  //        this.className2='active'
-  //        this.className3=''
-  //      }else if(currentCompent == 'identification'){
-  //        this.className1=''
-  //        this.className2=''
-  //        this.className3='active'
-  //      }
-  //  },
+    //  compentChild(currentCompent){
+    //    this.currentTabCompent = currentCompent
+    //   //  console.log(currentCompent)
+    //      if(currentCompent == 'baseInfo'){
+    //  this.className1='active'
+    //  this.className2=''
+    //  this.className3=''
+    //      }else if(currentCompent == 'setting'){
+    //        this.className1=''
+    //        this.className2='active'
+    //        this.className3=''
+    //      }else if(currentCompent == 'identification'){
+    //        this.className1=''
+    //        this.className2=''
+    //        this.className3='active'
+    //      }
+    //  },
     submitForm(formName) {
       //通过ref定位到form表单
       this.$refs[formName].validate(valid => {
@@ -211,8 +230,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-.user-info img{
+.user-info img {
   /* width: 140px;
   height: 140px; */
   width: 100%;

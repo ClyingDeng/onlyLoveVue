@@ -79,11 +79,12 @@
                 style="border-radius: 0.28571429rem;display: none">
                 <div class="ui loader"></div>
             </div>
-            <input type="text" id="invoiceAmount" value="" placeholder="请输入金额">
+            <input type="text" id="invoiceAmount" value="" readonly placeholder="请输入金额">
             <button class="ui teal right icon button" id="createInvoiceButton"> 生成支付二维码</button>
         </div>
         <img class="qrcode" style="display: none" src="">
-        <button onclick="returnResult()">模拟异步回调返回结果</button>
+        <a href="http://localhost:8080/">返回首页</a>
+        <!-- <button onclick="returnResult()">模拟异步回调返回结果</button> -->
     </div>
     <script src="//lib.baomitu.com/zepto/1.2.0/zepto.min.js"></script>
     <script>

@@ -177,7 +177,6 @@
 export default {
   data(){
     return{
-      num: 1,
       conditions:[],
       num:1,
       // money:''
