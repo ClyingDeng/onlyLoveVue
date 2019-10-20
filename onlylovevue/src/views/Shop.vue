@@ -331,7 +331,7 @@ export default {
         // let i = 0
         // 拿到后台数据·赋值给前端
         this.conditions = res.data.data;
-     
+        // localStorage.setItem('product',JSON.stringify(res.data.data))
       })
       .catch(err => {
         console.log("错误信息：" + err);
