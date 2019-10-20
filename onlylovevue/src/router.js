@@ -51,6 +51,11 @@ let router = new Router({
               path: 'identification',
               name: 'identification',
               component: () => import( './components/Identification.vue')
+            },
+            {
+              path: 'charge',
+              name: 'charge',
+              component: () => import( './components/Charge.vue')
             }
           ]
         },
