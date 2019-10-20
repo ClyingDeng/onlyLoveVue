@@ -69,7 +69,7 @@
     :visible.sync="drawer"
     :before-close="handleClose"
     size="50%">
-  <div>
+  <div class="container1">
     <!-- <h1>nihao </h1> -->
     <!-- <div class="container"> -->
     <div class="row" v-if="conditions">
@@ -197,8 +197,9 @@
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
             <li style="float: left;width:50px;" @click="approve(key)">
-              <a href="#">
+              <a href="/otherCondition">
                 <i class="fa fa-thumbs-o-up fa-1x" style="color:#ff6700" aria-hidden="true"></i>
+                <!-- <i v-else class="fa fa-thumbs-o-up fa-1x" style="color:#ccc" aria-hidden="true"></i> -->
                 <em v-if="key.approveNum">{{key.approveNum}}</em>
                 <em v-else>0</em>
               </a>
@@ -308,6 +309,9 @@
   </div>
 </template>
 <style scroped>
+.container1{
+  margin-left: 15px;
+}
 .pro{
   width:100%;
   height:120px;
@@ -488,10 +492,13 @@ export default {
       //赠送数量
       proNum:'',
       addObj:{},
-      isAddFriends:'0'      //0代表不能加好友
+      isAddFriends:'0',      //0代表不能加好友
+      aprNum:false
     };
   },
   created() {
+    // this.aprNum = localStorage.getItem('appr')
+    // console.log('点赞状态啊：' + this.aprNum)
     this.$axios
       .get("http://localhost:3000/shop/backpack"
         
@@ -587,6 +594,13 @@ export default {
       
 
 
+  },
+  computed:{
+    aprNum:{
+      get:function () {
+        return this.aprNum
+      }
+    }
   },
   methods: {
     onSubmit() {
@@ -698,7 +712,7 @@ export default {
               console.log('可以了吗')
               if(res.data.affectedRows){
                 alert('赠送成功')
-                
+                // this.$router.push({name:'/otherCondition',name: 'otherCondition',params:{Id:key.base_info_Id}})
               }
             })
             .catch(err => {
@@ -744,9 +758,14 @@ export default {
               console.log('可以了吗')
               if(res.affectedRows){
                 console.log(res.data.approveNum)
-                if(res.data.approveNum){
+                if(res.data.approveNum == this.otherInfo[0].condition){
+                  // localStorage.setItem('appr',true)
                   alert('点赞成功！')
-
+                  this.aprNum = true
+                }else{
+                  this.aprNum = false
+                  // localStorage.setItem('appr',false)
+                  alert('取消点赞成功！')
                 }
                 
               }

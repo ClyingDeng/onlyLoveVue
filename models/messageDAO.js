@@ -20,6 +20,17 @@ var messageDAO = {
             }
         })
     },
+    //查看当前有没有人请求添加好友
+    selectMsg:function(userId, callback) {
+        DAO('select fri_Id,user_Id  from friends where fri_status = 0 and fri_Id = ?', [userId], function(err, results) {
+            console.log(results)
+            if (err) {
+                callback(err, null)
+            } else {
+                callback(null, results)
+            }
+        })
+    },
     attFriends: function(userId, callback) {
         DAO('call pro_friends(?,1);', [userId], function(err, results) {
             // console.log(results)
