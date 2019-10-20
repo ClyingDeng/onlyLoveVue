@@ -21,7 +21,7 @@
             <img class="member" src="../assets/imgs/qqhuiyuan.png" alt />
           </p>
           <p>年超级会员2020-10-07到期</p>
-          <p><span class="member-button" >续费年费会员</span></p>
+          <!-- <p><span class="member-button" >续费年费会员</span></p> -->
         </li>
         <li class="col-lg-2 col-md-2 col-sm-2 col-xs-6 ">
           <em>{{conditions.length&&conditions[0].member_user_Id}}</em>
@@ -125,13 +125,13 @@ em {
   width: 20px;
   height: 20px;
 }
-.member-button{
+/* .member-button{
   border-radius: 10%;
   background-color: coral;
     font-size: 20px;
    text-align: center;
   color: #fff;
-}
+} */
 .middle p{
   line-height: 20px;
   height: 20px;
