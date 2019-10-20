@@ -45,7 +45,9 @@
           <div class="col-md-4"  v-for="(key,index) in conditions"  :key="index" >
             <div class="product bordser"  >
               <div class="product-img">
-                <img src="../assets/imgs/rose.jpg" />
+                <!-- <img src="../assets/imgs/rose.jpg" /> -->
+                <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.prop_pic"  >
+                <!-- <img v-for="" class="img-rounded img-responsive" src="http://pzc93h51i.bkt.clouddn.com/avatar1.png" alt=""> -->
               </div>
               <div class="product-block" >
                 <h5>{{key.prop_Name}}</h5>

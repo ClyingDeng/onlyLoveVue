@@ -1,6 +1,7 @@
 
 <template>
   <div>
+
     <div class="row">
       <div>
         <div class="middle col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -34,6 +35,7 @@
             </li>
           </ul>
         </div>
+
       </div>
       <div class="member-type">
         <div class="open-member">
@@ -133,14 +135,17 @@ em {
   width: 20px;
   height: 20px;
 }
+
 .member-button {
+
   border-radius: 10%;
   background-color: coral;
   font-size: 20px;
   text-align: center;
   color: #fff;
-}
+
 .middle p {
+
   line-height: 20px;
   height: 20px;
 }

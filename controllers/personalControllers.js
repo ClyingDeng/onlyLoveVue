@@ -264,7 +264,7 @@ var personalController = {
                             res.json({ code: 500, msg: '搜索查询失败！' })
                         } else {
                             if (results1.length > 0) {
-
+                                results1[0].sweet = results[0].sweet_score
                                 // res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
                                 //有动态显示动态
                                 personalDAO.getCondition(oId, function(err, result) {
@@ -443,6 +443,7 @@ var personalController = {
     },
     //点赞
     approve: function(req, res) {
+        // console.log(req.params)
         var conId = req.body.conId
         var userId = req.user[0].base_info_Id
         console.log('对方动态编号：' + conId)

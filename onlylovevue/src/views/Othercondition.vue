@@ -13,7 +13,7 @@
             <div>
               <h3 style="color:blueviolet">&nbsp;{{otherInfo[0].nickName}}</h3>
               <p class="fontstyle">{{'性别：' + otherInfo[0].sex}}</p>
-              <p class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
+              <p v-if="otherInfo[0].sweet" class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
             </div>
           </div>
           
@@ -65,9 +65,10 @@
             <el-button type="success" @click="pulsFriend"><i class="fa fa-plus" aria-hidden="true"></i>加好友</el-button>
         </div>
         <el-drawer
-  title="送礼物"
-  :visible.sync="drawer"
-  size="50%">
+      title="送礼物"
+    :visible.sync="drawer"
+    :before-close="handleClose"
+    size="50%">
   <div>
     <!-- <h1>nihao </h1> -->
     <!-- <div class="container"> -->
@@ -195,10 +196,11 @@
             <img v-show="key.con_pic_4" class="shuotu" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
-            <li style="float: left;width:50px;">
+            <li style="float: left;width:50px;" @click="approve(key)">
               <a href="#">
                 <i class="fa fa-thumbs-o-up fa-1x" style="color:#ff6700" aria-hidden="true"></i>
-                <em>{{key.approvenum}}</em>
+                <em v-if="key.approveNum">{{key.approveNum}}</em>
+                <em v-else>0</em>
               </a>
             </li>
             <li style="float: left;width:50px;margin-left:10px">
@@ -448,6 +450,7 @@ ul {
 .qianyou ul li:nth-child(2) {
   width: 60px;
   height: 40px;
+  line-height: 40px;
   font-size: 24px;
   color: blueviolet;
   /* margin-top: 7px; */
@@ -484,7 +487,8 @@ export default {
       conditions: [],
       //赠送数量
       proNum:'',
-      addObj:{}
+      addObj:{},
+      isAddFriends:'0'      //0代表不能加好友
     };
   },
   created() {
@@ -532,7 +536,10 @@ export default {
         this.otherInfo = res.data.data
         console.log('en')
         console.log(this.otherInfo)
-
+        if(this.otherInfo[0].sweet > 199){
+          this.isAddFriends = 1
+          console.log(this.isAddFriends)
+        }
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -648,11 +655,12 @@ export default {
       //    alert('您还没有道具，请至商城购买道具！')
       //    return done();
       //  }
-        this.$confirm('还有未保存的工作哦确定关闭吗？')
+        this.$confirm('您确定关闭吗？')
           .then(_ => {
             done();
           })
           .catch(_ => {});
+            // this.$router.push({name:'/otherCondition',name: 'otherCondition',params:{Id:key.base_info_Id}})
       },
       addProduct(p){
         console.log(p)
@@ -690,6 +698,7 @@ export default {
               console.log('可以了吗')
               if(res.data.affectedRows){
                 alert('赠送成功')
+                
               }
             })
             .catch(err => {
@@ -697,7 +706,54 @@ export default {
             });
       },
     pulsFriend(){
+      let addIp = 'http://localhost:3000/personal/addFriend/' + this.otherInfo[0].base_info_Id
+      console.log('对象接口' + addIp)
+      if(this.isAddFriends == '0'){
+        alert('亲密度不足，您还不能添加好友！')
+      }else{
+        
+        this.$axios
+            .post(addIp)
+            .then(res => {
+              console.log(res.data);
+              console.log('可以了吗')
+              
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        alert('发送好友请求成功')
 
+      }
+    },
+    approve(key){
+      // alert('点赞')
+      console.log(key.con_Id)
+      let conId = {}
+      conId.conId = key.con_Id
+      // let config = {
+      //   headers: {
+      //     "Content-Type": 'application/x-www-form-urlencoded'
+      //   }
+      // };
+       this.$axios
+            .post("http://localhost:3000/personal/approve", conId)
+            .then(res => {
+              console.log(res.data);
+              console.log(conId)
+              console.log('可以了吗')
+              if(res.affectedRows){
+                console.log(res.data.approveNum)
+                if(res.data.approveNum){
+                  alert('点赞成功！')
+
+                }
+                
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            });
     }
   }
 };
