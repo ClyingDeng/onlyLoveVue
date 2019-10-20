@@ -22,7 +22,7 @@
 
             <!-- 列表 -->
             <div class="haoyouliebiao">
-              <div id="gundong" style="height:265px;">
+              <div id="gundong" style="height:325px;">
                 <div class="media">
                   <div class="media-left media-middle">
                     <a href="#">
@@ -130,11 +130,20 @@
               </div>
             </div>
           </div>
-          <div style="margin-top:5px">
-            <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-              <el-tab-pane label="用户管理" name="first">亲密度</el-tab-pane>
-              <el-tab-pane label="配置管理" name="second">黑名单</el-tab-pane>
-            </el-tabs>
+            <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" class="shuzhuang" style="background:#434753;color:#A8ADB3"></el-tree>
+          <div class="guanyu">
+            <ul class="list-group" style="background:#434753">
+              <li class="list-group-item" style="color:#A8ADB3;background:#696c75; border: 1px solid #696c75;margin-top:8px ">
+                <span class="badge" >14</span>
+                系统消息
+              </li>
+            </ul>
+            <!-- <ul class="list-group" style="background:#434753">
+              <li class="list-group-item" style="color:#A8ADB3;background:#696c75; border: 1px solid #696c75;margin-top:-7px ">
+                <span class="badge" >1</span>
+                关于我们
+              </li>
+            </ul> -->
           </div>
         </div>
         <div class="liaotian col-md-8" style="padding:0;float:left;">
@@ -153,6 +162,7 @@
                 style="margin-left:80px;margin-top:-70px;background-color:#F1F5F8;color:#434753"
               >马小云</h4>
               <div class="1">
+                <!-- 删除 最小化图标 -->
                 <div>
                   <i
                     class="fa fa-window-minimize fa-2x"
@@ -190,7 +200,7 @@
                       class="media-heading"
                       style="margin-top:20px"
                     >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
-                    <h4 class="media-heading">让天下没有难写的代码！</h4>
+                    <h5 class="media-heading">让天下没有难写的代码！</h5>
                   </div>
                 </div>
               </div>
@@ -201,7 +211,7 @@
                       class="media-heading"
                       style="margin-top:20px"
                     >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
-                    <h4 class="media-heading">代码在囧途，也要写到底！</h4>
+                    <h5 class="media-heading">代码在囧途，也要写到底！</h5>
                   </div>
                 </div>
                 <div class="media-right">
@@ -222,7 +232,7 @@
                       class="media-heading"
                       style="margin-top:20px"
                     >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
-                    <h4 class="media-heading">别急，您慢慢说。。。。。</h4>
+                    <h5 class="media-heading">别急，您慢慢说。。。。。</h5>
                   </div>
                 </div>
               </div>
@@ -233,7 +243,7 @@
                       class="media-heading"
                       style="margin-top:20px"
                     >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
-                    <h4 class="media-heading">您好，我现在有事不在，一会再和您联系！</h4>
+                    <h5 class="media-heading">您好，我现在有事不在，一会再和您联系！</h5>
                   </div>
                 </div>
                 <div class="media-right">
@@ -253,8 +263,8 @@
                     <h6
                       class="media-heading"
                       style="margin-top:20px"
-                    >马小云&nbsp;&nbsp;2019-10-16&nbsp;14:11:42</h6>
-                    <h4 class="media-heading">你他大哥的。。。。。</h4>
+                    >马小云&nbsp;&nbsp;&nbsp;14:11:42</h6>
+                    <h5 class="media-heading">这也太难了。。。</h5>
                   </div>
                 </div>
               </div>
@@ -264,8 +274,8 @@
                     <h6
                       class="media-heading"
                       style="margin-top:20px"
-                    >2019-10-16&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
-                    <h4 class="media-heading">套你猴子！！！！</h4>
+                    >&nbsp;14:20:16&nbsp;&nbsp;麻花腾</h6>
+                    <h5 class="media-heading">可不是嘛！！</h5>
                   </div>
                 </div>
                 <div class="media-right">
@@ -284,10 +294,10 @@
             <div class="chat-message-form" style="background-color:#F1F5F8;">
               <div class="layui-unselect" style="float:left;width:360px">
                 <span class="layui-icon layim-tool-face" title="选择表情" layim-event="face">
-                  <i class="fa fa-smile-o fa-2x" aria-hidden="true" style="margin-left:15px;"></i>
+                  <i class="fa fa-smile-o fa-2x" aria-hidden="true" style="margin-left:15px;color:#605C59"></i>
                 </span>
                 <span class="layui-icon layim-tool-image" title="上传图片" layim-event="image">
-                  <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-picture-o fa-2x" aria-hidden="true" style="color:#605C59"></i>
                 </span>
                 <span
                   class="layui-icon layim-tool-image"
@@ -295,7 +305,7 @@
                   layim-event="image"
                   data-type="file"
                 >
-                  <i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-file-text-o fa-2x" aria-hidden="true" style="color:#605C59"></i>
                   <!-- <input type="file" name="file"> -->
                 </span>
                 <span
@@ -304,7 +314,7 @@
                   layim-event="media"
                   data-type="audio"
                 >
-                  <i class="fa fa-headphones fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-headphones fa-2x" aria-hidden="true" style="color:#605C59"></i>
                 </span>
                 <!-- <span
                   class="layui-icon layim-tool-video"
@@ -320,11 +330,11 @@
                   layim-event="extend"
                   lay-filter="code"
                 >
-                  <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-code fa-2x" aria-hidden="true" style="color:#605C59"></i>
                 </span>
                 <div style="float: right;width:95px">
                   <span class="layim-tool-log" layim-event="chatLog">
-                    <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> 聊天记录&nbsp;
+                    <i class="fa fa-clock-o fa-2x" aria-hidden="true" style="color:#605C59"></i> 聊天记录&nbsp;
                   </span>
                 </div>
               </div>
@@ -351,12 +361,29 @@
 export default {
   data() {
     return {
-      activeName: "first"
+      data: [
+        {
+          label: "黑名单",
+          children: [
+            { label: "他二婶" },
+            { label: "他二舅母" },
+            { label: "大侄子" }
+          ]
+        },
+        {
+          label: "公众号",
+          children: [{ label: "onlylove" }]
+        }
+      ],
+      defaultProps: {
+        children: "children",
+        label: "label"
+      }
     };
   },
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    handleNodeClick(data) {
+      console.log(data);
     }
   }
 };
@@ -371,6 +398,9 @@ export default {
   height: 80px;
   border-radius: 50%;
 }
+.xitongxiaoxi {
+  padding-left: 28px;
+}
 .jilu .media {
   padding: 0 7px 0 10px;
 }
@@ -382,6 +412,7 @@ export default {
 .gundong {
   height: 350px;
   overflow-y: scroll;
+ 
 }
 #gundong {
   margin-right: -10px;
@@ -424,6 +455,11 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
+}
+.item {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-right: 40px;
 }
 </style>
 
