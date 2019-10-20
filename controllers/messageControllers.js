@@ -86,6 +86,17 @@ var messageController = {
             }
         })
     },
+    //查看当前有没有人请求添加好友
+    selectMsg:function(req, res) {
+        var userId = req.user[0].base_info_Id
+        messageDAO.selectMsg(userId,function(err, results) {
+            if (err) {
+                res.json({ code: 500, msg: '查询好友请求失败' })
+            } else {
+                res.json({ code: 200, data: results, msg: '查询好友请求成功！' })
+            }
+        })
+    },
     //同意加好友
     agreeFriend: function(req, res) {
         var oId = req.params.oId

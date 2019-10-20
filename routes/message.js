@@ -19,6 +19,10 @@ router.post('/messageList', passport.authenticate('jwt', { session: false }), fu
 router.get('/systemMessage', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     messageController.systemMessage(req, res)
 });
+//查看当前有没有人请求添加好友
+router.get('/selectMsg', passport.authenticate('jwt', { session: false }), function(req, res, next) {
+    messageController.selectMsg(req, res)
+});
 //同意加好友
 router.post('/agreeFriend/:oId', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     messageController.agreeFriend(req, res)

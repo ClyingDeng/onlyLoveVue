@@ -23,14 +23,15 @@
             <!-- 列表 -->
             <div class="haoyouliebiao">
               <div id="gundong" style="height:325px;">
-                <div class="media">
+                <div class="media" v-for="key in friInfo[0]">
                   <div class="media-left media-middle">
                     <a href="#">
-                      <img class="media-object" src="../assets/imgs/dengying.jpg" alt />
+                      <img class="media-object"  :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt />
                     </a>
                   </div>
-                  <div class="media-body">
-                    <h6 class="media-heading">邓小颖</h6>
+                  <div class="media-body" >
+                    <h6 v-if="key.user_remark" class="media-heading">{{key.user_remark}}</h6>
+                    <h6 v-else class="media-heading">{{key.nickName}}</h6>
                     <p>
                       <img src="../assets/imgs/lvdian.jpg" alt /> 你除了修不完的 bug 还有什么？
                     </p>
@@ -134,9 +135,13 @@
           <div class="guanyu">
             <ul class="list-group" style="background:#434753">
               <li class="list-group-item" style="color:#A8ADB3;background:#696c75; border: 1px solid #696c75;margin-top:8px ">
-                <span class="badge" >14</span>
+                <span class="badge" v-if="msg" >1</span>
                 系统消息
+                <p :class="className">账号为{{postPam}}的用户，请求加您为好友</p>
+                <el-button v-if="msg" @click="agree" style="padding:5px;height:25px;" type="info">同意</el-button>
               </li>
+              <!-- <li class="list-group-item" >
+              </li> -->
             </ul>
             <!-- <ul class="list-group" style="background:#434753">
               <li class="list-group-item" style="color:#A8ADB3;background:#696c75; border: 1px solid #696c75;margin-top:-7px ">
@@ -378,17 +383,88 @@ export default {
       defaultProps: {
         children: "children",
         label: "label"
-      }
+      },
+      className:'hide',
+      msg:false,
+      postPam:'',
+      fri:{},
+      friInfo:{}
     };
+  },
+  created(){
+    let _this = this
+        this.$axios
+      .get("http://localhost:3000/message/selectMsg")
+      .then(res => {
+        console.log("查询结果：");
+        console.log(res.data.data[0]);
+        _this.fri = res.data.data[0]
+        console.log(_this.fri)
+        //没有好友请求
+        if(!_this.fri){
+          this.className = 'hide'
+          this.msg = false
+        }else{
+          this.className = 'show'
+          this.msg = true
+          this.postPam = _this.fri.user_Id
+        }
+        
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+      //查询好友列表
+       this.$axios
+      .get("http://localhost:3000/message/friendList")
+      .then(res => {
+        console.log("列表有人吗：");
+        console.log(res.data);
+        //有
+        if(res.data){
+          _this.friInfo = res.data.data
+          console.log(_this.friInfo)
+        }
+        
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+      });
+    
   },
   methods: {
     handleNodeClick(data) {
       console.log(data);
+    },
+    agree(){
+      console.log(this.fri)
+      let agreeFri = 'http://localhost:3000/message/agreeFriend/' + this.fri.user_Id
+      this.$axios
+            .post(agreeFri)
+            .then(res => {
+              console.log("成功！", res);
+              console.log(res.data);
+              if(res.data.affectedRows){
+                alert('添加好友成功！')
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            });
     }
   }
 };
 </script>
 <style scoped>
+.list-group-item{
+  cursor: pointer;
+}
+.show{
+  display: none;
+}
+.hide{
+  display: block;
+}
 .container {
   /* height: 650px; */
   margin-top: 100px;
