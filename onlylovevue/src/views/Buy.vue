@@ -19,6 +19,7 @@
           <el-input-number class="col-xs-12" style="margin-top:10px" v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
           <h1 class="col-xs-12" style="margin-top:10px">￥{{key.prop_price*num}}</h1>
           <button :name="key.prop_price*num" @click="handleChange">立即购买</button>
+
         </div>
       </div>
     </div>
@@ -178,6 +179,9 @@ export default {
     return{
       num: 1,
       conditions:[],
+      num:1,
+      // money:''
+
       // propId:''
     };
   },
@@ -196,6 +200,7 @@ export default {
         
         // 拿到后台数据·赋值给前端
         this.conditions = res.data.data;
+      //  console.log( res.data.data[prop_price])
         // console.log(this.conditions[0].prop_Id)
       })
       .catch(err => {
@@ -203,6 +208,7 @@ export default {
       });
   },
   methods: {
+
     handleChange(e) {
       // alert(e.target.name)
       window.location.href='http://localhost:3000?price='+e.target.name
@@ -216,6 +222,7 @@ export default {
 // }
 //       })
 //     }
+
   }
 }
 </script>

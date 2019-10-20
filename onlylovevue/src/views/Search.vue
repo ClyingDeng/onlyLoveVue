@@ -26,14 +26,14 @@
                     
                                     <!-- 年龄 -->
                                     <div class="txt  col-xs-12 col-md-2" id="indtype_click">
-                                        <p class="hdl">性别年龄</p>
-                                        <input autocomplete="on" id="indtype_input" v-model="age" type="text" class="ef" placeholder="输入年龄" value="">
+                                        <p class="hdl">性别</p>
+                                        <input autocomplete="on" id="indtype_input" v-model="sex" type="text" class="ef" placeholder="输入性别" value="">
                                         <!-- <input name="industrytype" type="hidden" id="indtype_code" value=""/> -->
                                     </div>
                                     <!-- 职能类别 -->
                                     <div class="txt col-xs-12 col-md-2" id="funtype_click">
                                         <p class="hdl">年龄</p>
-                                        <input autocomplete="on" id="funtype_input" v-model="sex" type="text" class="ef" placeholder="输入职业" value="" />
+                                        <input autocomplete="on" id="funtype_input" v-model="age" type="text" class="ef" placeholder="输入年龄" value="" />
                                         <!-- <input name="funtype" type="hidden" id="funtype_code" value=""/> -->
                                     </div>
                                     <!-- 搜索按钮 -->
@@ -49,8 +49,9 @@
                  <span>性别：</span>
                  <ul class="sectionOption">
                    <li class="allOption"><a href="">所有</a></li>
-                   <li><a href="">男</a></li>
-                   <li><a href="">女</a></li>
+                   <li><a @click="selectSex('男')">男</a></li>
+
+                   <li><a @click="selectSex('女')">女</a></li>
                  </ul>
                </li>
                <li class="doubleHeight">
@@ -151,33 +152,36 @@
           <section id="work" class="portfolio-mf sect-pt4 route">
             <div class="container">
               <div class="row">
-                <div class="col-md-4"  v-for="key in otherUserInfos">
-                  <div class="work-box" v-if="key.isShow || key.isName || key.isSex || key.age">
-                    <a :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf">
+                <div class="col-md-4"  v-for="key in otherUserInfos" v-show="key.isShow || key.isName || key.isSex || key.isAge ">
+                  <div class="work-box" >
+                    <a :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
                       <div class="work-img">
                         <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt="" class="img-fluid">
                       </div>
-                      <div class="work-content">
+                      <!-- </div> -->
+                      
+                    </a>
+                    <div class="work-content">
                         <div class="row">
-                          <div class="col-sm-8">
+                          <div class="col-sm-9">
                             <h2 class="w-title">{{key.nickName}}</h2>
                             <p>ID:  <span>{{key.base_info_Id}}</span></p>
                             <p v-show="key.sex" class="changp"><span class="w-date">{{key.sex}}</span> / <span class="w-date">{{key.age}}</span> </p>
                             <p v-show="key.province" class="changp"><span class="w-date">{{'地址：' + key.province}}</span> / <span class="w-date">{{key.city}}</span> / <span class="w-date">{{key.location_detail}}</span> </p>
-                            <p v-show="key.height" class="changp"><span class="w-date">{{'身高：' + key.height}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="w-date">{{'体重：' + key.weight + 'kg'}}</span></p>
+                            <p v-show="key.height" class="changp"><span class="w-date">{{'身高：' + key.height}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="w-date">{{'体重：' + key.weight + 'kg'}}</span></p>
                             <div class="w-more" v-show="key.love_description">
                               <span class="w-ctegory">{{'爱情宣言：' + key.love_description}}</span> 
                             </div>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-3">
                           <div class="w-like fontSize">
-                            <router-link to='/Condition' class="ion-ios-plus-outline">详情</router-link>
-                            <!-- <span class="ion-ios-plus-outline">详情</span> -->
+                            <span @click="detail(key)" class="ion-ios-plus-outline">详情</span>
+                            <!-- <router-link :to="{name:'/othersAttention/:',params:{id:20015}}"  class="ion-ios-plus-outline">详情</router-link> -->
+
                           </div>
                           </div>
                         </div>
                       </div>
-                    </a>
                   </div>
                 </div>
                
@@ -213,54 +217,142 @@ export default {
             Id:'',
             nickName:'',
             age:'',
-            sex:''
+            sex:'',
+            classPic:'liHidden'
         }
     },
     watch:{
       Id:{
         handler:function(IdName) {
-          console.log('昵称搜索：' + IdName)
-          console.log(this.otherUserInfos[0].base_info_Id)
+          this.otherUserInfos = JSON.parse(sessionStorage.getItem('otherInfo'))
+          console.log('ID搜索：' + IdName)
           for(let i = 0; i < this.otherUserInfos.length; i++){
             if(this.otherUserInfos[i].base_info_Id.toString().indexOf(IdName) != -1){
-              // console.log('有')
+              console.log('有')
               this.otherUserInfos[i].isShow = true
-              // console.log(this.otherUserInfos[i])
-              
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
+              console.log(this.otherUserInfos[i].isShow || this.otherUserInfos[i].isName || this.otherUserInfos[i].isSex || this.otherUserInfos[i].isAge)
             }else{
               this.otherUserInfos[i].isShow = false
-              // console.log((this.otherUserInfos[i].isShow))
-              // console.log('没有')
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
             }
           }
         }
       },
       nickName:{
         handler:function(name) {
+          this.otherUserInfos = JSON.parse(sessionStorage.getItem('otherInfo'))
           console.log('昵称搜索：' + name)
           console.log(this.otherUserInfos[0].nickName)
           for(let i = 0; i < this.otherUserInfos.length; i++){
             if(this.otherUserInfos[i].nickName.toString().indexOf(name) != -1){
-              // console.log('有')
+              console.log('有')
+              this.otherUserInfos[i].isShow = false
               this.otherUserInfos[i].isName = true
-              console.log(this.otherUserInfos[i].nickName)
-              
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
+              console.log(this.otherUserInfos[i].isShow || this.otherUserInfos[i].isName || this.otherUserInfos[i].isSex || this.otherUserInfos[i].isAge)
+              console.log(this.otherUserInfos[i])
             }else{
+              this.otherUserInfos[i].isShow = false
               this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
               // console.log((this.otherUserInfos[i].isShow))
               // console.log('没有')
             }
           }
         }
-      }
-      // msg:{
-      //   handler:function(message) {
-      //     console.log(message)
+      },
+      sex:{
+        handler:function(userSex) {
+          this.otherUserInfos = JSON.parse(sessionStorage.getItem('otherInfo'))
+          console.log('SEX搜索：' + userSex)
+          for(let i = 0; i < this.otherUserInfos.length; i++){
+            if(this.otherUserInfos[i].sex.toString().indexOf(userSex) != -1){
+              console.log('有')
+              this.otherUserInfos[i].isShow = false
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = true
+              this.otherUserInfos[i].isAge = false
+              console.log(this.otherUserInfos[i].isShow || this.otherUserInfos[i].isName || this.otherUserInfos[i].isSex || this.otherUserInfos[i].isAge)
+              console.log(this.otherUserInfos[i])
+            }else{
+              this.otherUserInfos[i].isShow = false
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
 
-      //   }
+            }
+          }
+        }
+      },
+      age:{
+        handler:function(userAge) {
+          this.otherUserInfos = JSON.parse(sessionStorage.getItem('otherInfo'))
+          console.log('年龄搜索：' + userAge)
+          for(let i = 0; i < this.otherUserInfos.length; i++){
+            if(this.otherUserInfos[i].age.toString().indexOf(userAge) != -1){
+              console.log('有')
+              this.otherUserInfos[i].isShow = false
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = true
+              console.log(this.otherUserInfos[i].isShow || this.otherUserInfos[i].isName || this.otherUserInfos[i].isSex || this.otherUserInfos[i].isAge)
+              console.log(this.otherUserInfos[i])
+            }else{
+              this.otherUserInfos[i].isShow = false
+              this.otherUserInfos[i].isName = false
+              this.otherUserInfos[i].isSex = false
+              this.otherUserInfos[i].isAge = false
+            }
+          }
+        }
+      }
+    },
+    computed:{
+      // otherUserInfos:function () {
+      //   return this.otherUserInfos
       // }
     },
     methods:{
+      detail(key){
+        console.log(key.base_info_Id)
+        sessionStorage.setItem('otherId',key.base_info_Id)
+        let otherId = sessionStorage.getItem('otherId')
+        let lookHe = 'http://localhost:3000/personal/othersAttention/' + otherId
+        console.log(lookHe)
+        this.$axios
+        .get(lookHe)
+        .then(res => {
+        //拿到后台数据赋值给前端
+        let otherInfo = {};
+        otherInfo = res.data.data
+        console.log(otherInfo)
+        console.log('能看到他的信息了吗')
+        console.log(res.data.data)
+
+        sessionStorage.setItem('otherInfos',JSON.stringify(res.data.data))
+        console.log('session')
+        console.log(JSON.parse(sessionStorage.getItem('otherInfos')))
+
+      })
+      .catch(err => {
+        console.log("错误信息：" + err);
+        // alert('您查看的是自己的空间，即将为您跳转！')
+        // this.$router.push({name:'/condition',name: 'condition'})
+      });
+
+        //路由跳转
+        this.$router.push({name:'/otherCondition',name: 'otherCondition',params:{Id:key.base_info_Id}})
+        
+
+        
+      },
       openList(){
         if(this.msg == '1'){
           this.msg = '2'
@@ -272,7 +364,32 @@ export default {
           this.className1 = 'liHidden'
           this.className2 = 'glyphicon glyphicon-menu-down fontStyle'
         }
+      },
+      selectSex(sex){
+        let Infos = JSON.parse(sessionStorage.getItem('otherInfo'))
+        for(let i = 0; i < Infos.length; i++){
+          Infos[i].isShow = true
+          Infos[i].isName = true
+          Infos[i].isSex = true
+          Infos[i].isAge = true
+          this.otherUserInfos[i] = Infos[i]
+        }
+        console.log('点击判断' + sex)
+        console.log(this.otherUserInfos)
+        for(let i = 0; i < this.otherUserInfos.length; i++){
+            if(this.otherUserInfos[i].sex == sex){
+              this.otherUserInfos[i].isSex = true
+              console.log(this.otherUserInfos[i].isShow || this.otherUserInfos[i].isName || this.otherUserInfos[i].isSex || this.otherUserInfos[i].isAge )
+              console.log(this.otherUserInfos[i].sex)
+              console.log(this.otherUserInfos[i])
+            }else{
+              // this.otherUserInfos[i] = null
+              delete this.otherUserInfos[i]
+            }
+          }
 
+          console.log(this.otherUserInfos)
+          return this.otherUserInfos
       }
     },
     //组件创建完成后执行的操作
@@ -290,14 +407,22 @@ export default {
           }else{
             console.log('是会员')
             console.log(res.data.data)
-            this.otherUserInfos = res.data.data
+            // this.otherUserInfos = res.data.data
+            sessionStorage.setItem("otherInfo", JSON.stringify(res.data.data))
+            this.otherUserInfos = JSON.parse(sessionStorage.getItem('otherInfo'))
           }
           
         })
         .catch(err => {
           console.log('错误信息：' + err)
         })
-
+        for(let i = 0; i < this.otherUserInfos.length; i++){
+              this.otherUserInfos[i].isShow = true
+              this.otherUserInfos[i].isName = true
+              this.otherUserInfos[i].isSex = true
+              this.otherUserInfos[i].isAge = true
+        }
+        
 
 
 
@@ -306,6 +431,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.w-like{
+  cursor: pointer;
+}
 .liShow{
   display: block;
 }

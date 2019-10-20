@@ -92,34 +92,48 @@ var personalController = {
         var userId = req.user[0].base_info_Id
         console.log('他人主页编号：' + oId)
         console.log(userId)
-        personalDAO.getSweet(oId, userId, function(err, results) {
+        let sweet = 0
+        personalDAO.getSweet(oId,userId, function(err, results) {
             if (err) {
                 res.json({ code: 500, msg: '搜索查询失败！' })
             } else {
+                console.log('后台亲密度')
+                console.log(results)
                 if (!results[0]) {
                     sweet = 0
+                    results.push({sweet_score:'0'})
+                    // console.log('sweet' + sweet)
+                    // console.log('sweet[0]' + results[0].sweet_score)
                 } else {
                     console.log(results[0].sweet_score)
-                    var sweet = results[0].sweet_score
+                    sweet = results[0].sweet_score
                 }
-                if (sweet < 10) {
+                console.log('亲密度' + sweet)
+                if (sweet >= 0 && sweet < 10) {
                     //亲密度为0
-                    personalDAO.getPersonalManyInfo(oId, function(err, results1) {
-                        if (err) {
+                    personalDAO.getCommInfo(oId,function(err,results1){
+                        if(err){
                             res.json({ code: 500, msg: '搜索查询失败！' })
-                        } else {
-                            if (results1.length > 0) {
-                                results1[0].sweet = results[0].sweet_score
-                                    // console.log(results1[0].sweet)
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
-
-                            } else {
-                                res.json({ code: 200, data: results, msg: '查无此人！' })
-
-                            }
+                        }else{
+                            res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
                         }
                     })
-                } else if (sweet < 20) {
+                    // personalDAO.getPersonalManyInfo(oId, function(err, results1) {
+                    //     if (err) {
+                    //         res.json({ code: 500, msg: '搜索查询失败！' })
+                    //     } else {
+                    //         if (results1.length > 0) {
+                    //             console.log(results1[0])
+                    //             results1[0].sweet = results[0].sweet_score
+                    //             res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+
+                    //         } else {
+                    //             res.json({ code: 200, data: results, msg: '查无此人！' })
+
+                    //         }
+                    //     }
+                    // })
+                } else if (sweet >= 10 && sweet < 20) {
                     personalDAO.getFirstSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
@@ -149,14 +163,31 @@ var personalController = {
                             }
                         }
                     })
-                } else if (sweet < 99) {
+                } else if (sweet >= 20 && sweet < 99) {
                     personalDAO.getThirdSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
                         } else {
                             if (results1.length > 0) {
                                 results1[0].sweet = results[0].sweet_score
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                // res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                //有动态显示动态
+                                personalDAO.getCondition(oId, function(err, result) {
+                                    if (err) {
+                                        console.log(err)
+                                        res.json({ code: 500, msg: '显示动态失败！' })
+                                    } else {
+                                        console.log('动态：')
+                                        console.log(result)
+                                        if (!result[0]) {
+                                            results1[0].condition = null
+                                        } else {
+                                            results1[0].condition = result
+                                        }
+                                        res.json({ code: 200, data: results1, msg: '搜索查询成功！' })
+                                    }
+                                })
+
 
                             } else {
                                 res.json({ code: 200, data: results, msg: '查无此人！' })
@@ -164,28 +195,62 @@ var personalController = {
                             }
                         }
                     })
-                } else if (sweet < 199) {
+                } else if (sweet >= 99 && sweet < 199) {
                     personalDAO.getFourthSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
                         } else {
                             if (results1.length > 0) {
                                 results1[0].sweet = results[0].sweet_score
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                // res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+
+                                //有动态显示动态
+                                personalDAO.getCondition(oId, function(err, result) {
+                                    if (err) {
+                                        console.log(err)
+                                        res.json({ code: 500, msg: '显示动态失败！' })
+                                    } else {
+                                        console.log('动态：')
+                                        console.log(result)
+                                        if (!result[0]) {
+                                            results1[0].condition = null
+                                        } else {
+                                            results1[0].condition = result
+                                        }
+                                        res.json({ code: 200, data: results1, msg: '搜索查询成功！' })
+                                    }
+                                })
+
                             } else {
                                 res.json({ code: 200, data: results, msg: '查无此人！' })
 
                             }
                         }
                     })
-                } else if (sweet <= 299) {
+                } else if (sweet >= 199 && sweet <= 299) {
                     personalDAO.getFifthSweet(oId, function(err, results1) {
                         if (err) {
                             res.json({ code: 500, msg: '搜索查询失败！' })
                         } else {
                             if (results1.length > 0) {
                                 results1[0].sweet = results[0].sweet_score
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                // res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                //有动态显示动态
+                                personalDAO.getCondition(oId, function(err, result) {
+                                    if (err) {
+                                        console.log(err)
+                                        res.json({ code: 500, msg: '显示动态失败！' })
+                                    } else {
+                                        console.log('动态：')
+                                        console.log(result)
+                                        if (!result[0]) {
+                                            results1[0].condition = null
+                                        } else {
+                                            results1[0].condition = result
+                                        }
+                                        res.json({ code: 200, data: results1, msg: '搜索查询成功！' })
+                                    }
+                                })
 
                             } else {
                                 res.json({ code: 200, data: results, msg: '查无此人！' })
@@ -200,7 +265,23 @@ var personalController = {
                         } else {
                             if (results1.length > 0) {
 
-                                res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                // res.json({ code: 200, data: results1, msg: '他人主页查询成功！' })
+                                //有动态显示动态
+                                personalDAO.getCondition(oId, function(err, result) {
+                                    if (err) {
+                                        console.log(err)
+                                        res.json({ code: 500, msg: '显示动态失败！' })
+                                    } else {
+                                        console.log('动态：')
+                                        console.log(result)
+                                        if (!result[0]) {
+                                            results1[0].condition = null
+                                        } else {
+                                            results1[0].condition = result
+                                        }
+                                        res.json({ code: 200, data: results1, msg: '搜索查询成功！' })
+                                    }
+                                })
 
                             } else {
                                 res.json({ code: 200, data: results, msg: '查无此人！' })
@@ -324,7 +405,9 @@ var personalController = {
                                                 console.log(results4[0])
                                                 if (err) {
                                                     res.json({ code: 500, msg: '判断亲密度表中是否有二人失败' })
-                                                } else if (results4[0] == '') {
+                                                } else if (results4[0] != '') {
+                                                    console.log('修改')
+                                                    console.log(results4[0])
                                                     personalDAO.updatesweet(userId, addId, propsweet, function(err, results5) {
                                                         if (err) {
                                                             res.json({ code: 500, msg: '修改亲密度失败' })
@@ -333,9 +416,11 @@ var personalController = {
                                                         }
                                                     })
                                                 } else {
+                                                    console.log('you')
+                                                    console.log(results4[0])
                                                     personalDAO.insertsweet(userId, addId, propsweet, function(err, results6) {
                                                         if (err) {
-                                                            res.json({ code: 500, msg: '添加两人到亲密表失败' })
+                                                            res.json({ code: 500, msg: '添加两人到亲密表失败'+ err })
                                                         } else {
                                                             res.json({ code: 200, affectedRows: results2.affectedRows + results6.affectedRows, msg: '送出礼物成功！你与 ' + addId + ' 亲密度增加 ' + propsweet })
                                                         }
