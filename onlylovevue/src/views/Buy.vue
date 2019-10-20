@@ -84,7 +84,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 50%; */
   height: 100%;
   box-sizing: border-box;
   padding: 40px;
@@ -185,12 +184,8 @@ export default {
       conditions: [],
       num: 1,
       buy:[]
-      // money:''
-
-      // propId:''
     };
   },
-  //  mounted: function
   created() {
     // console.log(this.$route.query.productid)
     this.propid = this.$route.query.productid;
@@ -232,6 +227,7 @@ export default {
           console.log(res.data.data);
           // 拿到后台数据·赋值给前端
           this.buy = res.data.data;
+          console.log(res.data.您的积分还有)
           alert("您的积分剩余：" + res.data.您的积分还有)
         })
         .catch(err => {
