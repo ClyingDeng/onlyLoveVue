@@ -729,7 +729,8 @@ export default {
     approve(key){
       // alert('点赞')
       console.log(key.con_Id)
-      let conId = key.con_Id
+      let conId = {}
+      conId.conId = key.con_Id
       // let config = {
       //   headers: {
       //     "Content-Type": 'application/x-www-form-urlencoded'
@@ -741,8 +742,12 @@ export default {
               console.log(res.data);
               console.log(conId)
               console.log('可以了吗')
-              if(res.data.affectedRows){
-                alert('点赞成功！')
+              if(res.affectedRows){
+                console.log(res.data.approveNum)
+                if(res.data.approveNum){
+                  alert('点赞成功！')
+
+                }
                 
               }
             })
