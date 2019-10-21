@@ -14,6 +14,7 @@
               <h3 style="color:blueviolet">&nbsp;{{otherInfo[0].nickName}}</h3>
               <p v-if="otherInfo[0].sex" class="fontstyle">{{'性别：' + otherInfo[0].sex}}</p>
               <p v-if="otherInfo[0].sweet" class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
+              <p v-else class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
             </div>
           </div>
           
@@ -545,6 +546,10 @@ export default {
         this.otherInfo = res.data.data
         console.log('en')
         console.log(this.otherInfo)
+        if(!this.otherInfo[0].sweet){
+          this.otherInfo[0].sweet = 0
+          console.log('kan' + this.otherInfo[0].sweet)
+        }
         if(this.otherInfo[0].sweet > 199){
           this.isAddFriends = 1
           console.log(this.isAddFriends)
