@@ -375,7 +375,7 @@ var personalController = {
         var haveTime = req.body.haveTime
         personalDAO.getprops(userId, function(err, results) {
             var str = JSON.stringify(results);
-            console.log(str)
+            // console.log(str)
             var flag = str.indexOf(propsId)
             if (err) {
                 res.json({ code: 500, msg: '查询背包礼物种类失败' })
@@ -384,8 +384,8 @@ var personalController = {
                     if (err) {
                         res.json({ code: 500, msg: '查询背包礼物数量失败' })
                     } else {
-                        console.log(results1[0].prop_Name)
-                        console.log(results1[0].num)
+                        // console.log(results1[0].prop_Name)
+                        // console.log(results1[0].num)
                         if (results1[0].num == 0) {
                             res.json({ code: 200, msg: '您已经没有的' + results1[0].prop_Name + '礼物了' })
                         } else if (results1[0].num < num) {
@@ -400,14 +400,14 @@ var personalController = {
                                             res.json({ code: 500, msg: '获取礼物亲密度失败' })
                                         } else {
                                             let propsweet = results3[0].prop_fun_intimacy * num
-                                            console.log(propsweet)
+                                            // console.log(propsweet)
                                             personalDAO.selectsweet(userId, function(err, results4) {
                                                 console.log(results4[0])
                                                 if (err) {
                                                     res.json({ code: 500, msg: '判断亲密度表中是否有二人失败' })
-                                                } else if (results4[0] != '') {
+                                                } else if (results4[0].obj_Id == 'addId') {
                                                     console.log('修改')
-                                                    console.log(results4[0])
+                                                    // console.log(results4[0])
                                                     personalDAO.updatesweet(userId, addId, propsweet, function(err, results5) {
                                                         if (err) {
                                                             res.json({ code: 500, msg: '修改亲密度失败' })
@@ -417,7 +417,7 @@ var personalController = {
                                                     })
                                                 } else {
                                                     console.log('you')
-                                                    console.log(results4[0])
+                                                    // console.log(results4[0])
                                                     personalDAO.insertsweet(userId, addId, propsweet, function(err, results6) {
                                                         if (err) {
                                                             res.json({ code: 500, msg: '添加两人到亲密表失败'+ err })
