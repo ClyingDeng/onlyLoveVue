@@ -5,13 +5,51 @@
         <div class="youyisi">
           <div class="touxiang">
             <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headPic"
+              v-if="userinfo.headPic == ''"
+              class="img-thumbnail"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang1.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang2.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang3.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang4.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang5.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              alt
+            />
+            <img
+              v-else
+              :src="'http://localhost:3000/upload/' + userinfo.headPic"
+              alt
               class="img-thumbnail"
             />
           </div>
           <div class="youyisi2" style="float: left;">
             <div>
-              <h3 style="color:blueviolet">&nbsp;{{conditions.length&&conditions[0].nickName}}</h3>
+              <h3 style="color:blueviolet">&nbsp;{{userinfo.nickName}}</h3>
             </div>
             <!-- 会员图标 -->
             <div style="float: left">
@@ -20,9 +58,13 @@
             </div>
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
-                <span style="color:blueviolet">
+                <span style="color:blueviolet" v-if="this.isLogin">
                   <p>会员等级 {{member.length && member[0].member_grade}}</p>
                   <p>会员剩余 {{member.length && member[0].member_date}} 天</p>
+                </span>
+                <span style="color:blueviolet" v-else>
+                  <p>会员等级 0</p>
+                  <p>无剩余天数</p>
                 </span>
                 <!-- 进度条展示 -->
                 <div class="progress progress-striped" style="width: 250px;height: 8px;">
@@ -45,6 +87,7 @@
                   class="btn btn-warning"
                   data-toggle="tooltip"
                   title="续费年费"
+                  @click="gomember"
                 >续费会员</button>
               </div>
             </div>
@@ -96,7 +139,10 @@
       <!-- <div class="container2">
       <div class="row2">-->
       <!-- 左边竖着 -->
-      <div class="zuobian" style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left">
+      <div
+        class="zuobian"
+        style="width: 180px; margin-left: 47px;margin-right:28px;font-size: 14px;float: left"
+      >
         <div>
           <a href="./Index.vue" class="list-group-item">
             <span
@@ -153,7 +199,10 @@
       <!-- 说点什么！！！ -->
 
       <div class="centerblock col-xs-12 col-xs-md-6 col-lg-6">
-        <div class="shuoshenme col-xs-12" style="padding: 0px;margin-bottom:20px;background-color: rgb(243, 237, 237)">
+        <div
+          class="shuoshenme col-xs-12"
+          style="padding: 0px;margin-bottom:20px;background-color: rgb(243, 237, 237)"
+        >
           <form role="form">
             <div class="form-group has-feedback">
               <textarea
@@ -189,8 +238,69 @@
         </div>
         <!-- 全部动态 -->
         <!-- 第一个说说 -->
-        <div class="col-xs-12" style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)" v-for="(key,index) in conditions" :key="'info-1'+index">
+        <div
+          class="col-xs-12"
+          style="margin-bottom:20px;margin-top: 20px;clear:both;background-color: rgb(243, 237, 237)"
+          v-for="(key,index) in conditions"
+          :key="'info-1'+index"
+        >
           <div style="float: left;padding: 20px">
+            <img
+              v-if="userinfo.headPic == ''"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang1.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang2.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang3.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang4.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang5.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              alt
+            />
+            <img
+              v-else
+              :src="'http://localhost:3000/upload/' + userinfo.headPic"
+              alt
+              class="img-circle"
+              width="50px"
+              height="50px"
+            />
             <img
               :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
               class="img-circle"
@@ -203,15 +313,35 @@
             <p style="margin-top:3px;font-size: 12px;color: rgb(167, 166, 164)">20:17</p>
           </div>
           <!-- <div style="float: right;padding-top: 18px" :name="key.con_Id" @click.prevent="delect">{{key.con_Id}}X</div> -->
-          <button style="float: right;margin-top: 10px;border: 1px solid transparent;outline: none;background-color: rgb(243, 237, 237);font-size:20px" :name="key.con_Id" @click.prevent="delect">X</button>
+          <button
+            style="float: right;margin-top: 10px;border: 1px solid transparent;outline: none;background-color: rgb(243, 237, 237);font-size:20px"
+            :name="key.con_Id"
+            @click.prevent="delect"
+          >X</button>
           <div style="clear: both;margin-left: 80px">
             <p>{{key.con_words}}</p>
           </div>
           <div style="margin:30px;clear:both; ">
-            <img class="shuotu" v-if="key.con_pic_1 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_1" />
-            <img class="shuotu" v-if="key.con_pic_2 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_2" />
-            <img class="shuotu" v-if="key.con_pic_3 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_3" />
-            <img class="shuotu" v-if="key.con_pic_4 == '' ? false : true" :src="'http://localhost:3000/hspicture/'+ key.con_pic_4" />
+            <img
+              class="shuotu"
+              v-if="key.con_pic_1 == '' ? false : true"
+              :src="'http://localhost:3000/hspicture/'+ key.con_pic_1"
+            />
+            <img
+              class="shuotu"
+              v-if="key.con_pic_2 == '' ? false : true"
+              :src="'http://localhost:3000/hspicture/'+ key.con_pic_2"
+            />
+            <img
+              class="shuotu"
+              v-if="key.con_pic_3 == '' ? false : true"
+              :src="'http://localhost:3000/hspicture/'+ key.con_pic_3"
+            />
+            <img
+              class="shuotu"
+              v-if="key.con_pic_4 == '' ? false : true"
+              :src="'http://localhost:3000/hspicture/'+ key.con_pic_4"
+            />
           </div>
           <ul style="padding:0;position:absolute;right:5px;bottom:5px;">
             <li style="float: left;width:50px;">
@@ -449,12 +579,13 @@ ul {
 </style>
 
 <script>
-// import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 export default {
-  inject: ['reload'],
+  inject: ["reload"],
   name: "test",
   data() {
     return {
+      isLogin: false,
       time: "",
       msg: "上传动态",
       user_Id: "",
@@ -463,6 +594,7 @@ export default {
       conditions: [],
       attentionme: [],
       meattention: [],
+      userinfo: {},
       member: [],
       form: {
         name: "" //绑定表单元素的属性
@@ -471,17 +603,20 @@ export default {
     };
   },
   created() {
-    /* if (jwt_decode(localStorage.getItem("mytoken"))) {
-      console.log("登录啊");
+    if (jwt_decode(localStorage.getItem("mytoken"))) {
+      // console.log("登录啊");
+      this.userinfo = JSON.parse(localStorage.getItem("myInfo"));
+      console.log(this.userinfo);
     } else {
       console.log("未登录");
-    } */
+    }
+
     this.$axios
       .get("http://localhost:3000/hotSearch/hotSearch")
       .then(res => {
         //拿到后台数据赋值给前端
         this.conditions = res.data.data;
-        console.log( this.conditions[0].headPic);
+        console.log(this.conditions[0].headPic);
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -512,6 +647,11 @@ export default {
         //拿到后台数据赋值给前端
         // console.log(res);
         this.member = res.data.data;
+        if (this.member != []) {
+          this.isLogin = true;
+        } else {
+          console.log("bu");
+        }
         // console.log(this.member);
       })
       .catch(err => {
@@ -519,16 +659,21 @@ export default {
       });
   },
   methods: {
-    delect(e){
+    gomember() {
+      this.$router.push("/Member");
+    },
+    delect(e) {
       // console.log(e.target.name)
       let _this = this;
-      let conId = e.target.name
-      console.log(conId)
-       this.$axios
-        .post("http://localhost:3000/hotSearch/deleteHotSearch", {"conId":conId})
+      let conId = e.target.name;
+      console.log(conId);
+      this.$axios
+        .post("http://localhost:3000/hotSearch/deleteHotSearch", {
+          conId: conId
+        })
         .then(function(result) {
           console.log(result);
-          _this.reload()
+          _this.reload();
         });
     },
     onSubmit() {
@@ -575,7 +720,7 @@ export default {
           // _this.$refs.area.clearFiles()
           // console.log(_this.param)
           _this.fileList = [];
-          _this.reload()
+          _this.reload();
         });
     },
     //当上传文件组件submit之前触发执行

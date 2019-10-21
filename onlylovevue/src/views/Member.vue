@@ -1,7 +1,6 @@
 
 <template>
   <div>
-
     <div class="row">
       <div>
         <div class="middle col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -35,7 +34,6 @@
             </li>
           </ul>
         </div>
-
       </div>
       <div class="member-type">
         <div class="open-member">
@@ -137,7 +135,6 @@ em {
 }
 
 .member-button {
-
   border-radius: 10%;
   background-color: coral;
   font-size: 20px;
@@ -221,7 +218,7 @@ em {
 </style>
 <script>
 export default {
-  inject: ['reload'],
+  inject: ["reload"],
   data() {
     return {
       conditions: []
@@ -246,16 +243,38 @@ export default {
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 30 })
         .then(res => {
-           _this.reload()
-          this.$alert("您的积分还有："+res.data.您的积分还有, "续费月度会员成功","成功", {
-            confirmButtonText: "确定",
-            callback: action => {
-              this.$message({
-                type: "info",
-                message: `action: ${action}`
-              });
-            }
-          });
+          if (res.data.msg == "您的余额不足！") {
+            this.$alert(
+              "您的积分不足请到个人中心充值",
+              "续费月度会员失败",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          } else {
+            _this.reload();
+            this.$alert(
+              "您的积分还有：" + res.data.您的积分还有,
+              "续费月度会员成功",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          }
         })
         .catch(err => {
           console.log("错误信息：" + err);
@@ -266,16 +285,38 @@ export default {
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 120 })
         .then(res => {
-           _this.reload()
-           this.$alert("您的积分还有："+res.data.您的积分还有, "续费季度会员成功","成功", {
-            confirmButtonText: "确定",
-            callback: action => {
-              this.$message({
-                type: "info",
-                message: `action: ${action}`
-              });
-            }
-          });
+          if (res.data.msg == "您的余额不足！") {
+            this.$alert(
+              "您的积分不足请到个人中心充值",
+              "续费月度会员失败",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          } else {
+            _this.reload();
+            this.$alert(
+              "您的积分还有：" + res.data.您的积分还有,
+              "续费季度会员成功",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          }
         })
         .catch(err => {
           console.log("错误信息：" + err);
@@ -286,16 +327,38 @@ export default {
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 365 })
         .then(res => {
-           _this.reload()
-          this.$alert("您的积分还有："+res.data.您的积分还有, "续费年度会员成功","成功", {
-            confirmButtonText: "确定",
-            callback: action => {
-              this.$message({
-                type: "info",
-                message: `action: ${action}`
-              });
-            }
-          });
+          if (res.data.msg == "您的余额不足！") {
+            this.$alert(
+              "您的积分不足请到个人中心充值",
+              "续费月度会员失败",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          } else {
+            _this.reload();
+            this.$alert(
+              "您的积分还有：" + res.data.您的积分还有,
+              "续费年度会员成功",
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          }
         })
         .catch(err => {
           console.log("错误信息：" + err);
