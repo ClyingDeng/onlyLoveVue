@@ -206,6 +206,9 @@
 /* div{
   background-color: #f00;
 } */
+.login a{
+  cursor: pointer;
+}
 </style>
 <script>
 export default {
@@ -288,7 +291,7 @@ export default {
       this.$router.push("/Login");
     },
     goRegister() {
-      this.$router.push("/Register");
+      this.$router.push("/register");
     },
     goList() {
       this.$router.push("/List");
