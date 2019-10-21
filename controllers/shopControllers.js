@@ -236,7 +236,7 @@ var shopController = {
                         res.json({ code: 500, msg: '请完善你的个人信息！' })
                     } else if (results3 == '') {
                         if ((results2[0].prop_price) * (user.number) > results2[0].integral) {
-                            res.json({ code: 500, msg: '你的余额不足！' })
+                            res.json({ code: 200, msg: '你的余额不足！' })
                         } else {
                             var integral = results2[0].integral - (results2[0].prop_price) * (user.number)
                             shopDAO.updateintegral(user, integral, function (err, results4) {
@@ -261,7 +261,7 @@ var shopController = {
                         }
                     } else if (results3[0].member_grade == 0) {
                         if ((results2[0].prop_price) * (user.number) > results2[0].integral) {
-                            res.json({ code: 500, msg: '你的余额不足！' })
+                            res.json({ code: 200, msg: '你的余额不足！' })
                         } else {
                             var integral = results2[0].integral - (results2[0].prop_price) * (user.number)
                             shopDAO.updateintegral(user, integral, function (err, results4) {
@@ -286,7 +286,7 @@ var shopController = {
                         }
                     } else if (results3[0].member_grade >= 4) {
                         if ((results2[0].prop_price) * (user.number) * 0.78 > results2[0].integral) {
-                            res.json({ code: 500, msg: '你的余额不足！' })
+                            res.json({ code: 200, msg: '你的余额不足！' })
                         } else {
                             var integral = results2[0].integral - (results2[0].prop_price) * (user.number) * 0.78
                             shopDAO.updateintegral(user, integral, function (err, results4) {
@@ -311,7 +311,7 @@ var shopController = {
                         }
                     } else if (results3[0].member_grade < 4 && results3[0].member_grade > 0) {
                         if ((results2[0].prop_price) * (user.number) * 0.88 > results2[0].integral) {
-                            res.json({ code: 500, msg: '你的余额不足！' })
+                            res.json({ code: 200, msg: '你的余额不足！' })
                         } else {
                             var integral = results2[0].integral - (results2[0].prop_price) * (user.number) * 0.88
                             shopDAO.updateintegral(user, integral, function (err, results4) {
@@ -375,7 +375,7 @@ var shopController = {
                             if (user.day == 30) {
                                 // user.day = 30
                                 if (integral <= 10) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.buymember(user, function (err, results1) {
                                         if (err) {
@@ -394,7 +394,7 @@ var shopController = {
                                 }
                             } else if (user.day == 120) {
                                 if (integral <= 30) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.buymember(user, function (err, results1) {
                                         if (err) {
@@ -413,7 +413,7 @@ var shopController = {
                                 }
                             } else if (user.day == 365) {
                                 if (integral <= 80) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.buymember(user, function (err, results1) {
                                         if (err) {
@@ -435,7 +435,7 @@ var shopController = {
                             if (user.day == 30) {
                                 // user.day = 30
                                 if (integral <= 10) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.insertmember(user, function (err, results1) {
                                         if (err) {
@@ -454,7 +454,7 @@ var shopController = {
                                 }
                             } else if (user.day == 120) {
                                 if (integral <= 30) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.insertmember(user, function (err, results1) {
                                         if (err) {
@@ -473,7 +473,7 @@ var shopController = {
                                 }
                             } else if (user.day == 365) {
                                 if (integral <= 80) {
-                                    res.json({ code: 500, msg: '您的余额不足！' })
+                                    res.json({ code: 200, msg: '您的余额不足！' })
                                 } else {
                                     shopDAO.insertmember(user, function (err, results1) {
                                         if (err) {
