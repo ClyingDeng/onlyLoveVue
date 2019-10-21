@@ -56,25 +56,25 @@ router.get('/vCode/:telephone', function(req, res, next) {
     console.log('后台发出去的验证码：' + code)
     var queryData = querystring.stringify({
         "mobile": tel, // 接受短信的用户手机号码
-        "tpl_id": "184594", // 您申请的短信模板ID，根据实际情况修改
+        "tpl_id": "193524", // 您申请的短信模板ID，根据实际情况修改
         "tpl_value": "#code#=" + code, // 您设置的模板变量，根据实际情况修改
-        "key": "dbfde146ae91848f20bdd93cf5de8677", // 应用APPKEY(应用详细页查询)
+        "key": "397cb926e6a424dd16a49f4bd63e7948", // 应用APPKEY(应用详细页查询)
     });
 
 
-    // var queryUrl = 'http://v.juhe.cn/sms/send?' + queryData;
+    var queryUrl = 'http://v.juhe.cn/sms/send?' + queryData;
 
-    // request(queryUrl, function(error, response, body) {
-    //     if (!error && response.statusCode == 200) {
-    //         console.log(body) // 打印接口返回内容
-    //         res.json({ code: 200, msg: '验证码发送成功' })
-    //         var jsonObj = JSON.parse(body); // 解析接口返回的JSON内容
-    //         console.log(jsonObj.error_code)
-    //     } else {
-    //         console.log('请求异常');
-    //     }
-    // })
-    res.json({ code: 200, msg: '验证码发送成功' ,data:code})
+    request(queryUrl, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body) // 打印接口返回内容
+            res.json({ code: 200, msg: '验证码发送成功' })
+            var jsonObj = JSON.parse(body); // 解析接口返回的JSON内容
+            console.log(jsonObj.error_code)
+        } else {
+            console.log('请求异常');
+        }
+    })
+    // res.json({ code: 200, msg: '验证码发送成功' ,data:code})
 });
 // 获取当前用户认证状态
 router.get('/userStatus', passport.authenticate('jwt', { session: false }), function(req, res, next) {
