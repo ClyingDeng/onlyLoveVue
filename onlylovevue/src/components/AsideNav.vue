@@ -209,6 +209,12 @@
 .login a{
   cursor: pointer;
 }
+.search{
+  margin-bottom: 10px !important;
+}
+.search i{
+  margin-left: 0px !important;
+}
 </style>
 <script>
 export default {
