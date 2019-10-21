@@ -227,8 +227,16 @@ export default {
           console.log(res.data.data);
           // 拿到后台数据·赋值给前端
           this.buy = res.data.data;
-          console.log(res.data.您的积分还有)
-          alert("您的积分剩余：" + res.data.您的积分还有)
+          console.log(res.data.data[res.data.data.length-1].prop_Name)
+          this.$alert("您的积分还有："+res.data.您的积分还有, "成功购买"+res.data.data[res.data.data.length-1].number+"个"+res.data.data[res.data.data.length-1].prop_Name,"成功", {
+            confirmButtonText: "确定",
+            callback: action => {
+              this.$message({
+                type: "info",
+                message: `action: ${action}`
+              });
+            }
+          });
         })
         .catch(err => {
           console.log("错误信息：" + err);

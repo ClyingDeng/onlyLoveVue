@@ -451,6 +451,7 @@ ul {
 
 <script>
 export default {
+  inject: ['reload'],
   name: "test",
   data() {
     return {
@@ -515,12 +516,14 @@ export default {
   methods: {
     delect(e){
       // console.log(e.target.name)
+      let _this = this;
       let conId = e.target.name
       console.log(conId)
        this.$axios
         .post("http://localhost:3000/hotSearch/deleteHotSearch", {"conId":conId})
         .then(function(result) {
           console.log(result);
+          _this.reload()
         });
     },
     onSubmit() {
@@ -567,6 +570,7 @@ export default {
           // _this.$refs.area.clearFiles()
           // console.log(_this.param)
           _this.fileList = [];
+          _this.reload()
         });
     },
     //当上传文件组件submit之前触发执行

@@ -221,6 +221,7 @@ em {
 </style>
 <script>
 export default {
+  inject: ['reload'],
   data() {
     return {
       conditions: []
@@ -241,10 +242,12 @@ export default {
   },
   methods: {
     month() {
+      let _this = this;
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 30 })
         .then(res => {
-           this.$alert("您的积分还有："+res.data.您的积分还有, "续费月度会员成功","成功", {
+           _this.reload()
+          this.$alert("您的积分还有："+res.data.您的积分还有, "续费月度会员成功","成功", {
             confirmButtonText: "确定",
             callback: action => {
               this.$message({
@@ -259,9 +262,11 @@ export default {
         });
     },
     jidu() {
+      let _this = this;
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 120 })
         .then(res => {
+           _this.reload()
            this.$alert("您的积分还有："+res.data.您的积分还有, "续费季度会员成功","成功", {
             confirmButtonText: "确定",
             callback: action => {
@@ -277,9 +282,11 @@ export default {
         });
     },
     year() {
+      let _this = this;
       this.$axios
         .post("http://localhost:3000/shop/buymember", { day: 365 })
         .then(res => {
+           _this.reload()
           this.$alert("您的积分还有："+res.data.您的积分还有, "续费年度会员成功","成功", {
             confirmButtonText: "确定",
             callback: action => {
