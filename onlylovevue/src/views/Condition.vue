@@ -4,9 +4,8 @@
       <div class="col-md-12">
         <div class="youyisi">
           <div class="touxiang">
-            <!-- &&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headpic -->
             <img
-              :src="conditions.length&&'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headPic"
+              :src="'http://pzc93h51i.bkt.clouddn.com/'+ conditions[0].headPic"
               class="img-thumbnail"
             />
           </div>
@@ -22,8 +21,8 @@
             <div class="hidden-xs">
               <div style="float: left;margin-left: 20px;">
                 <span style="color:blueviolet">
-                  <p>会员等级 {{0&& member[0].member_grade}}</p>
-                  <p>会员剩余 {{0&& member[0].member_date}} 天</p>
+                  <p>会员等级 {{member.length && member[0].member_grade}}</p>
+                  <p>会员剩余 {{member.length && member[0].member_date}} 天</p>
                 </span>
                 <!-- 进度条展示 -->
                 <div class="progress progress-striped" style="width: 250px;height: 8px;">
@@ -450,6 +449,7 @@ ul {
 </style>
 
 <script>
+// import jwt_decode from "jwt-decode";
 export default {
   inject: ['reload'],
   name: "test",
@@ -471,12 +471,17 @@ export default {
     };
   },
   created() {
+    /* if (jwt_decode(localStorage.getItem("mytoken"))) {
+      console.log("登录啊");
+    } else {
+      console.log("未登录");
+    } */
     this.$axios
       .get("http://localhost:3000/hotSearch/hotSearch")
       .then(res => {
         //拿到后台数据赋值给前端
         this.conditions = res.data.data;
-        console.log(this.conditions);
+        console.log( this.conditions[0].headPic);
       })
       .catch(err => {
         console.log("错误信息：" + err);
@@ -505,7 +510,7 @@ export default {
       .get("http://localhost:3000/shop/memeber")
       .then(res => {
         //拿到后台数据赋值给前端
-        console.log(res);
+        // console.log(res);
         this.member = res.data.data;
         // console.log(this.member);
       })
