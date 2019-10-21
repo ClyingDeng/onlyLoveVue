@@ -59,7 +59,7 @@
           <div class="login">
             <div v-if="this.isLogin">
               <a>欢迎</a>
-              <a>{{name}}</a>
+              <a>归来</a>
             </div>
             <!-- <a v-else href="login">登录</a> -->
             <div v-else>

@@ -24,6 +24,7 @@
             label="描述文字"
           ></el-input-number>
           <h1 class="col-xs-12" style="margin-top:10px">￥{{key.prop_price*num}}</h1>
+          <a @click.prevent="goshop" style="float:left;margin-top:10px;font-size:16px;color:#34495e;cursor:pointer">返回商城</a>
           <button :name="num" @click="handleChange">立即购买</button>
         </div>
       </div>
@@ -208,6 +209,9 @@ export default {
       });
   },
   methods: {
+    goshop() {
+      this.$router.push("/shop");
+    },
     handleChange() {
       this.propid = this.$route.query.productid;
       let nowDate = new Date();
