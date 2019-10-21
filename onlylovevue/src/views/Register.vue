@@ -93,7 +93,7 @@ export default {
           .then(res => {
             //拿到后台数据赋值给前端
             this.sysvCode = res.data.data;
-            alert("您的验证码为" + this.sysvCode);
+            // alert("您的验证码为" + this.sysvCode);
           })
           .catch(err => {
             console.log("错误信息：" + err);

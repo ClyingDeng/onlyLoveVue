@@ -60,7 +60,7 @@ export default {
       //通过ref定位到form表单
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          // alert("submit!");
         this.$axios
             .post("http://localhost:3000/users/login", this.loginUser)
             .then(res => {
