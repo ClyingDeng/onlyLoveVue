@@ -183,7 +183,7 @@ export default {
     return {
       conditions: [],
       num: 1,
-      buy:[]
+      buy: []
     };
   },
   created() {
@@ -219,24 +219,66 @@ export default {
         minutes: nowDate.getMinutes(),
         seconds: nowDate.getSeconds()
       };
-      let time = date.year + "-" + date.month + "-" + date.date + " " + date.hours + ":" + date.minutes + ":" + date.seconds;
+      let time =
+        date.year +
+        "-" +
+        date.month +
+        "-" +
+        date.date +
+        " " +
+        date.hours +
+        ":" +
+        date.minutes +
+        ":" +
+        date.seconds;
       this.$axios
-        .post("http://localhost:3000/shop/props", { "propsId": this.propid,"number": this.num,"haveTime":time})
+        .post("http://localhost:3000/shop/props", {
+          propsId: this.propid,
+          number: this.num,
+          haveTime: time
+        })
         .then(res => {
           console.log("查询结果：");
-          console.log(res.data.data);
-          // 拿到后台数据·赋值给前端
-          this.buy = res.data.data;
-          console.log(res.data.data[res.data.data.length-1].prop_Name)
-          this.$alert("您的积分还有："+res.data.您的积分还有, "成功购买"+res.data.data[res.data.data.length-1].number+"个"+res.data.data[res.data.data.length-1].prop_Name,"成功", {
-            confirmButtonText: "确定",
-            callback: action => {
-              this.$message({
-                type: "info",
-                message: `action: ${action}`
-              });
-            }
-          });
+          console.log(res.data);
+          if (res.data.msg != "你的余额不足！") {
+            // 拿到后台数据·赋值给前端
+            this.buy = res.data.data;
+            console.log(res.data.data[res.data.data.length - 1].prop_Name);
+            this.$alert(
+              "您的积分还有：" + res.data.您的积分还有,
+              "成功购买" +
+                res.data.data[res.data.data.length - 1].number +
+                "个" +
+                res.data.data[res.data.data.length - 1].prop_Name,
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          }else{
+            console.log(res.data)
+            let integral = res.data.integral
+            this.$alert(
+              "您的积分还有：" + integral,
+              "你的积分不足" ,
+              "成功",
+              {
+                confirmButtonText: "确定",
+                callback: action => {
+                  this.$message({
+                    type: "info",
+                    message: `action: ${action}`
+                  });
+                }
+              }
+            );
+          }
         })
         .catch(err => {
           console.log("错误信息：" + err);
