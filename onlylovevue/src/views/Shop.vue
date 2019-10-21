@@ -45,7 +45,7 @@
           <div class="col-md-4"  v-for="(key,index) in conditions"  :key="index" >
             <div class="product bordser"  >
               <div class="product-img">
-                <!-- <img src="../assets/imgs/rose.jpg" /> -->
+                <!-- <img src="../assets/imgs/5555.jpg" /> -->
                 <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.prop_pic"  >
                 <!-- <img v-for="" class="img-rounded img-responsive" src="http://pzc93h51i.bkt.clouddn.com/avatar1.png" alt=""> -->
               </div>
@@ -65,7 +65,7 @@
               <div class="product-footer">
                 <div class="row">
                   <div class="col-md-6">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
+                    <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
                   </div>
                   <div  class="col-md-6">
                     <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm"  @click.prevent="Buy" >直接购买</button>
@@ -343,8 +343,15 @@ export default {
     handleChange(value) {
       console.log(value);
     },
-    Shopcart() {
+    Shopcart(e) {
+      console.log('购物车' +e.target.name)
+  let shopid = e.target.name
+
       this.$router.push("/shopcart");
+      //   this.$router.push({path:"/buy",
+      // name:'',
+      // query:{shopid}
+      // });
     },
     Buy(e) {
    console.log(e.target.name);
@@ -354,7 +361,8 @@ export default {
       query:{productid}
       });
     },
- 
+   
+   
     
   }
 };
