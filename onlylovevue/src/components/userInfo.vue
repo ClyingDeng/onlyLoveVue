@@ -12,14 +12,16 @@
         <h3 class="fieldset-title">基本信息</h3>
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
-            <img v-if="suserInfos.headPic == ''"
+            <img
+              v-if="suserInfos.headPic == ''"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
             />
-            <img v-else
+            <img
+              v-else
               class="img-rounded img-responsive"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + suserInfos.headPic"
+              :src="'http://localhost:3000/upload/' + suserInfos.headPic"
               alt
             />
           </div>
@@ -28,12 +30,13 @@
             <!-- <button type="submit" class="btn btn-sm btn-default-alt pull-left" >上传图片</button> -->
             <el-upload
               class="upload-demo form-inline col-md-10 col-sm-9 col-xs-12"
-              ref="upload"
+              ref="upload1"
               action="http://localhost:3000/users/updateHeadPic"
-              :limit="1"  
+              :limit="1"
               :before-upload="beforeupload"
               :auto-upload="false"
-              :multiple="true">
+              :multiple="true"
+            >
               <el-button size="small" type="primary">点击上传</el-button>
               <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
             </el-upload>
@@ -42,7 +45,12 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">账号</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" readonly="readonly" v-model="suserInfos.base_info_Id" />
+            <input
+              type="text"
+              class="form-control"
+              readonly="readonly"
+              v-model="suserInfos.base_info_Id"
+            />
           </div>
         </div>
         <div class="form-group">
@@ -96,7 +104,7 @@
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">薪资</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
             <span class="sexStyle" v-for="(key,index) in salary">
-            <el-radio v-model="suserInfos.salary" :label="index">{{key}}</el-radio>
+              <el-radio v-model="suserInfos.salary" :label="index">{{key}}</el-radio>
             </span>
           </div>
         </div>
@@ -141,8 +149,9 @@
       <div class="form-group">
         <div class="col-md-2 col-sm-4 col-xs-3 col-md-push-5 col-sm-push-4 col-xs-push-5">
           <!-- <input class="btn btn-primary" type="submit" value="确认修改" @click="onSubmit"/> -->
-          <button class="btn btn-primary" type="button" @click="onSubmit">
-            <router-link to='seeinfo'>确认修改</router-link>
+          <button class="btn btn-primary" type="button" @click="tiJiao">
+            <!-- <router-link to="seeinfo">确认修改</router-link> -->
+            确认修改
           </button>
         </div>
       </div>
@@ -151,35 +160,35 @@
 </template>
 <style scoped>
 fieldset {
-    border: 1px solid transparent !important;
+  border: 1px solid transparent !important;
 }
-a{
+a {
   color: #f1f1f1;
 }
-a:hover{
+a:hover {
   color: #ccc;
 }
-.sexStyle{
+.sexStyle {
   margin-right: 15px;
 }
 input[type="file"] {
-  display: none ;
+  display: none;
 }
 .form-inline[data-v-0a4b02ae] {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 .avatar .figure img[data-v-00cb6ea9] {
-    width: 100%;
+  width: 100%;
 }
 /* .figure img {
     width: 120%;
     height: 120%;
 } */
-.figure{
-      padding:0;
-      padding-right: 15px;
-    }
-.figure img{
+.figure {
+  padding: 0;
+  padding-right: 15px;
+}
+.figure img {
   height: 100%;
   /* width: 80%; */
   margin: 0;
@@ -220,20 +229,20 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 768px) {
-    .figure{
-      padding-left: 45px;
-    }
+  .figure {
+    padding-left: 45px;
+  }
 }
 </style>
 <script>
-import jwt_decode from 'jwt-decode'
+import jwt_decode from "jwt-decode";
 const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 export default {
   data: function() {
     return {
       salary: [
         "2k以下",
-        "2k-4k", 
+        "2k-4k",
         "4-6k",
         "6-8k",
         "8-10k",
@@ -241,106 +250,129 @@ export default {
         "15-20k",
         "20k以上"
       ],
-      fileList: '',
+      fileList: "",
       form: {
-        name: ""    //绑定表单元素的属性
+        name: "" //绑定表单元素的属性
       },
       param: "", // 表单最后提交的参数对象
       checkAll: false,
       checkedCities: ["健身"],
       cities: cityOptions,
       isIndeterminate: true,
-      updateInfos:{
-        sex:'0',
-        marriage:'0',
-        blight:'0'
+      updateInfos: {
+        sex: "0",
+        marriage: "0",
+        blight: "0"
       },
-      suserInfos:{}
+      suserInfos: {}
     };
   },
   // props:['suserInfos'],
-  mounted:function(){
-      this.sex = this.$store.state.user.sex
-      this.suserInfos = this.$store.state.user
-      // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
-      // console.log('子组件：')
-      // console.log(this.updateInfos)
+  created: function() {
+    this.sex = this.$store.state.user.sex;
+    this.suserInfos = this.$store.state.user;
+    console.log("sm");
+    console.log(this.suserInfos);
+    // this.updateInfos = JSON.parse(JSON.stringify(this.suserInfos))
+    // console.log('子组件：')
+    // console.log(this.updateInfos)
   },
   methods: {
-    test(){
-      console.log('test')
-      console.log(this.suserInfos)
+    test() {
+      console.log("test");
+      console.log(this.suserInfos);
     },
-     //当上传文件组件submit之前触发执行
+    //转日期格式
+    dateFormat(time) {
+      var date = new Date(time);
+      var year = date.getFullYear();
+      /* 在日期格式中，月份是从0开始的，因此要加0
+       * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
+       * */
+      var month =
+        date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1;
+      var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      var hours =
+        date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+      var minutes =
+        date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+      var seconds =
+        date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+      // 拼接
+      return year + "-" + month + "-" + day;
+    },
+    //当上传文件组件submit之前触发执行
     beforeupload(file) {
-      console.log('准备上传。。。。')
+      console.log("准备上传。。。。");
       // 准备表单上传需要的参数对象
       this.param = new FormData();
       this.fileList = file; // 把需要上传的文件保存到数组中
       // 遍历数组，把所有文件都保存到参数对象中
-        this.param.append(`file`, this.fileList);
-        console.log(this.param)
+      this.param.append(`file`, this.fileList);
+      console.log("touxiang");
+      console.log(this.param);
       return false;
     },
-      onSubmit() {
-      let userInfo = jwt_decode(localStorage.getItem ('mytoken'))
-      console.log('token对象：',userInfo)
+    tiJiao() {
+      let userInfo = jwt_decode(localStorage.getItem("mytoken"));
+      console.log("token对象：", userInfo);
+
+      // console.log(this.param);
+      console.log(this.$refs);
       let _this = this;
       var names = _this.form.name;
-      this.$refs.upload.submit();
-      console.log(this.param)
+      this.$refs.upload1.submit();
+
+      // console.log(this.param)
       let config = {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       };
       //修改头像
-      if(this.param){
-      // //调用接口，执行上传所有数据的操作
-      this.$axios
-        .post("http://localhost:3000/users/updateHeadPic", this.param, config)
-        .then(function(result) {
-          console.log(result);
-          console.log(result.data.msg)
-          
-        })
+      if (this.param) {
+        // //调用接口，执行上传所有数据的操作
+        this.$axios
+          .post("http://localhost:3000/users/updateHeadPic", this.param, config)
+          .then(function(result) {
+            console.log("修改头像");
+            console.log(result);
+            console.log(result.data.msg);
+            //将localstorage头像更新
+            // JSON.parse(localStorage.getItem('myInfo')).headPic =
+          });
       }
       // else{
       //   alert('您暂未修改头像图片！')
       // }
       //修改信息
-      console.log('信息：')
+      console.log("信息：");
       // this.updateInfos = this.suserInfos
-      console.log(this.suserInfos)
-      //转日期格式
-    function dateFormat(time) {
-    var date=new Date(time);
-    var year=date.getFullYear();
-    /* 在日期格式中，月份是从0开始的，因此要加0
-     * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
-     * */
-    var month= date.getMonth()+1<10 ? "0"+(date.getMonth()+1) : date.getMonth()+1;
-    var day=date.getDate()<10 ? "0"+date.getDate() : date.getDate();
-    var hours=date.getHours()<10 ? "0"+date.getHours() : date.getHours();
-    var minutes=date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes();
-    var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
-    // 拼接
-    return year+"-"+month+"-"+day;
-}
-      this.suserInfos.birthday = dateFormat(this.suserInfos.birthday)
-      console.log(this.suserInfos.birthday)
+      console.log(this.suserInfos);
+
+      this.suserInfos.birthday = this.dateFormat(this.suserInfos.birthday);
+      console.log(this.suserInfos.birthday);
 
       // //调用接口，执行上传所有数据的操作
       this.$axios
         .post("http://localhost:3000/users/updateInfo", this.suserInfos)
         .then(function(result) {
-          console.log(result);
-          console.log(result.data.msg)
-          alert('修改数据成功！')
-        })
-      
-      
-    //子组件信息与父组件绑定
+          console.log(result.data);
+          console.log(result.data.msg);
+          //更新store里面数据
+          // this.$store.state.user = this.suserInfos
+          //更新localstorage
+          console.log("localStorage");
+          // this.suserInfos.headPic = 
+          localStorage.setItem("myInfo", JSON.stringify(_this.suserInfos));
+          console.log(JSON.parse(localStorage.getItem("myInfo")));
+        _this.$router.push('/personal')
+          alert("修改数据成功！");
+        });
+
+      //子组件信息与父组件绑定
       // this.$emit('userInfo_commit', this.suserInfos)
       // this.$router.push('/personal')
     },

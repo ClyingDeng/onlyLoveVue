@@ -14,7 +14,7 @@
               <img
                 v-else
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + userInfos.headPic"
+                :src="'http://localhost:3000/upload/' + userInfos.headPic"
                 alt
               />
               <ul class="meta list list-unstyled">
@@ -91,6 +91,7 @@ export default {
       className1: "active",
       className2: "",
       className3: "",
+      className4: "",
       // conditions:'',
       userInfos: ""
       // hackReset:true,
@@ -136,12 +137,18 @@ export default {
         // console.log('查询结果：' )
         console.log(res.data.data[0]);
         //拿到后台数据赋值给前端
-        this.userInfos = res.data.data[0];
-        this.$store.state.user = res.data.data[0];
-        console.log("写到store里面");
-        console.log(this.$store.state.user);
+        // this.userInfos = res.data.data[0];
+        console.log('store')
+        console.log(this.$store.state.user.length)
+        if(!this.$store.state.user.length){
+          this.$store.state.user = res.data.data[0];
+          console.log("写到store里面");
+          console.log(this.$store.state.user);
+          this.userInfos = this.$store.state.user
+
+        }
         //写到本地存储
-        // localStorage.setItem('myInfo',res.data.data[0])
+        localStorage.setItem('myInfo',JSON.stringify(res.data.data[0]))
       })
       .catch(err => {
         console.log("错误信息：" + err);

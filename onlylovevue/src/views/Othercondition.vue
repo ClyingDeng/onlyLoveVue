@@ -12,7 +12,7 @@
           <div class="youyisi2" style="float: left;">
             <div>
               <h3 style="color:blueviolet">&nbsp;{{otherInfo[0].nickName}}</h3>
-              <p class="fontstyle">{{'性别：' + otherInfo[0].sex}}</p>
+              <p v-if="otherInfo[0].sex" class="fontstyle">{{'性别：' + otherInfo[0].sex}}</p>
               <p v-if="otherInfo[0].sweet" class="fontstyle">{{'对他的亲密度值：' + otherInfo[0].sweet}}</p>
             </div>
           </div>
@@ -73,7 +73,7 @@
     <!-- <h1>nihao </h1> -->
     <!-- <div class="container"> -->
     <div class="row" v-if="conditions">
-      <div class="col-md-4"  v-for="p in conditions" >
+      <div class="col-md-4"  v-for="p in conditions" v-if="p.num">
             <div class="product bordser"  >
               <div class="product-img">
                 <img :src="'http://pzc93h51i.bkt.clouddn.com/' + p.prop_pic" class="pro" />
