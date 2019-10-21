@@ -5,7 +5,45 @@
         <div class="youyisi">
           <div class="touxiang">
             <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/'+ userinfo.headPic"
+              v-if="userinfo.headPic == ''"
+              class="img-thumbnail"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang1.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang2.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang3.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang4.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang5.jpg'"
+              class="img-thumbnail"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              alt
+            />
+            <img
+              v-else
+              :src="'http://localhost:3000/upload/' + userinfo.headPic"
+              alt
               class="img-thumbnail"
             />
           </div>
@@ -207,6 +245,62 @@
           :key="'info-1'+index"
         >
           <div style="float: left;padding: 20px">
+            <img
+              v-if="userinfo.headPic == ''"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang1.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang2.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang3.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang4.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang5.jpg'"
+              class="img-circle"
+              width="50px"
+              height="50px"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              alt
+            />
+            <img
+              v-else
+              :src="'http://localhost:3000/upload/' + userinfo.headPic"
+              alt
+              class="img-circle"
+              width="50px"
+              height="50px"
+            />
             <img
               :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
               class="img-circle"
@@ -511,8 +605,8 @@ export default {
   created() {
     if (jwt_decode(localStorage.getItem("mytoken"))) {
       // console.log("登录啊");
-      this.userinfo = JSON.parse(localStorage.getItem("myInfo"))
-      console.log(this.userinfo)
+      this.userinfo = JSON.parse(localStorage.getItem("myInfo"));
+      console.log(this.userinfo);
     } else {
       console.log("未登录");
     }
