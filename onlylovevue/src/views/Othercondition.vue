@@ -73,7 +73,7 @@
     <!-- <h1>nihao </h1> -->
     <!-- <div class="container"> -->
     <div class="row" v-if="conditions">
-      <div class="col-md-4"  v-for="p in conditions" v-if="p.num">
+      <div class="col-md-4"  v-for="p in conditions"  v-if="p.num">
             <div class="product bordser"  >
               <div class="product-img">
                 <img :src="'http://pzc93h51i.bkt.clouddn.com/' + p.prop_pic" class="pro" />
@@ -98,7 +98,8 @@
                 </div>
               </div>
             </div>
-          </div>
+      </div>
+      <div v-else-if="p.num == 0">您的背包为空</div>
     </div>
     <div v-else>您的背包为空，请至商城购买！</div>
   <!-- </div> -->
@@ -511,6 +512,7 @@ export default {
         this.conditions = res.data.data;
         console.log('道具')
         console.log(this.conditions)
+        console.log(this.conditions[0].num)
         // localStorage.setItem('product',JSON.stringify(res.data.data))
       })
       .catch(err => {
@@ -708,11 +710,14 @@ export default {
       this.$axios
             .post("http://localhost:3000/personal/addGift", this.addObj)
             .then(res => {
-              console.log(res.data);
               console.log('可以了吗')
+              console.log(res.data.data);
               if(res.data.affectedRows){
                 alert('赠送成功')
                 // this.$router.push({name:'/otherCondition',name: 'otherCondition',params:{Id:key.base_info_Id}})
+                //修改亲密度
+                this.otherInfo[0].sweet = this.otherInfo[0].sweet + res.data.data
+
               }
             })
             .catch(err => {
