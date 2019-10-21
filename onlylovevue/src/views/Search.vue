@@ -154,13 +154,283 @@
               <div class="row">
                 <div class="col-md-4"  v-for="key in otherUserInfos" v-show="key.isShow || key.isName || key.isSex || key.isAge ">
                   <div class="work-box" >
-                    <a :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                    <a v-if="key.headPic == ''" href="http://pzc93h51i.bkt.clouddn.com/avatar1.png" data-lightbox="gallery-mf"> 
+                  
+
                       <div class="work-img">
-                        <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt="" class="img-fluid">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+            <img
+                v-else-if="key.headPic == 'fang1.jpg'"
+                class="img-rounded img-responsive img-fluid"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                alt
+              />
+              <img
+                v-else-if="key.headPic == 'fang2.jpg'"
+                class="img-rounded img-responsive img-fluid"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                alt
+              />
+              <img
+                v-else-if="key.headPic == 'fang3.jpg'"
+                class="img-rounded img-responsive img-fluid"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                alt
+              />
+              <img
+                v-else-if="key.headPic == 'fang4.jpg'"
+                class="img-rounded img-responsive img-fluid"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                alt
+              />
+              <img
+                v-else-if="key.headPic == 'fang5.jpg'"
+                class="img-rounded img-responsive img-fluid"
+                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                alt
+              />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
                       </div>
                       <!-- </div> -->
                       
                     </a>
+                    <a v-else-if="key.headPic == 'fang1.jpg'" :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                  </div>
+                </a>
+                    <a v-else-if="key.headPic == 'fang2.jpg'" :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                  </div>
+                </a>
+                <a v-else-if="key.headPic == 'fang3.jpg'" :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                  </div>
+                </a>
+                <a v-else-if="key.headPic == 'fang4.jpg'" :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                  </div>
+                </a>
+                  <a v-else-if="key.headPic == 'fang5.jpg'" :href="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                  </div>
+                </a>
+                  <a v-else :href="'http://localhost:3000/upload/' + key.headPic" data-lightbox="gallery-mf"> 
+                      <div class="work-img">
+                        <img v-if="key.headPic == ''"
+                            class="img-rounded img-responsive"
+                            src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                            alt/>
+                        <img
+                          v-else-if="key.headPic == 'fang1.jpg'"
+                          class="img-rounded img-responsive img-fluid"
+                          :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                          alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang2.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang3.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang4.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                            alt
+                          />
+                          <img
+                            v-else-if="key.headPic == 'fang5.jpg'"
+                            class="img-rounded img-responsive img-fluid"
+                            :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                            alt
+                          />
+                        <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt="" class="img-fluid">
+                    </div>
+                </a>
                     <div class="work-content">
                         <div class="row">
                           <div class="col-sm-9">
