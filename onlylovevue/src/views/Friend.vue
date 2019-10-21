@@ -224,7 +224,7 @@
                 <div class="media-left">
                   <a href="#">
                     <img class="media-object" src="../assets/imgs/mayun.jpg" alt="..." />
-                  </a>
+                  </a> 
                 </div>
                 <div class="media-body">
                   <div style="float:left">

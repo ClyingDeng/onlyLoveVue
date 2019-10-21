@@ -287,9 +287,9 @@ export default {
               this.otherUserInfos[i].isSex = false
               this.otherUserInfos[i].isAge = false
 
-            }
           }
         }
+      }
       },
       age:{
         handler:function(userAge) {
