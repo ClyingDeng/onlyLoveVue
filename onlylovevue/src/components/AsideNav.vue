@@ -57,8 +57,15 @@
             </div>
           </div>
           <div class="login">
-            <a @click.prevent="goLogin">登录</a>
-            <a @click.prevent="goRegister">注册</a>
+            <div v-if="this.isLogin">
+              <a>欢迎</a>
+              <a>{{name}}</a>
+            </div>
+            <!-- <a v-else href="login">登录</a> -->
+            <div v-else>
+              <a @click.prevent="goLogin">登录</a>
+              <a @click.prevent="goRegister">注册</a>
+            </div>
           </div>
           <p>你 若 盛 开，蝴 蝶 自 来</p>
         </div>
@@ -206,17 +213,18 @@
 /* div{
   background-color: #f00;
 } */
-.login a{
+.login a {
   cursor: pointer;
 }
-.search{
+.search {
   margin-bottom: 10px !important;
 }
-.search i{
+.search i {
   margin-left: 0px !important;
 }
 </style>
 <script>
+import jwt_decode from "jwt-decode";
 export default {
   data() {
     return {
@@ -225,7 +233,9 @@ export default {
       perconditions: [],
       conditions: [],
       carzyList: [],
-      charmList: []
+      charmList: [],
+      name:[],
+      isLogin:false
     };
   },
   /* beforeCreate() {
@@ -238,6 +248,13 @@ export default {
   }, */
   //组件创建完成后执行的操作
   created() {
+    if (jwt_decode(localStorage.getItem("mytoken"))) {
+      this.isLogin = true;
+      this.name = JSON.parse(localStorage.getItem("myInfo")).nickName
+      console.log("登录啊");
+    } else {
+      console.log("未登录");
+    }
     // const userId = this.userId;
     this.$axios
       .get("http://localhost:3000/allCondition")
@@ -302,7 +319,7 @@ export default {
     goList() {
       this.$router.push("/List");
     },
-    goMessage(){
+    goMessage() {
       this.$router.push("/Member");
     }
   }
