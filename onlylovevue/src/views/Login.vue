@@ -39,8 +39,8 @@ export default {
   data: function() {
     return {
       loginUser: {
-        telephone: "15660181105",
-        password: "123456",
+        telephone: "",
+        password: "",
         // radio: "1"
       },
       rules: {
