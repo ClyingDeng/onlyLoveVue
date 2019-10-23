@@ -14,7 +14,48 @@
               <p>会员等级</p>
             </li>
             <li id="much" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <img class="headphoto" src="../assets/imgs/4.jpg" alt />
+               <img
+              v-if="userinfo.headPic == ''"
+              class="headphoto"
+              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang1.jpg'"
+              class="headphoto"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang2.jpg'"
+              class="headphoto"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang3.jpg'"
+              class="headphoto"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang4.jpg'"
+              class="headphoto"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              alt
+            />
+            <img
+              v-else-if="userinfo.headPic == 'fang5.jpg'"
+              class="headphoto"
+              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              alt
+            />
+            <img
+              v-else
+              :src="'http://localhost:3000/upload/' + userinfo.headPic"
+              alt
+              class="headphoto"
+            />
               <p>
                 <span>{{conditions.length&&conditions[0].nickName}}</span>
                 <img class="member" src="../assets/imgs/qqhuiyuan.png" alt />
@@ -217,15 +258,24 @@ em {
 }
 </style>
 <script>
+import jwt_decode from "jwt-decode";
 export default {
   inject: ["reload"],
   data() {
     return {
-      conditions: []
+      conditions: [],
+      userinfo: {},
       // num:365,
     };
   },
   created() {
+      if (jwt_decode(localStorage.getItem("mytoken"))) {
+      // console.log("登录啊");
+      this.userinfo = JSON.parse(localStorage.getItem("myInfo"));
+      console.log(this.userinfo);
+    } else {
+      console.log("未登录");
+    }
     this.$axios
       .get("http://localhost:3000/shop/memeber")
       .then(res => {
