@@ -23,7 +23,7 @@
         <el-form-item label="验证码：" prop="vCode" ref="vCode">
           <el-input v-model="user.vCode" class="IsCode"></el-input>
           <!-- <el-span><a href="#">获取短信验证码</a></el-span> -->
-          <el-button type="info" class="getCode" v-on:click="getvcode()">获取短信验证码</el-button>
+          <el-button type="info" class="getCode" @click="getvcode">获取短信验证码</el-button>
         </el-form-item>
         <el-form-item label="密码：" prop="password">
           <el-input type="password" v-model="user.password"></el-input>
@@ -92,8 +92,11 @@ export default {
           )
           .then(res => {
             //拿到后台数据赋值给前端
+            console.log(res)
+            console.log(res.data)
             this.sysvCode = res.data.data;
-            // alert("您的验证码为" + this.sysvCode);
+            console.log(res.data.data)
+            // alert("您的验证码为" , res.data.data);
           })
           .catch(err => {
             console.log("错误信息：" + err);

@@ -734,6 +734,7 @@ export default {
       for (let i = 0; i < this.fileList.length; i++) {
         this.param.append(`img_${i}`, this.fileList[i]);
       }
+      console.log(this.param)
       return false;
     }
   }
