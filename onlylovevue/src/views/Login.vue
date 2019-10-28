@@ -93,9 +93,9 @@ export default {
   margin-top: 100px;
 }
 .loginForm {
-  height: 400px;
+  height: 300px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 120px;
   border-radius: 5px;
   background-color: #fff;
   padding: 35px 50px 10px 10px;
