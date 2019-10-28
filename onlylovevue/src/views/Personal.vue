@@ -6,7 +6,7 @@
           <div class="side-bar">
             <div class="user-info">
               <img
-                v-if="userInfos.headPic == ''"
+                v-if="!userInfos.headPic"
                 class="img-rounded img-responsive"
                 src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
                 alt
@@ -169,13 +169,13 @@ export default {
         //拿到后台数据赋值给前端
         // this.userInfos = res.data.data[0];
         console.log('store')
-        console.log(this.$store.state.user.length)
+        // console.log(this.$store.state.user.length)
         if(!this.$store.state.user.length){
           this.$store.state.user = res.data.data[0];
           console.log("写到store里面");
           console.log(this.$store.state.user);
           this.userInfos = this.$store.state.user
-
+          console.log(this.userInfos.headPic)
         }
         //写到本地存储
         localStorage.setItem('myInfo',JSON.stringify(res.data.data[0]))

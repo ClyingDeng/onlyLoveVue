@@ -246,7 +246,7 @@
         >
           <div style="float: left;padding: 20px">
             <img
-              v-if="userinfo.headPic == ''"
+              v-if="!userinfo.headPic"
               class="img-circle"
               width="50px"
               height="50px"
@@ -285,14 +285,14 @@
               :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
               alt
             />
-            <img
+            <!-- <img
               v-else-if="userinfo.headPic == 'fang5.jpg'"
               class="img-circle"
               width="50px"
               height="50px"
               :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
               alt
-            />
+            />-->
             <img
               v-else
               :src="'http://localhost:3000/upload/' + userinfo.headPic"
@@ -301,12 +301,12 @@
               width="50px"
               height="50px"
             />
-            <img
+            <!-- <img
               :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
               class="img-circle"
               width="50px"
               height="50px"
-            />
+            />-->
           </div>
           <div style="float: left;padding-top: 18px">
             <a href="#" style="font-size: 18px;color: black">{{key.nickName}}</a>
@@ -401,10 +401,53 @@
                 >
                   <div class="work-img">
                     <img
-                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      v-if="key.headPic == ''"
+                      src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
                       alt
                       class="img-fluid"
                     />
+                    <img
+                      v-else-if="key.headPic == 'fang1.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang2.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang3.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang4.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang5.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+
+                    <img
+                      v-else
+                      :src="'http://localhost:3000/upload/' + key.headPic"
+                      alt
+                      class="img-fluid"
+                    />
+                    <!-- <img
+                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      alt
+                      class="img-fluid"
+                    /> -->
                   </div>
                   <div class="work-content">
                     <div class="row">
@@ -430,7 +473,45 @@
                 >
                   <div class="work-img">
                     <img
-                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      v-if="key.headPic == ''"
+                      src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang1.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang2.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang3.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang4.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+                    <img
+                      v-else-if="key.headPic == 'fang5.jpg'"
+                      :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                      alt
+                      class="img-fluid"
+                    />
+
+                    <img
+                      v-else
+                      :src="'http://localhost:3000/upload/' + key.headPic"
                       alt
                       class="img-fluid"
                     />
@@ -733,9 +814,9 @@ export default {
       // 遍历数组，把所有文件都保存到参数对象中
       for (let i = 0; i < this.fileList.length; i++) {
         this.param.append(`img_${i}`, this.fileList[i]);
-        console.log(this.param)
+        console.log(this.param);
       }
-      console.log(this.param)
+      console.log(this.param);
       return false;
     }
   }
