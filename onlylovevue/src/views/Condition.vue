@@ -733,6 +733,7 @@ export default {
       // 遍历数组，把所有文件都保存到参数对象中
       for (let i = 0; i < this.fileList.length; i++) {
         this.param.append(`img_${i}`, this.fileList[i]);
+        console.log(this.param)
       }
       console.log(this.param)
       return false;
