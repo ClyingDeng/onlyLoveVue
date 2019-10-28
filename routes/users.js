@@ -56,9 +56,9 @@ router.get('/vCode/:telephone', function(req, res, next) {
     console.log('后台发出去的验证码：' + code)
     var queryData = querystring.stringify({
         "mobile": tel, // 接受短信的用户手机号码
-        "tpl_id": "194444", // 您申请的短信模板ID，根据实际情况修改
+        "tpl_id": "186858", // 您申请的短信模板ID，根据实际情况修改
         "tpl_value": "#code#=" + code, // 您设置的模板变量，根据实际情况修改
-        "key": "e0915ec75570268fc2f40afaa41c5e25", // 应用APPKEY(应用详细页查询)
+        "key": "4e356f36ab5d1792a85d53505c79e3b8", // 应用APPKEY(应用详细页查询)
     });
 
 

@@ -13,7 +13,7 @@
         <div class="form-group avatar">
           <div class="figure col-md-2 col-sm-3 col-xs-12">
             <img
-              v-if="suserInfos.headPic == ''"
+              v-if="!suserInfos.headPic"
               class="img-rounded img-responsive"
               src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
               alt
@@ -121,13 +121,13 @@
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">身高</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.height + 'cm'" />
+            <input type="text" class="form-control" v-model="suserInfos.height " />
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-2 col-sm-3 col-xs-12 control-label">体重</label>
           <div class="col-md-10 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" v-model="suserInfos.weight + 'kg'" />
+            <input type="text" class="form-control" v-model="suserInfos.weight" />
           </div>
         </div>
         <div class="form-group">
@@ -353,7 +353,7 @@ export default {
       console.log(this.$refs);
       let _this = this;
       var names = _this.form.name;
-      this.$refs.upload1.submit();
+        
 
       // console.log(this.param)
       let config = {
