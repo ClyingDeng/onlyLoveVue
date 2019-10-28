@@ -405,7 +405,15 @@ var personalController = {
                                                 console.log(results4[0])
                                                 if (err) {
                                                     res.json({ code: 500, msg: '判断亲密度表中是否有二人失败' })
-                                                } else if (results4[0].obj_Id == addId) {
+                                                }else if(results4[0] == undefined){
+                                                    personalDAO.insertsweet(userId, addId, propsweet, function(err, results6) {
+                                                        if (err) {
+                                                            res.json({ code: 500, msg: '添加两人到亲密表失败'+ err })
+                                                        } else {
+                                                            res.json({ code: 200, affectedRows: results2.affectedRows + results6.affectedRows,data: propsweet, msg: '送出礼物成功！你与 ' + addId + ' 亲密度增加 ' + propsweet })
+                                                        }
+                                                    })
+                                                }else{
                                                     console.log('修改')
                                                     // console.log(results4[0])
                                                     personalDAO.updatesweet(userId, addId, propsweet, function(err, results5) {
@@ -415,17 +423,7 @@ var personalController = {
                                                             res.json({ code: 200, affectedRows: results2.affectedRows + results5.affectedRows,data: propsweet, msg: '送出礼物成功！你与 ' + addId + ' 亲密度增加 ' + propsweet })
                                                         }
                                                     })
-                                                } else {
-                                                    console.log('you')
-                                                    // console.log(results4[0])
-                                                    personalDAO.insertsweet(userId, addId, propsweet, function(err, results6) {
-                                                        if (err) {
-                                                            res.json({ code: 500, msg: '添加两人到亲密表失败'+ err })
-                                                        } else {
-                                                            res.json({ code: 200, affectedRows: results2.affectedRows + results6.affectedRows,data: propsweet, msg: '送出礼物成功！你与 ' + addId + ' 亲密度增加 ' + propsweet })
-                                                        }
-                                                    })
-                                                }
+                                                } 
                                             })
                                         }
                                     })

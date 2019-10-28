@@ -23,7 +23,7 @@
               <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
-            <el-radio label="1">记住我</el-radio>
+            <el-radio :label="radio">记住我</el-radio>
           <router-link to="/forget" class="forget">忘记密码</router-link>
           </el-form>
         <!-- </el-col>
@@ -41,7 +41,7 @@ export default {
       loginUser: {
         telephone: "",
         password: "",
-        // radio: "1"
+        radio: "0"
       },
       rules: {
         telephone: [
@@ -93,9 +93,9 @@ export default {
   margin-top: 100px;
 }
 .loginForm {
-  height: 400px;
+  height: 300px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 120px;
   border-radius: 5px;
   background-color: #fff;
   padding: 35px 50px 10px 10px;
@@ -106,5 +106,8 @@ export default {
 }
 .forget:hover{
   color: #aaa;
+}
+.el-radio{
+  margin-left: 50px
 }
 </style>

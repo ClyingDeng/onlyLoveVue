@@ -145,7 +145,7 @@ export default {
 }
 .registerForm {
   height: 400px;
-  margin-top: 50px;
+  margin-top: 90px;
   border-radius: 5px;
   background-color: #fff;
   padding: 35px 50px 10px 10px;
