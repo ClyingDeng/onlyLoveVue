@@ -14,10 +14,10 @@
         class="registerForm"
       >
         <span class="regHead">
-          <el-radio label="1">手机号注册</el-radio>
-          <el-radio label="2">邮箱注册</el-radio>
+          <el-radio v-model="check" label="1">手机号注册</el-radio>
+          <el-radio v-model="check" label="2">邮箱注册</el-radio>
         </span>
-        <el-form-item label="账号：" prop="telephone" ref="telephone">
+        <el-form-item label="手机号：" prop="telephone" ref="telephone">
           <el-input v-model="user.telephone"></el-input>
         </el-form-item>
         <el-form-item label="验证码：" prop="vCode" ref="vCode">
@@ -56,6 +56,7 @@ export default {
     };
     return {
       sysvCode: "",
+      check:'1',
       user: {
         telephone: "",
         password: "",

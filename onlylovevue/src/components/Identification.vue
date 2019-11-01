@@ -105,7 +105,7 @@ export default {
           console.log(result.data.msg)
           let nopass = '身份证上传成功！审核不通过！'
           let pass = '身份证上传成功！审核通过！'
-          if(result.data.msg == nopass){
+          if(result.data.msg == nopass || result.data.msg == '身份证上传错误！'){
             console.log('dongxi')
             // console.log(this.param)
             // _this.param =''
@@ -116,7 +116,7 @@ export default {
             //不通过删除图片文件
             _this.$refs.upload.clearFiles();
             //删除后台图片
-          }else if(result.data.msg == pass){
+          }else if(result.data.msg == pass ){
             alert('身份证认证成功')
             console.log(_this.$store.state.conditions)
             _this.$store.state.conditions = true

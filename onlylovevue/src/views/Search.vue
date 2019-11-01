@@ -721,6 +721,7 @@ export default {
       handler: function(IdName) {
         this.otherUserInfos = JSON.parse(sessionStorage.getItem("otherInfo"));
         console.log("ID搜索：" + IdName);
+        console.log(this.otherUserInfos.length)
         for (let i = 0; i < this.otherUserInfos.length; i++) {
           if (
             this.otherUserInfos[i].base_info_Id.toString().indexOf(IdName) != -1
