@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import SeeInfo from './components/SeeInfo.vue'
+import SeeInfo from './components/Seeinfo.vue'
 
 Vue.use(Router)
 
@@ -45,7 +45,7 @@ let router = new Router({
             {
               path: 'edit',
               name: 'userinfo',
-              component: () => import( './components/Userinfo.vue')
+              component: () => import( './components/userinfo.vue')
             },
             {
               path: 'identification',

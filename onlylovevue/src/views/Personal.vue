@@ -110,7 +110,7 @@
 <script>
 // import setting from "../components/Setting.vue";
 // import identification from "../components/Identification.vue";
-// import seeInfo from "../components/SeeInfo.vue";
+// import seeInfo from "../components/Seeinfo.vue";
 
 import jwt_decode from "jwt-decode";
 export default {
