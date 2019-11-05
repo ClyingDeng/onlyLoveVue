@@ -261,7 +261,7 @@ input[type="file"] {
 </style>
 <script>
 import jwt_decode from 'jwt-decode'
-// import baseInfo from "../components/userInfo.vue";
+// import baseInfo from "../components/userinfo.vue";
 
 const cityOptions = ["游泳", "健身", "弹钢琴", "跑步", "其他"];
 export default {
