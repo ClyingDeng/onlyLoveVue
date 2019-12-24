@@ -28,9 +28,9 @@ export default {
           console.log(res.data.data);
           // 拿到后台数据·赋值给前端
           this.buymember = res.data.data;
-          // window.location.href='http://localhost:3000?price='+e.target.name
+          // window.location.href='http://localhost:3000/?price='+e.target.name
           window.location.href =
-            "http://localhost:3000?integral=" + this.integral;
+            "http://localhost:3000/?integral=" + this.integral;
         })
         .catch(err => {
           console.log("错误信息：" + err);

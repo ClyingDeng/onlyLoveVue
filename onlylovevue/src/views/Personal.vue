@@ -8,37 +8,37 @@
               <img
                 v-if="!userInfos.headPic"
                 class="img-rounded img-responsive"
-                src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+                src="http://localhost:3000/olove/avatar1.png"
                 alt
               />
               <img
                 v-else-if="userInfos.headPic == 'fang1.jpg'"
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+                :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
                 alt
               />
               <img
                 v-else-if="userInfos.headPic == 'fang2.jpg'"
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+                :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
                 alt
               />
               <img
                 v-else-if="userInfos.headPic == 'fang3.jpg'"
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+                :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
                 alt
               />
               <img
                 v-else-if="userInfos.headPic == 'fang4.jpg'"
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+                :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
                 alt
               />
               <img
                 v-else-if="userInfos.headPic == 'fang5.jpg'"
                 class="img-rounded img-responsive"
-                :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+                :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
                 alt
               />
               <img

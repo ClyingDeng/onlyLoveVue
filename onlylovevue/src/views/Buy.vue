@@ -4,7 +4,7 @@
     <div class="container" v-for="(key,index) in conditions" :key="index">
       <div class="imgBx col-md-6 col-xs-12 col-sm-12">
         <!-- <img src="../assets/imgs/rose1.png" alt /> -->
-        <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.prop_pic" alt />
+        <img :src="'http://localhost:3000/olove/' + key.prop_pic" alt />
       </div>
       <div class="details col-md-6 col-xs-12 col-sm-12">
         <div class="content">

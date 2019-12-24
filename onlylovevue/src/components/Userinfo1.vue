@@ -15,13 +15,13 @@
             <img
               v-if="suserInfos.headPic == ''"
               class="img-rounded img-responsive"
-              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              src="http://localhost:3000/olove/avatar1.png"
               alt
             />
             <img
               v-else
               class="img-rounded img-responsive"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + suserInfos.headPic"
+              :src="'http://localhost:3000/olove/' + suserInfos.headPic"
               alt
             />
           </div>

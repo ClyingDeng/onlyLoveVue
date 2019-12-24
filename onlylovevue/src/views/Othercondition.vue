@@ -8,37 +8,37 @@
               v-if="!otherInfo[0].headPic"
               style="width:100%;"
               class="img-rounded img-responsive img-thumbnail"
-              src="http://pzc93h51i.bkt.clouddn.com/avatar1.png"
+              src="http://localhost:3000/olove/avatar1.png"
               alt
             />
             <img
               v-else-if="otherInfo[0].headPic == 'fang1.jpg'"
               class="img-rounded img-responsive img-thumbnail"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang1.jpg'"
+              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
               alt
             />
             <img
               v-else-if="otherInfo[0].headPic == 'fang2.jpg'"
               class="img-rounded img-responsive img-thumbnail"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang2.jpg'"
+              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
               alt
             />
             <img
               v-else-if="otherInfo[0].headPic == 'fang3.jpg'"
               class="img-rounded img-responsive img-thumbnail"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang3.jpg'"
+              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
               alt
             />
             <img
               v-else-if="otherInfo[0].headPic == 'fang4.jpg'"
               class="img-rounded img-responsive img-thumbnail"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang4.jpg'"
+              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
               alt
             />
             <img
               v-else-if="otherInfo[0].headPic == 'fang5.jpg'"
               class="img-rounded img-responsive img-thumbnail"
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + 'fang5.jpg'"
+              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
               alt
             />
             <img
@@ -49,7 +49,7 @@
             />
 
             <!-- <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + otherInfo[0].headPic"
+              :src="'http://localhost:3000/olove/' + otherInfo[0].headPic"
               class="img-thumbnail"
             />-->
             <p class="fontstyle">{{otherInfo[0].love_description}}</p>
@@ -73,7 +73,7 @@
         </div>
 
         <div style="float: right;margin-top: 55px;margin-right: 10px">
-          <img src="http://pzc93h51i.bkt.clouddn.com/resou.png" width="50px" height="50px" />
+          <img src="http://localhost:3000/olove/resou.png" width="50px" height="50px" />
         </div>
 
         <!-- 说说导航 -->
@@ -122,7 +122,7 @@
             <div class="col-md-4" v-for="p in conditions" v-if="p.num">
               <div class="product bordser">
                 <div class="product-img">
-                  <img :src="'http://pzc93h51i.bkt.clouddn.com/' + p.prop_pic" class="pro" />
+                  <img :src="'http://localhost:3000/olove/' + p.prop_pic" class="pro" />
                 </div>
                 <div class="product-block">
                   <h5>{{p.prop_Name}}</h5>
@@ -226,7 +226,7 @@
         >
           <div style="float: left;padding: 20px">
             <img
-              :src="'http://pzc93h51i.bkt.clouddn.com/' + otherInfo[0].headPic"
+              :src="'http://localhost:3000/olove/' + otherInfo[0].headPic"
               class="img-circle"
               width="50px"
               height="50px"
@@ -319,12 +319,12 @@
             >
               <div class="work-box">
                 <a
-                  :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                  :href="'http://localhost:3000/olove/'+ key.headPic"
                   data-lightbox="gallery-mf"
                 >
                   <div class="work-img">
                     <img
-                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      :src="'http://localhost:3000/olove/'+ key.headPic"
                       alt
                       class="img-fluid"
                     />
@@ -348,12 +348,12 @@
             <div class="col-md-6" v-for="(key,index) in meattention" :key="'info-3'+index">
               <div class="work-box">
                 <a
-                  :href="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                  :href="'http://localhost:3000/olove/'+ key.headPic"
                   data-lightbox="gallery-mf"
                 >
                   <div class="work-img">
                     <img
-                      :src="'http://pzc93h51i.bkt.clouddn.com/'+ key.headPic"
+                      :src="'http://localhost:3000/olove/'+ key.headPic"
                       alt
                       class="img-fluid"
                     />
