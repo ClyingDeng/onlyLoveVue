@@ -26,7 +26,7 @@
                 <div class="media" v-for="key in friInfo[0]">
                   <div class="media-left media-middle">
                     <a href="#">
-                      <img class="media-object"  :src="'http://pzc93h51i.bkt.clouddn.com/' + key.headPic" alt />
+                      <img class="media-object"  :src="'http://localhost:3000/olove/' + key.headPic" alt />
                     </a>
                   </div>
                   <div class="media-body" >

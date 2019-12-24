@@ -6,9 +6,9 @@
       </div>
       <!-- <div class="col-md-4">
         <div class="work-box">
-          <a href="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" data-lightbox="gallery-mf">
+          <a href="http://localhost:3000/olove/work-1.jpg" data-lightbox="gallery-mf">
             <div class="work-img">
-              <img src="http://pzc93h51i.bkt.clouddn.com/work-1.jpg" alt class="img-fluid" />
+              <img src="http://localhost:3000/olove/work-1.jpg" alt class="img-fluid" />
             </div>
             <div class="work-content">
               <div class="row">
@@ -46,8 +46,8 @@
             <div class="product bordser"  >
               <div class="product-img">
                 <!-- <img src="../assets/imgs/5555.jpg" /> -->
-                <img :src="'http://pzc93h51i.bkt.clouddn.com/' + key.prop_pic"  >
-                <!-- <img v-for="" class="img-rounded img-responsive" src="http://pzc93h51i.bkt.clouddn.com/avatar1.png" alt=""> -->
+                <img :src="'http://localhost:3000/olove/' + key.prop_pic"  >
+                <!-- <img v-for="" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt=""> -->
               </div>
               <div class="product-block" >
                 <h5>{{key.prop_Name}}</h5>

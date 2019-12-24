@@ -15,18 +15,18 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo1.jpg" alt="...">
+                            <img src="http://localhost:3000/olove/lunbo1.jpg" alt="...">
                             <div class="carousel-caption">
                                 
                             </div>
                         </div>
                         <div class="item">
-                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo3.jpg" alt="...">
+                            <img src="http://localhost:3000/olove/lunbo3.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="http://pzc93h51i.bkt.clouddn.com/lunbo2.jpg" alt="...">
+                            <img src="http://localhost:3000/olove/lunbo2.jpg" alt="...">
                             <div class="carousel-caption">
                             </div>
                         </div>
