@@ -14,53 +14,18 @@
               <p>会员等级</p>
             </li>
             <li id="much" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               <img
-              v-if="userinfo.headPic == ''"
-              class="headphoto"
-              src="http://localhost:3000/olove/avatar1.png"
-              alt
-            />
-            <img
-              v-else-if="userinfo.headPic == 'fang1.jpg'"
-              class="headphoto"
-              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-              alt
-            />
-            <img
-              v-else-if="userinfo.headPic == 'fang2.jpg'"
-              class="headphoto"
-              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-              alt
-            />
-            <img
-              v-else-if="userinfo.headPic == 'fang3.jpg'"
-              class="headphoto"
-              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-              alt
-            />
-            <img
-              v-else-if="userinfo.headPic == 'fang4.jpg'"
-              class="headphoto"
-              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-              alt
-            />
-            <img
-              v-else-if="userinfo.headPic == 'fang5.jpg'"
-              class="headphoto"
-              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-              alt
-            />
-            <img
-              v-else
-              :src="'http://localhost:3000/upload/' + userinfo.headPic"
-              alt
-              class="headphoto"
-            />
+              <img v-if="userinfo.headPic == ''" class="headphoto" src="http://localhost:3000/olove/avatar1.png" alt />
+              <img v-else-if="userinfo.headPic == 'fang1.jpg'" class="headphoto" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+              <img v-else-if="userinfo.headPic == 'fang2.jpg'" class="headphoto" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+              <img v-else-if="userinfo.headPic == 'fang3.jpg'" class="headphoto" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+              <img v-else-if="userinfo.headPic == 'fang4.jpg'" class="headphoto" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+              <img v-else-if="userinfo.headPic == 'fang5.jpg'" class="headphoto" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+              <img v-else :src="'http://localhost:3000/upload/' + userinfo.headPic" alt class="headphoto" />
               <p>
                 <span>{{conditions.length&&conditions[0].nickName}}</span>
                 <img class="member" src="../assets/imgs/qqhuiyuan.png" alt />
               </p>
-              <p>年超级会员2020-10-07到期</p>
+              <p>年超级会员{{dueDate}}到期</p>
               <p>
                 <span class="member-button">续费年费会员</span>
               </p>
@@ -99,23 +64,11 @@
               <div style="margin-bottom:20px;">
                 <!-- style="margin-top:10px; -->
                 <span>搜索条件:</span>
-                <el-progress
-                  style="margin-top:10px;"
-                  :text-inside="true"
-                  :stroke-width="24"
-                  :percentage="70"
-                  status="success"
-                ></el-progress>
+                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="24" :percentage="70" status="success"></el-progress>
               </div>
               <div>
                 <span>优惠折扣:</span>
-                <el-progress
-                  style="margin-top:10px;"
-                  :text-inside="true"
-                  :stroke-width="22"
-                  :percentage="88"
-                  status="warning"
-                ></el-progress>
+                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="22" :percentage="88" status="warning"></el-progress>
               </div>
             </div>
           </div>
@@ -265,11 +218,12 @@ export default {
     return {
       conditions: [],
       userinfo: {},
+      dueDate: ""
       // num:365,
     };
   },
   created() {
-      if (jwt_decode(localStorage.getItem("mytoken"))) {
+    if (jwt_decode(localStorage.getItem("mytoken"))) {
       // console.log("登录啊");
       this.userinfo = JSON.parse(localStorage.getItem("myInfo"));
       console.log(this.userinfo);
@@ -282,6 +236,25 @@ export default {
         console.log("查询结果：");
         console.log(res.data.data);
         this.conditions = res.data.data;
+        var days = this.conditions[0].member_date;
+        var time = +new Date();
+        var date = new Date(time + 8 * 3600 * 1000); // 增加8小时
+        date = date
+          .toJSON()
+          .substr(0, 19)
+          .replace("T", "-");
+        var dateTemp = date.split("-");
+        var nDate = new Date(
+          dateTemp[1] + "-" + dateTemp[2] + "-" + dateTemp[0]
+        ); //转换为MM-DD-YYYY格式
+        var millSeconds = Math.abs(nDate) + days * 24 * 60 * 60 * 1000;
+        var rDate = new Date(millSeconds);
+        var year = rDate.getFullYear();
+        var month = rDate.getMonth() + 1;
+        if (month < 10) month = "0" + month;
+        var date = rDate.getDate();
+        if (date < 10) date = "0" + date;
+        this.dueDate = year + "-" + month + "-" + date;
       })
       .catch(err => {
         console.log("错误信息: " + err);
