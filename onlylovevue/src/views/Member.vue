@@ -64,11 +64,11 @@
               <div style="margin-bottom:20px;">
                 <!-- style="margin-top:10px; -->
                 <span>搜索条件:</span>
-                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="24" :percentage="70" status="success"></el-progress>
+                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="24" :percentage="searchData" status="success"></el-progress>
               </div>
               <div>
                 <span>优惠折扣:</span>
-                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="22" :percentage="88" status="warning"></el-progress>
+                <el-progress style="margin-top:10px;" :text-inside="true" :stroke-width="22" :percentage="discount" status="warning"></el-progress>
               </div>
             </div>
           </div>
@@ -218,7 +218,9 @@ export default {
     return {
       conditions: [],
       userinfo: {},
-      dueDate: ""
+      dueDate: 1,
+      searchData: 1,
+      discount: ""
       // num:365,
     };
   },
@@ -236,6 +238,19 @@ export default {
         console.log("查询结果：");
         console.log(res.data.data);
         this.conditions = res.data.data;
+        if (
+          this.conditions[0].member_grade < 4 &&
+          this.conditions[0].member_grade > 0
+        ) {
+          this.searchData = 70;
+          this.discount = 88;
+        } else if (this.conditions[0].member_grade >= 4) {
+          this.searchData = 100;
+          this.discount = 78;
+        } else {
+          this.searchData = 50;
+          this.discount = 100;
+        }
         var days = this.conditions[0].member_date;
         var time = +new Date();
         var date = new Date(time + 8 * 3600 * 1000); // 增加8小时
