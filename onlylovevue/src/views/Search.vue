@@ -3,11 +3,7 @@
     <div class="content1">
       <div class="row">
         <div class style="margin-top: 20px">
-          <div
-            class="col-md-12 col-xs-12"
-            id="searchcon"
-            style="background-color: rgba(255,255,255,0.7);padding-top: 10px;position: relative;"
-          >
+          <div class="col-md-12 col-xs-12" id="searchcon" style="background-color: rgba(255,255,255,0.7);padding-top: 10px;position: relative;">
             <form name="searchForm" method="post" action autocomplete="on">
               <div class="dw_search">
                 <div class="dw_search_in">
@@ -23,54 +19,26 @@
                       </li>
                     </ul>
                     <p class="ipt">
-                      <input
-                        autocomplete="on"
-                        type="text"
-                        class="ef"
-                        v-model="Id"
-                        placeholder="请输入ID"
-                      />
+                      <input autocomplete="on" type="text" class="ef" v-model="Id" placeholder="请输入ID" />
                     </p>
                   </div>
                   <!--性别 -->
                   <div class="txt col-xs-12 col-md-2">
                     <p class="hdl">昵称</p>
-                    <input
-                      autocomplete="on"
-                      type="text"
-                      class="ef"
-                      v-model="nickName"
-                      placeholder="输入昵称"
-                    />
+                    <input autocomplete="on" type="text" class="ef" v-model="nickName" placeholder="输入昵称" />
                     <!-- <input name="jobarea" id="jobarea" type="hidden" value="070300" /> -->
                   </div>
 
                   <!-- 年龄 -->
                   <div class="txt col-xs-12 col-md-2" id="indtype_click">
                     <p class="hdl">性别</p>
-                    <input
-                      autocomplete="on"
-                      id="indtype_input"
-                      v-model="sex"
-                      type="text"
-                      class="ef"
-                      placeholder="输入性别"
-                      value
-                    />
+                    <input autocomplete="on" id="indtype_input" v-model="sex" type="text" class="ef" placeholder="输入性别" value />
                     <!-- <input name="industrytype" type="hidden" id="indtype_code" value=""/> -->
                   </div>
                   <!-- 职能类别 -->
                   <div class="txt col-xs-12 col-md-2" id="funtype_click">
                     <p class="hdl">年龄</p>
-                    <input
-                      autocomplete="on"
-                      id="funtype_input"
-                      v-model="age"
-                      type="text"
-                      class="ef"
-                      placeholder="输入年龄"
-                      value
-                    />
+                    <input autocomplete="on" id="funtype_input" v-model="age" type="text" class="ef" placeholder="输入年龄" value />
                     <!-- <input name="funtype" type="hidden" id="funtype_code" value=""/> -->
                   </div>
                   <!-- 搜索按钮 -->
@@ -248,362 +216,84 @@
               <section id="work" class="portfolio-mf sect-pt4 route">
                 <div class="container">
                   <div class="row">
-                    <div
-                      class="col-md-4"
-                      v-for="key in otherUserInfos"
-                      v-show="key.isShow || key.isName || key.isSex || key.isAge "
-                    >
+                    <div class="col-md-4" v-for="key in otherUserInfos" v-show="key.isShow || key.isName || key.isSex || key.isAge ">
                       <div class="work-box">
-                        <a
-                          v-if="!key.headPic"
-                          href="http://localhost:3000/olove/avatar1.png"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-if="!key.headPic" href="http://localhost:3000/olove/avatar1.png" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="!key.headPic"
-                              style="width:100%;"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="!key.headPic" style="width:100%;" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                           <!-- </div> -->
                         </a>
-                        <a
-                          v-else-if="key.headPic == 'fang1.jpg'"
-                          :href="'http://localhost:3000/olove/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else-if="key.headPic == 'fang1.jpg'" :href="'http://localhost:3000/olove/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="key.headPic == ''"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="key.headPic == ''" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
-                        <a
-                          v-else-if="key.headPic == 'fang2.jpg'"
-                          :href="'http://localhost:3000/olove/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else-if="key.headPic == 'fang2.jpg'" :href="'http://localhost:3000/olove/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="key.headPic == ''"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="key.headPic == ''" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
-                        <a
-                          v-else-if="key.headPic == 'fang3.jpg'"
-                          :href="'http://localhost:3000/olove/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else-if="key.headPic == 'fang3.jpg'" :href="'http://localhost:3000/olove/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="key.headPic == ''"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="key.headPic == ''" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
-                        <a
-                          v-else-if="key.headPic == 'fang4.jpg'"
-                          :href="'http://localhost:3000/olove/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else-if="key.headPic == 'fang4.jpg'" :href="'http://localhost:3000/olove/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="!key.headPic"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="!key.headPic" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
-                        <a
-                          v-else-if="key.headPic == 'fang5.jpg'"
-                          :href="'http://localhost:3000/olove/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else-if="key.headPic == 'fang5.jpg'" :href="'http://localhost:3000/olove/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="key.headPic == ''"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="key.headPic == ''" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
-                        <a
-                          v-else
-                          :href="'http://localhost:3000/upload/' + key.headPic"
-                          data-lightbox="gallery-mf"
-                        >
+                        <a v-else :href="'http://localhost:3000/upload/' + key.headPic" data-lightbox="gallery-mf">
                           <div class="work-img">
-                            <img
-                              v-if="key.headPic == ''"
-                              class="img-rounded img-responsive"
-                              src="http://localhost:3000/olove/avatar1.png"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang1.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang1.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang2.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang2.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang3.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang3.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang4.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang4.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else-if="key.headPic == 'fang5.jpg'"
-                              class="img-rounded img-responsive img-fluid"
-                              :src="'http://localhost:3000/olove/' + 'fang5.jpg'"
-                              alt
-                            />
-                            <img
-                              v-else
-                              :src="'http://localhost:3000/upload/' + key.headPic"
-                              alt
-                              class="img-fluid"
-                            />
+                            <img v-if="key.headPic == ''" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt />
+                            <img v-else-if="key.headPic == 'fang1.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang1.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang2.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang2.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang3.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang3.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang4.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang4.jpg'" alt />
+                            <img v-else-if="key.headPic == 'fang5.jpg'" class="img-rounded img-responsive img-fluid" :src="'http://localhost:3000/olove/' + 'fang5.jpg'" alt />
+                            <img v-else :src="'http://localhost:3000/upload/' + key.headPic" alt class="img-fluid" />
                           </div>
                         </a>
                         <div class="work-content">
@@ -721,7 +411,7 @@ export default {
       handler: function(IdName) {
         this.otherUserInfos = JSON.parse(sessionStorage.getItem("otherInfo"));
         console.log("ID搜索：" + IdName);
-        console.log(this.otherUserInfos.length)
+        console.log(this.otherUserInfos.length);
         for (let i = 0; i < this.otherUserInfos.length; i++) {
           if (
             this.otherUserInfos[i].base_info_Id.toString().indexOf(IdName) != -1
@@ -1037,7 +727,7 @@ form {
 .hdl {
   padding-left: 20px;
   margin-top: 8px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 p {
   margin: 0px;
