@@ -40,42 +40,42 @@
       </div>-->
     </div>
     <section class="bg-light">
-      <div class="container" >
+      <div class="container">
         <!-- <div class="row mb-4"> -->
-          <div class="col-md-4"  v-for="(key,index) in conditions"  :key="index" >
-            <div class="product bordser"  >
-              <div class="product-img">
-                <!-- <img src="../assets/imgs/5555.jpg" /> -->
-                <img :src="'http://localhost:3000/olove/' + key.prop_pic"  >
-                <!-- <img v-for="" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt=""> -->
-              </div>
-              <div class="product-block" >
-                <h5>{{key.prop_Name}}</h5>
-                <h5 class="text-danger">￥{{key.prop_price}}</h5>
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <i class="fa fa-clock-o"></i> 已售：10
-                  </li>
-                  <li class="list-inline-item">
-                    <i class="fa fa-car"></i>爱情、爱与美
-                  </li>
-                  <!-- <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li> -->
-                </ul>
-              </div>
-              <div class="product-footer">
-                <div class="row">
-                  <div class="col-md-6">
-                    <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
-                  </div>
-                  <div  class="col-md-6">
-                    <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm"  @click.prevent="Buy" >直接购买</button>
-                 <!-- <router-link to="{path:'/buy',query:{id:this.conditions[index].prop_Id}}"></router-link> -->
-                  </div>
+        <div class="col-md-4" v-for="(key,index) in conditions" :key="index">
+          <div class="product bordser">
+            <div class="product-img">
+              <!-- <img src="../assets/imgs/5555.jpg" /> -->
+              <img :src="'http://localhost:3000/olove/' + key.prop_pic">
+              <!-- <img v-for="" class="img-rounded img-responsive" src="http://localhost:3000/olove/avatar1.png" alt=""> -->
+            </div>
+            <div class="product-block">
+              <h5>{{key.prop_Name}}</h5>
+              <h5 class="text-danger">￥{{key.prop_price}}</h5>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <i class="fa fa-clock-o"></i> 已售：10
+                </li>
+                <li class="list-inline-item">
+                  <i class="fa fa-car"></i>爱情、爱与美
+                </li>
+                <!-- <li class="list-inline-item"><i class="fa fa-tint"></i> Diesel</li> -->
+              </ul>
+            </div>
+            <div class="product-footer">
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm" @click.prevent="Shopcart">加入购物车</button>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" :name="key.prop_Id" class="btn btn-outline-secondary btn-sm" @click.prevent="Buy(key.prop_price,key.prop_Id)">直接购买</button>
+                  <!-- <router-link to="{path:'/buy',query:{id:this.conditions[index].prop_Id}}"></router-link> -->
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-4">
+        </div>
+        <!-- <div class="col-md-4">
             <div class="product border">
               <div class="product-img">
                 <img src="http://www.ansonika.com/panagea/img/tour_1.jpg" />
@@ -107,7 +107,7 @@
               </div>
             </div>
           </div> -->
-          <!-- <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="product border">
               <div class="product-img">
                 <img src="http://www.ansonika.com/panagea/img/tour_1.jpg" />
@@ -141,7 +141,7 @@
           </div> -->
         <!-- </div> -->
         <!-- <div class="row mb-4"> -->
-          <!-- <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="product border">
               <div class="product-img">
                 <img src="http://www.ansonika.com/panagea/img/tour_1.jpg" />
@@ -173,7 +173,7 @@
               </div>
             </div>
           </div> -->
-          <!-- <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="product border">
               <div class="product-img">
                 <img src="http://www.ansonika.com/panagea/img/tour_1.jpg" />
@@ -205,7 +205,7 @@
               </div>
             </div>
           </div> -->
-          <!-- <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="product border">
               <div class="product-img">
                 <img src="http://www.ansonika.com/panagea/img/tour_1.jpg" />
@@ -251,7 +251,7 @@
   color: #778ca3;
   font-weight: 545;
 }
-.product{
+.product {
   margin-bottom: 30px;
 }
 .work-img > img {
@@ -310,23 +310,18 @@ img {
 }
 </style>
 <script>
-
 export default {
   data() {
     return {
       num: 1,
-      conditions: [],
-
+      conditions: []
     };
-  
   },
 
   // 组件创建后完成执行的操作
   created() {
     this.$axios
-      .get("http://localhost:3000/shop/product"
-        
-      )
+      .get("http://localhost:3000/shop/product")
       .then(res => {
         console.log("查询结果：");
         console.log(res.data.data);
@@ -344,8 +339,8 @@ export default {
       console.log(value);
     },
     Shopcart(e) {
-      console.log('购物车' +e.target.name)
-  let shopid = e.target.name
+      console.log("购物车" + e.target.name);
+      let shopid = e.target.name;
 
       this.$router.push("/shopcart");
       //   this.$router.push({path:"/buy",
@@ -353,17 +348,15 @@ export default {
       // query:{shopid}
       // });
     },
-    Buy(e) {
-   console.log(e.target.name);
-  let productid = e.target.name
-      this.$router.push({path:"/buy",
-      name:'',
-      query:{productid}
+    Buy(price, id) {
+      let productid = id;
+      let productprice = price;
+      this.$router.push({
+        path: "/buy",
+        name: "",
+        query: { productid, productprice }
       });
-    },
-   
-   
-    
+    }
   }
 };
 </script>

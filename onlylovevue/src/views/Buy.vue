@@ -14,16 +14,9 @@
             <span>爱情、爱与美</span>
           </h2>
           <p>玫瑰花语是指用玫瑰来表达爱情的通用语言，而且不同的颜色和数量代表的意义不同。其中红玫瑰代表着热烈的爱情；黄玫瑰表达纯真的友谊和美好的祝福；紫玫瑰传递着浪漫的情怀和高贵、忧郁的情感；白玫瑰预示着纯洁，出淤泥而不染。</p>
-          <h3 class="col-xs-12">￥{{key.prop_price}}</h3>
-          <el-input-number
-            class="col-xs-12"
-            style="margin-top:10px"
-            v-model="num"
-            :min="1"
-            :max="10"
-            label="描述文字"
-          ></el-input-number>
-          <h1 class="col-xs-12" style="margin-top:10px">￥{{key.prop_price*num}}</h1>
+          <h3 class="col-xs-12">￥{{productprice}}</h3>
+          <el-input-number class="col-xs-12" style="margin-top:10px" v-model="num" :min="1" :max="10" label="描述文字"></el-input-number>
+          <h1 class="col-xs-12" style="margin-top:10px">￥{{productprice*num}}</h1>
           <a @click.prevent="goshop" style="float:left;margin-top:10px;font-size:16px;color:#34495e;cursor:pointer">返回商城</a>
           <button :name="num" @click="handleChange">立即购买</button>
         </div>
@@ -184,12 +177,14 @@ export default {
     return {
       conditions: [],
       num: 1,
-      buy: []
+      buy: [],
+      productprice: 0
     };
   },
   created() {
     // console.log(this.$route.query.productid)
     this.propid = this.$route.query.productid;
+    this.productprice = this.$route.query.productprice;
     // var propId
     // propId.append("propId",this.$route.query.productid)
     console.log({ propId: this.propid });
@@ -265,23 +260,18 @@ export default {
                 }
               }
             );
-          }else{
-            console.log(res.data)
-            let integral = res.data.integral
-            this.$alert(
-              "您的积分还有：" + integral,
-              "你的积分不足" ,
-              "成功",
-              {
-                confirmButtonText: "确定",
-                callback: action => {
-                  this.$message({
-                    type: "info",
-                    message: `action: ${action}`
-                  });
-                }
+          } else {
+            console.log(res.data);
+            let integral = res.data.integral;
+            this.$alert("您的积分还有：" + integral, "你的积分不足", "成功", {
+              confirmButtonText: "确定",
+              callback: action => {
+                this.$message({
+                  type: "info",
+                  message: `action: ${action}`
+                });
               }
-            );
+            });
           }
         })
         .catch(err => {
